@@ -1,0 +1,25 @@
+[
+  {
+    "id": "mf-symm-set1-q001",
+    "chapter": "Formen spiegeln",
+    "chapterId": "mf-mirror-symm",
+    "topic": "Achsenspiegelung an schräger Spiegelachse",
+    "set": 1,
+    "question": "Welche der folgenden Abbildungen stellt die exakte Spiegelung der vorgegebenen geometrischen Figur an der 45°-Spiegelachse dar?",
+    "options": {
+      "A": "Figur A mit 90°-Rechtsdrehung",
+      "B": "Figur B mit vertikaler und horizontaler Achsenspiegelung",
+      "C": "Figur C mit invertierter Punktsymmetrie",
+      "D": "Figur D mit maßstabsgetreuer 45°-Achseninversion",
+      "E": "Figur E mit unveränderter Originalausrichtung"
+    },
+    "correct_answer": "D",
+    "explanation": "Bei der Achsenspiegelung an einer 45°-Achse werden alle Punkte senkrecht zur Spiegelachse auf die gegenüberliegende Seite im gleichen Abstand übertragen.",
+    "difficulty": "medium",
+    "concept": "Formen spiegeln",
+    "tags": ["MF", "Zahnmedizin", "Formen spiegeln"],
+    "exam": "MEDAT-Z",
+    "section": "MF",
+    "subjectId": "mf-mirror"
+  }
+]

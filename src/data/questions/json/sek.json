@@ -1,0 +1,25 @@
+[
+  {
+    "id": "sek-dec-set1-q001",
+    "chapter": "Soziales Entscheiden",
+    "chapterId": "sek-decision",
+    "topic": "Patientenautonomie & Schweigepflicht",
+    "set": 1,
+    "question": "Ein 17-jähriger einwilligungsfähiger Patient bittet den Arzt um vertrauliche Beratung bezüglich einer Therapie, möchte aber ausdrücklich nicht, dass seine Eltern informiert werden. Wie verhält sich der Arzt primär richtig?",
+    "options": {
+      "A": "Der Arzt muss die Eltern umgehend informieren, da der Patient noch minderjährig ist.",
+      "B": "Der Arzt respektiert die Schweigepflicht und den Willen des einwilligungsfähigen Jugendlichen, solange keine akute Selbstgefährdung vorliegt.",
+      "C": "Der Arzt verweigert jegliche Behandlung ohne schriftliche Vollmacht der Erziehungsberechtigten.",
+      "D": "Der Arzt bricht die ärztliche Schweigepflicht und informiert die Schule des Patienten.",
+      "E": "Der Arzt fordert den Patienten auf, die Behandlung eigenständig ohne ärztliche Aufklärung durchzuführen."
+    },
+    "correct_answer": "B",
+    "explanation": "Bei einwilligungsfähigen Jugendlichen gilt die ärztliche Schweigepflicht grundsätzlich auch gegenüber den Erziehungsberechtigten, sofern keine akute Gefahrenlage vorliegt.",
+    "difficulty": "medium",
+    "concept": "Ärztliche Schweigepflicht",
+    "tags": ["SEK", "Soziales Entscheiden", "Ethik"],
+    "exam": "BOTH",
+    "section": "SEK",
+    "subjectId": "sek-dec"
+  }
+]

@@ -1,0 +1,688 @@
+<USER_REQUEST>
+# TARGETED FLAW-FIX PROMPT — MEDAT-H TEXTVERSTÄNDNIS SIMULATION 11
+
+Act as a strict MedAT-H Textverständnis assessment specialist, German reading-comprehension item writer, and psychometric quality-control reviewer.
+
+Review ONLY:
+
+> MedAT-H Textverständnis — Simulation 11
+
+This is a PRECISION FLAW-FIX PASS.
+
+DO NOT redesign the simulation.
+DO NOT create a new simulation.
+DO NOT add questions.
+DO NOT delete questions.
+DO NOT replace all four passages.
+DO NOT change the 4-text × 3-question architecture.
+
+Only fix the flaws identified below.
+
+==================================================
+1. PRESERVE THE CURRENT STRUCTURE
+==================================================
+
+Keep exactly:
+
+- 4 texts
+- 12 questions
+- 3 questions per text
+- 5 options A–E
+- exactly one correct answer per question
+- 35-minute simulation
+
+Keep:
+
+Easy:
+Q01, Q04, Q07
+
+Medium:
+Q02, Q05, Q08, Q09, Q10, Q11
+
+Hard:
+Q03, Q06, Q12
+
+Final:
+
+3 Easy
+6 Medium
+3 Hard
+
+DO NOT change the difficulty distribution.
+
+==================================================
+2. PRESERVE THE CURRENT ANSWER DISTRIBUTION
+==================================================
+
+Keep the current answer distribution:
+
+A = 2
+B = 3
+C = 2
+D = 3
+E = 2
+
+Do NOT rebalance merely for symmetry.
+
+Do NOT change correct answers unless a genuine flaw is discovered.
+
+After any option revision, re-check the answer key.
+
+==================================================
+3. MAIN FLAW — DISTRACTORS ARE STILL TOO OBVIOUS
+==================================================
+
+The current dataset claims:
+
+> "100 % plausibel"
+
+but several distractors are obviously unrelated or absurd.
+
+This is the biggest flaw.
+
+Examples include:
+
+Q01:
+- programmed death of all motor neurons
+- permanent photoreceptor formation
+
+Q02:
+- immediate blindness
+- complete loss of all long-term memories
+
+Q04:
+- doubling physical performance of newborns
+- eliminating healthcare costs
+
+Q06:
+- biological infertility of all IVF children
+- replacement of science by religious institutions
+
+Q07:
+- unrelated DNA/plasma concepts
+
+Q08:
+- impossible gas decomposition
+- umbilical blood-flow reversal
+
+Q10:
+- legal/medical alternatives unrelated to the passage
+
+Q12:
+- extreme 24-hour shifts
+- transferring diagnosis entirely to nursing staff
+
+These must be fixed.
+
+--------------------------------------------------
+DISTRACTOR STANDARD
+--------------------------------------------------
+
+Every incorrect answer must be:
+
+- plausible;
+- text-related;
+- grammatically parallel;
+- conceptually close to the correct answer;
+- wrong because of a specific textual mismatch.
+
+Use realistic reading errors:
+
+1. Partial truth
+2. Reversed relationship
+3. Wrong condition
+4. Wrong scope
+5. Concept confusion
+6. Mechanism confusion
+7. Information from the wrong paragraph
+
+NEVER use deliberately ridiculous distractors.
+
+The student should have to read the passage carefully to eliminate each wrong option.
+
+==================================================
+4. Q01 — KEEP THE CONCEPT, IMPROVE DISTRACTORS
+==================================================
+
+Keep:
+
+Correct answer = D
+Difficulty = Easy
+
+The question tests the functional role of perineuronal nets.
+
+Keep the core concept:
+
+> PNNs stabilize synaptic contacts and restrict further structural plasticity.
+
+Rewrite only A, B, C and E.
+
+Make the distractors plausible alternatives involving:
+
+- neural inhibition;
+- synaptic stabilization;
+- axonal growth;
+- neuronal support;
+- developmental plasticity.
+
+Do NOT use unrelated structures or absurd physiological effects.
+
+Do not require outside neuroscience knowledge.
+
+==================================================
+5. Q02 — KEEP THE CONCEPT, IMPROVE DISTRACTORS
+==================================================
+
+Keep:
+
+Correct answer = B
+Difficulty = Medium
+
+The question should continue to test:
+
+> CSPG degradation → temporary PNN disruption → reopening of juvenile plasticity.
+
+Rewrite A, C, D and E.
+
+Use realistic misunderstandings:
+
+- permanent loss of plasticity;
+- excessive maturation of inhibitory neurons;
+- temporary versus permanent effect confusion;
+- confusing visual plasticity with another neural function.
+
+Do not use blindness or total memory loss as distractors.
+
+==================================================
+6. Q03 — KEEP UNCHANGED UNLESS A GENUINE ERROR EXISTS
+==================================================
+
+Q03 is a valid Hard-level synthesis question.
+
+Keep:
+
+- question;
+- correct answer E;
+- difficulty Hard;
+- passage;
+- explanation.
+
+The central inference is good:
+
+> increased plasticity may help rehabilitation, but uncontrolled or prolonged
+> plasticity can threaten established neural stability.
+
+Do not simplify the reasoning.
+
+==================================================
+7. Q04 — REDUCE OBVIOUS FACT-RECALL FEEL
+==================================================
+
+Keep:
+
+Correct answer = A
+Difficulty = Easy
+
+The question should continue to test the original purpose of PID.
+
+Keep the underlying information:
+
+> PID was initially used to help couples at known risk of severe monogenic disease.
+
+You may slightly refine the wording so it tests the purpose rather than a memorized phrase.
+
+Rewrite B–E into plausible alternative purposes of reproductive genetic testing.
+
+Do NOT use:
+
+- doubling physical ability;
+- eliminating all healthcare costs;
+- unrelated ovarian procedures.
+
+==================================================
+8. Q05 — KEEP
+==================================================
+
+Keep:
+
+Correct answer = C
+Difficulty = Medium
+
+This is a useful distinction between:
+
+- classical PID;
+- monogenic disorders;
+- polygenic risk scoring.
+
+Do NOT rewrite unless a real ambiguity exists.
+
+Only improve a distractor if it is clearly implausible.
+
+==================================================
+9. Q06 — KEEP HARD, FIX DISTRACTORS
+==================================================
+
+Keep:
+
+Correct answer = E
+Difficulty = Hard
+
+The core concept is strong:
+
+> disease prevention can gradually shift toward enhancement/optimization,
+> while raising questions about parental expectations and social inequality.
+
+Rewrite A–D.
+
+Make them plausible ethical interpretations, for example:
+
+- restricting PID only to clearly defined monogenic diseases;
+- concern about social inequality without enhancement;
+- distinguishing medical prevention from optimization;
+- increasing access rather than changing the purpose of screening.
+
+The correct answer must still synthesize the slippery-slope and parent-child
+instrumentalization concerns described in the passage.
+
+Do NOT introduce external ethical positions.
+
+==================================================
+10. Q07 — REDUCE TERMINOLOGY-DRIVEN DIFFICULTY
+==================================================
+
+Keep:
+
+Correct answer = D
+Difficulty = Easy
+
+The current question asks directly about the Paracelsus principle.
+
+That is acceptable, but make sure the student is tested on the concept:
+
+> the traditional assumption that greater dose means greater toxic effect
+> and that sufficiently low exposure was assumed to be harmless.
+
+Do NOT require prior knowledge of Paracelsus.
+
+Rewrite only weak distractors.
+
+All distractors should be plausible descriptions of traditional toxicology
+or dose-response reasoning.
+
+==================================================
+11. Q08 — IMPROVE THE QUESTION'S MEDAT FIT
+==================================================
+
+Keep:
+
+Correct answer = B
+Difficulty = Medium
+
+The concept is useful, but the question is currently too dependent on
+technical terminology.
+
+Reframe it so the student must understand:
+
+> why very low and high concentrations can produce different effects
+> according to the mechanism described.
+
+You may avoid making “NMDRC” itself the main object of recall.
+
+Keep the biological mechanism:
+
+- receptor sensitivity at low concentrations;
+- receptor internalization/down-regulation at high concentrations.
+
+Do NOT require outside endocrinology knowledge.
+
+Rewrite distractors so they are realistic mechanisms that could be confused
+with the described process.
+
+==================================================
+12. Q09 — KEEP
+==================================================
+
+Keep:
+
+Correct answer = A
+Difficulty = Medium
+
+This is a useful cause-effect question:
+
+> exposure → epigenetic change in germ cells → effects in later generations.
+
+Keep the concept.
+
+Only strengthen distractors if necessary.
+
+Do not introduce alternative biological mechanisms not present in the passage.
+
+==================================================
+13. Q10 — IMPROVE DISTRACTORS ONLY
+==================================================
+
+Keep:
+
+Correct answer = B
+Difficulty = Medium
+
+The underlying question about Decision Fatigue is good.
+
+Rewrite A, C, D and E so they represent plausible behavioral changes
+that could occur under cognitive depletion.
+
+Possible realistic confusions:
+
+- delaying difficult decisions;
+- relying on defaults;
+- reducing effort in patient communication;
+- avoiding conflict;
+- changing the timing of preventive decisions.
+
+Avoid absurd options such as completely refusing all communication.
+
+==================================================
+14. Q11 — KEEP, STRENGTHEN DISTRACTORS
+==================================================
+
+Keep:
+
+Correct answer = C
+Difficulty = Medium
+
+The question correctly links:
+
+> reduced mental energy → reduced willingness to engage in difficult
+> communication → inappropriate antibiotic prescriptions.
+
+Keep this.
+
+Rewrite A, B, D and E into plausible alternative explanations:
+
+- increasing bacterial prevalence;
+- greater patient demand;
+- changes in staffing;
+- seasonal effects;
+- electronic-system effects.
+
+They must be wrong according to the passage, but plausible enough to require reading.
+
+==================================================
+15. Q12 — KEEP HARD, STRENGTHEN DISTRACTORS
+==================================================
+
+Keep:
+
+Correct answer = D
+Difficulty = Hard
+
+The central conclusion is good:
+
+> structural changes in work and decision architecture are needed because
+> cognitive capacity has biological limits.
+
+Rewrite A, B, C and E into plausible competing conclusions.
+
+Possible alternatives:
+
+- emphasizing individual discipline;
+- increasing training alone;
+- relying only on electronic decision support;
+- reorganizing shifts without changing decision architecture;
+- treating errors primarily as individual incompetence.
+
+The correct answer must require synthesis of the entire third paragraph.
+
+Do NOT use absurd extremes.
+
+==================================================
+16. PASSAGE 1 — REDUCE UNNECESSARY TERMINOLOGY, DO NOT REWRITE
+==================================================
+
+Keep the Neuroplasticity passage.
+
+Important concepts may remain:
+
+- critical periods;
+- perineuronal nets;
+- synaptic stability;
+- plasticity.
+
+However, do not allow the question difficulty to depend on knowing:
+
+- CSPGs;
+- parvalbumin-positive interneurons;
+- Chondroitinase ABC.
+
+These terms may remain in the passage because the passage explains them.
+
+If a sentence can be simplified without losing the argument, make only a local edit.
+
+==================================================
+17. PASSAGE 2 — KEEP
+==================================================
+
+Keep the PID passage.
+
+The topic is appropriate for reading comprehension.
+
+Do NOT rewrite the passage simply because it is scientific.
+
+The text itself provides the necessary information.
+
+==================================================
+18. PASSAGE 3 — REDUCE TERMINOLOGY LOAD ONLY WHEN NECESSARY
+==================================================
+
+Keep the endocrine-disruptor passage.
+
+Do not remove the core concept of non-monotone dose-response.
+
+The important reading relationship is:
+
+> low dose can have an effect;
+> higher dose may produce a different or weaker effect because of receptor
+> regulation.
+
+Do not make the student depend on memorizing:
+
+- PFAS;
+- NMDRC;
+- F2/F3;
+- histone terminology.
+
+==================================================
+19. PASSAGE 4 — KEEP
+==================================================
+
+The Decision Fatigue passage is useful and should remain.
+
+Its causal structure is strong:
+
+mental depletion
+→ cognitive shortcuts
+→ altered clinical decisions
+→ patient-safety effects
+→ structural interventions.
+
+Do not replace it.
+
+==================================================
+20. NO OUTSIDE KNOWLEDGE
+==================================================
+
+For every revised question:
+
+Ask:
+
+> “Can this be answered using only the passage?”
+
+If the answer is no:
+
+- rewrite the question;
+- clarify the passage;
+- or replace the technical detail with text-derived reasoning.
+
+Do NOT require prior knowledge of:
+
+- neuroscience;
+- genetics;
+- toxicology;
+- psychology;
+- medicine.
+
+==================================================
+21. MEDAT-LEVEL DIFFICULTY STANDARD
+==================================================
+
+Easy:
+
+- direct text understanding;
+- one-step interpretation;
+- plausible distractors.
+
+Medium:
+
+- connect two pieces of information;
+- understand a mechanism;
+- distinguish close alternatives.
+
+Hard:
+
+- synthesize multiple statements;
+- infer the author's conclusion;
+- understand a qualification or trade-off.
+
+Hard must NOT mean:
+
+- more terminology;
+- more abbreviations;
+- specialist knowledge.
+
+==================================================
+22. FINAL ANSWER/DISTRIBUTION CHECK
+==================================================
+
+After editing:
+
+Verify exactly one correct answer per question.
+
+Preserve the current answer distribution:
+
+A = 2
+B = 3
+C = 2
+D = 3
+E = 2
+
+Do not change correct-answer letters unnecessarily.
+
+==================================================
+23. FINAL DIFFICULTY CHECK
+==================================================
+
+Must remain:
+
+Easy:
+Q01, Q04, Q07
+
+Medium:
+Q02, Q05, Q08, Q09, Q10, Q11
+
+Hard:
+Q03, Q06, Q12
+
+Exactly:
+
+3 Easy
+6 Medium
+3 Hard
+
+==================================================
+24. FINAL QUALITY AUDIT
+==================================================
+
+Verify:
+
+12 questions ✅
+4 texts ✅
+3 questions per text ✅
+35 minutes ✅
+3 Easy / 6 Medium / 3 Hard ✅
+A2 / B3 / C2 / D3 / E2 ✅
+Exactly one correct answer each ✅
+No absurd distractors ✅
+Distractors require actual reading ✅
+No outside knowledge required ✅
+Terminology is not the main source of difficulty ✅
+Hard questions require inference/synthesis ✅
+
+IMPORTANT:
+
+Do not claim “100% plausible distractors” unless you have actually reviewed
+every option individually.
+
+==================================================
+25. OUTPUT ONLY CHANGES
+==================================================
+
+Do NOT return the entire Simulation 11.
+
+Return only:
+
+### A. Corrected distractors
+Q01
+Q02
+Q04
+Q06
+Q07
+Q08
+Q10
+Q11
+Q12
+
+Show only modified options.
+
+### B. Question refinements
+Show only Q04 and Q08 if their wording was changed.
+
+### C. Passage wording changes
+Only if a genuine terminology-overload problem required a local edit.
+
+### D. Final audit
+
+Structure: ✅
+Difficulty: 3/6/3 ✅
+Answer distribution: A2/B3/C2/D3/E2 ✅
+Exactly one correct answer: ✅
+Plausible distractors: ✅
+No absurd distractors: ✅
+Outside knowledge required: 0 ✅
+MedAT-H TV level: ✅
+
+# FINAL RULE
+
+This is a FLAW-FIX PASS ONLY.
+
+DO NOT:
+
+- redesign Simulation 11;
+- replace the four passages;
+- add questions;
+- delete questions;
+- change the difficulty distribution;
+- rebalance answer letters unnecessarily;
+- make the passages artificially easy.
+
+ONLY fix:
+
+1. obvious/absurd distractors;
+2. questions that depend too much on specialist terminology;
+3. Q08's terminology-driven formulation;
+4. local wording issues that genuinely affect MedAT-level readability.
+
+Preserve everything else that already works.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-21T11:15:44+05:30.
+</ADDITIONAL_METADATA>

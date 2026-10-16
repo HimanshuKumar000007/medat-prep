@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "chem-02-set2-q026",
+    "set": 2,
+    "topic": "Unschärferelation — Quantitative Abschätzung der Geschwindigkeitsunschärfe",
+    "difficulty": "medium",
+    "question": "Ein Elektron ($m_e \\approx 9{,}1 \\cdot 10^{-31}\\,\\text{kg}$) wird innerhalb eines typischen Atomdurchmessers lokalisiert, sodass seine Ortsunschärfe $\\Delta x = 10^{-10}\\,\\text{m}$ ($0{,}1\\,\\text{nm}$) beträgt. Welcher Mindestwert resultiert daraus näherungsweise für die Geschwindigkeitsunschärfe $\\Delta v$ des Elektrons?\n(Hinweis: Nutze die gerundete Hilfskonstante $\\frac{h}{4\\pi \\cdot m_e} \\approx 6 \\cdot 10^{-5}\\,\\text{m}^2/\\text{s}$).",
+    "options": {
+      "A": "$\\Delta v \\ge 6 \\cdot 10^{-15}\\,\\text{m/s}$",
+      "B": "$\\Delta v \\ge 6 \\cdot 10^{-5}\\,\\text{m/s}$",
+      "C": "$\\Delta v \\ge 6 \\cdot 10^5\\,\\text{m/s}$",
+      "D": "$\\Delta v \\ge 3 \\cdot 10^8\\,\\text{m/s}$",
+      "E": "$\\Delta v \\ge 1{,}5 \\cdot 10^{14}\\,\\text{m/s}$"
+    },
+    "correct_answer": "C",
+    "explanation": "Aus der Heisenbergschen Unschärferelation folgt:\n$$\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi} \\iff \\Delta x \\cdot m_e \\cdot \\Delta v \\ge \\frac{h}{4\\pi} \\iff \\Delta v \\ge \\frac{h}{4\\pi \\cdot m_e \\cdot \\Delta x}$$\nMit der angegebenen Hilfskonstante $\\frac{h}{4\\pi \\cdot m_e} \\approx 6 \\cdot 10^{-5}\\,\\text{m}^2/\\text{s}$ und $\\Delta x = 10^{-10}\\,\\text{m}$ ergibt sich:\n$$\\Delta v \\ge \\frac{6 \\cdot 10^{-5}\\,\\text{m}^2/\\text{s}}{10^{-10}\\,\\text{m}} = 6 \\cdot 10^{-5 - (-10)}\\,\\text{m/s} = 6 \\cdot 10^5\\,\\text{m/s}$$\nDiese enorme Unschärfe (ca. $600\\,\\text{km/s}$, rund $0{,}2\\,\\%$ der Lichtgeschwindigkeit) belegt quantitativ, warum das Elektron im Atom keine klassische ruhende oder fest umrissene Bahn einnehmen kann.\nAnalyse der Falschantworten:\n- A multipliziert die Exponenten fälschlich ($-5 + (-10) = -15$).\n- B vergisst die Division durch $\\Delta x$.\n- D setzt pauschal die Vakuumlichtgeschwindigkeit ein.\n- E dividiert fälschlich $\\Delta x$ durch die Hilfskonstante."
+  },
+  {
+    "id": "chem-02-set2-q027",
+    "set": 2,
+    "topic": "Unschärferelation — Vergleich zweier Teilchen (Elektron vs. Proton)",
+    "difficulty": "medium",
+    "question": "Ein Proton ist rund 1836-mal schwerer als ein Elektron ($m_p \\approx 1836 \\cdot m_e$). Angenommen, ein Elektron und ein Proton werden mit der exakt gleichen Ortsunschärfe $\\Delta x$ in einer quantenmechanischen Falle festgehalten. Wie verhält sich die minimale Geschwindigkeitsunschärfe des Protons ($\\Delta v_p$) zu jener des Elektrons ($\\Delta v_e$)?",
+    "options": {
+      "A": "$\\Delta v_p \\approx 1836 \\cdot \\Delta v_e$",
+      "B": "$\\Delta v_p \\approx \\Delta v_e$",
+      "C": "$\\Delta v_p \\approx \\frac{\\Delta v_e}{\\sqrt{1836}}$",
+      "D": "$\\Delta v_p \\approx \\frac{\\Delta v_e}{1836}$",
+      "E": "$\\Delta v_p \\approx 1836^2 \\cdot \\Delta v_e$"
+    },
+    "correct_answer": "D",
+    "explanation": "Für die minimale Geschwindigkeitsunschärfe gilt nach Heisenberg:\n$$\\Delta v_{\\text{min}} = \\frac{h}{4\\pi \\cdot m \\cdot \\Delta x}$$\nDa $\\Delta x$ für beide Teilchen identisch ist, gilt:\n$$\\Delta v \\propto \\frac{1}{m}$$\nSetzt man die Massen ins Verhältnis:\n$$\\frac{\\Delta v_p}{\\Delta v_e} = \\frac{m_e}{m_p} = \\frac{m_e}{1836 \\cdot m_e} = \\frac{1}{1836} \\implies \\Delta v_p \\approx \\frac{\\Delta v_e}{1836}$$\nDas Proton besitzt bei gleicher Ortsunschärfe eine um den Faktor 1836 kleinere Geschwindigkeitsunschärfe als das leichtere Elektron. Seine Impulsunschärfe $\\Delta p = m \\cdot \\Delta v$ ist hingegen bei beiden Teilchen identisch!\nAnalyse der Falschantworten:\n- A nimmt eine direkte Proportionalität zur Masse an (Falle: Masse steht im Nenner).\n- B verwechselt Geschwindigkeitsunschärfe $\\Delta v$ mit der Impulsunschärfe $\\Delta p$.\n- C nimmt fälschlicherweise eine Wurzelabhängigkeit an (wie bei der De-Broglie-Wellenlänge über die kinetische Energie).\n- E quadriert den Massenfaktor."
+  },
+  {
+    "id": "chem-02-set2-q028",
+    "set": 2,
+    "topic": "Wellennatur des Lichts — Frequenz und Photonenenergie im VIS-Bereich",
+    "difficulty": "easy",
+    "question": "Gelboranges Licht besitzt im Vakuum eine Wellenlänge von $\\lambda = 600\\,\\text{nm}$. Welche Frequenz $f$ und welche Energie $E$ (in Joule) besitzt ein einzelnes Photon dieser Strahlung?\n(Konstanten: $c = 3 \\cdot 10^8\\,\\text{m/s}$, $h = 6{,}6 \\cdot 10^{-34}\\,\\text{J}\\cdot\\text{s}$).",
+    "options": {
+      "A": "$f = 5 \\cdot 10^{14}\\,\\text{Hz}$ und $E = 3{,}3 \\cdot 10^{-19}\\,\\text{J}$",
+      "B": "$f = 2 \\cdot 10^{14}\\,\\text{Hz}$ und $E = 1{,}32 \\cdot 10^{-19}\\,\\text{J}$",
+      "C": "$f = 5 \\cdot 10^{14}\\,\\text{Hz}$ und $E = 6{,}6 \\cdot 10^{-19}\\,\\text{J}$",
+      "D": "$f = 5 \\cdot 10^5\\,\\text{Hz}$ und $E = 3{,}3 \\cdot 10^{-28}\\,\\text{J}$",
+      "E": "$f = 1{,}8 \\cdot 10^{15}\\,\\text{Hz}$ und $E = 1{,}19 \\cdot 10^{-18}\\,\\text{J}$"
+    },
+    "correct_answer": "A",
+    "explanation": "1. Frequenz berechnen:\n$$c = \\lambda \\cdot f \\implies f = \\frac{c}{\\lambda} = \\frac{3 \\cdot 10^8\\,\\text{m/s}}{600 \\cdot 10^{-9}\\,\\text{m}} = \\frac{3 \\cdot 10^8}{6 \\cdot 10^{-7}\\,\\text{m}} = 0{,}5 \\cdot 10^{15}\\,\\text{Hz} = 5 \\cdot 10^{14}\\,\\text{Hz}$$\n2. Photonenenergie berechnen:\n$$E = h \\cdot f = (6{,}6 \\cdot 10^{-34}\\,\\text{J}\\cdot\\text{s}) \\cdot (5 \\cdot 10^{14}\\,\\text{s}^{-1}) = 33 \\cdot 10^{-20}\\,\\text{J} = 3{,}3 \\cdot 10^{-19}\\,\\text{J}$$\nAnalyse der Falschantworten:\n- B verrechnet sich bei $3 / 6$ zu $0{,}2$.\n- C verdoppelt die Energie fälschlicherweise ($6{,}6$ statt $3{,}3$).\n- D verwechselt Nanometer ($10^{-9}\\,\\text{m}$) mit Millimetern ($10^{-3}\\,\\text{m}$).\n- E multipliziert $c$ mit $\\lambda$ statt zu dividieren."
+  },
+  {
+    "id": "chem-02-set2-q029",
+    "set": 2,
+    "topic": "Elektromagnetisches Spektrum — Quantitativer Vergleich (Röntgen vs. Mikrowelle)",
+    "difficulty": "medium",
+    "question": "Ein medizinisches Röntgengerät arbeitet mit Photonen der Wellenlänge $\\lambda_{\\text{Rö}} = 0{,}1\\,\\text{nm}$. Ein Mikrowellengerät nutzt elektromagnetische Strahlung mit $\\lambda_{\\text{Mikro}} = 10\\,\\text{cm}$. Um welchen Faktor ist die Energie eines Röntgenphotons größer als die eines Mikrowellenphotons?",
+    "options": {
+      "A": "$10^3$ (1.000-fach)",
+      "B": "$10^6$ (1.000.000-fach)",
+      "C": "$10^{12}$ (1.000.000.000.000-fach)",
+      "D": "$10^9$ (1.000.000.000-fach)",
+      "E": "$10^{-9}$ (ein Milliardstel)"
+    },
+    "correct_answer": "D",
+    "explanation": "Da für die Photonenenergie $E = \\frac{h \\cdot c}{\\lambda}$ gilt, verhält sich die Energie zweier Photonen streng umgekehrt proportional zu ihren Wellenlängen:\n$$\\frac{E_{\\text{Rö}}}{E_{\\text{Mikro}}} = \\frac{\\lambda_{\\text{Mikro}}}{\\lambda_{\\text{Rö}}}$$\nEinheiten angleichen:\n- $\\lambda_{\\text{Mikro}} = 10\\,\\text{cm} = 0{,}1\\,\\text{m} = 10^{-1}\\,\\text{m}$\n- $\\lambda_{\\text{Rö}} = 0{,}1\\,\\text{nm} = 0{,}1 \\cdot 10^{-9}\\,\\text{m} = 10^{-10}\\,\\text{m}$\nQuotient bilden:\n$$\\frac{E_{\\text{Rö}}}{E_{\\text{Mikro}}} = \\frac{10^{-1}\\,\\text{m}}{10^{-10}\\,\\text{m}} = 10^{-1 - (-10)} = 10^9$$\nEin Röntgenphoton trägt somit eine Milliarde mal ($10^9$) mehr Energie als ein Mikrowellenphoton. Das verdeutlicht, warum Röntgenstrahlung chemische Bindungen ionisieren und DNA schädigen kann, während Mikrowellen lediglich molekulare Rotationen anregen.\nAnalyse der Falschantworten:\n- A und B verrechnen sich bei der Umrechnung von $\\text{cm}$ in $\\text{m}$ bzw. $\\text{nm}$ in $\\text{m}$.\n- C addiert Exponenten statt sie zu subtrahieren.\n- E invertiert das Verhältnis."
+  },
+  {
+    "id": "chem-02-set2-q030",
+    "set": 2,
+    "topic": "Licht-Materie-Wechselwirkung — Farbigkeit organischer Moleküle & Orbitalübergänge",
+    "difficulty": "medium",
+    "question": "Organische Farbstoffe wie $\\beta$-Carotin (orange) oder Azofarbstoffe absorbieren Strahlung im sichtbaren Bereich (VIS). Welcher quantenmechanische Prozess auf molekularer Ebene ist für diese selektive Lichtabsorption verantwortlich?",
+    "options": {
+      "A": "Die Schwingungsanregung polarer $\\text{C--H}$-Einfachbindungen",
+      "B": "Die Anregung von $\\pi$-Elektronen aus dem höchsten besetzten Molekülorbital (HOMO) in das niedrigste unbesetzte Molekülorbital (LUMO) entlang eines ausgedehnten konjugierten Doppelbindungssystems",
+      "C": "Das Herausschlagen von Elektronen aus der inneren K-Schale des Kohlenstoffs (Photoionisation)",
+      "D": "Die Umklappung des Kernspins von Wasserstoffatomen im Erdmagnetfeld",
+      "E": "Die dauerhafte thermische Spaltung kovalenter Bindungen unter Bildung freier Radikale"
+    },
+    "correct_answer": "B",
+    "explanation": "Farbigkeit entsteht, wenn ein Molekül Photonen im VIS-Bereich ($380 - 780\\,\\text{nm}$, entsprechend Quantenenergien von etwa $1{,}6 - 3{,}2\\,\\text{eV}$) absorbiert; das menschliche Auge nimmt daraufhin die Komplementärfarbe wahr.\nIn isolierten Molekülen erfordern elektronische Übergänge ($\\sigma \\to \\sigma^*$) energiereiche UV-Strahlung ($> 6\\,\\text{eV}$). Liegt jedoch ein System konjugierter Doppelbindungen vor (alternierende Doppel- und Einfachbindungen), delokalisieren die $\\pi$-Elektronen über das gesamte Gerüst. Mit zunehmender Konjugationslänge sinkt der energetische Abstand zwischen dem höchsten besetzten Molekülorbital (HOMO) und dem niedrigsten unbesetzten Molekülorbital (LUMO). Bei hinreichend vielen Doppelbindungen (z. B. 11 konjugierte Doppelbindungen bei $\\beta$-Carotin) rückt dieser HOMO-LUMO-Abstand exakt in den Bereich des sichtbaren Lichts (blaues Licht wird absorbiert, orange transmittiert).\nAnalyse der Falschantworten: Bindungsschwingungen liegen im IR-Bereich (A). Photoionisation von K-Schalen erfordert Röntgenstrahlung (C). Kernspins werden durch energiearme Radiowellen im NMR-Bereich angeregt (D). Lichtabsorption ist zunächst ein reversibler photophysikalischer Anregungsprozess und führt nicht zwingend zur Bindungsspaltung (E)."
+  },
+  {
+    "id": "chem-02-set2-q031",
+    "set": 2,
+    "topic": "Photoeffekt — Grenzwellenlänge & Spektralbereich",
+    "difficulty": "medium",
+    "question": "Die Austrittsarbeit einer Caesium-Photokathode beträgt $W_A = 2{,}48\\,\\text{eV}$. Welche maximale Grenzwellenlänge $\\lambda_0$ darf einfallendes Licht besitzen, um an diesem Material gerade noch Photoelektronen auslösen zu können?\n(Verwende den Zusammenhang $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$\\lambda_0 = 248\\,\\text{nm}$ (UV-C)",
+      "B": "$\\lambda_0 = 310\\,\\text{nm}$ (UV-A)",
+      "C": "$\\lambda_0 = 500\\,\\text{nm}$ (Blaugrünes sichtbares Licht)",
+      "D": "$\\lambda_0 = 620\\,\\text{nm}$ (Rotes Licht)",
+      "E": "$\\lambda_0 = 1240\\,\\text{nm}$ (Infrarot)"
+    },
+    "correct_answer": "C",
+    "explanation": "Photoelektronen werden genau dann freigesetzt, wenn die Energie der einfallenden Photonen mindestens so groß ist wie die Austrittsarbeit:\n$$E_{\\text{Photon}} \\ge W_A \\iff \\frac{h \\cdot c}{\\lambda} \\ge W_A \\iff \\lambda \\le \\frac{h \\cdot c}{W_A} = \\lambda_0$$\nDie Grenzwellenlänge $\\lambda_0$ ist die maximale Wellenlänge, bei der der Photoeffekt noch stattfindet:\n$$\\lambda_0 = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{2{,}48\\,\\text{eV}}$$\nKopfrechnung:\n$$\\frac{1240}{2{,}48} = \\frac{124000}{248} = \\frac{1000 \\cdot 124}{2 \\cdot 124} = \\frac{1000}{2} = 500\\,\\text{nm}$$\nLicht mit Wellenlängen $\\lambda \\le 500\\,\\text{nm}$ (violettes, blaues und UV-Licht) löst Elektronen aus. Strahlung mit $\\lambda > 500\\,\\text{nm}$ (gelbes, rotes Licht, Infrarot) ist wirkungslos.\nAnalyse der Falschantworten:\n- A setzt den Zahlenwert von $W_A$ direkt als Wellenlänge an.\n- B teilt $1240 / 4$.\n- D teilt $1240 / 2$.\n- E setzt $W_A = 1\\,\\text{eV}$ an."
+  },
+  {
+    "id": "chem-02-set2-q032",
+    "set": 2,
+    "topic": "Photoeffekt — Gegenfeldmethode & Gegenspannung",
+    "difficulty": "easy",
+    "question": "In einem Photoeffekt-Experiment treffen Photonen mit einer Energie von $E_{\\text{Photon}} = 4{,}0\\,\\text{eV}$ auf eine Metallplatte mit der Austrittsarbeit $W_A = 2{,}5\\,\\text{eV}$. Welche Gegenspannung $U_0$ (Bremsspannung) muss an die Photozelle angelegt werden, um den Photostrom exakt auf null zu reduzieren?",
+    "options": {
+      "A": "$U_0 = 1{,}5\\,\\text{V}$",
+      "B": "$U_0 = 2{,}5\\,\\text{V}$",
+      "C": "$U_0 = 4{,}0\\,\\text{V}$",
+      "D": "$U_0 = 6{,}5\\,\\text{V}$",
+      "E": "$U_0 = 0{,}625\\,\\text{V}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Bei der Gegenfeldmethode wird zwischen Emitter und Kollektor eine regulierbare Gegenspannung angelegt. Die schnellsten Elektronen mit der maximalen kinetischen Energie $E_{\\text{kin,max}}$ erreichen die Gegenelektrode gerade dann nicht mehr, wenn die elektrostatische Bremsarbeit $W_{\\text{Brems}} = e \\cdot U_0$ gleich ihrer kinetischen Energie ist:\n$$E_{\\text{kin,max}} = e \\cdot U_0$$\nAus der Einstein-Gleichung folgt:\n$$E_{\\text{kin,max}} = E_{\\text{Photon}} - W_A = 4{,}0\\,\\text{eV} - 2{,}5\\,\\text{eV} = 1{,}5\\,\\text{eV}$$\nGleichsetzen:\n$$e \\cdot U_0 = 1{,}5\\,\\text{eV} \\implies U_0 = 1{,}5\\,\\text{V}$$\nDie Einheit Elektronenvolt ($\\text{eV}$) kürzt sich durch die Elementarladung $e$ direkt zur Spannung in Volt ($\\text{V}$) heraus.\nAnalyse der Falschantworten:\n- B nennt die zur Austrittsarbeit äquivalente Spannung.\n- C nennt die Photonenenergie als Spannung.\n- D addiert fälschlich Photonenenergie und Austrittsarbeit ($4{,}0 + 2{,}5 = 6{,}5\\,\\text{V}$).\n- E bildet den Quotienten $2{,}5 / 4{,}0$."
+  },
+  {
+    "id": "chem-02-set2-q033",
+    "set": 2,
+    "topic": "Photoeffekt — Nichtlineare Skalierung der kinetischen Energie",
+    "difficulty": "hard",
+    "question": "Eine Metallplatte mit der Austrittsarbeit $W_A > 0$ wird mit monochromatischem Licht der Frequenz $f_1$ bestrahlt, wobei $h \\cdot f_1 > W_A$ gilt. Die austretenden Elektronen besitzen die maximale kinetische Energie $E_{\\text{kin,1}}$. Nun wird die Frequenz des eingestrahlten Lichts verdoppelt ($f_2 = 2 \\cdot f_1$). Welche Aussage über die neue maximale kinetische Energie $E_{\\text{kin,2}}$ ist mathematisch und physikalisch zutreffend?",
+    "options": {
+      "A": "$E_{\\text{kin,2}} = 2 \\cdot E_{\\text{kin,1}}$ (Die kinetische Energie verdoppelt sich exakt)",
+      "B": "$E_{\\text{kin,2}} = E_{\\text{kin,1}}$ (Die kinetische Energie bleibt konstant)",
+      "C": "$E_{\\text{kin,2}} < 2 \\cdot E_{\\text{kin,1}}$ (Die kinetische Energie steigt, erreicht aber nicht das Doppelte)",
+      "D": "$E_{\\text{kin,2}} = 4 \\cdot E_{\\text{kin,1}}$ (Die kinetische Energie vervierfacht sich)",
+      "E": "$E_{\\text{kin,2}} > 2 \\cdot E_{\\text{kin,1}}$ (Die kinetische Energie steigt auf mehr als das Doppelte an)"
+    },
+    "correct_answer": "E",
+    "explanation": "Dies ist eine klassische MedAT-Denkfalle, die lineares Proportionalitätsdenken entlarvt:\n1. Zustand 1:\n$$E_{\\text{kin,1}} = h \\cdot f_1 - W_A \\implies h \\cdot f_1 = E_{\\text{kin,1}} + W_A$$\n2. Zustand 2 mit $f_2 = 2 \\cdot f_1$:\n$$E_{\\text{kin,2}} = h \\cdot (2 \\cdot f_1) - W_A = 2 \\cdot (h \\cdot f_1) - W_A$$\nSetzt man $h \\cdot f_1$ aus Zustand 1 ein:\n$$E_{\\text{kin,2}} = 2 \\cdot (E_{\\text{kin,1}} + W_A) - W_A = 2 \\cdot E_{\\text{kin,1}} + 2 \\cdot W_A - W_A = 2 \\cdot E_{\\text{kin,1}} + W_A$$\nDa die Austrittsarbeit $W_A$ eine positive reelle Zahl ist ($W_A > 0$), gilt zwingend:\n$$E_{\\text{kin,2}} > 2 \\cdot E_{\\text{kin,1}}$$\nZahlenbeispiel zur Veranschaulichung: Sei $W_A = 2\\,\\text{eV}$ und $h f_1 = 3\\,\\text{eV} \\implies E_{\\text{kin,1}} = 3 - 2 = 1\\,\\text{eV}$.\nBei Frequenzverdopplung:\n$h f_2 = 6\\,\\text{eV} \\implies E_{\\text{kin,2}} = 6 - 2 = 4\\,\\text{eV}$.\nDie kinetische Energie vervierfacht sich hier sogar ($4 > 2 \\cdot 1$).\nAnalyse der Falschantworten: A vernachlässigt den konstanten Subtraktionswert $W_A$. B, C und D widersprechen der exakten algebraischen Ableitung."
+  },
+  {
+    "id": "chem-02-set2-q034",
+    "set": 2,
+    "topic": "De-Broglie-Wellenlänge — Massenvergleich bei gleicher Geschwindigkeit",
+    "difficulty": "easy",
+    "question": "Ein Alphateilchen ($^4_2\\text{He}^{2+}$-Kern) besitzt näherungsweise die vierfache Masse eines Protons ($m_\\alpha \\approx 4 \\cdot m_p$). Beide Teilchen bewegen sich im Vakuum mit der exakt gleichen nicht-relativistischen Geschwindigkeit $v$. Wie verhält sich die De-Broglie-Wellenlänge des Alphateilchens ($\\lambda_\\alpha$) zu der des Protons ($\\lambda_p$)?",
+    "options": {
+      "A": "$\\lambda_\\alpha = 4 \\cdot \\lambda_p$",
+      "B": "$\\lambda_\\alpha = 2 \\cdot \\lambda_p$",
+      "C": "$\\lambda_\\alpha = \\lambda_p$",
+      "D": "$\\lambda_\\alpha = \\frac{1}{4} \\cdot \\lambda_p$",
+      "E": "$\\lambda_\\alpha = \\frac{1}{2} \\cdot \\lambda_p$"
+    },
+    "correct_answer": "D",
+    "explanation": "Nach Louis de Broglie gilt für die Wellenlänge eines Materieteilchens:\n$$\\lambda = \\frac{h}{p} = \\frac{h}{m \\cdot v}$$\nBei identischer Geschwindigkeit $v$ gilt:\n$$\\lambda \\propto \\frac{1}{m}$$\nDas Verhältnis der Wellenlängen beträgt daher:\n$$\\frac{\\lambda_\\alpha}{\\lambda_p} = \\frac{m_p}{m_\\alpha} = \\frac{m_p}{4 \\cdot m_p} = \\frac{1}{4} \\implies \\lambda_\\alpha = \\frac{1}{4} \\cdot \\lambda_p$$\nDas schwerere Alphateilchen besitzt bei gleicher Geschwindigkeit einen viermal so großen Impuls ($p_\\alpha = 4 \\cdot p_p$) und folglich eine viermal kürzere De-Broglie-Wellenlänge.\nAnalyse der Falschantworten:\n- A nimmt fälschlicherweise an, dass die Wellenlänge mit der Masse zunimmt.\n- B und E wenden fälschlich eine Quadratwurzel auf den Massenfaktor an (was nur bei gleicher kinetischer Energie gälte, nicht bei gleicher Geschwindigkeit!).\n- C ignoriert die Masseabhängigkeit."
+  },
+  {
+    "id": "chem-02-set2-q035",
+    "set": 2,
+    "topic": "De-Broglie-Wellenlänge — Verknüpfung mit kinetischer Energie",
+    "difficulty": "hard",
+    "question": "In einem Elektronenmikroskop werden Elektronen der Masse $m_e$ durch eine elektrische Spannung beschleunigt. Wenn die kinetische Energie eines Elektrons durch Erhöhung der Beschleunigungsspannung vervierfacht wird ($E_{\\text{kin,2}} = 4 \\cdot E_{\\text{kin,1}}$), wie ändert sich dadurch seine De-Broglie-Wellenlänge $\\lambda$?",
+    "options": {
+      "A": "$\\lambda$ vervierfacht sich ($\\lambda_2 = 4 \\cdot \\lambda_1$)",
+      "B": "$\\lambda$ verdoppelt sich ($\\lambda_2 = 2 \\cdot \\lambda_1$)",
+      "C": "$\\lambda$ viertelt sich ($\\lambda_2 = \\frac{1}{4} \\cdot \\lambda_1$)",
+      "D": "$\\lambda$ halbiert sich ($\\lambda_2 = \\frac{1}{2} \\cdot \\lambda_1$)",
+      "E": "$\\lambda$ bleibt exakt gleich"
+    },
+    "correct_answer": "D",
+    "explanation": "Die kinetische Energie ist mit dem Impuls verknüpft über:\n$$E_{\\text{kin}} = \\frac{p^2}{2m} \\iff p = \\sqrt{2m \\cdot E_{\\text{kin}}}$$\nSetzt man diesen Ausdruck in die De-Broglie-Gleichung ein, erhält man:\n$$\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2m \\cdot E_{\\text{kin}}}} \\implies \\lambda \\propto \\frac{1}{\\sqrt{E_{\\text{kin}}}}$$\nWird die kinetische Energie vervierfacht ($E_{\\text{kin,2}} = 4 \\cdot E_{\\text{kin,1}}$):\n$$\\lambda_2 = \\frac{h}{\\sqrt{2m \\cdot 4 \\cdot E_{\\text{kin,1}}}} = \\frac{h}{2 \\cdot \\sqrt{2m \\cdot E_{\\text{kin,1}}}} = \\frac{1}{2} \\cdot \\lambda_1$$\nDie De-Broglie-Wellenlänge halbiert sich.\nAnalyse der Falschantworten:\n- A und B nehmen an, dass $\\lambda$ mit der Energie steigt.\n- C vergisst die Quadratwurzel aus der kinetischen Energie und nimmt fälschlicherweise $\\lambda \\propto 1/E_{\\text{kin}}$ an.\n- E nimmt Unabhängigkeit von der Energie an."
+  },
+  {
+    "id": "chem-02-set2-q036",
+    "set": 2,
+    "topic": "Wasserstoffatom — Balmer-Serie & H_alpha-Linie",
+    "difficulty": "medium",
+    "question": "Im Emissionsspektrum von atomarem Wasserstoff entsteht die prominente rote $H_\\alpha$-Linie durch den Übergang eines Elektrons vom Niveau $n = 3$ auf das Niveau $n = 2$. Gegeben sind die Energiewerte: $E_2 = -3{,}40\\,\\text{eV}$ und $E_3 = -1{,}51\\,\\text{eV}$. Welche Wellenlänge $\\lambda$ besitzt das emittierte Photon?\n(Verwende $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "ca. $250\\,\\text{nm}$",
+      "B": "ca. $486\\,\\text{nm}$",
+      "C": "ca. $656\\,\\text{nm}$",
+      "D": "ca. $820\\,\\text{nm}$",
+      "E": "ca. $1240\\,\\text{nm}$"
+    },
+    "correct_answer": "C",
+    "explanation": "1. Energiedifferenz des Quantensprungs berechnen:\n$$\\Delta E = E_3 - E_2 = -1{,}51\\,\\text{eV} - (-3{,}40\\,\\text{eV}) = -1{,}51\\,\\text{eV} + 3{,}40\\,\\text{eV} = 1{,}89\\,\\text{eV}$$\n2. Wellenlänge über die Rydberg-Einstein-Beziehung berechnen:\n$$\\lambda = \\frac{h \\cdot c}{\\Delta E} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{1{,}89\\,\\text{eV}}$$\nKopfrechen-Abschätzung:\nDa $1{,}89 \\approx 1{,}9$ ist:\n$$\\frac{1240}{1{,}9} \\approx \\frac{1240}{2} \\cdot 1{,}05 \\approx 620 \\cdot 1{,}05 \\approx 656\\,\\text{nm}$$\n$656\\,\\text{nm}$ liegt im roten Bereich des sichtbaren Lichts und ist die weltbekannte $H_\\alpha$-Linie der Balmer-Serie.\nAnalyse der Falschantworten:\n- A entspricht UV-Strahlung (zu hohe Energie).\n- B ist $486\\,\\text{nm}$ (die blaugrüne $H_\\beta$-Linie für den Übergang $4 \\to 2$ mit $\\Delta E = 2{,}55\\,\\text{eV}$).\n- D liegt im Infrarotbereich (Paschen-Serie).\n- E entspräche einer Energie von exakt $1{,}0\\,\\text{eV}$."
+  },
+  {
+    "id": "chem-02-set2-q037",
+    "set": 2,
+    "topic": "Ionisierungsenergie des Wasserstoffs & Seriengrenze",
+    "difficulty": "medium",
+    "question": "Um ein Wasserstoffatom aus seinem Grundzustand ($n = 1$, $E_1 = -13{,}6\\,\\text{eV}$) vollständig zu ionisieren, muss das Elektron ins Unendliche ($n \\to \\infty$, $E_\\infty = 0\\,\\text{eV}$) befördert werden. Welche maximale Grenzwellenlänge $\\lambda_{\\text{Lyman,max}}$ (Seriengrenze der Lyman-Serie) vermag diese Ionisation im Grundzustand durch einen Ein-Photonen-Prozess direkt zu bewirken?\n(Verwende $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "ca. $91\\,\\text{nm}$ (Fernes Ultraviolett)",
+      "B": "ca. $365\\,\\text{nm}$ (UV-A)",
+      "C": "ca. $500\\,\\text{nm}$ (Sichtbares Licht)",
+      "D": "ca. $820\\,\\text{nm}$ (Infrarot)",
+      "E": "ca. $0{,}01\\,\\text{nm}$ (Gammastrahlung)"
+    },
+    "correct_answer": "A",
+    "explanation": "Die Ionisierungsenergie aus dem Grundzustand beträgt:\n$$\\Delta E_{\\text{Ion}} = E_\\infty - E_1 = 0\\,\\text{eV} - (-13{,}6\\,\\text{eV}) = 13{,}6\\,\\text{eV}$$\nDie maximal zulässige Wellenlänge für diesen Prozess (Grenzwellenlänge der Lyman-Serie) ist:\n$$\\lambda_{\\text{Grenz}} = \\frac{h \\cdot c}{\\Delta E_{\\text{Ion}}} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{13{,}6\\,\\text{eV}}$$\nKopfrechnung:\n$13{,}6 \\cdot 100 = 1360$, $13{,}6 \\cdot 90 = 1224$.\nFolglich liegt der Wert knapp über 90, exakt bei rund $91{,}2\\,\\text{nm}$. Dies liegt tief im energiereichen Vakuum-Ultraviolettbereich (VUV). Photonen mit $\\lambda \\le 91{,}2\\,\\text{nm}$ können ein H-Atom aus dem Grundzustand ionisieren; der Energieüberschuss geht als kinetische Energie an das freie Elektron über.\nAnalyse der Falschantworten:\n- B ($365\\,\\text{nm}$) ist die Seriengrenze der Balmer-Serie ($n = 2$, $\\Delta E = 3{,}4\\,\\text{eV}$).\n- C liegt im sichtbaren Licht (viel zu energiearm).\n- D ($820\\,\\text{nm}$) ist die Seriengrenze der Paschen-Serie ($n = 3$, $\\Delta E = 1{,}51\\,\\text{eV}$).\n- E ist harte Gammastrahlung."
+  },
+  {
+    "id": "chem-02-set2-q038",
+    "set": 2,
+    "topic": "Quantenmechanisches Orbitalmodell — Aufenthaltswahrscheinlichkeitsdichte",
+    "difficulty": "hard",
+    "question": "In der Quantenmechanik wird der Zustand eines Elektrons im Wasserstoffatom durch die Schrödinger-Wellenfunktion $\\psi(r, \\theta, \\phi)$ beschrieben. Welche physikalische Bedeutung kommt dem mathematischen Ausdruck $|\\psi|^2$ bzw. der radialen Verteilungsfunktion $4\\pi r^2 |\\psi|^2$ zu?",
+    "options": {
+      "A": "$|\\psi|^2$ gibt die elektrostatische Ladung des Atomkerns am Ort $r$ an.",
+      "B": "$|\\psi|^2$ ist die dreidimensionale räumliche Wahrscheinlichkeitsdichte; für das kugelsymmetrische $1s$-Orbital besitzt die radiale Wahrscheinlichkeit $4\\pi r^2 |\\psi|^2$, das Elektron in einer Kugelschale im Abstand $r$ zu finden, ihr Maximum exakt beim Bohrschen Radius $a_0$.",
+      "C": "$|\\psi|^2$ ist die exakte Umlaufgeschwindigkeit des Elektrons in Metern pro Sekunde.",
+      "D": "$|\\psi|^2$ beschreibt die De-Broglie-Wellenlänge des Atomkerns.",
+      "E": "Aus $|\\psi|^2$ lässt sich der exakte Zeitpunkt berechnen, an dem das Elektron mit dem Proton kollidiert."
+    },
+    "correct_answer": "B",
+    "explanation": "Nach Max Born (1926) besitzt die quantenmechanische Wellenfunktion $\\psi$ selbst keine direkte materielle Realität, aber ihr Betragsquadrat $|\\psi|^2$ ist die räumliche Aufenthaltswahrscheinlichkeitsdichte ($dP = |\\psi|^2 dV$):\n1. Für das $1s$-Orbital ist die reine Dichte $|\\psi|^2$ direkt am Kern ($r = 0$) maximal und fällt exponentiell nach außen ab.\n2. Fragt man jedoch nach der Wahrscheinlichkeit, das Elektron in einer Kugelschale mit der Dicke $dr$ im Abstand $r$ anzutreffen, muss man $|\\psi|^2$ mit dem Kugelvolumenelement $4\\pi r^2 dr$ multiplizieren.\n3. Da $4\\pi r^2$ bei $r = 0$ verschwindet und mit $r^2$ wächst, während $|\\psi|^2$ abfällt, besitzt das Produkt $P(r) = 4\\pi r^2 |\\psi|^2$ ein Maximum. Dieses liegt beim Wasserstoff-Grundzustand exakt beim klassischen Bohrschen Radius $a_0 \\approx 0{,}053\\,\\text{nm}$ ($53\\,\\text{pm}$).\nAnalyse der Falschantworten: A, C, D und E sind fundamentale Fehlinterpretationen der Quantenmechanik; Ort und Impuls sind nicht deterministisch vorgegeben (E ist falsch)."
+  },
+  {
+    "id": "chem-02-set2-q039",
+    "set": 2,
+    "topic": "Licht-Materie-Wechselwirkung — Auswahlregel der Infrarotspektroskopie",
+    "difficulty": "medium",
+    "question": "Warum sind die Hauptbestandteile der Erdatmosphäre, molekularer Stickstoff ($\\text{N}_2$) und molekularer Sauerstoff ($\\text{O}_2$), im Infrarotbereich transparent (keine Treibhausgase), während Kohlenstoffdioxid ($\\text{CO}_2$) und Wasserdampf ($\\text{H}_2\\text{O}$) stark Infrarotstrahlung absorbieren?",
+    "options": {
+      "A": "Weil $\\text{N}_2$ und $\\text{O}_2$ keine chemischen Bindungen besitzen, die schwingen könnten.",
+      "B": "Weil die Masse von $\\text{N}_2$ exakt der Masse des einfallenden Photons entspricht.",
+      "C": "Weil $\\text{N}_2$ und $\\text{O}_2$ ausschließlich bei Temperaturen unterhalb von $-100\\ ^\\circ\\text{C}$ existieren.",
+      "D": "Weil $\\text{CO}_2$ durch Infrarotstrahlung ionisiert wird, während $\\text{N}_2$ unzerstörbar ist.",
+      "E": "Weil eine Molekülschwingung nur dann IR-Strahlung absorbieren kann, wenn sich während der Schwingungsbewegung das elektrische Dipolmoment des Moleküls ändert ($\\frac{d\\mu}{dt} \\neq 0$)."
+    },
+    "correct_answer": "E",
+    "explanation": "Die grundlegende Auswahlregel der Infrarot-(IR)-Spektroskopie verlangt, dass das elektrische Wechselfeld der Lichtwelle mit dem Molekül wechselwirken muss. Dies ist nur möglich, wenn die Schwingung mit einer periodischen Änderung des elektrischen Dipolmoments $\\mu$ einhergeht:\n- Homonukleare zweiatomige Moleküle wie $\\text{N}\\equiv\\text{N}$ und $\\text{O}=\\text{O}$ besitzen kein permanentes Dipolmoment. Bei der Schwingung entlang der Bindungsachse bleibt das Dipolmoment strikt null ($\\Delta \\mu = 0$). Sie sind daher IR-inaktiv.\n- $\\text{CO}_2$ ist zwar linear und besitzt im Grundzustand kein permanentes Dipolmoment, jedoch führen die asymmetrische Streckschwingung und die Biegeschwingungen zu einer periodischen Verschiebung des Ladungsschwerpunkts ($\\Delta \\mu \\neq 0$) $\\to$ stark IR-aktiv (Treibhausgas).\n- $\\text{H}_2\\text{O}$ ist gewinkelt, besitzt ein permanentes Dipolmoment und alle drei Grundschwingungen sind stark IR-aktiv.\nAnalyse der Falschantworten: $\\text{N}_2$ und $\\text{O}_2$ besitzen sehr starke kovalente Bindungen (A ist falsch). B ist physikalisch unmöglich (Photonen haben keine Ruhemasse). C ist absurd. IR-Strahlung reicht bei weitem nicht zur Ionisation aus (D ist falsch)."
+  },
+  {
+    "id": "chem-02-set2-q040",
+    "set": 2,
+    "topic": "Photoeffekt — Photostrom-Spannungs-Kennlinie (I-U-Diagramm)",
+    "difficulty": "medium",
+    "question": "In einem Photoeffekt-Experiment wird die Stromstärke $I$ als Funktion der angelegten Spannung $U$ gemessen. Welche grafische Veränderung der Kennlinie tritt auf, wenn man die Frequenz des Lichts erhöht ($f_2 > f_1$), während die Bestrahlungsstärke (Intensität) so austariert wird, dass die Anzahl der Photonen pro Sekunde konstant bleibt?",
+    "options": {
+      "A": "Der Sättigungsstrom verdoppelt sich, während die Gegenspannung unverändert bleibt.",
+      "B": "Die Kennlinie verschiebt sich auf der Spannungsachse zu betragsmäßig größeren negativen Gegenspannungen (weiter nach links), während der Sättigungsstrom unverändert bleibt.",
+      "C": "Die Kennlinie bleibt vollkommen identisch, da die Photonenanzahl konstant ist.",
+      "D": "Die Gegenspannung sinkt auf null Volt ab.",
+      "E": "Die Kennlinie rotiert um $90^\\circ$ im Uhrzeigersinn."
+    },
+    "correct_answer": "B",
+    "explanation": "Zwei Parameter bestimmen die I-U-Kennlinie:\n1. Sättigungs-Photostrom ($I_{\\text{Sättigung}}$): Dieser wird erreicht, wenn alle aus der Kathode emittierten Elektronen von der Anode abgesaugt werden. Er hängt linear von der Anzahl der emittierten Elektronen pro Sekunde und damit von der eintreffenden Photonenanzahl pro Sekunde ab. Da diese konstant gehalten wird, bleibt der Sättigungsstrom gleich hoch.\n2. Gegenspannung ($U_0$): Die minimale Bremsspannung, bei der der Photostrom abreißt ($I = 0$), gehorcht der Beziehung:\n$$e \\cdot U_0 = h \\cdot f - W_A \\implies U_0 = \\frac{h}{e} \\cdot f - \\frac{W_A}{e}$$\nWird die Frequenz $f$ erhöht ($f_2 > f_1$), besitzen die Photoelektronen eine höhere maximale kinetische Energie $E_{\\text{kin,max}}$. Man benötigt eine größere Gegenspannung (auf der negativen Spannungsachse weiter links), um sie abzubremsen.\nAnalyse der Falschantworten: A beschreibt eine Intensitätserhöhung bei gleicher Frequenz. C ignoriert die Zunahme der kinetischen Energie. D und E sind physikalisch abwegig."
+  },
+  {
+    "id": "chem-02-set2-q041",
+    "set": 2,
+    "topic": "Spektrallinien — Fraunhofer-Linien als atomare Absorptionsspektren",
+    "difficulty": "medium",
+    "question": "Im kontinuierlichen Spektrum des Sonnenlichts entdeckte Joseph von Fraunhofer hunderte scharfe, dunkle Linien (Fraunhofer-Linien). Welche fundamentale Erklärung beschreibt die Entstehung dieser dunklen Absorptionslinien?",
+    "options": {
+      "A": "Das Sonnenlicht wird durch Staubpartikel im interplanetaren Raum rein mechanisch blockiert.",
+      "B": "Im heißen Kern der Sonne können Atome nur bei bestimmten diskreten Frequenzen Licht emittieren.",
+      "C": "Die kühlere Gasatmosphäre der Sonne (Photosphäre/Chromosphäre) absorbiert aus dem kontinuierlichen Wärmespektrum des Sonneninneren exakt jene diskreten Frequenzen, die den quantisierten Übergängen ihrer Atome (z. B. Wasserstoff, Helium, Natrium) entsprechen.",
+      "D": "Fraunhofer-Linien entstehen durch Beugungseffekte an der Linse des astronomischen Teleskops.",
+      "E": "Die Linien markieren jene Wellenlängen, bei denen Licht mit Licht destruktiv interferiert."
+    },
+    "correct_answer": "C",
+    "explanation": "Das Innere der Sonne strahlt näherungsweise wie ein Schwarzer Strahler ein kontinuierliches Spektrum aller Wellenlängen ab. Durchquert dieses kontinuierliche Licht die kühleren äußeren Gasschichten der Sonne (und später die Erdatmosphäre), werden Photonen, deren Energie exakt einer Energiedifferenz $\\Delta E = E_n - E_m$ der dort vorhandenen Atome entspricht, resonant absorbiert (Resonanzabsorption). Die Atome werden in höhere Zustände angeregt und emittieren diese Photonen anschließend isotrop in alle Raumrichtungen (Re-Emission). In der ursprünglichen Beobachtungsrichtung zur Erde fehlt diese Intensität, weshalb an diesen diskreten Stellen des Spektrums dunkle Absorptionslinien erscheinen. Dies ermöglichte u. a. die Entdeckung des Elements Helium auf der Sonne vor seiner Entdeckung auf der Erde.\nAnalyse der Falschantworten: A, D und E sind optisch-mechanische Fehlkonzepte. B ignoriert, dass das Sonneninnere ein Kontinuum abstrahlt."
+  },
+  {
+    "id": "chem-02-set2-q042",
+    "set": 2,
+    "topic": "Teilchen-Welle-Dualismus — Photonenimpuls und Strahlungsdruck",
+    "difficulty": "medium",
+    "question": "Obwohl ein Photon eine Ruhemasse von exakt null besitzt ($m_0 = 0$), übt Licht beim Auftreffen auf eine Oberfläche einen mechanischen Druck (Strahlungsdruck) aus. Welcher Ausdruck verknüpft die Energie $E$ bzw. die Wellenlänge $\\lambda$ eines Photons mit seinem relativistischen Impuls $p$?",
+    "options": {
+      "A": "$p = \\frac{E}{c} = \\frac{h}{\\lambda}$",
+      "B": "$p = E \\cdot c = h \\cdot \\lambda$",
+      "C": "$p = \\frac{E}{c^2}$",
+      "D": "$p = \\frac{h \\cdot c}{\\lambda^2}$",
+      "E": "Ein Photon besitzt keinen Impuls, da seine Masse null ist."
+    },
+    "correct_answer": "A",
+    "explanation": "Nach der speziellen Relativitätstheorie gilt die Energie-Impuls-Beziehung:\n$$E^2 = (p \\cdot c)^2 + (m_0 \\cdot c^2)^2$$\nFür ein Photon mit Ruhemasse $m_0 = 0$ vereinfacht sich dies strikt zu:\n$$E = p \\cdot c \\iff p = \\frac{E}{c}$$\nDa für Photonen $E = \\frac{h \\cdot c}{\\lambda}$ ist, folgt durch Einsetzen:\n$$p = \\frac{\\frac{h \\cdot c}{\\lambda}}{c} = \\frac{h}{\\lambda}$$\nEin Photon trägt somit den wohlbestimmten Impuls $p = \\frac{h}{\\lambda}$. Trifft es auf eine Wand, überträgt es diesen Impuls (bei Absorption $\\Delta p = p$, bei idealer Reflexion $\\Delta p = 2p$). Die Summe dieser Impulsüberträge pro Zeit und Fläche manifestiert sich makroskopisch als messbarer Strahlungsdruck.\nAnalyse der Falschantworten:\n- B multipliziert fälschlich mit $c$.\n- C ist die relativistische dynamische Masse $m = E/c^2$, nicht der Impuls.\n- D dividiert durch $\\lambda^2$.\n- E unterliegt dem Newtonschen Missverständnis, dass Impuls zwingend eine Ruhemasse erfordert."
+  },
+  {
+    "id": "chem-02-set2-q043",
+    "set": 2,
+    "topic": "Transversale Wellennatur — Polarisation von Licht",
+    "difficulty": "easy",
+    "question": "Schallwellen in Luft können nicht polarisiert werden, Lichtwellen hingegen lassen sich mithilfe von Polarisationsfiltern linear polarisieren. Welche fundamentale wellenphysikalische Eigenschaft begründet diesen Unterschied?",
+    "options": {
+      "A": "Schallwellen breiten sich mit Schallgeschwindigkeit aus, Lichtwellen mit Lichtgeschwindigkeit.",
+      "B": "Schallwellen sind Longitudinalwellen (Schwingung parallel zur Ausbreitungsrichtung), während Lichtwellen Transversalwellen sind (Schwingung senkrecht zur Ausbreitungsrichtung).",
+      "C": "Lichtwellen bestehen aus masselosen Teilchen, Schallwellen aus Atomen.",
+      "D": "Schallwellen besitzen keine Frequenz, sondern nur eine Amplitude.",
+      "E": "Polarisationsfilter absorbieren Photonen anhand ihrer Masse."
+    },
+    "correct_answer": "B",
+    "explanation": "Polarisation ist ein Phänomen, das ausschließlich bei Transversalwellen auftreten kann:\n- Bei einer Transversalwelle (wie Licht) steht der Feldvektor $\\vec{E}$ senkrecht auf der Ausbreitungsrichtung $\\vec{c}$. In dieser senkrechten Ebene existieren unendlich viele Schwingungsrichtungen. Ein Polarisationsfilter lässt nur jene Komponente passieren, die parallel zu seiner Durchlassachse schwingt $\\to$ lineares Polarisieren.\n- Bei einer Longitudinalwelle (wie Schall in Gasen und Flüssigkeiten) schwingen die Teilchen exakt entlang der Ausbreitungsrichtung (Dichtemodulation aus Kompression und Verdünnung). Es gibt keine Freiheitsgrade senkrecht zur Ausbreitungsrichtung, weshalb eine Polarisation geometrisch unmöglich ist.\nAnalyse der Falschantworten: Geschwindigkeit (A) und Teilchennatur (C) haben keinen Einfluss auf die Polarisierbarkeit. D ist physikalisch unsinnig (Schall hat wohldefinierte Frequenzen). E ist eine Scheinerklärung."
+  },
+  {
+    "id": "chem-02-set2-q044",
+    "set": 2,
+    "topic": "Quantisierte Energieniveaus wasserstoffähnlicher Ionen (Z > 1)",
+    "difficulty": "hard",
+    "question": "Für wasserstoffähnliche Einelektronensysteme (wie $\\text{He}^+, \\text{Li}^{2+}, \\text{Be}^{3+}$) skalieren die Bohrschen Energieniveaus mit dem Quadrat der Kernladungszahl $Z$:\n$$E_n = -13{,}6\\,\\text{eV} \\cdot \\frac{Z^2}{n^2}$$\nWelche Energie besitzt das Elektron im Grundzustand ($n = 1$) eines einfach ionisierten Helium-Ions ($\\text{He}^+, Z = 2$)?",
+    "options": {
+      "A": "$-13{,}6\\,\\text{eV}$",
+      "B": "$-27{,}2\\,\\text{eV}$",
+      "C": "$-108{,}8\\,\\text{eV}$",
+      "D": "$-3{,}4\\,\\text{eV}$",
+      "E": "$-54{,}4\\,\\text{eV}$"
+    },
+    "correct_answer": "E",
+    "explanation": "Für Helium gilt die Kernladungszahl $Z = 2$.\nEinsetzen in die Formel für den Grundzustand ($n = 1$):\n$$E_1 = -13{,}6\\,\\text{eV} \\cdot \\frac{2^2}{1^2} = -13{,}6\\,\\text{eV} \\cdot 4 = -54{,}4\\,\\text{eV}$$\nDa der Kern die doppelte positive Ladung trägt ($+2e$), zieht er das einzelne Elektron viermal so stark an (Coulomb-Gesetz und kleinerer Bahnradius kompensieren sich zu einer $Z^2$-Abhängigkeit der Energie). Um das Elektron aus $\\text{He}^+$ abzuspalten (zweite Ionisierungsenergie von Helium), muss folglich die enorme Energie von $+54{,}4\\,\\text{eV}$ aufgewendet werden.\nAnalyse der Falschantworten:\n- A setzt $Z = 1$ (Wasserstoff) an.\n- B multipliziert fälschlich linear mit $Z = 2$ ($-13{,}6 \\cdot 2 = -27{,}2\\,\\text{eV}$).\n- C multipliziert fälschlich mit $Z^3 = 8$ ($-13{,}6 \\cdot 8 = -108{,}8\\,\\text{eV}$).\n- D teilt fälschlich durch $Z^2 = 4$ ($-13{,}6 / 4 = -3{,}4\\,\\text{eV}$)."
+  },
+  {
+    "id": "chem-02-set2-q045",
+    "set": 2,
+    "topic": "Photoeffekt — Vergleich zweier Metalle bei identischer Bestrahlung",
+    "difficulty": "medium",
+    "question": "Zwei verschiedene Metallplatten A und B werden im Vakuum mit identischem ultraviolettem Licht der Photonenenergie $E_{\\text{Photon}} = 5{,}0\\,\\text{eV}$ bestrahlt. Metall A besitzt die Austrittsarbeit $W_A = 2{,}0\\,\\text{eV}$, Metall B besitzt die Austrittsarbeit $W_B = 4{,}0\\,\\text{eV}$. In welchem Verhältnis stehen die maximalen kinetischen Energien der emittierten Photoelektronen $\\frac{E_{\\text{kin,max}}(A)}{E_{\\text{kin,max}}(B)}$?",
+    "options": {
+      "A": "$1 : 2$",
+      "B": "$2 : 1$",
+      "C": "$5 : 2$",
+      "D": "$3 : 1$",
+      "E": "$4 : 1$"
+    },
+    "correct_answer": "D",
+    "explanation": "Berechnung der kinetischen Energien für beide Metalle über die Einstein-Gleichung:\n1. Für Metall A:\n$$E_{\\text{kin,max}}(A) = E_{\\text{Photon}} - W_A = 5{,}0\\,\\text{eV} - 2{,}0\\,\\text{eV} = 3{,}0\\,\\text{eV}$$\n2. Für Metall B:\n$$E_{\\text{kin,max}}(B) = E_{\\text{Photon}} - W_B = 5{,}0\\,\\text{eV} - 4{,}0\\,\\text{eV} = 1{,}0\\,\\text{eV}$$\nVerhältnis bilden:\n$$\\frac{E_{\\text{kin,max}}(A)}{E_{\\text{kin,max}}(B)} = \\frac{3{,}0\\,\\text{eV}}{1{,}0\\,\\text{eV}} = 3 = \\frac{3}{1}$$\nObwohl die Austrittsarbeit von B doppelt so groß ist wie die von A ($4{,}0\\,\\text{eV}$ vs. $2{,}0\\,\\text{eV}$), sind die resultierenden kinetischen Energien im Verhältnis $3 : 1$! Dies unterstreicht erneut den nicht-proportionalen Charakter der Subtraktion.\nAnalyse der Falschantworten:\n- B bildet das umgekehrte Verhältnis der Austrittsarbeiten ($4 / 2 = 2 : 1$).\n- A bildet das direkte Verhältnis der Austrittsarbeiten ($2 / 4 = 1 : 2$).\n- C teilt die Photonenenergie durch die Austrittsarbeit von A ($5 / 2$).\n- E quadriert das Verhältnis der Austrittsarbeiten."
+  },
+  {
+    "id": "chem-02-set2-q046",
+    "set": 2,
+    "topic": "Photonenfluss & Strahlungsleistung — Schnelle Zehnerpotenzrechnung",
+    "difficulty": "hard",
+    "question": "Ein Dauerstrichlaser emittiert rotes Licht mit einer Wellenlänge von $\\lambda = 620\\,\\text{nm}$ bei einer optischen Ausgangsleistung von $P = 3{,}2\\,\\text{mW}$ ($3{,}2 \\cdot 10^{-3}\\,\\text{W}$). Wie viele Photonen sendet dieser Laser pro Sekunde aus?\n(Hinweise: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$; $1\\,\\text{eV} \\approx 1{,}6 \\cdot 10^{-19}\\,\\text{J}$).",
+    "options": {
+      "A": "$1{,}0 \\cdot 10^{13}\\,\\text{Photonen/s}$",
+      "B": "$6{,}25 \\cdot 10^{15}\\,\\text{Photonen/s}$",
+      "C": "$1{,}0 \\cdot 10^{16}\\,\\text{Photonen/s}$",
+      "D": "$3{,}2 \\cdot 10^{18}\\,\\text{Photonen/s}$",
+      "E": "$2{,}0 \\cdot 10^{19}\\,\\text{Photonen/s}$"
+    },
+    "correct_answer": "C",
+    "explanation": "1. Energie eines einzelnen Photons bestimmen:\n$$E_{\\text{Photon}} = \\frac{h \\cdot c}{\\lambda} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{620\\,\\text{nm}} = 2{,}0\\,\\text{eV}$$\nUmrechnung in Joule:\n$$E_{\\text{Photon}} = 2{,}0 \\cdot (1{,}6 \\cdot 10^{-19}\\,\\text{J}) = 3{,}2 \\cdot 10^{-19}\\,\\text{J}$$\n2. Photonenrate $N/t$ über die Leistung $P = \\frac{\\Delta E_{\\text{gesamt}}}{\\Delta t} = \\frac{N \\cdot E_{\\text{Photon}}}{\\Delta t}$ berechnen:\n$$\\frac{N}{\\Delta t} = \\frac{P}{E_{\\text{Photon}}} = \\frac{3{,}2 \\cdot 10^{-3}\\,\\text{J/s}}{3{,}2 \\cdot 10^{-19}\\,\\text{J}} = 1{,}0 \\cdot 10^{-3 - (-19)} = 1{,}0 \\cdot 10^{16}\\,\\text{s}^{-1}$$\nDer Laser emittiert exakt $1{,}0 \\cdot 10^{16}$ Photonen pro Sekunde.\nAnalyse der Falschantworten:\n- A verrechnet sich bei den Zehnerpotenzen um den Faktor $10^3$.\n- B teilt fälschlicherweise $2\\,\\text{mW}$ durch die Energie.\n- D vergisst die Umrechnung von $\\text{eV}$ in Joule.\n- E multipliziert die Leistung mit der Photonenenergie."
+  },
+  {
+    "id": "chem-02-set2-q047",
+    "set": 2,
+    "topic": "Elektronenmikroskopie — Auflösungsvermögen & De-Broglie-Wellenlänge",
+    "difficulty": "easy",
+    "question": "Warum können moderne Transmissionselektronenmikroskope (TEM) einzelne Atome mit einer Auflösung von unter $0{,}1\\,\\text{nm}$ abbilden, während die Auflösung klassischer Lichtmikroskope physikalisch prinzipiell auf ca. $200 - 300\\,\\text{nm}$ limitiert ist?",
+    "options": {
+      "A": "Weil Elektronen keine Materieteilchen sind, sondern reine Photonen ohne Beugungsphänomene.",
+      "B": "Weil die De-Broglie-Wellenlänge schneller Elektronen um mehrere Größenordnungen kürzer ist als die Wellenlänge des sichtbaren Lichts, wodurch die Abbe’sche Beugungsgrenze zu dramatisch kleineren Abständen verschoben wird.",
+      "C": "Weil Elektronen unendlich kleine Quarks besitzen, die das Licht bündeln.",
+      "D": "Weil Lichtmikroskope durch die Heisenbergsche Unschärferelation zerstört werden.",
+      "E": "Weil Elektronen eine negative Ladung tragen und daher nicht mit Materie wechselwirken."
+    },
+    "correct_answer": "B",
+    "explanation": "Nach dem Abbe’schen Beugungslimit ist das minimale Auflösungsvermögen $d_{\\text{min}}$ eines Mikroskops direkt proportional zur Wellenlänge der verwendeten Strahlung:\n$$d_{\\text{min}} \\approx \\frac{\\lambda}{2 \\cdot \\text{NA}}$$\n- Lichtmikroskop: Verwendet sichtbares Licht ($\\lambda \\approx 400 - 700\\,\\text{nm}$); selbst bei optimaler Ölimmersion liegt das Limit bei ca. $200\\,\\text{nm}$. Kleinere Strukturen (wie Viren, Proteine oder Atome) können wegen Beugung nicht getrennt aufgelöst werden.\n- Elektronenmikroskop: Elektronen werden z. B. auf $100\\,\\text{keV}$ beschleunigt. Nach de Broglie besitzt ein solches Elektron eine Wellenlänge von nur $\\lambda \\approx 0{,}0037\\,\\text{nm}$ ($3{,}7\\,\\text{pm}$). Diese extrem kurze Wellenlänge reduziert die Beugungseffekte drastisch und ermöglicht die direkte Abbildung atomarer Gitterabstände.\nAnalyse der Falschantworten: A verneint die Teilchennatur des Elektrons. C ist physikalischer Unsinn (Elektronen sind fundamentale Leptonen ohne Quarks). D ist eine Scheinerklärung. E ist falsch (Elektronen wechselwirken stark über Coulomb-Kräfte)."
+  },
+  {
+    "id": "chem-02-set2-q048",
+    "set": 2,
+    "topic": "Rydberg-Ritzsches Kombinationsprinzip — Kaskadierende Spektrallinien",
+    "difficulty": "hard",
+    "question": "Ein angeregtes Atom geht in einer zweistufigen Kaskade vom Niveau $n = 4$ über den Zwischenzustand $n = 2$ in den Grundzustand $n = 1$ über. Dabei werden nacheinander zwei Photonen mit den Wellenlängen $\\lambda_{4\\rightarrow 2}$ und $\\lambda_{2\\rightarrow 1}$ emittiert. Welche mathematische Beziehung gilt für die Wellenlänge $\\lambda_{4\\rightarrow 1}$ eines Photons, das beim direkten Übergang von $n = 4$ nach $n = 1$ emittiert würde?",
+    "options": {
+      "A": "$\\lambda_{4\\rightarrow 1} = \\lambda_{4\\rightarrow 2} + \\lambda_{2\\rightarrow 1}$",
+      "B": "$\\lambda_{4\\rightarrow 1} = \\lambda_{4\\rightarrow 2} \\cdot \\lambda_{2\\rightarrow 1}$",
+      "C": "$\\lambda_{4\\rightarrow 1} = \\sqrt{\\lambda_{4\\rightarrow 2} \\cdot \\lambda_{2\\rightarrow 1}}$",
+      "D": "$\\lambda_{4\\rightarrow 1} = \\frac{\\lambda_{4\\rightarrow 2} + \\lambda_{2\\rightarrow 1}}{2}$",
+      "E": "$\\frac{1}{\\lambda_{4\\rightarrow 1}} = \\frac{1}{\\lambda_{4\\rightarrow 2}} + \\frac{1}{\\lambda_{2\\rightarrow 1}}$"
+    },
+    "correct_answer": "E",
+    "explanation": "Die Energieerhaltung verlangt, dass die gesamte Energiedifferenz beim direkten Sprung gleich der Summe der beiden Teilsprünge ist:\n$$\\Delta E_{4\\rightarrow 1} = \\Delta E_{4\\rightarrow 2} + \\Delta E_{2\\rightarrow 1}$$\nDa für jedes emittierte Photon $\\Delta E = h \\cdot f = \\frac{h \\cdot c}{\\lambda}$ gilt, setzt man dies ein:\n$$\\frac{h \\cdot c}{\\lambda_{4\\rightarrow 1}} = \\frac{h \\cdot c}{\\lambda_{4\\rightarrow 2}} + \\frac{h \\cdot c}{\\lambda_{2\\rightarrow 1}}$$\nDividiert man die gesamte Gleichung durch die Konstante $h \\cdot c$, erhält man das berühmte Rydberg-Ritzsche Kombinationsprinzip:\n$$\\frac{1}{\\lambda_{4\\rightarrow 1}} = \\frac{1}{\\lambda_{4\\rightarrow 2}} + \\frac{1}{\\lambda_{2\\rightarrow 1}}$$\nFalle: Man darf niemals die Wellenlängen addieren (A ist falsch)! Bei Quantensprüngen addieren sich die Frequenzen und reziproken Wellenlängen (Wellenzahlen), da die Energie umgekehrt proportional zur Wellenlänge ist.\nAnalyse der Falschantworten: A, B, C und D verletzen den Energieerhaltungssatz."
+  },
+  {
+    "id": "chem-02-set2-q049",
+    "set": 2,
+    "topic": "Licht-Materie-Wechselwirkung — Photochemische DNA-Schädigung durch UV-C",
+    "difficulty": "medium",
+    "question": "Das Absorptionsmaximum von Nukleinsäuren (DNA und RNA) liegt bei einer Wellenlänge von ca. $\\lambda \\approx 260\\,\\text{nm}$ (UV-C-Bereich). Welcher primäre photochemische Schädigungsmechanismus wird durch die Absorption dieser Strahlung in Zellen ausgelöst?",
+    "options": {
+      "A": "Die vollständige thermische Verdampfung des Zellwassers",
+      "B": "Die dauerhafte Umwandlung von Guanin in molekulares Eisen",
+      "C": "Das Herauslösen von Kernprotonen aus den Phosphatgruppen",
+      "D": "Die Spaltung von Wasserstoffatomen in Quarks",
+      "E": "Die Anregung von $\\pi$-Elektronen in den aromatischen Pyrimidinbasen (insbesondere Thymin), was zur kovalenten Dimerisierung benachbarter Thyminmoleküle (Cyclobutan-Thymin-Dimere) führt und die DNA-Replikation blockiert"
+    },
+    "correct_answer": "E",
+    "explanation": "UV-C-Licht bei $260\\,\\text{nm}$ besitzt eine Photonenenergie von:\n$$E = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{260\\,\\text{nm}} \\approx 4{,}77\\,\\text{eV}$$\nDiese Energie entspricht exakt den Resonanzen der aromatischen Ringsysteme der DNA-Basen (Adenin, Guanin, Cytosin, Thymin).\nDurch die elektronische Anregung ($\\pi \\to \\pi^*$) der Kohlenstoff-Doppelbindungen in Pyrimidinbasen kommt es zu einer photochemischen [2+2]-Cycloaddition zwischen zwei benachbarten Thymin-Resten desselben DNA-Strangs. Das resultierende Cyclobutan-Thymin-Dimer verzerrt die Doppelhelix-Geometrie massiv, wodurch DNA-Polymerasen bei der Replikation blockieren. Dies führt zu Mutationen (z. B. Hautkrebs) oder zum Zelltod (Grundlage der UV-C-Entkeimung).\nAnalyse der Falschantworten: Wasser absorbiert bei $260\\,\\text{nm}$ kaum (A ist falsch). Kernreaktionen (B, C, D) erfordern Megaelektronenvolt ($\\text{MeV}$), keine $4{,}8\\,\\text{eV}$."
+  },
+  {
+    "id": "chem-02-set2-q050",
+    "set": 2,
+    "topic": "Unschärferelation — Energie-Zeit-Unschärfe & Natürliche Linienbreite",
+    "difficulty": "hard",
+    "question": "Neben der Orts-Impuls-Unschärfe existiert die Heisenbergsche Energie-Zeit-Unschärferelation:\n$$\\Delta E \\cdot \\Delta t \\ge \\frac{\\hbar}{2} = \\frac{h}{4\\pi}$$\nWelche fundamentale physikalisch-chemische Konsequenz hat diese Ungleichung für die Spektrallinien angeregter atomarer Zustände?",
+    "options": {
+      "A": "Da angeregte Zustände eine endliche mittlere Lebensdauer $\\tau = \\Delta t$ vor dem spontanen Zerfall besitzen, ist ihre Energie nicht unendlich scharf definiert, woraus eine unvermeidbare natürliche Linienbreite $\\Delta f$ der emittierten Spektrallinie resultiert.",
+      "B": "Angeregte Zustände können beliebig lange existieren, ohne Energie zu verlieren.",
+      "C": "Die emittierte Photonenenergie ist exakt null, wenn $\\Delta t > 1\\,\\text{s}$ ist.",
+      "D": "Die Energie-Zeit-Unschärfe bewirkt, dass Atome bei Raumtemperatur kontinuierlich an Masse zunehmen.",
+      "E": "Sie erzwingt, dass Elektronen im Grundzustand eine kürzere Lebensdauer besitzen als in hoch angeregten Zuständen."
+    },
+    "correct_answer": "A",
+    "explanation": "Die Energie-Zeit-Unschärferelation besagt, dass ein Quantenzustand nur dann eine mathematisch exakt scharfe Energie besitzen kann ($\\Delta E \\to 0$), wenn er unendlich lange existiert ($\\Delta t \\to \\infty$).\n1. Der Grundzustand eines stabilen Atoms ist zeitlich unbegrenzt stabil ($\\Delta t = \\infty$), weshalb seine Energie $E_1$ absolut scharf ist ($\\Delta E = 0$).\n2. Angeregte Zustände zerfallen jedoch durch spontane Emission nach einer typischen Lebensdauer von z. B. $\\tau \\approx 10^{-8}\\,\\text{s}$ ($10\\,\\text{ns}$).\n3. Aus $\\Delta E \\ge \\frac{h}{4\\pi \\cdot \\tau}$ folgt eine unvermeidbare Energieunschärfe $\\Delta E$ des Niveaus.\n4. Wegen $\\Delta E = h \\cdot \\Delta f$ führt dies zu einer Frequenzunschärfe $\\Delta f \\ge \\frac{1}{4\\pi \\cdot \\tau}$.\nJede reale atomare Spektrallinie besitzt daher selbst bei absolutem Nullpunkt und im Vakuum eine intrinsische endliche spektrale Breite, die sogenannte natürliche Linienbreite (Lorentz-Profil).\nAnalyse der Falschantworten: B ignoriert die spontane Emission. C, D und E sind absurde Fehlinterpretationen der Energie-Zeit-Relation."
+  },
+  {
+    "id": "chem-02-set3-q051",
+    "set": 3,
+    "topic": "Photoeffekt — Rückwärtsinduktion der Austrittsarbeit aus zwei Frequenzen",
+    "difficulty": "hard",
+    "question": "In einer Versuchsreihe zum äußeren Photoelektrischen Effekt wird dieselbe Metalloberfläche nacheinander mit zwei verschiedenen monochromatischen Lichtquellen bestrahlt:\n\n1. Lichtquelle 1 mit der Frequenz $f_1$ erzeugt Photoelektronen mit einer maximalen kinetischen Energie von $E_{\\text{kin,1}} = 1{,}0\\,\\text{eV}$.\n2. Lichtquelle 2 besitzt die 1,5-fache Frequenz ($f_2 = 1{,}5 \\cdot f_1$) und setzt Photoelektronen mit $E_{\\text{kin,2}} = 2{,}5\\,\\text{eV}$ frei.\n\nWie groß ist die materialcharakteristische Austrittsarbeit $W_A$ dieses Metalls?",
+    "options": {
+      "A": "$W_A = 0{,}5\\,\\text{eV}$",
+      "B": "$W_A = 1{,}5\\,\\text{eV}$",
+      "C": "$W_A = 3{,}0\\,\\text{eV}$",
+      "D": "$W_A = 2{,}0\\,\\text{eV}$",
+      "E": "$W_A = 3{,}5\\,\\text{eV}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Man stellt für beide Messungen die Einsteinsche Photoeffekt-Gleichung auf:\n(1) $h \\cdot f_1 - W_A = 1{,}0\\,\\text{eV} \\implies h \\cdot f_1 = 1{,}0\\,\\text{eV} + W_A$\n(2) $h \\cdot f_2 - W_A = 2{,}5\\,\\text{eV} \\implies 1{,}5 \\cdot (h \\cdot f_1) - W_A = 2{,}5\\,\\text{eV}$\n\nSetzt man Gl. (1) in Gl. (2) ein:\n$$1{,}5 \\cdot (1{,}0\\,\\text{eV} + W_A) - W_A = 2{,}5\\,\\text{eV}$$\n$$1{,}5\\,\\text{eV} + 1{,}5 \\cdot W_A - W_A = 2{,}5\\,\\text{eV}$$\n$$1{,}5\\,\\text{eV} + 0{,}5 \\cdot W_A = 2{,}5\\,\\text{eV}$$\nSubtrahiere $1{,}5\\,\\text{eV}$:\n$$0{,}5 \\cdot W_A = 1{,}0\\,\\text{eV} \\implies W_A = \\frac{1{,}0\\,\\text{eV}}{0{,}5} = 2{,}0\\,\\text{eV}$$\n(Probe: $h f_1 = 3{,}0\\,\\text{eV} \\implies E_{\\text{kin,1}} = 3{,}0 - 2{,}0 = 1{,}0\\,\\text{eV}$; $h f_2 = 4{,}5\\,\\text{eV} \\implies E_{\\text{kin,2}} = 4{,}5 - 2{,}0 = 2{,}5\\,\\text{eV}$. Passt exakt).\n\nAnalyse der Falschantworten:\n- A subtrahiert fälschlich $2{,}5 - 2 \\cdot 1{,}0 = 0{,}5\\,\\text{eV}$.\n- B zieht lediglich die Differenz $2{,}5 - 1{,}0 = 1{,}5\\,\\text{eV}$ heran.\n- C ist der Wert der Photonenenergie $h f_1$, nicht die Austrittsarbeit.\n- E addiert $1{,}0 + 2{,}5$."
+  },
+  {
+    "id": "chem-02-set3-q052",
+    "set": 3,
+    "topic": "Photoeffekt — Schwellenwert-Logik an zwei Metallen bei gleicher Bestrahlung",
+    "difficulty": "medium",
+    "question": "Zwei verschiedene Metallplatten, Caesium ($W_A(\\text{Cs}) = 2{,}1\\,\\text{eV}$) und Platin ($W_A(\\text{Pt}) = 5{,}3\\,\\text{eV}$), werden im Vakuum mit monochromatischem Licht der Wellenlänge $\\lambda = 310\\,\\text{nm}$ bestrahlt. Welche Beobachtung wird an den beiden Platten gemacht?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "An beiden Metallplatten werden Photoelektronen freigesetzt, an Platin jedoch mit höherer kinetischer Energie.",
+      "B": "An Caesium treten Photoelektronen mit $E_{\\text{kin,max}} = 1{,}9\\,\\text{eV}$ aus; an Platin wird kein einziges Elektron freigesetzt.",
+      "C": "An Platin treten Elektronen mit $E_{\\text{kin,max}} = 1{,}3\\,\\text{eV}$ aus; Caesium emittiert keine Elektronen.",
+      "D": "An keiner der beiden Metallplatten können Elektronen austreten, da die Wellenlänge im UV-Bereich liegt.",
+      "E": "An Caesium treten Elektronen mit $E_{\\text{kin,max}} = 4{,}0\\,\\text{eV}$ aus, da die Austrittsarbeit vernachlässigt werden kann."
+    },
+    "correct_answer": "B",
+    "explanation": "1. Photonenenergie berechnen:\n$$E_{\\text{Photon}} = \\frac{h \\cdot c}{\\lambda} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{310\\,\\text{nm}} = 4{,}0\\,\\text{eV}$$\n\n2. Schwellenwert-Bedingung prüfen:\n- Caesium: Da $E_{\\text{Photon}} = 4{,}0\\,\\text{eV} > W_A(\\text{Cs}) = 2{,}1\\,\\text{eV}$ ist, findet der Photoeffekt statt:\n$$E_{\\text{kin,max}}(\\text{Cs}) = 4{,}0\\,\\text{eV} - 2{,}1\\,\\text{eV} = 1{,}9\\,\\text{eV}$$\n- Platin: Da $E_{\\text{Photon}} = 4{,}0\\,\\text{eV} < W_A(\\text{Pt}) = 5{,}3\\,\\text{eV}$ ist, reicht die Energie des einzelnen Photons nicht aus, um die Austrittsarbeit zu überwinden. Es wird kein einziges Elektron emittiert, unabhängig von der Strahlungsintensität.\n\nAnalyse der Falschantworten:\n- A ignoriert die Schwellenwertbedingung bei Platin.\n- C vertauscht die Metalle.\n- D verkennt, dass $310\\,\\text{nm}$ energiereich genug für Caesium ist.\n- E vergisst den Abzug der Austrittsarbeit ($4{,}0 - 2{,}1$)."
+  },
+  {
+    "id": "chem-02-set3-q053",
+    "set": 3,
+    "topic": "Photoeffekt — Gegenfeldmethode & Berechnung der Bremsspannung",
+    "difficulty": "medium",
+    "question": "Licht einer Quecksilberdampflampe mit der Wellenlänge $\\lambda = 248\\,\\text{nm}$ fällt auf eine Kalium-Photokathode ($W_A = 2{,}3\\,\\text{eV}$). Welche Gegenspannung $U_0$ muss zwischen Kathode und Anode angelegt werden, damit der Photostrom exakt abreißt?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$U_0 = 5{,}0\\,\\text{V}$",
+      "B": "$U_0 = 7{,}3\\,\\text{V}$",
+      "C": "$U_0 = 2{,}3\\,\\text{V}$",
+      "D": "$U_0 = 2{,}7\\,\\text{V}$",
+      "E": "$U_0 = 0{,}54\\,\\text{V}$"
+    },
+    "correct_answer": "D",
+    "explanation": "1. Photonenenergie über den Kopfrechentrick ermitteln:\n$$E_{\\text{Photon}} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{248\\,\\text{nm}} = \\frac{1240}{248}\\,\\text{eV} = 5{,}0\\,\\text{eV}$$\n(Denn $5 \\cdot 248 = 1240$.)\n\n2. Maximale kinetische Energie bestimmen:\n$$E_{\\text{kin,max}} = E_{\\text{Photon}} - W_A = 5{,}0\\,\\text{eV} - 2{,}3\\,\\text{eV} = 2{,}7\\,\\text{eV}$$\n\n3. Bremsspannung ableiten:\nAn der Abreißgrenze des Photostroms gilt:\n$$e \\cdot U_0 = E_{\\text{kin,max}} \\implies e \\cdot U_0 = 2{,}7\\,\\text{eV} \\implies U_0 = 2{,}7\\,\\text{V}$$\n\nAnalyse der Falschantworten:\n- A ist das Potential, das der gesamten Photonenenergie entspricht ($5{,}0\\,\\text{V}$), ohne Abzug von $W_A$.\n- B addiert fälschlich Photonenenergie und Austrittsarbeit ($5{,}0 + 2{,}3 = 7{,}3\\,\\text{V}$).\n- C ist das Potential der Austrittsarbeit ($2{,}3\\,\\text{V}$).\n- E dividiert $2{,}7 / 5{,}0$."
+  },
+  {
+    "id": "chem-02-set3-q054",
+    "set": 3,
+    "topic": "Unschärferelation — Skalierung der Geschwindigkeitsunschärfe bei Ortsveränderung",
+    "difficulty": "medium",
+    "question": "Ein Elektron befindet sich zunächst in einem räumlichen Bereich mit der Ortsunschärfe $\\Delta x_1$. Seine minimale Geschwindigkeitsunschärfe beträgt dabei $\\Delta v_1 = 4 \\cdot 10^5\\,\\text{m/s}$.\nDurch eine veränderte elektrostatische Fokussierung wird die Ortsunschärfe des Elektrons auf ein Viertel des ursprünglichen Werts komprimiert ($\\Delta x_2 = \\frac{1}{4}\\,\\Delta x_1 = 0{,}25 \\cdot \\Delta x_1$).\nWelcher Mindestwert resultiert daraus für die neue Geschwindigkeitsunschärfe $\\Delta v_2$?",
+    "options": {
+      "A": "$\\Delta v_2 = 1 \\cdot 10^5\\,\\text{m/s}$",
+      "B": "$\\Delta v_2 = 2 \\cdot 10^5\\,\\text{m/s}$",
+      "C": "$\\Delta v_2 = 4 \\cdot 10^5\\,\\text{m/s}$",
+      "D": "$\\Delta v_2 = 8 \\cdot 10^5\\,\\text{m/s}$",
+      "E": "$\\Delta v_2 = 1{,}6 \\cdot 10^6\\,\\text{m/s}$"
+    },
+    "correct_answer": "E",
+    "explanation": "Nach der Heisenbergschen Unschärferelation gilt für ein Teilchen mit konstanter Masse $m$:\n$$\\Delta x \\cdot \\Delta v \\ge \\frac{h}{4\\pi \\cdot m} \\implies \\Delta v_{\\text{min}} \\propto \\frac{1}{\\Delta x}$$\nDie minimale Geschwindigkeitsunschärfe verhält sich streng umgekehrt proportional zur Ortsunschärfe.\nWird die Ortsunschärfe geviertelt ($\\Delta x_2 = \\frac{1}{4}\\,\\Delta x_1$ bzw. $0{,}25 \\cdot \\Delta x_1$), muss sich die minimale Geschwindigkeitsunschärfe vervierfachen:\n$$\\Delta v_2 = 4 \\cdot \\Delta v_1 = 4 \\cdot (4 \\cdot 10^5\\,\\text{m/s}) = 16 \\cdot 10^5\\,\\text{m/s} = 1{,}6 \\cdot 10^6\\,\\text{m/s}$$\n\nAnalyse der Falschantworten:\n- A viertelt fälschlich auch die Geschwindigkeit (direkte statt reziproke Proportionalität).\n- B halbiert fälschlicherweise (Wurzelfehler).\n- C nimmt Unabhängigkeit vom Ort an.\n- D verdoppelt lediglich."
+  },
+  {
+    "id": "chem-02-set3-q055",
+    "set": 3,
+    "topic": "De-Broglie-Wellenlänge — Impuls- und Geschwindigkeitsverdopplung",
+    "difficulty": "easy",
+    "question": "Ein Elektron bewegt sich mit der nicht-relativistischen Geschwindigkeit $v_1$ und besitzt die De-Broglie-Wellenlänge $\\lambda_1 = 0{,}8\\,\\text{nm}$.\nWelche neue De-Broglie-Wellenlänge $\\lambda_2$ weist das Elektron auf, wenn seine Geschwindigkeit verdoppelt wird ($v_2 = 2 \\cdot v_1$)?",
+    "options": {
+      "A": "$\\lambda_2 = 0{,}4\\,\\text{nm}$",
+      "B": "$\\lambda_2 = 0{,}8\\,\\text{nm}$",
+      "C": "$\\lambda_2 = 1{,}6\\,\\text{nm}$",
+      "D": "$\\lambda_2 = 0{,}2\\,\\text{nm}$",
+      "E": "$\\lambda_2 = 3{,}2\\,\\text{nm}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Die De-Broglie-Gleichung lautet:\n$$\\lambda = \\frac{h}{p} = \\frac{h}{m \\cdot v}$$\nDa Masse $m$ und Planck-Konstante $h$ konstant sind, gilt:\n$$\\lambda \\propto \\frac{1}{v}$$\nWird die Geschwindigkeit verdoppelt ($v_2 = 2 \\cdot v_1$), halbiert sich die De-Broglie-Wellenlänge:\n$$\\lambda_2 = \\frac{\\lambda_1}{2} = \\frac{0{,}8\\,\\text{nm}}{2} = 0{,}4\\,\\text{nm}$$\n\nAnalyse der Falschantworten:\n- B nimmt Geschwindigkeitsunabhängigkeit an.\n- C verdoppelt $\\lambda$ fälschlich ($0{,}8 \\cdot 2 = 1{,}6\\,\\text{nm}$).\n- D viertelt fälschlich (Verwechslung mit kinetischer Energie $E_{\\text{kin}} \\propto v^2$).\n- E multipliziert mit 4."
+  },
+  {
+    "id": "chem-02-set3-q056",
+    "set": 3,
+    "topic": "Wasserstoffspektrum — Vergleich der Lyman- und Balmer-Quantensprünge",
+    "difficulty": "medium",
+    "question": "Betrachtet werden zwei fundamentale Quantensprünge im Wasserstoffatom:\n\n- Übergang A: Ein Elektron springt von $n = 2$ nach $n = 1$ (Lyman-$\\alpha$).\n- Übergang B: Ein Elektron springt von $n = 3$ nach $n = 2$ (Balmer-$\\alpha$).\n\nWelche Aussage über die dabei emittierten Photonen ist physikalisch korrekt?\n(Energieniveaus: $E_1 = -13{,}6\\,\\text{eV}$; $E_2 = -3{,}4\\,\\text{eV}$; $E_3 = -1{,}51\\,\\text{eV}$).",
+    "options": {
+      "A": "Photon A besitzt eine geringere Energie und eine größere Wellenlänge als Photon B.",
+      "B": "Photon A liegt im sichtbaren Bereich, während Photon B im ultravioletten Bereich liegt.",
+      "C": "Photon A besitzt eine mehr als fünffach höhere Energie als Photon B und weist eine deutlich kürzere Wellenlänge auf.",
+      "D": "Beide Photonen besitzen exakt dieselbe Frequenz, da bei beiden Übergängen $\\Delta n = 1$ gilt.",
+      "E": "Bei beiden Übergängen wird jeweils ein Photon absorbiert, nicht emittiert."
+    },
+    "correct_answer": "C",
+    "explanation": "1. Energiedifferenzen berechnen:\n- Übergang A ($2 \\rightarrow 1$):\n$$\\Delta E_A = E_2 - E_1 = -3{,}4\\,\\text{eV} - (-13{,}6\\,\\text{eV}) = 10{,}2\\,\\text{eV}$$\n- Übergang B ($3 \\rightarrow 2$):\n$$\\Delta E_B = E_3 - E_2 = -1{,}51\\,\\text{eV} - (-3{,}4\\,\\text{eV}) = 1{,}89\\,\\text{eV}$$\n\n2. Vergleich anstellen:\n$$\\frac{\\Delta E_A}{\\Delta E_B} = \\frac{10{,}2\\,\\text{eV}}{1{,}89\\,\\text{eV}} \\approx 5{,}4$$\n(mehr als 5-fach so groß!).\nDa $\\lambda = \\frac{h \\cdot c}{\\Delta E}$ gilt, besitzt Photon A eine viel kürzere Wellenlänge ($\\lambda_A \\approx \\frac{1240}{10{,}2} \\approx 121{,}6\\,\\text{nm}$, UV-Bereich) als Photon B ($\\lambda_B \\approx \\frac{1240}{1{,}89} \\approx 656\\,\\text{nm}$, roter sichtbarer Bereich).\n\nAnalyse der Falschantworten:\n- A und B vertauschen die Relationen von Lyman und Balmer.\n- D unterliegt dem Trugschluss, dass gleiche Hauptquantenzahldifferenzen ($\\Delta n = 1$) gleiche Energiesprünge bedeuteten (die Bohrschen Niveaus rücken mit steigendem $n$ wegen $\\propto 1/n^2$ immer dichter zusammen!).\n- E verkennt, dass beim Herabfallen auf tiefere Niveaus Photonen emittiert werden."
+  },
+  {
+    "id": "chem-02-set3-q057",
+    "set": 3,
+    "topic": "Photoeffekt — Grenzwellenlänge und minimale Austrittsarbeit",
+    "difficulty": "easy",
+    "question": "Für ein bestimmtes Experiment soll eine Photokathode eingesetzt werden, die bereits durch rotes Licht der Wellenlänge $\\lambda = 620\\,\\text{nm}$ Photoelektronen emittiert. Wie groß darf die Austrittsarbeit $W_A$ des Kathodenmaterials höchstens sein?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "maximal $0{,}5\\,\\text{eV}$",
+      "B": "maximal $1{,}0\\,\\text{eV}$",
+      "C": "maximal $4{,}0\\,\\text{eV}$",
+      "D": "maximal $3{,}1\\,\\text{eV}$",
+      "E": "maximal $2{,}0\\,\\text{eV}$"
+    },
+    "correct_answer": "E",
+    "explanation": "Damit Licht der Wellenlänge $\\lambda = 620\\,\\text{nm}$ Photoelektronen auslösen kann, muss die Energie der einzelnen Photonen mindestens gleich der Austrittsarbeit sein:\n$$E_{\\text{Photon}} \\ge W_A \\iff W_A \\le \\frac{h \\cdot c}{\\lambda}$$\nMit dem Kopfrechentrick $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$:\n$$W_A \\le \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{620\\,\\text{nm}} = 2{,}0\\,\\text{eV}$$\nDie Austrittsarbeit des Metalls darf somit höchstens $2{,}0\\,\\text{eV}$ betragen (z. B. Caesium oder Rubidium). Wäre $W_A > 2{,}0\\,\\text{eV}$, reicht die Photonenenergie von rotem Licht nicht aus.\n\nAnalyse der Falschantworten:\n- A dividiert $620 / 1240 = 0{,}5\\,\\text{eV}$ (reziproker Formelfehler).\n- B schätzt zu niedrig.\n- C berechnet die Photonenenergie für UV-Licht mit $\\lambda = 310\\,\\text{nm}$.\n- D berechnet die Photonenenergie für violettes Licht mit $\\lambda = 400\\,\\text{nm}$ ($1240 / 400 = 3{,}1\\,\\text{eV}$)."
+  },
+  {
+    "id": "chem-02-set3-q058",
+    "set": 3,
+    "topic": "De-Broglie-Wellenlänge — Massenvergleich bei gleichem Impuls",
+    "difficulty": "medium",
+    "question": "Ein Elektron ($m_e$) und ein Proton ($m_p \\approx 1836 \\cdot m_e$) bewegen sich im Vakuum so, dass beide Teilchen den exakt gleichen linearen Impuls besitzen ($p_e = p_p$).\nWelche Aussage über ihre De-Broglie-Wellenlängen ($\\lambda_e, \\lambda_p$) und ihre Geschwindigkeiten ($v_e, v_p$) ist korrekt?",
+    "options": {
+      "A": "$\\lambda_e = \\lambda_p$, und das Elektron bewegt sich ca. 1836-mal schneller als das Proton ($v_e \\approx 1836 \\cdot v_p$).",
+      "B": "$\\lambda_e \\approx 1836 \\cdot \\lambda_p$, und beide besitzen dieselbe Geschwindigkeit.",
+      "C": "$\\lambda_p \\approx 1836 \\cdot \\lambda_e$, und das Proton bewegt sich schneller als das Elektron.",
+      "D": "$\\lambda_e = \\lambda_p$, und beide Teilchen bewegen sich mit exakt derselben Geschwindigkeit.",
+      "E": "$\\lambda_e \\approx \\sqrt{1836} \\cdot \\lambda_p$, und das Elektron besitzt eine kleinere Geschwindigkeit."
+    },
+    "correct_answer": "A",
+    "explanation": "1. De-Broglie-Wellenlänge:\nNach der fundamentalen De-Broglie-Beziehung gilt:\n$$\\lambda = \\frac{h}{p}$$\nDa der Impuls $p$ für beide Teilchen als identisch vorgegeben ist ($p_e = p_p$), muss auch ihre De-Broglie-Wellenlänge vollkommen identisch sein:\n$$\\lambda_e = \\lambda_p$$\n\n2. Geschwindigkeit:\nWegen $p = m \\cdot v$ folgt für die Geschwindigkeit:\n$$v = \\frac{p}{m}$$\nBei gleichem Impuls ist die Geschwindigkeit umgekehrt proportional zur Masse:\n$$\\frac{v_e}{v_p} = \\frac{m_p}{m_e} \\approx 1836 \\implies v_e \\approx 1836 \\cdot v_p$$\nDas leichtere Elektron muss sich 1836-mal schneller bewegen, um denselben Impuls wie das schwere Proton aufzuweisen.\n\nAnalyse der Falschantworten:\n- B und C verletzen die Definition $\\lambda = h/p$.\n- D ignoriert, dass bei gleicher Geschwindigkeit das Proton wegen $m_p \\gg m_e$ einen viel größeren Impuls hätte.\n- E bringt fälschlich eine Wurzelbeziehung ein."
+  },
+  {
+    "id": "chem-02-set3-q059",
+    "set": 3,
+    "topic": "Balmer-Serie — Spezifischer Endzustand & Sichtbarkeit",
+    "difficulty": "easy",
+    "question": "Welche Hauptquantenzahl $n$ charakterisiert das untere (energieärmere) Energieniveau, auf welches das Elektron beim Wasserstoffatom zurückfällt, wenn eine Spektrallinie der Balmer-Serie emittiert wird?",
+    "options": {
+      "A": "$n = 1$",
+      "B": "$n = 2$",
+      "C": "$n = 3$",
+      "D": "$n = 4$",
+      "E": "$n = \\infty$"
+    },
+    "correct_answer": "B",
+    "explanation": "Die Spektralserien des Wasserstoffs sind streng über das untere Niveau $n_1$ definiert:\n- Lyman-Serie: Übergänge auf $n_1 = 1$ (aus $n_2 \\ge 2$) $\\rightarrow$ UV-Bereich\n- Balmer-Serie: Übergänge auf $n_1 = 2$ (aus $n_2 \\ge 3$) $\\rightarrow$ Sichtbarer Bereich (VIS)\n- Paschen-Serie: Übergänge auf $n_1 = 3$ (aus $n_2 \\ge 4$) $\\rightarrow$ Nahinfrarot (IR)\n- Brackett-Serie: Übergänge auf $n_1 = 4$ (aus $n_2 \\ge 5$) $\\rightarrow$ Mittleres Infrarot\n- Pfund-Serie: Übergänge auf $n_1 = 5$ (aus $n_2 \\ge 6$) $\\rightarrow$ Fernes Infrarot\n\nDaher ist $n = 2$ die eindeutige Antwort für die Balmer-Serie.\n\nAnalyse der Falschantworten:\n- A ist Lyman ($n=1$).\n- C ist Paschen ($n=3$).\n- D ist Brackett ($n=4$).\n- E ist der Ionisationszustand ($n=\\infty$)."
+  },
+  {
+    "id": "chem-02-set3-q060",
+    "set": 3,
+    "topic": "Photoeffekt — Einfluss der Frequenzverdopplung auf die Bremsspannung",
+    "difficulty": "hard",
+    "question": "Eine Photozelle mit der Austrittsarbeit $W_A = 1{,}5\\,\\text{eV}$ wird mit Licht bestrahlt, dessen Photonenenergie $E_1 = h \\cdot f_1 = 2{,}5\\,\\text{eV}$ beträgt. Nun wird die Frequenz der Strahlung verdoppelt ($f_2 = 2 \\cdot f_1$). Wie ändert sich die erforderliche Bremsspannung $U_0$ zum Stoppen des Photostroms?",
+    "options": {
+      "A": "$U_0$ verdoppelt sich exakt von $1{,}0\\,\\text{V}$ auf $2{,}0\\,\\text{V}$.",
+      "B": "$U_0$ steigt von $2{,}5\\,\\text{V}$ auf $5{,}0\\,\\text{V}$ an.",
+      "C": "$U_0$ bleibt konstant bei $1{,}0\\,\\text{V}$, da die Austrittsarbeit gleich bleibt.",
+      "D": "$U_0$ steigt von $1{,}0\\,\\text{V}$ auf $3{,}5\\,\\text{V}$ an (mehr als das Dreifache).",
+      "E": "$U_0$ sinkt auf $0{,}5\\,\\text{V}$ ab."
+    },
+    "correct_answer": "D",
+    "explanation": "1. Ausgangszustand 1:\n- Photonenenergie: $E_1 = 2{,}5\\,\\text{eV}$\n- Kinetische Energie:\n$$E_{\\text{kin,1}} = E_1 - W_A = 2{,}5\\,\\text{eV} - 1{,}5\\,\\text{eV} = 1{,}0\\,\\text{eV}$$\n- Bremsspannung:\n$$e \\cdot U_{0,1} = 1{,}0\\,\\text{eV} \\implies U_{0,1} = 1{,}0\\,\\text{V}$$\n\n2. Zustand 2 (Frequenzverdopplung):\n- Neue Photonenenergie:\n$$E_2 = h \\cdot (2 \\cdot f_1) = 2 \\cdot E_1 = 2 \\cdot 2{,}5\\,\\text{eV} = 5{,}0\\,\\text{eV}$$\n- Neue kinetische Energie:\n$$E_{\\text{kin,2}} = E_2 - W_A = 5{,}0\\,\\text{eV} - 1{,}5\\,\\text{eV} = 3{,}5\\,\\text{eV}$$\n- Neue Bremsspannung:\n$$e \\cdot U_{0,2} = 3{,}5\\,\\text{eV} \\implies U_{0,2} = 3{,}5\\,\\text{V}$$\n\nDie Bremsspannung steigt somit von $1{,}0\\,\\text{V}$ auf $3{,}5\\,\\text{V}$! Dies demonstriert eindrucksvoll, dass die Bremsspannung wegen des konstanten Subtraktionsglieds $W_A$ nicht proportional zur Frequenz skaliert, sondern überproportional wächst.\n\nAnalyse der Falschantworten:\n- A unterliegt dem typischen Proportionalitätsirrtum ($1{,}0 \\rightarrow 2{,}0$).\n- B vergisst den Abzug von $W_A$ bei beiden Rechnungen.\n- C ignoriert die Zunahme der kinetischen Energie.\n- E behauptet ein Absinken."
+  },
+  {
+    "id": "chem-02-set3-q061",
+    "set": 3,
+    "topic": "Wasserstoffatom — Absorption vs. Emission und Quantenzustände",
+    "difficulty": "medium",
+    "question": "Welcher der folgenden quantenmechanischen Elementarprozesse in einem isolierten Wasserstoffatom beschreibt die Absorption eines Photons im ultravioletten Spektralbereich?",
+    "options": {
+      "A": "Übergang von $n = 1$ nach $n = 3$",
+      "B": "Übergang von $n = 3$ nach $n = 1$",
+      "C": "Übergang von $n = 2$ nach $n = 4$",
+      "D": "Übergang von $n = 4$ nach $n = 2$",
+      "E": "Übergang von $n = 3$ nach $n = 5$"
+    },
+    "correct_answer": "A",
+    "explanation": "Zwei Kriterien müssen gleichzeitig erfüllt sein:\n\n1. Absorption: Ein Elektron nimmt Energie auf und wird von einem tieferen auf ein höheres Energieniveau angehoben ($n_{\\text{Start}} < n_{\\text{Ziel}}$). Damit scheiden die Optionen B und D (Emissionen: Herabfallen von höheren Niveaus) sofort aus!\n2. Ultravioletter Bereich (Lyman-Serie): Quantenübergänge, die am Grundzustand $n = 1$ beteiligt sind, weisen Energiedifferenzen von $\\Delta E \\ge 10{,}2\\,\\text{eV}$ auf ($\\lambda \\le 121{,}6\\,\\text{nm}$). Sie liegen ausnahmslos im energiereichen UV-Bereich.\n\n- Für den Übergang $1 \\rightarrow 3$ gilt:\n$$\\Delta E = E_3 - E_1 = -1{,}51\\,\\text{eV} - (-13{,}6\\,\\text{eV}) = 12{,}09\\,\\text{eV}$$\n$$\\lambda = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{12{,}09\\,\\text{eV}} \\approx 102{,}5\\,\\text{nm} \\quad (\\text{UV-Bereich})$$\n(Im Vergleich: Übergang C ($2 \\rightarrow 4$) ist eine Absorption im sichtbaren Bereich der Balmer-Serie mit $\\Delta E = 2{,}55\\,\\text{eV} \\rightarrow \\lambda \\approx 486\\,\\text{nm}$; Übergang E liegt im Infrarotbereich der Paschen-Serie).\n\nAnalyse der Falschantworten:\n- B ist eine UV-Emission.\n- C ist eine VIS-Absorption.\n- D ist eine VIS-Emission.\n- E ist eine IR-Absorption."
+  },
+  {
+    "id": "chem-02-set3-q062",
+    "set": 3,
+    "topic": "Wellennatur des Lichts — Frequenz- und Periodendauerberechnung im UV-Bereich",
+    "difficulty": "medium",
+    "question": "Eine bakterizide UV-C-Entkeimungslampe emittiert Licht mit einer Wellenlänge von $\\lambda = 250\\,\\text{nm}$. Welche Frequenz $f$ und welche Periodendauer $T$ besitzt diese elektromagnetische Welle im Vakuum?\n(Lichtgeschwindigkeit $c = 3 \\cdot 10^8\\,\\text{m/s}$).",
+    "options": {
+      "A": "$f = 1{,}2 \\cdot 10^{15}\\,\\text{Hz}$ und $T \\approx 8{,}33 \\cdot 10^{-16}\\,\\text{s}$",
+      "B": "$f = 1{,}2 \\cdot 10^{14}\\,\\text{Hz}$ und $T \\approx 8{,}33 \\cdot 10^{-15}\\,\\text{s}$",
+      "C": "$f = 7{,}5 \\cdot 10^{14}\\,\\text{Hz}$ und $T \\approx 1{,}33 \\cdot 10^{-15}\\,\\text{s}$",
+      "D": "$f = 1{,}2 \\cdot 10^{15}\\,\\text{Hz}$ und $T = 1{,}2 \\cdot 10^{-15}\\,\\text{s}$",
+      "E": "$f = 8{,}33 \\cdot 10^{14}\\,\\text{Hz}$ und $T = 2{,}5 \\cdot 10^{-7}\\,\\text{s}$"
+    },
+    "correct_answer": "A",
+    "explanation": "1. Frequenz berechnen:\n$$c = \\lambda \\cdot f \\implies f = \\frac{c}{\\lambda} = \\frac{3 \\cdot 10^8\\,\\text{m/s}}{250 \\cdot 10^{-9}\\,\\text{m}} = \\frac{3 \\cdot 10^8}{2{,}5 \\cdot 10^{-7}\\,\\text{m}} = \\frac{3}{2{,}5} \\cdot 10^{15}\\,\\text{Hz} = 1{,}2 \\cdot 10^{15}\\,\\text{Hz}$$\n\n2. Periodendauer berechnen:\n$$T = \\frac{1}{f} = \\frac{1}{1{,}2 \\cdot 10^{15}\\,\\text{s}^{-1}} = \\frac{1}{1{,}2} \\cdot 10^{-15}\\,\\text{s} \\approx 0{,}833 \\cdot 10^{-15}\\,\\text{s} = 8{,}33 \\cdot 10^{-16}\\,\\text{s}$$\n\nAnalyse der Falschantworten:\n- B besitzt einen Zehnerpotenzfehler um den Faktor 10 bei Frequenz und Periodendauer.\n- C berechnet $f$ mit $c / 400\\,\\text{nm}$.\n- D setzt $T$ gleich dem Zahlenwert der Frequenz.\n- E setzt für $T$ die Wellenlänge in Metern ein."
+  },
+  {
+    "id": "chem-02-set3-q063",
+    "set": 3,
+    "topic": "Wasserstoffspektrum — Berechnung der H-beta-Spektrallinie",
+    "difficulty": "hard",
+    "question": "Die blaugrüne $\\text{H}_\\beta$-Linie der Balmer-Serie entsteht durch den Übergang eines Elektrons vom Zustand $n = 4$ ($E_4 = -0{,}85\\,\\text{eV}$) in den Zustand $n = 2$ ($E_2 = -3{,}40\\,\\text{eV}$).\nWelche Wellenlänge $\\lambda$ besitzt das dabei emittierte Photon?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "ca. $365\\,\\text{nm}$",
+      "B": "ca. $410\\,\\text{nm}$",
+      "C": "ca. $486\\,\\text{nm}$",
+      "D": "ca. $656\\,\\text{nm}$",
+      "E": "ca. $1240\\,\\text{nm}$"
+    },
+    "correct_answer": "C",
+    "explanation": "1. Energiedifferenz des Quantensprungs berechnen:\n$$\\Delta E = E_4 - E_2 = -0{,}85\\,\\text{eV} - (-3{,}40\\,\\text{eV}) = -0{,}85\\,\\text{eV} + 3{,}40\\,\\text{eV} = 2{,}55\\,\\text{eV}$$\n\n2. Wellenlänge über $\\lambda = \\frac{hc}{\\Delta E}$ berechnen:\n$$\\lambda \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{2{,}55\\,\\text{eV}}$$\nKopfrechnung:\n$2{,}55 \\cdot 500 = 1275$; $2{,}55 \\cdot 480 = 1224$.\nDer Wert liegt exakt bei rund $486\\,\\text{nm}$ ($486{,}3\\,\\text{nm}$).\nDies entspricht der charakteristischen blaugrünen Farbe der $\\text{H}_\\beta$-Linie im sichtbaren Wasserstoff-Emissionsspektrum.\n\nAnalyse der Falschantworten:\n- A ($365\\,\\text{nm}$) ist die Balmer-Seriengrenze ($n = \\infty \\rightarrow 2$).\n- B ($410\\,\\text{nm}$) ist die violette $\\text{H}_\\delta$-Linie ($6 \\rightarrow 2$).\n- D ($656\\,\\text{nm}$) ist die rote $\\text{H}_\\alpha$-Linie ($3 \\rightarrow 2$).\n- E entspräche $\\Delta E = 1\\,\\text{eV}$."
+  },
+  {
+    "id": "chem-02-set3-q064",
+    "set": 3,
+    "topic": "Photoeffekt — Vergleich der kinetischen Energien an zwei Metallen",
+    "difficulty": "medium",
+    "question": "Zwei Metallproben, Zink ($W_A(\\text{Zn}) = 4{,}3\\,\\text{eV}$) und Aluminium ($W_A(\\text{Al}) = 4{,}0\\,\\text{eV}$), werden im Hochvakuum mit identischer harter UV-Strahlung der Photonenenergie $E_{\\text{Photon}} = 6{,}0\\,\\text{eV}$ bestrahlt.\nIn welchem Verhältnis stehen die maximalen kinetischen Energien der aus Aluminium bzw. Zink austretenden Elektronen $\\frac{E_{\\text{kin,max}}(\\text{Al})}{E_{\\text{kin,max}}(\\text{Zn})}$?",
+    "options": {
+      "A": "$1{,}00 : 1{,}00$",
+      "B": "$1{,}075 : 1{,}00$",
+      "C": "$1{,}18 : 1{,}00$ (entspricht $2{,}0 : 1{,}7$)",
+      "D": "$2{,}00 : 1{,}00$",
+      "E": "$4{,}30 : 4{,}00$"
+    },
+    "correct_answer": "C",
+    "explanation": "1. Kinetische Energien berechnen:\n- Aluminium:\n$$E_{\\text{kin,max}}(\\text{Al}) = E_{\\text{Photon}} - W_A(\\text{Al}) = 6{,}0\\,\\text{eV} - 4{,}0\\,\\text{eV} = 2{,}0\\,\\text{eV}$$\n- Zink:\n$$E_{\\text{kin,max}}(\\text{Zn}) = E_{\\text{Photon}} - W_A(\\text{Zn}) = 6{,}0\\,\\text{eV} - 4{,}3\\,\\text{eV} = 1{,}7\\,\\text{eV}$$\n\n2. Verhältnis bilden:\n$$\\frac{E_{\\text{kin,max}}(\\text{Al})}{E_{\\text{kin,max}}(\\text{Zn})} = \\frac{2{,}0\\,\\text{eV}}{1{,}7\\,\\text{eV}} = \\frac{20}{17} \\approx 1{,}176 \\approx 1{,}18$$\nDie Elektronen aus Aluminium besitzen im Mittel rund $18\\,\\%$ mehr kinetische Energie als die aus Zink.\n\nAnalyse der Falschantworten:\n- A nimmt gleiche Energien an.\n- B bildet das Verhältnis der Austrittsarbeiten $4{,}3 / 4{,}0 = 1{,}075$ (klassische Falle!).\n- D nimmt an, dass $E_{\\text{kin}}$ doppelt so groß sei.\n- E ist das umgekehrte Verhältnis der Austrittsarbeiten."
+  },
+  {
+    "id": "chem-02-set3-q065",
+    "set": 3,
+    "topic": "Unschärferelation — Vergleich von Proton und Elektron bei gleicher Geschwindigkeit",
+    "difficulty": "medium",
+    "question": "Ein Proton und ein Elektron besitzen im Labor die exakt gleiche Geschwindigkeitsunschärfe $\\Delta v_p = \\Delta v_e$.\nWelche Beziehung gilt unter diesen Bedingungen für die minimale Ortsunschärfe des Protons ($\\Delta x_p$) im Vergleich zur minimalen Ortsunschärfe des Elektrons ($\\Delta x_e$)?\n(Massenverhältnis: $m_p \\approx 1836 \\cdot m_e$).",
+    "options": {
+      "A": "$\\Delta x_p \\approx 1836 \\cdot \\Delta x_e$",
+      "B": "$\\Delta x_p \\approx \\Delta x_e$",
+      "C": "$\\Delta x_p \\approx \\frac{\\Delta x_e}{\\sqrt{1836}}$",
+      "D": "$\\Delta x_p \\approx 1836^2 \\cdot \\Delta x_e$",
+      "E": "$\\Delta x_p \\approx \\frac{\\Delta x_e}{1836}$"
+    },
+    "correct_answer": "E",
+    "explanation": "Nach der Heisenbergschen Unschärferelation gilt für Ort und Impuls:\n$$\\Delta x \\cdot m \\cdot \\Delta v \\ge \\frac{h}{4\\pi} \\implies \\Delta x_{\\text{min}} = \\frac{h}{4\\pi \\cdot m \\cdot \\Delta v}$$\nIst die Geschwindigkeitsunschärfe $\\Delta v$ für beide Teilchen identisch, gilt:\n$$\\Delta x \\propto \\frac{1}{m}$$\nDas Verhältnis der Ortsunschärfen lautet somit:\n$$\\frac{\\Delta x_p}{\\Delta x_e} = \\frac{m_e}{m_p} = \\frac{m_e}{1836 \\cdot m_e} = \\frac{1}{1836} \\implies \\Delta x_p \\approx \\frac{\\Delta x_e}{1836}$$\nDas rund 1836-mal schwerere Proton lässt sich bei gleicher Geschwindigkeitsunschärfe um den Faktor 1836 schärfer im Raum lokalisieren als das leichte Elektron. Genau deshalb ist der Atomkern ($10^{-15}\\,\\text{m}$) um Zehnerpotenzen kompakter als die ausgedehnte Elektronenhülle ($10^{-10}\\,\\text{m}$).\n\nAnalyse der Falschantworten:\n- A nimmt fälschlicherweise direkte Proportionalität zur Masse an ($1836 \\cdot \\Delta x_e$).\n- B verwechselt Geschwindigkeitsunschärfe mit Impulsunschärfe (wäre $\\Delta p$ gleich, wäre $\\Delta x$ gleich!).\n- C setzt fälschlicherweise eine Wurzelbeziehung zur Masse an ($\\Delta x_e / \\sqrt{1836}$).\n- D setzt fälschlicherweise eine quadratische Massenabhängigkeit an ($1836^2 \\cdot \\Delta x_e$)."
+  },
+  {
+    "id": "chem-02-set3-q066",
+    "set": 3,
+    "topic": "De-Broglie-Wellenlänge — Verknüpfung mit der kinetischen Energie",
+    "difficulty": "hard",
+    "question": "Die De-Broglie-Wellenlänge eines freien Elektrons beträgt bei einer bestimmten Beschleunigungsspannung $\\lambda_1 = 1{,}0\\,\\text{nm}$.\nDie kinetische Energie des Elektrons wird nun durch Erhöhung der Spannung auf das Neunfache gesteigert ($E_{\\text{kin,2}} = 9 \\cdot E_{\\text{kin,1}}$).\nWie groß ist die resultierende De-Broglie-Wellenlänge $\\lambda_2$?",
+    "options": {
+      "A": "$\\lambda_2 = 9{,}0\\,\\text{nm}$",
+      "B": "$\\lambda_2 = 3{,}0\\,\\text{nm}$",
+      "C": "$\\lambda_2 \\approx 0{,}11\\,\\text{nm}$",
+      "D": "$\\lambda_2 \\approx 0{,}33\\,\\text{nm}$",
+      "E": "$\\lambda_2 = 1{,}0\\,\\text{nm}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Für die kinetische Energie gilt nicht-relativistisch:\n$$E_{\\text{kin}} = \\frac{p^2}{2m} \\implies p = \\sqrt{2m \\cdot E_{\\text{kin}}}$$\nEingesetzt in die De-Broglie-Formel:\n$$\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2m \\cdot E_{\\text{kin}}}} \\implies \\lambda \\propto \\frac{1}{\\sqrt{E_{\\text{kin}}}}$$\nWird die kinetische Energie um den Faktor 9 vervielfacht ($E_{\\text{kin,2}} = 9 \\cdot E_{\\text{kin,1}}$):\n$$\\lambda_2 = \\frac{h}{\\sqrt{2m \\cdot 9 \\cdot E_{\\text{kin,1}}}} = \\frac{h}{3 \\cdot \\sqrt{2m \\cdot E_{\\text{kin,1}}}} = \\frac{\\lambda_1}{3}$$\nMit $\\lambda_1 = 1{,}0\\,\\text{nm}$:\n$$\\lambda_2 = \\frac{1{,}0\\,\\text{nm}}{3} \\approx 0{,}33\\,\\text{nm}$$\n\nAnalyse der Falschantworten:\n- A und B nehmen an, dass $\\lambda$ mit der Energie wächst.\n- C vergisst die Quadratwurzel und teilt fälschlich linear durch 9 ($1 / 9 \\approx 0{,}11\\,\\text{nm}$).\n- E nimmt Energieunabhängigkeit an."
+  },
+  {
+    "id": "chem-02-set3-q067",
+    "set": 3,
+    "topic": "Photoeffekt — Verdopplung der Bestrahlungsstärke (Intensität)",
+    "difficulty": "medium",
+    "question": "Eine Kaliumplatte wird mit monochromatischem UV-Licht der Photonenenergie $E_{\\text{Photon}} = 4{,}0\\,\\text{eV}$ bestrahlt ($W_A = 2{,}2\\,\\text{eV}$). Pro Sekunde treten $10^{12}$ Elektronen aus, die eine maximale kinetische Energie von $E_{\\text{kin,max}} = 1{,}8\\,\\text{eV}$ aufweisen.\nNun wird die Lichtintensität verdoppelt, während die Wellenlänge exakt konstant gehalten wird. Welche Aussage beschreibt das neue Messergebnis zutreffend?",
+    "options": {
+      "A": "Es werden weiterhin $10^{12}$ Elektronen pro Sekunde freigesetzt, aber ihre maximale kinetische Energie steigt auf $3{,}6\\,\\text{eV}$.",
+      "B": "Es werden $2 \\cdot 10^{12}$ Elektronen pro Sekunde freigesetzt, und ihre maximale kinetische Energie bleibt unverändert bei $1{,}8\\,\\text{eV}$.",
+      "C": "Sowohl die Anzahl der emittierten Elektronen pro Sekunde ($2 \\cdot 10^{12}$) als auch ihre maximale kinetische Energie ($3{,}6\\,\\text{eV}$) verdoppeln sich.",
+      "D": "Es werden keine Elektronen mehr emittiert, da die Platte elektrostatisch gesättigt ist.",
+      "E": "Die maximale kinetische Energie steigt auf $\\sqrt{2} \\cdot 1{,}8\\,\\text{eV} \\approx 2{,}55\\,\\text{eV}$."
+    },
+    "correct_answer": "B",
+    "explanation": "Dies ist die zentrale Differenzierung des Einsteinschen Photoeffekts:\n\n1. Intensität bei konstanter Wellenlänge: Höhere Intensität bedeutet eine größere Anzahl an Photonen, die pro Zeit- und Flächeneinheit auf die Metalloberfläche treffen. Da die Wechselwirkung strikt 1-zu-1 erfolgt (1 Photon löst 1 Elektron), verdoppelt sich bei Verdopplung der Intensität die Anzahl der freigesetzten Elektronen pro Sekunde: von $10^{12}$ auf $2 \\cdot 10^{12}\\,\\text{Elektronen/s}$ (der Photostrom verdoppelt sich).\n2. Kinetische Energie: Nach $E_{\\text{kin,max}} = h \\cdot f - W_A$ hängt die Energie des einzelnen austretenden Elektrons ausschließlich von der Frequenz des einzelnen einfallenden Photons und der Austrittsarbeit ab. Da die Frequenz konstant gehalten wird, bleibt die maximale kinetische Energie strikt unverändert bei $1{,}8\\,\\text{eV}$!\n\nAnalyse der Falschantworten:\n- A, C und E unterliegen dem klassischen Irrtum der Wellenoptik, dass eine intensivere Lichtwelle den einzelnen Elektronen mehr Stoßenergie verleiht.\n- D ist physikalisch abwegig."
+  },
+  {
+    "id": "chem-02-set3-q068",
+    "set": 3,
+    "topic": "Wasserstoffatom — Ionisierungsenergie aus einem angeregten Zustand",
+    "difficulty": "hard",
+    "question": "Um ein Wasserstoffatom aus seinem ersten angeregten Zustand ($n = 2$, $E_2 = -3{,}4\\,\\text{eV}$) vollständig zu ionisieren ($n \\rightarrow \\infty$, $E_\\infty = 0\\,\\text{eV}$), wird ein einzelnes Photon absorbiert.\nWelche maximale Wellenlänge $\\lambda_{\\text{max}}$ darf dieses Photon besitzen?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "ca. $91\\,\\text{nm}$",
+      "B": "ca. $122\\,\\text{nm}$",
+      "C": "ca. $820\\,\\text{nm}$",
+      "D": "ca. $656\\,\\text{nm}$",
+      "E": "ca. $365\\,\\text{nm}$"
+    },
+    "correct_answer": "E",
+    "explanation": "1. Erforderliche Ionisierungsenergie berechnen:\n$$\\Delta E = E_\\infty - E_2 = 0\\,\\text{eV} - (-3{,}4\\,\\text{eV}) = 3{,}4\\,\\text{eV}$$\n\n2. Grenzwellenlänge ermitteln:\n$$\\lambda_{\\text{max}} = \\frac{h \\cdot c}{\\Delta E} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{3{,}4\\,\\text{eV}}$$\nKopfrechnung:\n$3{,}4 \\cdot 300 = 1020$; $3{,}4 \\cdot 400 = 1360$; $3{,}4 \\cdot 365 \\approx 1241$.\nDer Wert liegt exakt bei rund $365\\,\\text{nm}$ (dies entspricht der Seriengrenze der Balmer-Serie im nahen UV-A).\n\nAnalyse der Falschantworten:\n- A ($91\\,\\text{nm}$) ist die Ionisierungs-Grenzwellenlänge aus dem Grundzustand $n = 1$ ($\\Delta E = 13{,}6\\,\\text{eV}$).\n- B ($122\\,\\text{nm}$) entspricht dem Übergang $1 \\rightarrow 2$ ($\\Delta E = 10{,}2\\,\\text{eV}$).\n- C ($820\\,\\text{nm}$) ist die Seriengrenze der Paschen-Serie ($n = 3$, $\\Delta E = 1{,}51\\,\\text{eV}$).\n- D ($656\\,\\text{nm}$) ist die $\\text{H}_\\alpha$-Linie ($3 \\rightarrow 2$, $\\Delta E = 1{,}89\\,\\text{eV}$)."
+  },
+  {
+    "id": "chem-02-set3-q069",
+    "set": 3,
+    "topic": "Elektromagnetisches Spektrum — Spektralfarben und biologische Wirkung",
+    "difficulty": "easy",
+    "question": "Welche der folgenden Spektralfarben des sichtbaren Lichts transportiert pro einzelnem Lichtquant (Photon) die größte Energie und besitzt im Vakuum die höchste Frequenz?",
+    "options": {
+      "A": "Rot ($\\lambda \\approx 700\\,\\text{nm}$)",
+      "B": "Gelb ($\\lambda \\approx 580\\,\\text{nm}$)",
+      "C": "Grün ($\\lambda \\approx 530\\,\\text{nm}$)",
+      "D": "Blau ($\\lambda \\approx 460\\,\\text{nm}$)",
+      "E": "Violett ($\\lambda \\approx 400\\,\\text{nm}$)"
+    },
+    "correct_answer": "E",
+    "explanation": "Innerhalb des sichtbaren Spektrums ($380 - 780\\,\\text{nm}$) nimmt die Wellenlänge von Violett nach Rot zu:\n$$\\lambda_{\\text{Violett}} < \\lambda_{\\text{Blau}} < \\lambda_{\\text{Grün}} < \\lambda_{\\text{Gelb}} < \\lambda_{\\text{Rot}}$$\nDa $c = \\lambda \\cdot f \\implies f = \\frac{c}{\\lambda}$ und $E = h \\cdot f = \\frac{h \\cdot c}{\\lambda}$ gilt, verhalten sich Frequenz und Photonenenergie streng umgekehrt proportional zur Wellenlänge.\nViolettes Licht ($\\lambda \\approx 400\\,\\text{nm}$) besitzt die kürzeste Wellenlänge und weist daher die höchste Frequenz ($f \\approx 7{,}5 \\cdot 10^{14}\\,\\text{Hz}$) sowie die höchste Photonenenergie ($E \\approx 3{,}1\\,\\text{eV}$) im sichtbaren Bereich auf.\n\nAnalyse der Falschantworten:\n- A (Rot) ist das energieärmste sichtbare Licht ($E \\approx 1{,}8\\,\\text{eV}$).\n- B, C und D liegen energetisch zwischen Rot und Violett."
+  },
+  {
+    "id": "chem-02-set3-q070",
+    "set": 3,
+    "topic": "Proportionalitätslogik — Verknüpfung von Photonenenergie und Frequenz",
+    "difficulty": "easy",
+    "question": "Photon A besitzt eine Energie von $E_A = 12\\,\\text{eV}$. Photon B besitzt eine Energie von $E_B = 4\\,\\text{eV}$. In welchem mathematischen Verhältnis stehen die Frequenzen $\\frac{f_A}{f_B}$ und die Wellenlängen $\\frac{\\lambda_A}{\\lambda_B}$ dieser beiden Photonen zueinander?",
+    "options": {
+      "A": "$\\frac{f_A}{f_B} = 3 : 1$ und $\\frac{\\lambda_A}{\\lambda_B} = 3 : 1$",
+      "B": "$\\frac{f_A}{f_B} = 1 : 3$ und $\\frac{\\lambda_A}{\\lambda_B} = 3 : 1$",
+      "C": "$\\frac{f_A}{f_B} = 3 : 1$ und $\\frac{\\lambda_A}{\\lambda_B} = 1 : 3$",
+      "D": "$\\frac{f_A}{f_B} = 9 : 1$ und $\\frac{\\lambda_A}{\\lambda_B} = 1 : 9$",
+      "E": "$\\frac{f_A}{f_B} = 1 : 1$ und $\\frac{\\lambda_A}{\\lambda_B} = 1 : 3$"
+    },
+    "correct_answer": "C",
+    "explanation": "Die Beziehungen lauten:\n\n1. Frequenzverhältnis:\n$$E = h \\cdot f \\implies f \\propto E \\implies \\frac{f_A}{f_B} = \\frac{E_A}{E_B} = \\frac{12\\,\\text{eV}}{4\\,\\text{eV}} = \\frac{3}{1} = 3 : 1$$\n\n2. Wellenlängenverhältnis:\n$$E = \\frac{h \\cdot c}{\\lambda} \\implies \\lambda \\propto \\frac{1}{E} \\implies \\frac{\\lambda_A}{\\lambda_B} = \\frac{E_B}{E_A} = \\frac{4\\,\\text{eV}}{12\\,\\text{eV}} = \\frac{1}{3} = 1 : 3$$\nPhoton A hat die dreifache Frequenz, aber nur ein Drittel der Wellenlänge von Photon B.\n\nAnalyse der Falschantworten:\n- A nimmt fälschlicherweise an, dass auch die Wellenlänge proportional zur Energie ist.\n- B kehrt das Frequenzverhältnis um.\n- D quadriert die Verhältnisse.\n- E behauptet gleiche Frequenzen."
+  },
+  {
+    "id": "chem-02-set3-q071",
+    "set": 3,
+    "topic": "Grenzen klassischer Bahnen & Orbitalbegriff",
+    "difficulty": "medium",
+    "question": "Warum kann ein Elektron im Atom nicht durch eine klassische Bahn beschrieben werden, und welches Konzept verwendet die Quantenmechanik stattdessen zur Beschreibung seines Aufenthaltsorts?",
+    "options": {
+      "A": "Das Planetenmodell versagt, weil Elektronen keine Ruhemasse besitzen; ihr Ort wird durch starre Kristallachsen beschrieben.",
+      "B": "Weil eine exakte gleichzeitige Bestimmung von Ort und Impuls durch die Heisenbergsche Unschärferelation ($\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$) verboten ist; stattdessen beschreibt man den Aufenthaltsort durch eine räumliche Wahrscheinlichkeitsdichte (Orbital).",
+      "C": "Weil Elektronen sich permanent mit Lichtgeschwindigkeit bewegen und daher kontinuierlich im gesamten Raum verschmiert sind.",
+      "D": "Weil die elektrostatische Coulomb-Kraft im Mikrokosmos durch die Gravitation der Nukleonen vollständig aufgehoben wird.",
+      "E": "Weil Elektronen nur dann einen messbaren Ort besitzen, wenn sie durch äußere Röntgenstrahlung angeregt werden."
+    },
+    "correct_answer": "B",
+    "explanation": "Im klassischen Planetenmodell (Rutherford/Bohr) müsste sich das Elektron auf einer wohldefinierten Bahnkurve (Trajektorie) bewegen, sodass zu jedem Zeitpunkt sowohl Ort als auch Impuls exakt vorliegen.\nDies verbietet die Heisenbergsche Unschärferelation ($\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$) fundamental: Da Ort und Impuls eines subatomaren Teilchens prinzipiell nicht gleichzeitig beliebig genau bestimmt werden können, bricht das Konzept einer klassischen Bahn zusammen.\nIn der Quantenmechanik wird die feste Bahn daher durch eine dreidimensionale Aufenthaltswahrscheinlichkeitsdichte ersetzt: Raumbereiche, in denen sich das Elektron mit hoher Wahrscheinlichkeit aufhält, nennt man Orbitale (Option B).\n\nAnalyse der Falschantworten:\n- A ist falsch, da Elektronen eine Ruhemasse von $m_e \\approx 9{,}1 \\cdot 10^{-31}\\,\\text{kg}$ tragen.\n- C ist falsch, da sich gebundene Elektronen im Atom mit nicht-relativistischen Geschwindigkeiten ($v \\ll c$) bewegen.\n- D ist physikalisch falsch; die Coulomb-Kraft ist im Atom viele Größenordnungen stärker als die vernachlässigbare Gravitation.\n- E ist eine absurde Fehlvorstellung; das Elektron existiert im Atom ununterbrochen im stationären Zustand."
+  },
+  {
+    "id": "chem-02-set3-q072",
+    "set": 3,
+    "topic": "Photoeffekt — Berechnung der maximalen Elektronengeschwindigkeit",
+    "difficulty": "hard",
+    "question": "Monochromatisches Licht löst an einer Metalloberfläche Photoelektronen aus, deren maximale kinetische Energie $E_{\\text{kin,max}} = 1{,}82\\,\\text{eV}$ beträgt. Welche maximale Geschwindigkeit $v_{\\text{max}}$ besitzen diese austretenden Elektronen näherungsweise?\n(Konstanten: $1\\,\\text{eV} \\approx 1{,}6 \\cdot 10^{-19}\\,\\text{J}$; Masse des Elektrons $m_e \\approx 9{,}1 \\cdot 10^{-31}\\,\\text{kg}$).",
+    "options": {
+      "A": "ca. $800\\,\\text{m/s}$",
+      "B": "ca. $6{,}4 \\cdot 10^{11}\\,\\text{m/s}$",
+      "C": "ca. $3 \\cdot 10^8\\,\\text{m/s}$",
+      "D": "ca. $8 \\cdot 10^5\\,\\text{m/s}$ ($800\\,\\text{km/s}$)",
+      "E": "ca. $1{,}6 \\cdot 10^4\\,\\text{m/s}$"
+    },
+    "correct_answer": "D",
+    "explanation": "1. Kinetische Energie in Joule umrechnen:\n$$E_{\\text{kin}} = 1{,}82\\,\\text{eV} \\cdot (1{,}6 \\cdot 10^{-19}\\,\\text{J/eV}) \\approx 2{,}912 \\cdot 10^{-19}\\,\\text{J}$$\n\n2. Nicht-relativistische kinetische Energie nach der Geschwindigkeit umstellen:\n$$E_{\\text{kin}} = \\frac{1}{2} m_e \\cdot v^2 \\implies v^2 = \\frac{2 \\cdot E_{\\text{kin}}}{m_e}$$\nWerte einsetzen:\n$$v^2 = \\frac{2 \\cdot 2{,}912 \\cdot 10^{-19}\\,\\text{J}}{9{,}1 \\cdot 10^{-31}\\,\\text{kg}} = \\frac{5{,}824 \\cdot 10^{-19}}{9{,}1 \\cdot 10^{-31}} = \\frac{5{,}824}{9{,}1} \\cdot 10^{12} = 0{,}64 \\cdot 10^{12}\\,\\text{m}^2/\\text{s}^2 = 64 \\cdot 10^{10}\\,\\text{m}^2/\\text{s}^2$$\n\n3. Quadratwurzel im Kopf ziehen:\n$$v = \\sqrt{64 \\cdot 10^{10}\\,\\text{m}^2/\\text{s}^2} = 8 \\cdot 10^5\\,\\text{m/s} = 800\\,\\text{km/s}$$\nDie Zahlenwerte kürzen sich glatt zu exakt $8 \\cdot 10^5\\,\\text{m/s}$. Da $v \\ll c$ ($3 \\cdot 10^8\\,\\text{m/s}$) ist, war der nicht-relativistische Ansatz vollkommen gerechtfertigt.\n\nAnalyse der Falschantworten:\n- A verrechnet sich bei den Zehnerpotenzen ($10^2$ statt $10^5$).\n- B vergisst das Ziehen der Quadratwurzel aus $v^2 \\approx 6{,}4 \\cdot 10^{11}$.\n- C ist die Vakuumlichtgeschwindigkeit.\n- E verrechnet sich beim Radizieren."
+  },
+  {
+    "id": "chem-02-set3-q073",
+    "set": 3,
+    "topic": "Spektralserien des Wasserstoffs — Energiedifferenz der Paschen-Serie",
+    "difficulty": "medium",
+    "question": "Im Infrarotspektrum des Wasserstoffatoms wird die erste Spektrallinie der Paschen-Serie beobachtet, die durch den Übergang von $n = 4$ nach $n = 3$ entsteht.\nGegeben sind die Bohrschen Energieniveaus: $E_3 = -1{,}51\\,\\text{eV}$ und $E_4 = -0{,}85\\,\\text{eV}$.\nWelche Energie $\\Delta E$ und welche ungefähre Wellenlänge $\\lambda$ besitzt das emittierte Infrarotphoton?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$\\Delta E = 0{,}66\\,\\text{eV}$ und $\\lambda \\approx 1880\\,\\text{nm}$",
+      "B": "$\\Delta E = 2{,}36\\,\\text{eV}$ und $\\lambda \\approx 525\\,\\text{nm}$",
+      "C": "$\\Delta E = 0{,}66\\,\\text{eV}$ und $\\lambda \\approx 660\\,\\text{nm}$",
+      "D": "$\\Delta E = 1{,}51\\,\\text{eV}$ und $\\lambda \\approx 820\\,\\text{nm}$",
+      "E": "$\\Delta E = 0{,}85\\,\\text{eV}$ und $\\lambda \\approx 1460\\,\\text{nm}$"
+    },
+    "correct_answer": "A",
+    "explanation": "1. Energiedifferenz des Quantensprungs berechnen:\n$$\\Delta E = E_4 - E_3 = -0{,}85\\,\\text{eV} - (-1{,}51\\,\\text{eV}) = -0{,}85\\,\\text{eV} + 1{,}51\\,\\text{eV} = 0{,}66\\,\\text{eV}$$\n\n2. Wellenlänge berechnen:\n$$\\lambda = \\frac{h \\cdot c}{\\Delta E} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{0{,}66\\,\\text{eV}} = \\frac{1240}{\\frac{2}{3}}\\,\\text{nm} = 1240 \\cdot 1{,}5\\,\\text{nm} = 1860\\,\\text{nm} \\approx 1880\\,\\text{nm}$$\nDiese Wellenlänge ($1{,}88\\,\\mu\\text{m}$) liegt tief im Infrarotbereich (IR), wie es für alle Linien der Paschen-Serie charakteristisch ist.\n\nAnalyse der Falschantworten:\n- B addiert die Beträge der beiden Niveaus ($1{,}51 + 0{,}85 = 2{,}36\\,\\text{eV}$).\n- C berechnet die Energie zwar richtig, ordnet ihr aber fälschlich eine sichtbare Wellenlänge zu ($1240 / 0{,}66 \\neq 660$).\n- D setzt das Energieniveau von $E_3$ an.\n- E setzt das Energieniveau von $E_4$ an."
+  },
+  {
+    "id": "chem-02-set3-q074",
+    "set": 3,
+    "topic": "Transversalwellen — Orthogonalität der Feldvektoren elektromagnetischer Wellen",
+    "difficulty": "medium",
+    "question": "Elektromagnetische Strahlung (z. B. sichtbares Licht oder UV-Wellen) breitet sich im Vakuum als Transversalwelle aus. Welche Aussage über die Schwingungsrichtung des elektrischen Feldes $\\vec{E}$, des magnetischen Feldes $\\vec{B}$ und der Ausbreitungsrichtung $\\vec{c}$ trifft uneingeschränkt zu?",
+    "options": {
+      "A": "Das elektrische Feld $\\vec{E}$ schwingt parallel zur Ausbreitungsrichtung $\\vec{c}$, während das magnetische Feld $\\vec{B}$ senkrecht auf beiden steht.",
+      "B": "$\\vec{E}$, $\\vec{B}$ und $\\vec{c}$ stehen paarweise senkrecht aufeinander ($\\vec{E} \\perp \\vec{B} \\perp \\vec{c}$) und schwingen im freien Raum gleichphasig.",
+      "C": "$\\vec{E}$ und $\\vec{B}$ weisen stets in dieselbe Raumrichtung und rotieren gemeinsam um $\\vec{c}$.",
+      "D": "Das Magnetfeld eilt dem elektrischen Feld im Vakuum stets um eine Phasenverschiebung von $90^\\circ$ voraus.",
+      "E": "Nur bei künstlich polarisiertem Licht steht $\\vec{E}$ senkrecht auf $\\vec{c}$; bei natürlichem Licht schwingt $\\vec{E}$ rein longitudinal."
+    },
+    "correct_answer": "B",
+    "explanation": "Aus den fundamentalen Maxwell-Gleichungen der Elektrodynamik folgt direkt für eine ebene elektromagnetische Welle im Vakuum:\n\n1. Transversalität: Weder das elektrische Feld noch das magnetische Feld besitzen Komponenten in Ausbreitungsrichtung ($\\vec{E} \\cdot \\vec{c} = 0$ und $\\vec{B} \\cdot \\vec{c} = 0$).\n2. Orthogonalität: Die Vektoren $\\vec{E}$, $\\vec{B}$ und der Wellenvektor $\\vec{c}$ bilden zu jedem Zeitpunkt ein orthogonales Rechtssystem ($\\vec{E} \\perp \\vec{B} \\perp \\vec{c}$).\n3. Phasenlage im Vakuum: Beide Felder erreichen ihre Maxima und Minima am selben Raumpunkt zur selben Zeit; sie schwingen im freien Raum exakt gleichphasig.\n\nAnalyse der Falschantworten:\n- A beschreibt eine Longitudinalwelle.\n- C verneint die Orthogonalität zwischen $\\vec{E}$ und $\\vec{B}$.\n- D beschreibt stehende Wellen im Hohlraumresonator, nicht die freie Welle.\n- E verkennt, dass auch unpolarisiertes Licht rein transversal ist (die Polarisationsebene fluktuiert lediglich statistisch)."
+  },
+  {
+    "id": "chem-02-set3-q075",
+    "set": 3,
+    "topic": "Umfassende Fehlerdiagnose — Quantenmechanische Konzepte im Mikrokosmos",
+    "difficulty": "medium",
+    "question": "Ein Student fasst seine Lernnotizen für den MedAT-BMS im Fach Chemie zum Thema „Mikrokosmos“ zusammen. Welche der folgenden fünf Aussagen enthält einen gravierenden physikalisch-chemischen Denkfehler?",
+    "options": {
+      "A": "Bei der Interferenz von Photonen am Doppelspalt interferiert jedes einzelne Photon im quantenmechanischen Sinne mit sich selbst; die Welle beschreibt die Wahrscheinlichkeitsamplitude des Nachweises.",
+      "B": "Die De-Broglie-Wellenlänge eines Teilchens sinkt mit wachsender Geschwindigkeit und wachsender Masse.",
+      "C": "Die maximale kinetische Energie von Photoelektronen beim äußeren Photoeffekt ist streng proportional zur Intensität des eingestrahlten Lichts, da intensiveres Licht stärkere elektrische Wechselfelder erzeugt.",
+      "D": "Die Heisenbergsche Unschärferelation verbietet die exakte gleichzeitige Bestimmbarkeit von Ort und Impuls eines Elektrons und erzwingt das dreidimensionale Orbitalmodell der Atomhülle.",
+      "E": "Ein Photon im Vakuum besitzt eine Ruhemasse von null, trägt jedoch einen relativistischen Impuls von $p = \\frac{h}{\\lambda}$, wodurch es Strahlungsdruck ausüben kann."
+    },
+    "correct_answer": "C",
+    "explanation": "Aussage C enthält den klassischen, fundamentalen Irrglauben der vorkuantenphysikalischen Wellenoptik:\nBeim Photoelektrischen Effekt hängt die maximale kinetische Energie $E_{\\text{kin,max}}$ der Elektronen ausschließlich von der Frequenz $f$ (bzw. Wellenlänge $\\lambda$) des Lichts und der materialspezifischen Austrittsarbeit $W_A$ ab:\n$$E_{\\text{kin,max}} = h \\cdot f - W_A$$\nDie Intensität des Lichts bestimmt lediglich die Anzahl der Photonen pro Zeiteinheit und Fläche und steuert damit ausschließlich die Anzahl der pro Zeiteinheit emittierten Elektronen (den Photostrom), lässt die kinetische Energie des einzelnen Elektrons jedoch vollkommen unberührt!\n\nDie Aussagen A, B, D und E formulieren fundamentale, uneingeschränkt korrekte Grundprinzipien der modernen Quantenchemie und Physik."
+  },
+  {
+    "id": "chem-02-set4-q076",
+    "set": 4,
+    "topic": "Schnelle Photonenenergie-Berechnung mit dem MedAT-Kopfrechentrick",
+    "difficulty": "easy",
+    "question": "Ein Halbleiterlaser emittiert monochromatisches Licht der Wellenlänge $\\lambda = 620\\,\\text{nm}$. Welche Energie besitzt ein einzelnes Photon dieser Strahlung in Elektronenvolt ($\\text{eV}$)?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$2{,}0\\,\\text{eV}$",
+      "B": "$1{,}24\\,\\text{eV}$",
+      "C": "$0{,}5\\,\\text{eV}$",
+      "D": "$3{,}1\\,\\text{eV}$",
+      "E": "$4{,}0\\,\\text{eV}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Mit der MedAT-Standardformel $E = \\frac{h \\cdot c}{\\lambda}$ und dem Kopfrechenwert $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$ gilt:\n$$E = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{620\\,\\text{nm}} = 2{,}0\\,\\text{eV}$$\n(Kopfrechnung: $1240 / 620 = 2$).\n\n**Analyse der Falschantworten:**\n- **B** teilt $1240 / 1000 = 1{,}24\\,\\text{eV}$.\n- **C** rechnet fälschlich reziprok $620 / 1240 = 0{,}5\\,\\text{eV}$.\n- **D** entspricht blauem bzw. violettem Licht ($\\lambda = 400\\,\\text{nm}$).\n- **E** entspricht UV-Strahlung ($\\lambda = 310\\,\\text{nm}$)."
+  },
+  {
+    "id": "chem-02-set4-q077",
+    "set": 4,
+    "topic": "Photoeffekt — Schwellenfalle bei $f < f_0$",
+    "difficulty": "medium",
+    "question": "Eine Metallplatte mit der Grenzfrequenz $f_0$ wird mit monochromatischem Licht bestrahlt, dessen Frequenz kleiner als die Grenzfrequenz ist ($f < f_0$). Nun wird die Intensität (Bestrahlungsstärke) des Lichts verzehnfacht. Welche Folge hat dies für die Emission von Photoelektronen?",
+    "options": {
+      "A": "Es werden sofort zehnmal so viele Photoelektronen freigesetzt wie zuvor.",
+      "B": "Die maximale kinetische Energie der austretenden Elektronen verzehnfacht sich.",
+      "C": "Es werden weiterhin überhaupt keine Photoelektronen freigesetzt.",
+      "D": "Nach einer kurzen Verzögerungszeit setzt ein schwacher Photostrom ein.",
+      "E": "Die Austrittsarbeit des Metalls sinkt auf ein Zehntel ihres ursprünglichen Werts ab."
+    },
+    "correct_answer": "C",
+    "explanation": "Nach Einsteins Lichtquantenhypothese erfolgt die Wechselwirkung streng als 1-zu-1-Stoß zwischen jeweils genau einem Photon und genau einem Elektron.\nGilt $f < f_0$, ist die Energie des einzelnen Photons kleiner als die materialspezifische Austrittsarbeit ($h \\cdot f < W_A$). Eine Verzehnfachung der Intensität erhöht lediglich die Photonenanzahl pro Sekunde, ändert jedoch an der Energie des einzelnen Photons nichts. Da kein Photon die Energieschwelle überwinden kann, wird kein einziges Elektron emittiert.\n\n**Analyse der Falschantworten:**\n- **A** und **B** basieren auf der klassischen Wellenvorstellung einer kontinuierlichen Energieakkumulation.\n- **D** ignoriert die verzögerungsfreie Natur von Quantensprüngen (sofortige Emission oder gar keine).\n- **E** behauptet fälschlich eine Veränderung der Materialkonstante $W_A$."
+  },
+  {
+    "id": "chem-02-set4-q078",
+    "set": 4,
+    "topic": "Elektromagnetisches Spektrum — Kürzeste Wellenlänge",
+    "difficulty": "easy",
+    "question": "Welche der folgenden Strahlungsarten des elektromagnetischen Spektrums weist im Vakuum die kürzeste Wellenlänge und somit die höchste Photonenenergie auf?",
+    "options": {
+      "A": "Mikrowellen",
+      "B": "Infrarotstrahlung",
+      "C": "Sichtbares Licht",
+      "D": "Ultraviolettstrahlung",
+      "E": "Gammastrahlung"
+    },
+    "correct_answer": "E",
+    "explanation": "Die Reihung nach abnehmender Wellenlänge bzw. zunehmender Frequenz und Photonenenergie lautet:\n$$\\text{Radiowellen} > \\text{Mikrowellen} > \\text{Infrarot} > \\text{VIS} > \\text{UV} > \\text{Röntgen} > \\mathbf{\\text{Gammastrahlung}}$$\nGammastrahlung besitzt Wellenlängen von $\\lambda < 10^{-11}\\,\\text{m}$ (Pikometerbereich) und Quantenenergien weit über $100\\,\\text{keV}$, womit sie die energiereichste und kurzwelligste Strahlung des Spektrums darstellt.\n\n**Analyse der Falschantworten:**\n- **A** bis **D** liegen bei deutlich größeren Wellenlängen und niedrigeren Frequenzen."
+  },
+  {
+    "id": "chem-02-set4-q079",
+    "set": 4,
+    "topic": "De-Broglie-Wellenlänge — Schnelle Proportionalität bei Geschwindigkeitsänderung",
+    "difficulty": "medium",
+    "question": "Die Geschwindigkeit eines Elektrons wird durch Abbremsen exakt halbiert ($v_2 = \\frac{1}{2} \\cdot v_1$). Wie verändert sich dadurch seine De-Broglie-Wellenlänge $\\lambda$?",
+    "options": {
+      "A": "Sie halbiert sich ($\\lambda_2 = \\frac{1}{2} \\cdot \\lambda_1$).",
+      "B": "Sie verdoppelt sich ($\\lambda_2 = 2 \\cdot \\lambda_1$).",
+      "C": "Sie viertelt sich ($\\lambda_2 = \\frac{1}{4} \\cdot \\lambda_1$).",
+      "D": "Sie vervierfacht sich ($\\lambda_2 = 4 \\cdot \\lambda_1$).",
+      "E": "Sie bleibt vollkommen unverändert."
+    },
+    "correct_answer": "B",
+    "explanation": "Nach Louis de Broglie gilt:\n$$\\lambda = \\frac{h}{p} = \\frac{h}{m \\cdot v} \\implies \\lambda \\propto \\frac{1}{v}$$\nDie De-Broglie-Wellenlänge verhält sich streng umgekehrt proportional zur Geschwindigkeit.\nWird $v$ halbiert ($v_2 = \\frac{1}{2} v_1$), verdoppelt sich $\\lambda$:\n$$\\lambda_2 = \\frac{h}{m \\cdot \\frac{1}{2} v_1} = 2 \\cdot \\frac{h}{m \\cdot v_1} = 2 \\cdot \\lambda_1$$\n\n**Analyse der Falschantworten:**\n- **A** nimmt irrtümlich eine direkte Proportionalität an.\n- **C** und **D** verwechseln die De-Broglie-Beziehung mit der kinetischen Energie ($E_{\\text{kin}} \\propto v^2$).\n- **E** nimmt fälschlich Unabhängigkeit von der Geschwindigkeit an."
+  },
+  {
+    "id": "chem-02-set4-q080",
+    "set": 4,
+    "topic": "Photoeffekt — Schnelle Bremsspannungs-Berechnung",
+    "difficulty": "hard",
+    "question": "Eine Metalloberfläche mit der Austrittsarbeit $W_A = 2{,}2\\,\\text{eV}$ wird mit monochromatischem UV-Licht der Wellenlänge $\\lambda = 310\\,\\text{nm}$ bestrahlt. Welche Gegenspannung $U_0$ muss anliegen, um den Photostrom vollständig zu unterdrücken?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$U_0 = 4{,}0\\,\\text{V}$",
+      "B": "$U_0 = 1{,}8\\,\\text{V}$",
+      "C": "$U_0 = 2{,}2\\,\\text{V}$",
+      "D": "$U_0 = 6{,}2\\,\\text{V}$",
+      "E": "$U_0 = 0{,}9\\,\\text{V}$"
+    },
+    "correct_answer": "B",
+    "explanation": "1. Photonenenergie im Kopf berechnen:\n$$E_{\\text{Photon}} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{310\\,\\text{nm}} = 4{,}0\\,\\text{eV}$$\n2. Maximale kinetische Energie ermitteln:\n$$E_{\\text{kin,max}} = E_{\\text{Photon}} - W_A = 4{,}0\\,\\text{eV} - 2{,}2\\,\\text{eV} = 1{,}8\\,\\text{eV}$$\n3. Bremsspannung ableiten:\n$$e \\cdot U_0 = E_{\\text{kin,max}} \\implies e \\cdot U_0 = 1{,}8\\,\\text{eV} \\implies U_0 = 1{,}8\\,\\text{V}$$\n\n**Analyse der Falschantworten:**\n- **A** entspricht der gesamten Photonenenergie ohne Abzug der Austrittsarbeit ($4{,}0\\,\\text{V}$).\n- **C** ist die Austrittsarbeit in Volt ($2{,}2\\,\\text{V}$).\n- **D** addiert fälschlich Photonenenergie und Austrittsarbeit ($4{,}0 + 2{,}2 = 6{,}2\\,\\text{V}$).\n- **E** halbiert fälschlicherweise das Ergebnis."
+  },
+  {
+    "id": "chem-02-set4-q081",
+    "set": 4,
+    "topic": "Unschärferelation — Impulsunschärfe bei gleicher Geschwindigkeitsunschärfe",
+    "difficulty": "medium",
+    "question": "Ein Proton ist rund 1836-mal schwerer als ein Elektron ($m_p \\approx 1836 \\cdot m_e$). Beide Teilchen besitzen die exakt gleiche Geschwindigkeitsunschärfe ($\\Delta v_p = \\Delta v_e$). In welchem Verhältnis stehen ihre minimalen Impulsunschärfen $\\frac{\\Delta p_p}{\\Delta p_e}$ zueinander?",
+    "options": {
+      "A": "$\\frac{\\Delta p_p}{\\Delta p_e} \\approx 1836 : 1$",
+      "B": "$\\frac{\\Delta p_p}{\\Delta p_e} \\approx 1 : 1836$",
+      "C": "$\\frac{\\Delta p_p}{\\Delta p_e} = 1 : 1$",
+      "D": "$\\frac{\\Delta p_p}{\\Delta p_e} \\approx \\sqrt{1836} : 1$",
+      "E": "$\\frac{\\Delta p_p}{\\Delta p_e} \\approx 1836^2 : 1$"
+    },
+    "correct_answer": "A",
+    "explanation": "Der Impuls ist definiert als $p = m \\cdot v$, woraus für die Impulsunschärfe folgt:\n$$\\Delta p = m \\cdot \\Delta v$$\nDa $\\Delta v$ für beide Teilchen identisch ist, gilt:\n$$\\Delta p \\propto m$$\nDas Verhältnis der Impulsunschärfen entspricht direkt dem Massenverhältnis:\n$$\\frac{\\Delta p_p}{\\Delta p_e} = \\frac{m_p \\cdot \\Delta v}{m_e \\cdot \\Delta v} = \\frac{m_p}{m_e} \\approx 1836 : 1$$\n*(Achtung: Hätte die Frage nach der Ortsunschärfe $\\Delta x$ bei gleichem $\\Delta v$ gefragt, wäre das Verhältnis $1 : 1836$, da $\\Delta x \\propto \\frac{1}{m}$. Hier wird jedoch explizit nach $\\Delta p$ gefragt!)*\n\n**Analyse der Falschantworten:**\n- **B** verwechselt Impulsunschärfe $\\Delta p$ mit Ortsunschärfe $\\Delta x$.\n- **C** nimmt an, dass $\\Delta p$ für alle Teilchen universell identisch sein müsse.\n- **D** und **E** verwenden falsche Potenzen."
+  },
+  {
+    "id": "chem-02-set4-q082",
+    "set": 4,
+    "topic": "Transversalität von Licht — Orthogonalität der Feldvektoren",
+    "difficulty": "easy",
+    "question": "Welche geometrische Ausrichtung besitzen der elektrische Feldvektor $\\vec{E}$, der magnetische Feldvektor $\\vec{B}$ und die Ausbreitungsrichtung $\\vec{c}$ einer elektromagnetischen Welle im Vakuum?",
+    "options": {
+      "A": "$\\vec{E}$ und $\\vec{B}$ stehen parallel zueinander und schwingen in Richtung von $\\vec{c}$.",
+      "B": "$\\vec{E}$ steht senkrecht auf $\\vec{B}$, und beide stehen senkrecht auf $\\vec{c}$ ($\\vec{E} \\perp \\vec{B} \\perp \\vec{c}$).",
+      "C": "$\\vec{E}$ schwingt longitudinal in Richtung von $\\vec{c}$, während $\\vec{B}$ transversal dazu orientiert ist.",
+      "D": "$\\vec{E}$ und $\\vec{B}$ schließen im Vakuum stets einen Winkel von $45^\\circ$ ein.",
+      "E": "Nur bei polarisiertem Licht stehen die Vektoren senkrecht; unpolarisiertes Licht schwingt chaotisch in alle Richtungen entlang $\\vec{c}$."
+    },
+    "correct_answer": "B",
+    "explanation": "Elektromagnetische Wellen sind reine Transversalwellen. Im Vakuum gilt zu jedem Zeitpunkt und an jedem Ort strikt:\n$$\\vec{E} \\perp \\vec{B}, \\quad \\vec{E} \\perp \\vec{c}, \\quad \\vec{B} \\perp \\vec{c}$$\nDie Feldvektoren $\\vec{E}$ und $\\vec{B}$ sowie der Ausbreitungsvektor $\\vec{c}$ bilden ein orthogonales Rechtssystem.\n\n**Analyse der Falschantworten:**\n- **A** und **C** beschreiben ganz oder teilweise Longitudinalwellen (z. B. Schall).\n- **D** nennt einen falschen Winkel.\n- **E** verkennt, dass auch unpolarisiertes Licht rein transversal schwingt."
+  },
+  {
+    "id": "chem-02-set4-q083",
+    "set": 4,
+    "topic": "Balmer-Serie — Größte Wellenlänge (Kleinste Energie)",
+    "difficulty": "medium",
+    "question": "Welcher Elektronenübergang im Wasserstoffatom erzeugt die Spektrallinie der Balmer-Serie mit der längsten Wellenlänge ($\\lambda_{\\text{max}}$)?",
+    "options": {
+      "A": "$n = 1 \\rightarrow n = 2$",
+      "B": "$n = 2 \\rightarrow n = 1$",
+      "C": "$n = 4 \\rightarrow n = 2$",
+      "D": "$n = 3 \\rightarrow n = 2$",
+      "E": "$n = \\infty \\rightarrow n = 2$"
+    },
+    "correct_answer": "D",
+    "explanation": "Zwei Gesetzmäßigkeiten führen direkt zur Lösung:\n1. **Balmer-Serie:** Emissionen enden auf dem unteren Niveau $n = 2$ (Übergänge von $n \\ge 3$ nach $n = 2$). Damit scheiden A und B sofort aus.\n2. **Längste Wellenlänge:** Wegen $E = \\frac{h \\cdot c}{\\lambda}$ entspricht die größte Wellenlänge $\\lambda_{\\text{max}}$ dem kleinstmöglichen Energiesprung $\\Delta E_{\\text{min}}$.\nDer kleinste Energiesprung innerhalb der Balmer-Serie ist der Übergang vom unmittelbar darüberliegenden Niveau:\n$$n = 3 \\rightarrow n = 2 \\quad (H_\\alpha\\text{-Linie}, \\Delta E \\approx 1{,}89\\,\\text{eV}, \\lambda \\approx 656\\,\\text{nm, rot})$$\n\n**Analyse der Falschantworten:**\n- **A** ist eine Absorption der Lyman-Serie.\n- **B** ist eine Emission der Lyman-Serie ($n = 2 \\rightarrow 1$, UV-Bereich).\n- **C** ist die energiereichere $H_\\beta$-Linie ($n = 4 \\rightarrow 2$, $\\lambda \\approx 486\\,\\text{nm}$, blaugrün).\n- **E** liefert die maximale Energie und somit die kürzeste Wellenlänge der Serie (Seriengrenze bei ca. $365\\,\\text{nm}$)."
+  },
+  {
+    "id": "chem-02-set4-q084",
+    "set": 4,
+    "topic": "Wellengleichung des Lichts — Schnelle Wellenlängenberechnung",
+    "difficulty": "medium",
+    "question": "Eine monochromatische Lichtquelle strahlt mit einer Frequenz von $f = 6 \\cdot 10^{14}\\,\\text{Hz}$. Welche Wellenlänge $\\lambda$ besitzt dieses Licht im Vakuum?\n(Lichtgeschwindigkeit $c = 3 \\cdot 10^8\\,\\text{m/s}$).",
+    "options": {
+      "A": "$200\\,\\text{nm}$",
+      "B": "$500\\,\\text{nm}$",
+      "C": "$300\\,\\text{nm}$",
+      "D": "$600\\,\\text{nm}$",
+      "E": "$1800\\,\\text{nm}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Die fundamentale Wellengleichung lautet:\n$$c = \\lambda \\cdot f \\implies \\lambda = \\frac{c}{f}$$\nWerte einsetzen:\n$$\\lambda = \\frac{3 \\cdot 10^8\\,\\text{m/s}}{6 \\cdot 10^{14}\\,\\text{s}^{-1}} = \\frac{3}{6} \\cdot 10^{8-14}\\,\\text{m} = 0{,}5 \\cdot 10^{-6}\\,\\text{m} = 500 \\cdot 10^{-9}\\,\\text{m} = 500\\,\\text{nm}$$\n\n**Analyse der Falschantworten:**\n- **A** rechnet fälschlich $1 / 5 = 0{,}2$.\n- **C** teilt $6 / 2 = 3$.\n- **D** setzt den Frequenzziffernwert direkt als Wellenlänge an.\n- **E** multipliziert $c$ mit $f$ ($3 \\cdot 6 = 18$)."
+  },
+  {
+    "id": "chem-02-set4-q085",
+    "set": 4,
+    "topic": "Einstein-Gerade — Einfluss einer veränderten Austrittsarbeit",
+    "difficulty": "hard",
+    "question": "Trägt man die maximale kinetische Energie $E_{\\text{kin,max}}$ gegen die Frequenz $f$ auf, erhält man die lineare Einstein-Gerade:\n$$E_{\\text{kin,max}} = h \\cdot f - W_A$$\nWie verändert sich diese Gerade im Diagramm, wenn man die Photokathode durch ein anderes Metall mit größerer Austrittsarbeit ($W_{A,2} > W_{A,1}$) ersetzt?",
+    "options": {
+      "A": "Die Gerade wird steiler, da $h$ ansteigt.",
+      "B": "Die Gerade wird flacher, da $h$ abnimmt.",
+      "C": "Die Gerade verschiebt sich parallel nach rechts (zu höherer Grenzfrequenz $f_0$), während ihre Steigung $h$ exakt unverändert bleibt.",
+      "D": "Die Gerade verschiebt sich parallel nach links (zu kleinerer Grenzfrequenz $f_0$).",
+      "E": "Die Gerade rotiert um den Nullpunkt des Koordinatensystems."
+    },
+    "correct_answer": "C",
+    "explanation": "Die Geradengleichung lautet $y = k \\cdot x + d$ mit:\n- Steigung: $k = h$ (Planck-Konstante)\n- Ordinatenabschnitt: $d = -W_A$\n- Nullstelle (Grenzfrequenz auf der $x$-Achse): $f_0 = \\frac{W_A}{h}$\nDa $h$ eine universelle Naturkonstante ist, kann sich die Steigung der Geraden niemals ändern.\nWird die Austrittsarbeit $W_A$ vergrößert, verschiebt sich der Schnittpunkt mit der $y$-Achse weiter nach unten (zu negativeren Werten) und die Grenzfrequenz $f_0 = \\frac{W_A}{h}$ verschiebt sich nach rechts zu höheren Frequenzen. Die Gerade erfährt somit eine reine Parallelverschiebung nach rechts.\n\n**Analyse der Falschantworten:**\n- **A** und **B** behaupten fälschlicherweise eine Veränderung der universellen Naturkonstante $h$.\n- **D** verschiebt in die falsche Richtung.\n- **E** ignoriert die Parallelverschiebung."
+  },
+  {
+    "id": "chem-02-set4-q086",
+    "set": 4,
+    "topic": "Teilchen-Welle-Dualismus — Davisson-Germer-Experiment",
+    "difficulty": "medium",
+    "question": "Welches bahnbrechende Experiment lieferte 1927 den ersten direkten experimentellen Beweis für die von Louis de Broglie postulierte Wellennatur von Elektronen?",
+    "options": {
+      "A": "Der Millikan-Öltröpfchen-Versuch",
+      "B": "Das Rutherford-Streuexperiment an Goldfolie",
+      "C": "Das Davisson-Germer-Experiment (Beugung von Elektronen an einem Nickel-Kristall)",
+      "D": "Das Michelson-Morley-Experiment zur Ätherdrift",
+      "E": "Das Cavendish-Experiment zur Gravitationskonstante"
+    },
+    "correct_answer": "C",
+    "explanation": "Clinton Davisson und Lester Germer schossen langsame Elektronen auf einen Nickel-Einkristall und beobachteten die Intensitätsverteilung der reflektierten Elektronen. Sie fanden ausgeprägte Maxima und Minima (Interferenz- und Beugungsmuster), die exakt der Bragg-Gleichung für Wellen der De-Broglie-Wellenlänge $\\lambda = \\frac{h}{p}$ entsprachen. Dies bewies zweifelsfrei, dass Elektronen Beugungsphänomene zeigen und somit Wellennatur besitzen.\n\n**Analyse der Falschantworten:**\n- **A** (Millikan) bestimmte die Elementarladung $e$.\n- **B** (Rutherford) bewies die Existenz des kompakten Atomkerns.\n- **D** (Michelson-Morley) widerlegte den Lichtäther.\n- **E** (Cavendish) maß die makroskopische Gravitation."
+  },
+  {
+    "id": "chem-02-set4-q087",
+    "set": 4,
+    "topic": "Spektralfarben des sichtbaren Lichts — Höchste Frequenz",
+    "difficulty": "easy",
+    "question": "Welche Spektralfarbe des sichtbaren Lichts ($\\text{VIS}$, $380\\text{ bis }780\\,\\text{nm}$) besitzt die höchste Frequenz und die kürzeste Wellenlänge?",
+    "options": {
+      "A": "Rot",
+      "B": "Gelb",
+      "C": "Grün",
+      "D": "Orange",
+      "E": "Violett"
+    },
+    "correct_answer": "E",
+    "explanation": "Das sichtbare Spektrum erstreckt sich von ca. $380\\,\\text{nm}$ (Violett) bis $780\\,\\text{nm}$ (Rot).\nWegen $f = \\frac{c}{\\lambda}$ und $E = h \\cdot f = \\frac{h \\cdot c}{\\lambda}$ gilt:\nKürzeste Wellenlänge = höchste Frequenz = höchste Photonenenergie.\nViolettes Licht ($\\lambda \\approx 380 - 430\\,\\text{nm}$, $f \\approx 7 \\cdot 10^{14} - 7{,}9 \\cdot 10^{14}\\,\\text{Hz}$) markiert den energiereichsten und höchstfrequenten Rand des sichtbaren Spektrums.\n\n**Analyse der Falschantworten:**\n- **A** (Rot) ist die langwelligste, niederfrequenteste Farbe.\n- **B**, **C** und **D** liegen im mittleren Spektralbereich."
+  },
+  {
+    "id": "chem-02-set4-q088",
+    "set": 4,
+    "topic": "Wasserstoffatom — Bohrsches Energieniveau für $n = 2$",
+    "difficulty": "medium",
+    "question": "Die Energieniveaus des Elektrons im Wasserstoffatom gehorchen der Formel:\n$$E_n = -\\frac{13{,}6\\,\\text{eV}}{n^2}$$\nWelche Energie besitzt das Elektron im ersten angeregten Zustand ($n = 2$)?",
+    "options": {
+      "A": "$-13{,}6\\,\\text{eV}$",
+      "B": "$-6{,}8\\,\\text{eV}$",
+      "C": "$-1{,}51\\,\\text{eV}$",
+      "D": "$-3{,}4\\,\\text{eV}$",
+      "E": "$+3{,}4\\,\\text{eV}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Für den ersten angeregten Zustand gilt die Hauptquantenzahl $n = 2$.\nEinsetzen in die Bohrsche Formel:\n$$E_2 = -\\frac{13{,}6\\,\\text{eV}}{2^2} = -\\frac{13{,}6\\,\\text{eV}}{4} = -3{,}4\\,\\text{eV}$$\n(Rechnung im Kopf: $13{,}6 / 2 = 6{,}8$; $6{,}8 / 2 = 3{,}4$).\n\n**Analyse der Falschantworten:**\n- **A** ist der Grundzustand ($n = 1$).\n- **B** teilt fälschlich linear durch 2 ($-13{,}6 / 2 = -6{,}8\\,\\text{eV}$).\n- **C** ist der zweite angeregte Zustand ($n = 3$: $-13{,}6 / 9 \\approx -1{,}51\\,\\text{eV}$).\n- **E** trägt ein falsches positives Vorzeichen (gebundene Zustände haben stets negative Energien!)."
+  },
+  {
+    "id": "chem-02-set4-q089",
+    "set": 4,
+    "topic": "Photoeffekt — Rückrechnung der Austrittsarbeit aus der Bremsspannung",
+    "difficulty": "hard",
+    "question": "Bestrahlt man eine Metallkathode mit monochromatischem Licht der Wellenlänge $\\lambda = 400\\,\\text{nm}$, wird eine Gegenspannung von $U_0 = 1{,}5\\,\\text{V}$ benötigt, um den Photostrom vollständig zu stoppen. Wie groß ist die Austrittsarbeit $W_A$ des Kathodenmaterials?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$W_A = 4{,}6\\,\\text{eV}$",
+      "B": "$W_A = 3{,}1\\,\\text{eV}$",
+      "C": "$W_A = 1{,}5\\,\\text{eV}$",
+      "D": "$W_A = 1{,}6\\,\\text{eV}$",
+      "E": "$W_A = 0{,}6\\,\\text{eV}$"
+    },
+    "correct_answer": "D",
+    "explanation": "1. Photonenenergie berechnen:\n$$E_{\\text{Photon}} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{400\\,\\text{nm}} = \\frac{124}{40}\\,\\text{eV} = 3{,}1\\,\\text{eV}$$\n2. Kinetische Energie aus Bremsspannung ableiten:\n$$E_{\\text{kin,max}} = e \\cdot U_0 = 1{,}5\\,\\text{eV}$$\n3. Austrittsarbeit nach Einstein umstellen:\n$$E_{\\text{kin,max}} = E_{\\text{Photon}} - W_A \\implies W_A = E_{\\text{Photon}} - E_{\\text{kin,max}}$$\n$$W_A = 3{,}1\\,\\text{eV} - 1{,}5\\,\\text{eV} = 1{,}6\\,\\text{eV}$$\n\n**Analyse der Falschantworten:**\n- **A** addiert fälschlicherweise Photonenenergie und kinetische Energie ($3{,}1 + 1{,}5 = 4{,}6\\,\\text{eV}$).\n- **B** ist die unkorrigierte Photonenenergie ($3{,}1\\,\\text{eV}$).\n- **C** ist der reine Zahlenwert der Gegenspannung ($1{,}5\\,\\text{V} \\rightarrow 1{,}5\\,\\text{eV}$).\n- **E** subtrahiert fälschlich $1{,}5$ von $2{,}1$."
+  },
+  {
+    "id": "chem-02-set4-q090",
+    "set": 4,
+    "topic": "Proportionalitätslogik — Verdreifachung der Wellenlänge",
+    "difficulty": "medium",
+    "question": "Die Wellenlänge einer monochromatischen elektromagnetischen Strahlung wird von $\\lambda_1$ auf $\\lambda_2 = 3 \\cdot \\lambda_1$ verdreifacht. Welche Aussage über die neue Frequenz $f_2$ und die neue Photonenenergie $E_2$ trifft zu?",
+    "options": {
+      "A": "Sowohl $f_2$ als auch $E_2$ verdreifachen sich.",
+      "B": "f_2 verdreifacht sich, während $E_2$ auf ein Drittel sinkt.",
+      "C": "Sowohl $f_2$ als auch $E_2$ sinken auf ein Drittel des ursprünglichen Werts ($f_2 = \\frac{1}{3} f_1$ und $E_2 = \\frac{1}{3} E_1$).",
+      "D": "$f_2$ sinkt auf ein Drittel, während $E_2$ auf ein Neuntel absinkt.",
+      "E": "$f_2$ bleibt konstant, während $E_2$ verdreifacht wird."
+    },
+    "correct_answer": "C",
+    "explanation": "Die grundlegenden Zusammenhänge lauten:\n1. $c = \\lambda \\cdot f \\implies f = \\frac{c}{\\lambda} \\implies f \\propto \\frac{1}{\\lambda}$.\nWird $\\lambda$ verdreifacht, sinkt die Frequenz auf ein Drittel ($f_2 = \\frac{1}{3} f_1$).\n2. $E = h \\cdot f = \\frac{h \\cdot c}{\\lambda} \\implies E \\propto f \\propto \\frac{1}{\\lambda}$.\nDa Energie und Frequenz streng proportional zueinander sind und beide umgekehrt proportional zur Wellenlänge sind, sinkt auch die Photonenenergie auf ein Drittel ($E_2 = \\frac{1}{3} E_1$).\n\n**Analyse der Falschantworten:**\n- **A**, **B**, **D** und **E** verletzen die elementaren Proportionalitäten $c = \\lambda \\cdot f$ und $E = h \\cdot f$."
+  },
+  {
+    "id": "chem-02-set4-q091",
+    "set": 4,
+    "topic": "Paschen-Serie — Spektralbereich",
+    "difficulty": "easy",
+    "question": "In welchem Bereich des elektromagnetischen Spektrums liegen die Emissionslinien der Paschen-Serie des Wasserstoffatoms (Übergänge mit Endzustand $n_1 = 3$)?",
+    "options": {
+      "A": "Gammastrahlung",
+      "B": "Röntgenstrahlung",
+      "C": "Ultraviolettstrahlung (UV)",
+      "D": "Sichtbares Licht (VIS)",
+      "E": "Infrarotstrahlung (IR)"
+    },
+    "correct_answer": "E",
+    "explanation": "Die Spektralserien des Wasserstoffs sind festen Spektralbereichen zugeordnet:\n- **Lyman-Serie** ($n \\rightarrow 1$): Ultraviolettstrahlung (UV)\n- **Balmer-Serie** ($n \\rightarrow 2$): Sichtbares Licht (VIS) und nahes UV\n- **Paschen-Serie** ($n \\rightarrow 3$): Infrarotstrahlung (IR)\n- **Brackett-Serie** ($n \\rightarrow 4$): Infrarotstrahlung (IR)\n- **Pfund-Serie** ($n \\rightarrow 5$): Infrarotstrahlung (IR)\nDa der Energiesprung auf das Niveau $n = 3$ vergleichsweise klein ist ($\\Delta E < 1{,}51\\,\\text{eV}$), besitzen alle emittierten Photonen Wellenlängen von $\\lambda > 820\\,\\text{nm}$, was dem Infrarotbereich entspricht.\n\n**Analyse der Falschantworten:**\n- **A** und **B** sind kernphysikalische bzw. hochenergetische Prozesse.\n- **C** ist die Lyman-Serie.\n- **D** ist die Balmer-Serie."
+  },
+  {
+    "id": "chem-02-set4-q092",
+    "set": 4,
+    "topic": "Welleneigenschaften — Schnelle Berechnung der Periodendauer",
+    "difficulty": "medium",
+    "question": "Eine Lichtwelle besitzt im Vakuum eine Wellenlänge von $\\lambda = 600\\,\\text{nm}$. Welche Periodendauer $T$ besitzt die Schwingung des elektrischen Feldes?\n(Lichtgeschwindigkeit $c = 3 \\cdot 10^8\\,\\text{m/s}$).",
+    "options": {
+      "A": "$2 \\cdot 10^{-15}\\,\\text{s}$",
+      "B": "$5 \\cdot 10^{-15}\\,\\text{s}$",
+      "C": "$2 \\cdot 10^{-14}\\,\\text{s}$",
+      "D": "$5 \\cdot 10^{14}\\,\\text{s}$",
+      "E": "$1{,}8 \\cdot 10^{-11}\\,\\text{s}$"
+    },
+    "correct_answer": "A",
+    "explanation": "1. Frequenz berechnen:\n$$f = \\frac{c}{\\lambda} = \\frac{3 \\cdot 10^8\\,\\text{m/s}}{600 \\cdot 10^{-9}\\,\\text{m}} = \\frac{3 \\cdot 10^8}{6 \\cdot 10^{-7}} = 0{,}5 \\cdot 10^{15}\\,\\text{Hz} = 5 \\cdot 10^{14}\\,\\text{s}^{-1}$$\n2. Periodendauer $T = \\frac{1}{f}$ berechnen:\n$$T = \\frac{1}{5 \\cdot 10^{14}\\,\\text{s}^{-1}} = 0{,}2 \\cdot 10^{-14}\\,\\text{s} = 2 \\cdot 10^{-15}\\,\\text{s}$$\n(Rechnung im Kopf: $1 / 5 = 0{,}2$. Komma nach rechts $\\rightarrow 2 \\cdot 10^{-15}\\,\\text{s}$).\n\n**Analyse der Falschantworten:**\n- **B** dividiert $1 / 2$ statt $1 / 5$.\n- **C** weist einen Zehnerpotenzfehler auf.\n- **D** verwechselt Frequenz und Periodendauer.\n- **E** multipliziert $c$ mit $\\lambda$."
+  },
+  {
+    "id": "chem-02-set4-q093",
+    "set": 4,
+    "topic": "De-Broglie-Wellenlänge — Verknüpfung mit kinetischer Energie",
+    "difficulty": "hard",
+    "question": "Die kinetische Energie eines Elektrons wird durch Abbremsen in einem elektrischen Gegenfeld auf ein Viertel ihres ursprünglichen Werts reduziert ($E_{\\text{kin,2}} = \\frac{1}{4} \\cdot E_{\\text{kin,1}}$). Wie verändert sich dadurch die De-Broglie-Wellenlänge $\\lambda$ des Elektrons?",
+    "options": {
+      "A": "Sie viertelt sich ($\\lambda_2 = \\frac{1}{4} \\lambda_1$).",
+      "B": "Sie halbiert sich ($\\lambda_2 = \\frac{1}{2} \\lambda_1$).",
+      "C": "Sie bleibt vollkommen gleich.",
+      "D": "Sie vervierfacht sich ($\\lambda_2 = 4 \\lambda_1$).",
+      "E": "Sie verdoppelt sich ($\\lambda_2 = 2 \\lambda_1$)."
+    },
+    "correct_answer": "E",
+    "explanation": "Die kinetische Energie ist mit dem Impuls verknüpft über:\n$$E_{\\text{kin}} = \\frac{p^2}{2m} \\iff p = \\sqrt{2m \\cdot E_{\\text{kin}}}$$\nSetzt man dies in die De-Broglie-Gleichung ein:\n$$\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2m \\cdot E_{\\text{kin}}}} \\implies \\lambda \\propto \\frac{1}{\\sqrt{E_{\\text{kin}}}}$$\nWird die Energie geviertelt ($E_{\\text{kin,2}} = \\frac{1}{4} E_{\\text{kin,1}}$):\n$$\\lambda_2 = \\frac{h}{\\sqrt{2m \\cdot \\frac{1}{4} E_{\\text{kin,1}}}} = \\frac{h}{\\frac{1}{2} \\cdot \\sqrt{2m \\cdot E_{\\text{kin,1}}}} = 2 \\cdot \\lambda_1$$\nDie De-Broglie-Wellenlänge verdoppelt sich somit.\n\n**Analyse der Falschantworten:**\n- **A** und **B** nehmen an, dass $\\lambda$ mit sinkender Energie kleiner wird.\n- **C** ignoriert die Energieabhängigkeit.\n- **D** vergisst die Quadratwurzel aus dem Energiefaktor ($1 / (1/4) = 4$)."
+  },
+  {
+    "id": "chem-02-set4-q094",
+    "set": 4,
+    "topic": "Wasserstoffatom — Schnelle Absorptionsrechnung",
+    "difficulty": "medium",
+    "question": "Ein Wasserstoffatom befindet sich im Grundzustand ($n = 1$, $E_1 = -13{,}6\\,\\text{eV}$). Es absorbiert ein einzelnes Photon mit der Energie $E_{\\text{Photon}} = 10{,}2\\,\\text{eV}$. In welches quantisierte Energieniveau $n$ wird das Elektron dadurch angeregt?",
+    "options": {
+      "A": "$n = 2$",
+      "B": "$n = 3$",
+      "C": "$n = 4$",
+      "D": "$n = \\infty$ (Das Atom wird ionisiert)",
+      "E": "Es kann kein Übergang stattfinden, da Photonen keine gebrochenen eV-Werte anregen können."
+    },
+    "correct_answer": "A",
+    "explanation": "Nach der Energieerhaltung entspricht die neue Energie des Elektrons der Summe aus Ausgangsenergie und absorbierter Photonenenergie:\n$$E_{\\text{neu}} = E_1 + E_{\\text{Photon}} = -13{,}6\\,\\text{eV} + 10{,}2\\,\\text{eV} = -3{,}4\\,\\text{eV}$$\nVergleich mit den Bohrschen Energieniveaus ($E_n = -13{,}6\\,\\text{eV} / n^2$):\n- $n = 1 \\implies E_1 = -13{,}6\\,\\text{eV}$\n- $n = 2 \\implies E_2 = -13{,}6 / 4 = -3{,}4\\,\\text{eV}$\n- $n = 3 \\implies E_3 = -13{,}6 / 9 \\approx -1{,}51\\,\\text{eV}$\nDa $E_{\\text{neu}} = -3{,}4\\,\\text{eV}$ exakt dem Niveau $n = 2$ entspricht, wird das Elektron genau in den Zustand $n = 2$ angeregt.\n\n**Analyse der Falschantworten:**\n- **B** erforderte $12{,}09\\,\\text{eV}$.\n- **C** erforderte $12{,}75\\,\\text{eV}$.\n- **D** erforderte mindestens $13{,}6\\,\\text{eV}$.\n- **E** ist falsch, da $10{,}2\\,\\text{eV}$ exakt der Resonanzsprung ist."
+  },
+  {
+    "id": "chem-02-set4-q095",
+    "set": 4,
+    "topic": "Photoeffekt — Schwellenwert-Ausschlusskriterium",
+    "difficulty": "medium",
+    "question": "Eine Metallplatte mit der Austrittsarbeit $W_A = 3{,}0\\,\\text{eV}$ wird mit grünem Licht der Wellenlänge $\\lambda = 500\\,\\text{nm}$ bestrahlt. Tritt ein äußerer Photoelektrischer Effekt auf?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "Ja, die austretenden Elektronen besitzen $E_{\\text{kin,max}} = 0{,}52\\,\\text{eV}$.",
+      "B": "Ja, aber nur wenn die Lichtintensität über $100\\,\\text{W/m}^2$ liegt.",
+      "C": "Nein, weil sichtbares Licht grundsätzlich niemals Photoelektronen auslösen kann.",
+      "D": "Nein, da die Energie eines Photons (ca. $2{,}48\\,\\text{eV}$) kleiner ist als die Austrittsarbeit ($3{,}0\\,\\text{eV}$).",
+      "E": "Ja, die austretenden Elektronen besitzen $E_{\\text{kin,max}} = 3{,}0\\,\\text{eV}$."
+    },
+    "correct_answer": "D",
+    "explanation": "1. Photonenenergie im Kopf berechnen:\n$$E_{\\text{Photon}} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{500\\,\\text{nm}} = \\frac{1240}{500}\\,\\text{eV} = \\frac{12{,}4}{5}\\,\\text{eV} = 2{,}48\\,\\text{eV}$$\n2. Abgleich mit der Austrittsarbeit:\nDa $E_{\\text{Photon}} = 2{,}48\\,\\text{eV} < W_A = 3{,}0\\,\\text{eV}$ ist, reicht die Energie des einzelnen Photons nicht aus, um das Elektron aus dem Gitter zu lösen. Es tritt kein Photoeffekt auf.\n\n**Analyse der Falschantworten:**\n- **A** rechnet falsch bzw. subtrahiert unzutreffend.\n- **B** unterliegt dem Intensitätsirrtum.\n- **C** ist falsch, da sichtbares Licht an Alkalimetallen (z. B. Caesium mit $W_A = 2{,}1\\,\\text{eV}$) sehr wohl Photoelektronen auslösen kann.\n- **E** nennt die Austrittsarbeit als kinetische Energie."
+  },
+  {
+    "id": "chem-02-set4-q096",
+    "set": 4,
+    "topic": "Unschärferelation — Mathematischer Grenzfall exakter Lokalisierung",
+    "difficulty": "medium",
+    "question": "Was würde nach der Heisenbergschen Unschärferelation ($\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$) passieren, wenn man den Aufenthaltsort eines Elektrons mathematisch absolut exakt auf einen Punkt festlegen könnte ($\\Delta x \\rightarrow 0$)?",
+    "options": {
+      "A": "Der Impuls des Elektrons würde exakt null werden ($\\Delta p = 0$).",
+      "B": "Die Impulsunschärfe $\\Delta p$ und damit die Geschwindigkeits- und kinetische Energieunschärfe des Elektrons würden gegen unendlich streben ($\\Delta p \\rightarrow \\infty$).",
+      "C": "Das Elektron würde augenblicklich zerstrahlen und seine Masse verlieren.",
+      "D": "Das Produkt $\\Delta x \\cdot \\Delta p$ würde exakt den Wert null annehmen.",
+      "E": "Die Masse des Elektrons würde auf das Doppelte ansteigen."
+    },
+    "correct_answer": "B",
+    "explanation": "Aus $\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$ folgt für die Impulsunschärfe:\n$$\\Delta p \\ge \\frac{h}{4\\pi \\cdot \\Delta x}$$\nLässt man die Ortsunschärfe gegen null gehen ($\\Delta x \\rightarrow 0$), divergiert der Nenner gegen null, wodurch der Bruch gegen unendlich strebt:\n$$\\lim_{\\Delta x \\rightarrow 0} \\Delta p = \\infty$$\nEin absolut exakt lokalisierter Zustand hätte eine unendlich große Impuls- und Energieunschärfe. Dies ist der fundamentale Grund, warum Elektronen in Atomen keine unendlich scharfen Punkte sein können, sondern als dreidimensionale Orbitale (Aufenthaltswahrscheinlichkeitsdichten) existieren müssen.\n\n**Analyse der Falschantworten:**\n- **A** und **D** verletzen die Ungleichung (Produkt kann niemals null sein!).\n- **C** und **E** sind spekulative Fehlannahmen."
+  },
+  {
+    "id": "chem-02-set4-q097",
+    "set": 4,
+    "topic": "Wasserstoffähnliche Ionen — Grundzustandsenergie von $\\text{Li}^{2+}$",
+    "difficulty": "hard",
+    "question": "Für wasserstoffähnliche Einelektronensysteme gilt für die Energieniveaus die Formel:\n$$E_n = -13{,}6\\,\\text{eV} \\cdot \\frac{Z^2}{n^2}$$\nWelche Energie besitzt das verbliebene Elektron im Grundzustand ($n = 1$) eines zweifach ionisierten Lithium-Ions ($\\text{Li}^{2+}$, Kernladungszahl $Z = 3$)?",
+    "options": {
+      "A": "$-13{,}6\\,\\text{eV}$",
+      "B": "$-40{,}8\\,\\text{eV}$",
+      "C": "$-54{,}4\\,\\text{eV}$",
+      "D": "$-122{,}4\\,\\text{eV}$",
+      "E": "$-1{,}51\\,\\text{eV}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Gegeben: $Z = 3$ (Lithium) und Grundzustand $n = 1$.\nEinsetzen in die Formel:\n$$E_1 = -13{,}6\\,\\text{eV} \\cdot \\frac{3^2}{1^2} = -13{,}6\\,\\text{eV} \\cdot 9$$\nKopfrechnung:\n$$13{,}6 \\cdot 10 = 136, \\quad 136 - 13{,}6 = 122{,}4 \\implies E_1 = -122{,}4\\,\\text{eV}$$\nWegen der dreifachen Kernladung ($+3e$) ist das Elektron neunmal so fest gebunden wie im normalen Wasserstoffatom.\n\n**Analyse der Falschantworten:**\n- **A** setzt $Z = 1$ (Wasserstoff).\n- **B** multipliziert fälschlich linear mit $Z = 3$ ($-13{,}6 \\cdot 3 = -40{,}8\\,\\text{eV}$).\n- **C** setzt $Z = 2$ (Helium-Ion: $-13{,}6 \\cdot 4 = -54{,}4\\,\\text{eV}$).\n- **E** teilt fälschlich durch 9 ($-13{,}6 / 9$)."
+  },
+  {
+    "id": "chem-02-set4-q098",
+    "set": 4,
+    "topic": "Photonenenergie & Frequenzvergleich — Grün vs. Rot",
+    "difficulty": "medium",
+    "question": "Ein Photon aus dem grünen Spektralbereich besitzt eine Energie von $E_{\\text{grün}} = 2{,}5\\,\\text{eV}$. Ein Photon aus dem roten Spektralbereich besitzt eine Energie von $E_{\\text{rot}} = 1{,}8\\,\\text{eV}$. In welchem Verhältnis stehen ihre Frequenzen $\\frac{f_{\\text{grün}}}{f_{\\text{rot}}}$ zueinander?",
+    "options": {
+      "A": "$\\frac{f_{\\text{grün}}}{f_{\\text{rot}}} \\approx 1{,}39$",
+      "B": "$\\frac{f_{\\text{grün}}}{f_{\\text{rot}}} \\approx 0{,}72$",
+      "C": "$\\frac{f_{\\text{grün}}}{f_{\\text{rot}}} = 1{,}00$",
+      "D": "$\\frac{f_{\\text{grün}}}{f_{\\text{rot}}} \\approx 1{,}93$",
+      "E": "$\\frac{f_{\\text{grün}}}{f_{\\text{rot}}} \\approx 4{,}50$"
+    },
+    "correct_answer": "A",
+    "explanation": "Wegen $E = h \\cdot f \\implies f = \\frac{E}{h}$ ist die Frequenz direkt proportional zur Photonenenergie:\n$$\\frac{f_{\\text{grün}}}{f_{\\text{rot}}} = \\frac{E_{\\text{grün}}}{E_{\\text{rot}}} = \\frac{2{,}5\\,\\text{eV}}{1{,}8\\,\\text{eV}} = \\frac{25}{18} \\approx 1{,}388 \\approx 1{,}39$$\nGrünes Licht schwingt ca. 1,39-mal so schnell wie rotes Licht.\n\n**Analyse der Falschantworten:**\n- **B** bildet das umgekehrte Verhältnis $18 / 25 = 0{,}72$ (entspräche dem Wellenlängenverhältnis $\\lambda_{\\text{grün}} / \\lambda_{\\text{rot}}$).\n- **C** nimmt gleiche Frequenzen an.\n- **D** quadriert das Verhältnis ($25^2 / 18^2$).\n- **E** multipliziert die Energiewerte."
+  },
+  {
+    "id": "chem-02-set4-q099",
+    "set": 4,
+    "topic": "Photoeffekt — Sättigungsstrom bei Intensitätsverdopplung",
+    "difficulty": "medium",
+    "question": "Eine Photokathode wird mit monochromatischem UV-Licht oberhalb der Grenzfrequenz ($f > f_0$) bestrahlt. Bei hinreichend hoher positiver Anodenspannung stellt sich ein konstanter Sättigungsstrom von $I_{\\text{Sättigung}} = 4{,}0\\,\\mu\\text{A}$ ein. Nun wird die Lichtintensität verdoppelt, während die Frequenz konstant bleibt. Welcher neue Sättigungsstrom wird gemessen?",
+    "options": {
+      "A": "$I = 2{,}0\\,\\mu\\text{A}$",
+      "B": "$I = 4{,}0\\,\\mu\\text{A}$",
+      "C": "$I = 0\\,\\mu\\text{A}$",
+      "D": "$I = 16{,}0\\,\\mu\\text{A}$",
+      "E": "$I = 8{,}0\\,\\mu\\text{A}$"
+    },
+    "correct_answer": "E",
+    "explanation": "Der Sättigungsstrom stellt sich ein, wenn alle aus der Kathode pro Zeiteinheit herausgeschlagenen Elektronen die Anode erreichen.\nDa jedes Elektron durch die Absorption genau eines Photons freigesetzt wird, ist die Anzahl der emittierten Elektronen pro Sekunde direkt proportional zur Anzahl der eintreffenden Photonen pro Sekunde.\nVerdoppelt man die Bestrahlungsstärke (Intensität) bei gleicher Frequenz, verdoppelt sich die Photonenrate und damit exakt der Sättigungsstrom:\n$$I_{\\text{neu}} = 2 \\cdot I_{\\text{alt}} = 2 \\cdot 4{,}0\\,\\mu\\text{A} = 8{,}0\\,\\mu\\text{A}$$\n\n**Analyse der Falschantworten:**\n- **A** halbiert fälschlich den Strom.\n- **B** nimmt an, dass die Intensität keinen Einfluss auf den Strom habe.\n- **C** behauptet ein Abreißen des Stroms.\n- **D** vervierfacht fälschlicherweise (quadratischer Irrtum)."
+  },
+  {
+    "id": "chem-02-set4-q100",
+    "set": 4,
+    "topic": "Schnelle Fehlerdiagnose — Fehlkonzepte im Mikrokosmos",
+    "difficulty": "medium",
+    "question": "Welche der folgenden fünf Aussagen über quantenmechanische und atomare Gesetzmäßigkeiten enthält einen eindeutigen fachlichen Fehler?",
+    "options": {
+      "A": "Licht breitet sich im Vakuum als Transversalwelle aus, bei der das elektrische Feld senkrecht auf dem magnetischen Feld steht.",
+      "B": "Die De-Broglie-Wellenlänge eines Teilchens halbiert sich, wenn sein Impuls verdoppelt wird.",
+      "C": "Beim äußeren Photoelektrischen Effekt lässt sich durch eine Steigerung der Lichtintensität unterhalb der Grenzfrequenz ($f < f_0$) die Emission von Photoelektronen erzwingen.",
+      "D": "Die diskreten Spektrallinien des Wasserstoffatoms entstehen durch Übergänge zwischen quantisierten Energieniveaus.",
+      "E": "Die Heisenbergsche Unschärferelation gilt prinzipiell für alle materiellen Körper, wird jedoch bei makroskopischen Massen unmessbar klein."
+    },
+    "correct_answer": "C",
+    "explanation": "Aussage C ist der klassische Kardinalfehler (und somit die gesuchte falsche Aussage):\nGilt $f < f_0$, ist die Quantenenergie des einzelnen Photons kleiner als die materialspezifische Austrittsarbeit ($h \\cdot f < W_A$). Da Elektronen die Energie einzelner Photonen nicht über längere Zeit „ansammeln“ können (strikter 1-zu-1-Stoß), ist die Emission unterhalb der Grenzfrequenz physikalisch unmöglich — völlig unabhängig davon, wie extrem die Intensität gesteigert wird!\nDie Aussagen A, B, D und E sind uneingeschränkt korrekt formulierte Grundsätze des BMS-Lehrplans."
+  },
+  {
+    "id": "chem-02-set5-q101",
+    "set": 5,
+    "topic": "Synthese: Photoeffekt, Beschleunigung im E-Feld & De-Broglie-Wellenlänge",
+    "difficulty": "hard",
+    "question": "Eine Metalloberfläche mit der Austrittsarbeit $W_A = 2{,}0\\,\\text{eV}$ wird im Hochvakuum mit monochromatischem UV-Licht der Wellenlänge $\\lambda_{\\text{Licht}} = 310\\,\\text{nm}$ bestrahlt. Die austretenden Photoelektronen mit maximaler kinetischer Energie werden anschließend durch eine Beschleunigungsspannung von $\\Delta U = 6{,}0\\,\\text{V}$ zusätzlich beschleunigt. Wie verändert sich die De-Broglie-Wellenlänge $\\lambda_{\\text{dB}}$ dieser schnellsten Elektronen durch diesen Beschleunigungsvorgang?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "Sie halbiert sich ($\\lambda_{\\text{dB,neu}} = \\frac{1}{2} \\cdot \\lambda_{\\text{dB,alt}}$).",
+      "B": "Sie verdoppelt sich ($\\lambda_{\\text{dB,neu}} = 2 \\cdot \\lambda_{\\text{dB,alt}}$).",
+      "C": "Sie sinkt auf ein Viertel ihres Werts ($\\lambda_{\\text{dB,neu}} = \\frac{1}{4} \\cdot \\lambda_{\\text{dB,alt}}$).",
+      "D": "Sie vervierfacht sich ($\\lambda_{\\text{dB,neu}} = 4 \\cdot \\lambda_{\\text{dB,alt}}$).",
+      "E": "Sie bleibt unverändert, da die Beschleunigung nur die Photonen betrifft."
+    },
+    "correct_answer": "A",
+    "explanation": "Diese Aufgabe verknüpft drei fundamentale Konzepte in einer logischen Kette:\n\n1. **Photoeffekt:**\n$$E_{\\text{Photon}} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{310\\,\\text{nm}} = 4{,}0\\,\\text{eV}$$\n$$E_{\\text{kin,alt}} = E_{\\text{Photon}} - W_A = 4{,}0\\,\\text{eV} - 2{,}0\\,\\text{eV} = 2{,}0\\,\\text{eV}$$\n\n2. **Beschleunigung im elektrischen Feld:**\nBeim Durchlaufen der Spannung $\\Delta U = 6{,}0\\,\\text{V}$ gewinnt das Elektron die Energie $\\Delta E = e \\cdot \\Delta U = 6{,}0\\,\\text{eV}$:\n$$E_{\\text{kin,neu}} = E_{\\text{kin,alt}} + \\Delta E = 2{,}0\\,\\text{eV} + 6{,}0\\,\\text{eV} = 8{,}0\\,\\text{eV}$$\nDie kinetische Energie des Elektrons hat sich somit exakt vervierfacht ($\\frac{8{,}0\\,\\text{eV}}{2{,}0\\,\\text{eV}} = 4$).\n\n3. **De-Broglie-Wellenlänge:**\nWegen\n$$\\lambda_{\\text{dB}} = \\frac{h}{p} = \\frac{h}{\\sqrt{2m \\cdot E_{\\text{kin}}}} \\implies \\lambda_{\\text{dB}} \\propto \\frac{1}{\\sqrt{E_{\\text{kin}}}}$$\nführt eine Vervierfachung der kinetischen Energie zu:\n$$\\lambda_{\\text{dB,neu}} = \\frac{\\lambda_{\\text{dB,alt}}}{\\sqrt{4}} = \\frac{1}{2} \\cdot \\lambda_{\\text{dB,alt}}$$\nDie De-Broglie-Wellenlänge halbiert sich.\n\n**Analyse der Falschantworten:**\n- **B** nimmt irrtümlich eine proportionale Zunahme an.\n- **C** vergisst die Quadratwurzel und teilt linear durch 4.\n- **D** quadriert den Faktor.\n- **E** ignoriert die Beschleunigung von geladenen Materieteilchen."
+  },
+  {
+    "id": "chem-02-set5-q102",
+    "set": 5,
+    "topic": "Wasserstoffähnliche Ionen — Rückwärtsinduktion der Kernladungszahl $Z$",
+    "difficulty": "hard",
+    "question": "In einem unbekannten wasserstoffähnlichen Einelektronensystem (ein Kern mit genau einem gebundenen Elektron) wird beim Übergang des Elektrons vom ersten angeregten Zustand ($n = 2$) in den Grundzustand ($n = 1$) ein hochenergetisches UV-Photon mit der Energie $\\Delta E = 40{,}8\\,\\text{eV}$ emittiert. Um welches Ion handelt es sich, und welche Energie $E_1$ besitzt sein Grundzustand?\n(Hinweis: Für atomaren Wasserstoff beträgt die Übergangsenergie von $n=2 \\rightarrow 1$ exakt $\\Delta E_{\\text{H}} = 10{,}2\\,\\text{eV}$).",
+    "options": {
+      "A": "$\\text{He}^+ (Z = 2)$ mit $E_1 = -54{,}4\\,\\text{eV}$",
+      "B": "$\\text{Li}^{2+} (Z = 3)$ mit $E_1 = -122{,}4\\,\\text{eV}$",
+      "C": "$\\text{Be}^{3+} (Z = 4)$ mit $E_1 = -217{,}6\\,\\text{eV}$",
+      "D": "$\\text{He}^+ (Z = 2)$ mit $E_1 = -27{,}2\\,\\text{eV}$",
+      "E": "$\\text{H} (Z = 1)$ in einem angeregten Isomer"
+    },
+    "correct_answer": "A",
+    "explanation": "Für wasserstoffähnliche Ionen skalieren alle Bohrschen Energieniveaus und folglich auch alle Übergangsenergien mit dem Quadrat der Kernladungszahl $Z$:\n$$\\Delta E(Z) = Z^2 \\cdot \\Delta E_{\\text{H}}$$\n\n1. **Kernladungszahl $Z$ bestimmen:**\n$$\\frac{\\Delta E(Z)}{\\Delta E_{\\text{H}}} = \\frac{40{,}8\\,\\text{eV}}{10{,}2\\,\\text{eV}} = 4 \\implies Z^2 = 4 \\implies Z = 2$$\nDie Kernladungszahl $Z = 2$ definiert eindeutig Helium. Da es sich um ein Einelektronensystem handelt, liegt das einfach ionisierte Helium-Kation $\\text{He}^+$ vor.\n\n2. **Grundzustandsenergie berechnen:**\n$$E_1 = -13{,}6\\,\\text{eV} \\cdot \\frac{Z^2}{1^2} = -13{,}6\\,\\text{eV} \\cdot 4 = -54{,}4\\,\\text{eV}$$\n\n**Analyse der Falschantworten:**\n- **B** setzte $Z = 3$ an (ergäbe $\\Delta E = 9 \\cdot 10{,}2 = 91{,}8\\,\\text{eV}$).\n- **C** setzte $Z = 4$ an (Beryllium-Ion).\n- **D** berechnet die Grundzustandsenergie fälschlich linear mit $Z$ statt mit $Z^2$ ($-13{,}6 \\cdot 2 = -27{,}2\\,\\text{eV}$).\n- **E** ignoriert den $Z^2$-Zusammenhang."
+  },
+  {
+    "id": "chem-02-set5-q103",
+    "set": 5,
+    "topic": "Welleneigenschaften: Transversal- vs. Longitudinalwellen im Vakuum",
+    "difficulty": "easy",
+    "question": "Warum kann sich elektromagnetische Strahlung (Licht) im vollkommenen Vakuum ausbreiten, während Schallwellen für ihre Ausbreitung zwingend ein materielles Trägermedium (Festkörper, Flüssigkeit oder Gas) benötigen?",
+    "options": {
+      "A": "Weil Schallwellen Transversalwellen sind, die nur an Gitteratomen abprallen können.",
+      "B": "Weil Schallwellen eine zu hohe Frequenz besitzen, um das Vakuum zu durchdringen.",
+      "C": "Weil Photonen eine negative Gravitationsmasse besitzen, die sie durch das Vakuum stößt.",
+      "D": "Weil das Vakuum von einem dichten Äther ausgefüllt ist, der nur Licht leitet.",
+      "E": "Weil elektromagnetische Wellen aus sich selbst erhaltenden elektrischen und magnetischen Feldern bestehen, die kein materielles Trägermedium erfordern, während Schallwellen mechanische Dichteschwankungen (Longitudinalwellen) materieller Teilchen sind."
+    },
+    "correct_answer": "E",
+    "explanation": "- **Elektromagnetische Wellen:** Ein sich zeitlich veränderndes elektrisches Feld erzeugt ein magnetisches Wirbelfeld, und ein sich veränderndes magnetisches Feld erzeugt ein elektrisches Wirbelfeld (Maxwell-Gleichungen). Sie tragen ihre eigene Feldenergie und breiten sich als Transversalwellen autonom im Vakuum aus.\n- **Schallwellen:** Sind rein mechanische Longitudinalwellen. Sie bestehen aus periodischen Kompressionen und Dekompressionen (Dichteschwankungen) von Atomen oder Molekülen. Im Vakuum existieren keine Materieteilchen, die elastische Stöße übertragen könnten; daher kann sich Schall im Vakuum prinzipiell nicht ausbreiten.\n\n**Analyse der Falschantworten:**\n- **A** vertauscht Transversal- und Longitudinalwellen.\n- **B** und **C** sind physikalisch unsinnig.\n- **D** beruft sich auf den historisch widerlegten Lichtäther."
+  },
+  {
+    "id": "chem-02-set5-q104",
+    "set": 5,
+    "topic": "Photoeffekt — Mehrstufige Rückwärtsrechnung (Geschwindigkeit $\\rightarrow$ Wellenlänge)",
+    "difficulty": "hard",
+    "question": "In einem Photoeffekt-Experiment treffen Photonen auf eine Metalloberfläche mit der Austrittsarbeit $W_A = 2{,}4\\,\\text{eV}$. Die austretenden Photoelektronen besitzen eine maximale Geschwindigkeit von $v_{\\text{max}} = 6 \\cdot 10^5\\,\\text{m/s}$. Welche Wellenlänge $\\lambda$ besitzt das eingestrahlte Licht näherungsweise?\n(Konstanten: $m_e \\approx 9{,}1 \\cdot 10^{-31}\\,\\text{kg}$; $1\\,\\text{eV} \\approx 1{,}6 \\cdot 10^{-19}\\,\\text{J}$; $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "ca. $200\\,\\text{nm}$",
+      "B": "ca. $310\\,\\text{nm}$",
+      "C": "ca. $365\\,\\text{nm}$",
+      "D": "ca. $517\\,\\text{nm}$",
+      "E": "ca. $620\\,\\text{nm}$"
+    },
+    "correct_answer": "C",
+    "explanation": "1. **Kinetische Energie der Elektronen in Joule berechnen:**\n$$E_{\\text{kin,max}} = \\frac{1}{2} m_e \\cdot v^2 = \\frac{1}{2} \\cdot (9{,}1 \\cdot 10^{-31}\\,\\text{kg}) \\cdot (6 \\cdot 10^5\\,\\text{m/s})^2$$\n$$E_{\\text{kin,max}} = 0{,}5 \\cdot 9{,}1 \\cdot 10^{-31} \\cdot 36 \\cdot 10^{10}\\,\\text{J} = 163{,}8 \\cdot 10^{-21}\\,\\text{J} \\approx 1{,}64 \\cdot 10^{-19}\\,\\text{J}$$\n\n2. **Kinetische Energie in Elektronenvolt umrechnen:**\n$$E_{\\text{kin,max}} = \\frac{1{,}64 \\cdot 10^{-19}\\,\\text{J}}{1{,}60 \\cdot 10^{-19}\\,\\text{J/eV}} \\approx 1{,}0\\,\\text{eV}$$\n\n3. **Gesamte Photonenenergie über Einstein bestimmen:**\n$$E_{\\text{Photon}} = W_A + E_{\\text{kin,max}} = 2{,}4\\,\\text{eV} + 1{,}0\\,\\text{eV} = 3{,}4\\,\\text{eV}$$\n\n4. **Wellenlänge mit dem Kopfrechentrick ermitteln:**\n$$\\lambda = \\frac{h \\cdot c}{E_{\\text{Photon}}} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{3{,}4\\,\\text{eV}}$$\n(Kopfrechnung: $3{,}4 \\cdot 300 = 1020$; $3{,}4 \\cdot 365 \\approx 1241$).\nFolglich gilt: $\\lambda \\approx 365\\,\\text{nm}$ (nahes UV).\n\n**Analyse der Falschantworten:**\n- **A** und **B** entsprechen Photonenenergien von $6{,}2\\,\\text{eV}$ bzw. $4{,}0\\,\\text{eV}$.\n- **D** vergisst die Addition der kinetischen Energie und rechnet nur mit der Austrittsarbeit ($1240 / 2{,}4 \\approx 517\\,\\text{nm}$).\n- **E** entspricht $2{,}0\\,\\text{eV}$."
+  },
+  {
+    "id": "chem-02-set5-q105",
+    "set": 5,
+    "topic": "Unschärferelation & Atomhülle — Verhinderung des Kernkollapses",
+    "difficulty": "medium",
+    "question": "Klassisch betrachtet müsste ein Elektron unter ständiger Abstrahlung elektromagnetischer Wellen spiralförmig in den positiv geladenen Atomkern stürzen. Warum verhindert die Heisenbergsche Unschärferelation ($\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$) diesen Kollaps des Elektrons in den Kern?",
+    "options": {
+      "A": "Weil die Coulomb-Anziehungskraft bei sehr kleinen Abständen ihr Vorzeichen umkehrt und abstoßend wird.",
+      "B": "Weil das Elektron bei Annäherung an den Atomkern seine negative Ladung verliert.",
+      "C": "Weil die starke Kernkraft Elektronen grundsätzlich abstößt.",
+      "D": "Weil eine extreme räumliche Lokalisierung des Elektrons auf das winzige Kernvolumen ($\\Delta x \\rightarrow 0$) seine Impuls- und kinetische Energieunschärfe gegen unendlich treiben würde ($\\Delta p \\rightarrow \\infty$), sodass ein stabiler mittlerer Aufenthaltsbereich (Orbital) energetisch erzwungen wird.",
+      "E": "Weil sich Elektronen im Vakuum prinzipiell nicht langsamer als Photonen bewegen können."
+    },
+    "correct_answer": "D",
+    "explanation": "Klassisch würde ein Elektron auf einer Kreisbahn ständig Energie abstrahlen und in den Kern stürzen. Die Quantenmechanik verhindert dies durch die Heisenbergsche Unschärferelation:\n$$\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$$\nWürde sich das Elektron exakt im Atomkern (Radius ca. $10^{-15}\\,\\text{m}$) aufhalten, wäre seine Ortsunschärfe $\\Delta x$ extrem klein. Als Folge davon müsste seine Impulsunschärfe $\\Delta p$ und damit seine kinetische Energie dramatisch ansteigen.\nDas Elektron kann daher nicht in den Kern stürzen, sondern stellt einen energetischen Gleichgewichtszustand zwischen Coulomb-Anziehung und quantenmechanischer Lokalisierungsenergie ein: Es bildet eine ausgedehnte Aufenthaltswahrscheinlichkeitswolke (Orbital) im typischen Atomabstand von ca. $0{,}1\\,\\text{nm}$.\n\n**Analyse der Falschantworten:**\n- **A** ist falsch, da die elektrostatische Coulomb-Kraft zwischen entgegengesetzten Ladungen bei jedem Abstand anziehend bleibt.\n- **B**, **C** und **E** sind physikalisch unzutreffende Scheinerklärungen."
+  },
+  {
+    "id": "chem-02-set5-q106",
+    "set": 5,
+    "topic": "Spektralserien des Wasserstoffs — Verhältnis der Seriengrenzen",
+    "difficulty": "hard",
+    "question": "In welchem mathematischen Verhältnis stehen die Grenzwellenlängen der Balmer-Serie ($\\lambda_{\\text{Grenz,Balmer}}$, Ionisation aus $n = 2$) und der Lyman-Serie ($\\lambda_{\\text{Grenz,Lyman}}$, Ionisation aus $n = 1$) zueinander:\n$$\\frac{\\lambda_{\\text{Grenz,Balmer}}}{\\lambda_{\\text{Grenz,Lyman}}}?$$\n(Bohrsche Niveaus: $E_n = -\\frac{13{,}6\\,\\text{eV}}{n^2}$).",
+    "options": {
+      "A": "$1 : 4$",
+      "B": "$1 : 2$",
+      "C": "$2 : 1$",
+      "D": "$4 : 1$",
+      "E": "$16 : 1$"
+    },
+    "correct_answer": "D",
+    "explanation": "Die Seriengrenze entspricht dem Übergang von $n \\rightarrow \\infty$ ($E_\\infty = 0\\,\\text{eV}$):\n\n1. **Grenzenergie der Lyman-Serie ($n = 1$):**\n$$\\Delta E_{\\text{Lyman}} = 0 - E_1 = 0 - (-13{,}6\\,\\text{eV}) = 13{,}6\\,\\text{eV}$$\n\n2. **Grenzenergie der Balmer-Serie ($n = 2$):**\n$$\\Delta E_{\\text{Balmer}} = 0 - E_2 = 0 - (-3{,}4\\,\\text{eV}) = 3{,}4\\,\\text{eV}$$\n\n3. **Verhältnis der Photonenenergien:**\n$$\\frac{\\Delta E_{\\text{Lyman}}}{\\Delta E_{\\text{Balmer}}} = \\frac{13{,}6\\,\\text{eV}}{3{,}4\\,\\text{eV}} = 4$$\n\n4. **Verhältnis der Wellenlängen:**\nDa $\\lambda = \\frac{h \\cdot c}{\\Delta E} \\implies \\lambda \\propto \\frac{1}{\\Delta E}$ gilt, verhalten sich die Grenzwellenlängen umgekehrt proportional zu den Energien:\n$$\\frac{\\lambda_{\\text{Grenz,Balmer}}}{\\lambda_{\\text{Grenz,Lyman}}} = \\frac{\\Delta E_{\\text{Lyman}}}{\\Delta E_{\\text{Balmer}}} = \\frac{13{,}6\\,\\text{eV}}{3{,}4\\,\\text{eV}} = 4 = \\frac{4}{1}$$\n(Probe: $\\lambda_{\\text{Lyman}} \\approx 91\\,\\text{nm}$; $\\lambda_{\\text{Balmer}} \\approx 365\\,\\text{nm} \\rightarrow 365 / 91 \\approx 4$).\n\n**Analyse der Falschantworten:**\n- **A** kehrt das Verhältnis um (Verwechslung von Energie und Wellenlänge).\n- **B** und **C** nehmen eine lineare Abhängigkeit von der Quantenzahl $n$ an ($2/1$).\n- **E** quadriert das Verhältnis fälschlicherweise nochmals ($4^2 = 16$)."
+  },
+  {
+    "id": "chem-02-set5-q107",
+    "set": 5,
+    "topic": "Photoeffekt — Schwellenwert-Analyse im Sonnenspektrum",
+    "difficulty": "medium",
+    "question": "Eine Kalium-Photokathode besitzt die Austrittsarbeit $W_A = 2{,}2\\,\\text{eV}$. Die Kathode wird mit dem gesamten Spektrum des sichtbaren Lichts ($380\\,\\text{nm}$ bis $780\\,\\text{nm}$) bestrahlt. Bis zu welcher maximalen Grenzwellenlänge $\\lambda_0$ im sichtbaren Spektrum können Photonen Elektronen aus dieser Kathode freisetzen?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$\\lambda_0 \\approx 780\\,\\text{nm}$ (Das gesamte sichtbare Licht kann Elektronen auslösen)",
+      "B": "$\\lambda_0 \\approx 564\\,\\text{nm}$ (Nur violettes, blaues und grünes Licht bis gelbgrün)",
+      "C": "$\\lambda_0 \\approx 380\\,\\text{nm}$ (Ausschließlich die äußerste violette Grenze)",
+      "D": "$\\lambda_0 \\approx 310\\,\\text{nm}$ (Kein sichtbares Licht, nur UV-Strahlung)",
+      "E": "$\\lambda_0 \\approx 620\\,\\text{nm}$ (Bis tief in den roten Spektralbereich)"
+    },
+    "correct_answer": "B",
+    "explanation": "Die Grenzwellenlänge $\\lambda_0$ ist die maximale Wellenlänge, deren Photonenenergie gerade noch ausreicht, um die Austrittsarbeit $W_A = 2{,}2\\,\\text{eV}$ zu überwinden:\n$$\\lambda_0 = \\frac{h \\cdot c}{W_A} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{2{,}2\\,\\text{eV}}$$\nKopfrechnung:\n$$\\frac{1240}{2{,}2} = \\frac{620}{1{,}1} \\approx 563{,}6\\,\\text{nm} \\approx 564\\,\\text{nm}$$\nDa sichtbares Licht von $380\\,\\text{nm}$ bis $780\\,\\text{nm}$ reicht:\n- Alle Wellenlängen von $380\\,\\text{nm}$ bis $564\\,\\text{nm}$ (Violett, Blau, Cyan, Grün) besitzen Photonenenergien $E \\ge 2{,}2\\,\\text{eV}$ und lösen Photoelektronen aus.\n- Alle Wellenlängen über $564\\,\\text{nm}$ (Gelb, Orange, Rot bis $780\\,\\text{nm}$) besitzen Energien unter $2{,}2\\,\\text{eV}$ und sind vollkommen wirkungslos.\n\n**Analyse der Falschantworten:**\n- **A** behauptet fälschlich, dass auch energiearmes rotes Licht ausreicht.\n- **C** nimmt an, dass sichtbares Licht fast wirkungslos sei.\n- **D** berechnet $\\lambda$ für $W_A = 4\\,\\text{eV}$.\n- **E** berechnet $\\lambda$ für $W_A = 2{,}0\\,\\text{eV}$."
+  },
+  {
+    "id": "chem-02-set5-q108",
+    "set": 5,
+    "topic": "Synthese: De-Broglie-Wellenlänge & Bohrsche Bahnradien",
+    "difficulty": "hard",
+    "question": "Im Wasserstoffatom skaliert der Radius der Bohrschen Bahnen nach der Beziehung $r_n = n^2 \\cdot a_0$ ($a_0 \\approx 0{,}053\\,\\text{nm}$). Welche Aussage über die De-Broglie-Wellenlänge $\\lambda_3$ des Elektrons auf der dritten Bohrschen Bahn ($n = 3$) und den Bahnumfang $U_3 = 2\\pi r_3$ ist uneingeschränkt korrekt?",
+    "options": {
+      "A": "Der Umfang der Bahn entspricht exakt einer halben De-Broglie-Wellenlänge ($U_3 = 0{,}5 \\cdot \\lambda_3$).",
+      "B": "Die Wellenlänge ist unendlich groß, da das Elektron im Zustand n=3 frei ist.",
+      "C": "Auf den Umfang passen neun De-Broglie-Wellenlängen, da der Radius mit $n^2$ skaliert.",
+      "D": "Auf den Kreisbahnumfang der 3. Bahn passen exakt drei vollständige De-Broglie-Wellenlängen ($2\\pi r_3 = 3 \\cdot \\lambda_3$), und der Radius ist neunmal so groß wie der Grundzustandsradius ($r_3 = 9 \\cdot a_0$).",
+      "E": "Der Bahnumfang ist unabhängig von der De-Broglie-Wellenlänge."
+    },
+    "correct_answer": "D",
+    "explanation": "Zwei fundamentale Gesetze greifen hier ineinander:\n\n1. **Bohrsche Bahnradien:**\n$$r_n = n^2 \\cdot a_0 \\implies r_3 = 3^2 \\cdot a_0 = 9 \\cdot a_0$$\nDer Radius der dritten Bahn ist exakt neunmal so groß wie der Grundzustandsradius $a_0$.\n\n2. **De-Broglie-Bedingung für stehende Materiewellen:**\nDamit sich ein Elektron auf einer stabilen Quantenbahn bewegen kann, muss die Materiewelle nach einem vollen Umlauf konstruktiv mit sich selbst interferieren (stehende Welle auf dem Ring). Der Bahnumfang muss daher exakt einem ganzzahligen Vielfachen der De-Broglie-Wellenlänge entsprechen:\n$$2\\pi r_n = n \\cdot \\lambda_n \\implies 2\\pi r_3 = 3 \\cdot \\lambda_3$$\nAuf die 3. Bahn passen exakt drei vollständige Wellenzüge.\n\n**Analyse der Falschantworten:**\n- **A** widerspricht der Resonanzbedingung.\n- **B** und **E** sind physikalisch unsinnig.\n- **C** verwechselt die Quantenzahl $n$ mit dem Faktor $n^2$ für den Radius."
+  },
+  {
+    "id": "chem-02-set5-q109",
+    "set": 5,
+    "topic": "Quantensprung im Wasserstoffatom — Emission im UV-Bereich",
+    "difficulty": "easy",
+    "question": "Ein Elektron im Wasserstoffatom springt vom Quantenniveau $n = 4$ in das Niveau $n = 1$. Welche Aussage über diesen Vorgang ist fachlich vollkommen zutreffend?",
+    "options": {
+      "A": "Es wird ein Photon absorbiert, dessen Energie im Infrarotbereich liegt.",
+      "B": "Die Masse des Atomkerns verringert sich dabei um 50 %.",
+      "C": "Es wird ein Photon emittiert, das zur Balmer-Serie gehört und im sichtbaren Spektralbereich liegt.",
+      "D": "Es werden zwei Elektronen gleichzeitig aus dem Atom herausgeschleudert.",
+      "E": "Es wird ein Photon emittiert, das zur Lyman-Serie gehört und im ultravioletten Spektralbereich (UV) liegt."
+    },
+    "correct_answer": "E",
+    "explanation": "- **Richtung des Übergangs:** Da das Elektron von einem höheren Energieniveau ($n = 4$, $E_4 = -0{,}85\\,\\text{eV}$) auf ein tieferes Niveau ($n = 1$, $E_1 = -13{,}6\\,\\text{eV}$) herabfällt, wird die freiwerdende Energiedifferenz ($\\Delta E = 12{,}75\\,\\text{eV}$) in Form eines einzelnen Photons emittiert.\n- **Spektralserie:** Alle Übergänge, die auf dem Grundniveau $n = 1$ enden, gehören per definitionem zur Lyman-Serie.\n- **Spektralbereich:** Mit $\\Delta E = 12{,}75\\,\\text{eV}$ ist die Wellenlänge $\\lambda \\approx \\frac{1240}{12{,}75} \\approx 97\\,\\text{nm}$. Dies liegt tief im kurzwelligen Ultraviolettbereich (UV).\n\n**Analyse der Falschantworten:**\n- **A** behauptet fälschlich Absorption und Infrarotstrahlung.\n- **B** und **D** sind absurde physikalische Fehlaussagen.\n- **C** ordnet den Übergang fälschlicherweise der Balmer-Serie zu (Balmer endet auf $n = 2$)."
+  },
+  {
+    "id": "chem-02-set5-q110",
+    "set": 5,
+    "topic": "Photoeffekt — Kennlinien-Interpretation im I-U-Diagramm",
+    "difficulty": "medium",
+    "question": "In einem Experiment werden zwei verschiedene Lichtquellen (Quelle 1 und Quelle 2) an derselben Photokathode getestet. Die resultierenden Strom-Spannungs-Kennlinien zeigen:\n- Quelle 1 erfordert eine größere Bremsspannung als Quelle 2 ($|U_{0,1}| > |U_{0,2}|$).\n- Quelle 2 liefert einen höheren Sättigungs-Photostrom als Quelle 1 ($I_{\\text{Sättigung},2} > I_{\\text{Sättigung},1}$).\n\nWelche Schlussfolgerung über die Frequenzen $f$ und die relativen Intensitäten (bzw. Photonenraten) der beiden Lichtquellen ist zwingend?",
+    "options": {
+      "A": "Quelle 1 besitzt eine höhere Frequenz ($f_1 > f_2$), emittiert aber weniger Photonen pro Sekunde als Quelle 2.",
+      "B": "Quelle 2 besitzt eine höhere Frequenz ($f_2 > f_1$) und eine höhere Intensität.",
+      "C": "Beide Quellen besitzen exakt dieselbe Frequenz, unterscheiden sich jedoch in der Polarisation.",
+      "D": "Quelle 1 emittiert mehr Photonen pro Sekunde, besitzt jedoch eine geringere Frequenz.",
+      "E": "Die Beobachtung ist physikalisch unmöglich, da Bremsspannung und Sättigungsstrom stets streng proportional zueinander sind."
+    },
+    "correct_answer": "A",
+    "explanation": "Die beiden Kennlinienparameter spiegeln zwei voneinander unabhängige Eigenschaften des Lichts wider:\n\n1. **Bremsspannung $U_0$:**\n$$e \\cdot U_0 = h \\cdot f - W_A$$\nDa dieselbe Kathode ($W_A = \\text{konstant}$) verwendet wird, hängt $U_0$ ausschließlich linear von der Frequenz $f$ ab.\nAus $|U_{0,1}| > |U_{0,2}|$ folgt zwingend: $f_1 > f_2$ (Quelle 1 besitzt energiereichere Photonen).\n\n2. **Sättigungsstrom $I_{\\text{Sättigung}}$:**\nDer Sättigungsstrom ist direkt proportional zur Anzahl der pro Zeiteinheit ausgelösten Elektronen und damit zur Anzahl der pro Zeiteinheit eintreffenden Photonen (Photonenfluss $\\Phi = N_{\\text{Photonen}}/\\Delta t$).\nAus $I_{\\text{Sättigung},2} > I_{\\text{Sättigung},1}$ folgt zwingend, dass Quelle 2 mehr Photonen pro Sekunde auf die Platte strahlt als Quelle 1.\n\n**Analyse der Falschantworten:**\n- **B**, **C** und **D** verwechseln die Zuordnung von Frequenz zu Bremsspannung bzw. Photonenrate zu Sättigungsstrom.\n- **E** verneint die fundamentale Entkopplung von Frequenz und Intensität beim Photoeffekt."
+  },
+  {
+    "id": "chem-02-set5-q111",
+    "set": 5,
+    "topic": "Linienspektren & Rydberg-Ritz — Synthese dreier Quantenniveaus",
+    "difficulty": "hard",
+    "question": "Im Wasserstoffatom sind die Übergangsenergien für zwei Linien der Lyman-Serie experimentell bekannt:\n- Übergang von $n = 2 \\rightarrow 1$ (Lyman-$\\alpha$): $\\Delta E_{2\\rightarrow 1} = 10{,}20\\,\\text{eV}$\n- Übergang von $n = 3 \\rightarrow 1$ (Lyman-$\\beta$): $\\Delta E_{3\\rightarrow 1} = 12{,}09\\,\\text{eV}$\n\nWelche Energie $\\Delta E_{3\\rightarrow 2}$ und welche Wellenlänge $\\lambda$ besitzt das Photon, das beim Übergang zwischen diesen beiden angeregten Niveaus ($n = 3 \\rightarrow 2$, Balmer-$\\alpha$) emittiert wird?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$\\Delta E = 22{,}29\\,\\text{eV}$ und $\\lambda \\approx 56\\,\\text{nm}$",
+      "B": "$\\Delta E = 1{,}89\\,\\text{eV}$ und $\\lambda \\approx 656\\,\\text{nm}$",
+      "C": "$\\Delta E = 1{,}89\\,\\text{eV}$ und $\\lambda \\approx 486\\,\\text{nm}$",
+      "D": "$\\Delta E = 10{,}20\\,\\text{eV}$ und $\\lambda \\approx 122\\,\\text{nm}$",
+      "E": "$\\Delta E = 0{,}85\\,\\text{eV}$ und $\\lambda \\approx 1460\\,\\text{nm}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Nach dem Energieerhaltungssatz (bzw. dem Rydberg-Ritzschen Kombinationsprinzip) gilt für die Niveaus:\n$$E_3 - E_1 = (E_3 - E_2) + (E_2 - E_1)$$\n$$\\Delta E_{3\\rightarrow 1} = \\Delta E_{3\\rightarrow 2} + \\Delta E_{2\\rightarrow 1}$$\nUmstellen nach dem gesuchten Übergang:\n$$\\Delta E_{3\\rightarrow 2} = \\Delta E_{3\\rightarrow 1} - \\Delta E_{2\\rightarrow 1} = 12{,}09\\,\\text{eV} - 10{,}20\\,\\text{eV} = 1{,}89\\,\\text{eV}$$\nWellenlänge berechnen:\n$$\\lambda = \\frac{h \\cdot c}{\\Delta E_{3\\rightarrow 2}} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{1{,}89\\,\\text{eV}}$$\nKopfrechnung:\n$$\\frac{1240}{1{,}89} \\approx \\frac{1240}{1{,}9} \\approx 656\\,\\text{nm}$$\nDies ist exakt die berühmte rote $H_\\alpha$-Linie der Balmer-Serie im sichtbaren Licht.\n\n**Analyse der Falschantworten:**\n- **A** addiert fälschlicherweise die beiden Energien ($12{,}09 + 10{,}20 = 22{,}29\\,\\text{eV}$).\n- **C** berechnet die Energie zwar richtig, ordnet ihr aber fälschlicherweise die Wellenlänge der $H_\\beta$-Linie ($486\\,\\text{nm}$) zu.\n- **D** nennt den Lyman-$\\alpha$-Wert.\n- **E** setzt das Niveau $E_4$ an."
+  },
+  {
+    "id": "chem-02-set5-q112",
+    "set": 5,
+    "topic": "Photochemie & Bindungsenergien — UV-Strahlung vs. Infrarotstrahlung",
+    "difficulty": "hard",
+    "question": "Warum kann ultraviolette Strahlung ($\\text{UV}$) chemische Bindungen in Biomolekülen (z. B. der DNA) direkt homolytisch spalten und Mutationen erzeugen, während intensive Infrarotstrahlung ($\\text{IR}$) selbst bei hoher Heizleistung lediglich Molekülschwingungen anregt, ohne Bindungen direkt photochemisch zu brechen?",
+    "options": {
+      "A": "Weil die Quantenenergie eines einzelnen UV-Photons ($h \\cdot f \\approx 3\\text{ bis }6\\,\\text{eV}$) die typische Dissoziationsenergie kovalenter Bindungen übersteigt, während Infrarotphotonen viel zu energiearm sind ($< 1{,}5\\,\\text{eV}$) und Energieaufnahme im Molekül als 1-zu-1-Quantenprozess erfolgt.",
+      "B": "Weil UV-Strahlung aus positiv geladenen Teilchen besteht, die Bindungselektronen elektrostatisch herausreißen.",
+      "C": "Weil Infrarotstrahlung im Gewebe eine deutlich höhere Lichtgeschwindigkeit besitzt als UV-Strahlung.",
+      "D": "Weil Infrarotstrahlung von Materie grundsätzlich überhaupt nicht absorbiert werden kann.",
+      "E": "Weil UV-Strahlung aus hochenergetischen Neutronen besteht, die Atomkerne spalten."
+    },
+    "correct_answer": "A",
+    "explanation": "Die Wechselwirkung zwischen elektromagnetischer Strahlung und chemischen Bindungen gehorcht Einsteins Quantenpostulat (strikter 1-zu-1-Prozess zwischen genau einem Photon und genau einer Bindung):\n\n1. **Photonenenergie:**\n$$E_{\\text{Photon}} = h \\cdot f = \\frac{h \\cdot c}{\\lambda}$$\n- UV-Photonen ($\\lambda \\approx 200\\text{–}400\\,\\text{nm}$) tragen Quantenenergien von ca. $3{,}1\\,\\text{eV}$ bis $6{,}2\\,\\text{eV}$ (entspricht ca. $300\\text{ bis }600\\,\\text{kJ/mol}$).\n- Typische kovalente Einfachbindungen in organischen Molekülen ($\\text{C–C}$, $\\text{C–H}$, $\\text{C–N}$) besitzen Bindungsenergien von ca. $350\\text{ bis }450\\,\\text{kJ/mol}$ ($\\approx 3{,}5\\text{ bis }4{,}7\\,\\text{eV}$).\nEin einzelnes UV-Photon besitzt also genügend Energie, um die Bindung mit einem einzigen Stoß aufzubrechen (Photolyse).\n\n2. **Infrarotstrahlung:**\nIR-Photonen ($\\lambda > 800\\,\\text{nm}$) besitzen lediglich Quantenenergien unter $1{,}5\\,\\text{eV}$ (unter $140\\,\\text{kJ/mol}$). Sie können eine kovalente Bindung nicht spalten, sondern regen lediglich Molekülschwingungen (Valenz- und Deformationsschwingungen) an, was makroskopisch als Erwärmung wahrgenommen wird. Eine Steigerung der Intensität erhöht nur die Anzahl der IR-Photonen, nicht aber die Energie des Einzelphotons.\n\n**Analyse der Falschantworten:**\n- **B** ist falsch, da UV-Strahlung aus ungeladenen Photonen besteht.\n- **C** ist falsch, da alle EM-Wellen im Vakuum exakt gleich schnell sind ($c$).\n- **D** ist falsch (IR wird hervorragend absorbiert und führt zur Erwärmung).\n- **E** verwechselt elektromagnetische Photonen mit Teilchenstrahlung (Neutronen)."
+  },
+  {
+    "id": "chem-02-set5-q113",
+    "set": 5,
+    "topic": "Elektromagnetische Wellen — Vergleich von UV- und Infrarotphotonen im Vakuum",
+    "difficulty": "medium",
+    "question": "Gegeben sind zwei elektromagnetische Wellen im freien Vakuum:\n- Welle A: Ultraviolettstrahlung mit $\\lambda_A = 200\\,\\text{nm}$\n- Welle B: Nahinfrarotstrahlung mit $\\lambda_B = 800\\,\\text{nm}$\n\nWelcher quantitative Vergleich zwischen den beiden Wellen bezüglich ihrer Ausbreitungsgeschwindigkeit $c$, ihrer Frequenz $f$ und ihrer Photonenenergie $E$ ist absolut korrekt?",
+    "options": {
+      "A": "Welle A breitet sich viermal schneller aus als Welle B ($c_A = 4 \\cdot c_B$).",
+      "B": "Welle A besitzt die vierfache Frequenz ($f_A = 4 \\cdot f_B$) und die vierfache Photonenenergie ($E_A = 4 \\cdot E_B$), breitet sich jedoch mit exakt derselben Geschwindigkeit wie Welle B aus ($c_A = c_B$).",
+      "C": "Welle A besitzt ein Viertel der Frequenz von Welle B ($f_A = \\frac{1}{4} f_B$).",
+      "D": "Beide Wellen besitzen dieselbe Energie, unterscheiden sich jedoch in ihrer Amplitude.",
+      "E": "Welle B besitzt eine viermal höhere Frequenz, da ihre Wellenlänge größer ist."
+    },
+    "correct_answer": "B",
+    "explanation": "1. **Lichtgeschwindigkeit im Vakuum:**\nAlle elektromagnetischen Wellen breiten sich im Vakuum unabhängig von Frequenz und Wellenlänge mit der universellen Naturkonstante $c \\approx 3 \\cdot 10^8\\,\\text{m/s}$ aus $\\implies c_A = c_B$.\n\n2. **Frequenzverhältnis:**\n$$f = \\frac{c}{\\lambda} \\implies \\frac{f_A}{f_B} = \\frac{\\lambda_B}{\\lambda_A} = \\frac{800\\,\\text{nm}}{200\\,\\text{nm}} = 4 \\implies f_A = 4 \\cdot f_B$$\n\n3. **Photonenenergieverhältnis:**\n$$E = h \\cdot f \\implies \\frac{E_A}{E_B} = \\frac{f_A}{f_B} = 4 \\implies E_A = 4 \\cdot E_B$$\n(Konkret: $E_A = 1240 / 200 = 6{,}2\\,\\text{eV}$; $E_B = 1240 / 800 = 1{,}55\\,\\text{eV} \\rightarrow 6{,}2 / 1{,}55 = 4$).\n\n**Analyse der Falschantworten:**\n- **A** unterliegt dem Irrglauben, dass energiereichere Wellen im Vakuum schneller seien.\n- **C** und **E** verkehren die reziproke Proportionalität zwischen Frequenz und Wellenlänge ins Gegenteil.\n- **D** verkennt die Wellenlängenabhängigkeit der Photonenenergie."
+  },
+  {
+    "id": "chem-02-set5-q114",
+    "set": 5,
+    "topic": "Photoeffekt — Mehrstufige Bremsspannungs-Vorhersage bei Wellenlängenwechsel",
+    "difficulty": "hard",
+    "question": "Bestrahlt man eine Photozelle mit Licht der Wellenlänge $\\lambda_1 = 310\\,\\text{nm}$, wird eine Gegenspannung von $U_{0,1} = 1{,}5\\,\\text{V}$ gemessen, um den Stromfluss exakt zu unterbinden. Welche Gegenspannung $U_{0,2}$ ist erforderlich, wenn die Zelle anschließend mit kurzwelligerem Licht der Wellenlänge $\\lambda_2 = 200\\,\\text{nm}$ bestrahlt wird?\n(Kopfrechentrick: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$).",
+    "options": {
+      "A": "$U_{0,2} = 1{,}5\\,\\text{V}$",
+      "B": "$U_{0,2} = 2{,}2\\,\\text{V}$",
+      "C": "$U_{0,2} = 4{,}7\\,\\text{V}$",
+      "D": "$U_{0,2} = 3{,}7\\,\\text{V}$",
+      "E": "$U_{0,2} = 6{,}2\\,\\text{V}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Diese Aufgabe erfordert eine dreistufige logische Verknüpfung:\n\n1. **Austrittsarbeit $W_A$ aus der ersten Messung bestimmen:**\n$$E_{\\text{Photon,1}} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{310\\,\\text{nm}} = 4{,}0\\,\\text{eV}$$\n$$E_{\\text{kin,max,1}} = e \\cdot U_{0,1} = 1{,}5\\,\\text{eV}$$\n$$W_A = E_{\\text{Photon,1}} - E_{\\text{kin,max,1}} = 4{,}0\\,\\text{eV} - 1{,}5\\,\\text{eV} = 2{,}5\\,\\text{eV}$$\n\n2. **Photonenenergie bei der zweiten Wellenlänge berechnen:**\n$$E_{\\text{Photon,2}} = \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{200\\,\\text{nm}} = 6{,}2\\,\\text{eV}$$\n\n3. **Neue kinetische Energie und neue Bremsspannung berechnen:**\n$$E_{\\text{kin,max,2}} = E_{\\text{Photon,2}} - W_A = 6{,}2\\,\\text{eV} - 2{,}5\\,\\text{eV} = 3{,}7\\,\\text{eV}$$\n$$e \\cdot U_{0,2} = 3{,}7\\,\\text{eV} \\implies U_{0,2} = 3{,}7\\,\\text{V}$$\n\n**Analyse der Falschantworten:**\n- **A** nimmt an, dass die Bremsspannung wellenlängenunabhängig sei.\n- **B** addiert lediglich die Differenz der Photonenenergien zu $W_A$.\n- **C** verrechnet sich bei der Subtraktion ($6{,}2 - 1{,}5 = 4{,}7$).\n- **E** ist die reine Photonenenergie in Volt ($6{,}2\\,\\text{V}$), ohne Abzug von $W_A$."
+  },
+  {
+    "id": "chem-02-set5-q115",
+    "set": 5,
+    "topic": "Teilchen-Welle-Dualismus — Auflösungsvermögen im Elektronenmikroskop",
+    "difficulty": "hard",
+    "question": "In der modernen biologischen und medizinischen Forschung können mit Transmissions-Elektronenmikroskopen ($\\text{TEM}$) atomare Gitterstrukturen und Zellorganellen mit einer Auflösung von unter $0{,}1\\,\\text{nm}$ abgebildet werden, während klassische Lichtmikroskope eine fundamentale Auflösungsgrenze von etwa $200\\,\\text{nm}$ besitzen. Welche quantenphysikalische Gesetzmäßigkeit begründet diesen enormen Vorteil des Elektronenmikroskops?",
+    "options": {
+      "A": "Elektronen besitzen keine Masse und können biologische Gewebe daher ohne jede Ablenkung durchdringen.",
+      "B": "Im Elektronenmikroskop wird die Lichtgeschwindigkeit der Photonen künstlich herabgesetzt.",
+      "C": "Elektronen sind reine Punktteilchen und zeigen im Gegensatz zu Lichtwellen prinzipiell keinerlei Beugungsphänomene.",
+      "D": "Die Auflösungsgrenze hängt ausschließlich von der Helligkeit (Intensität) der Strahlenquelle ab.",
+      "E": "Durch Beschleunigung in einem elektrischen Feld erhalten Elektronen einen sehr hohen Impuls $p$, wodurch ihre De-Broglie-Wellenlänge $\\lambda = \\frac{h}{p}$ um Größenordnungen kleiner ist als die Wellenlänge des sichtbaren Lichts, was die Beugungsbegrenzung dramatisch verringert."
+    },
+    "correct_answer": "E",
+    "explanation": "Nach dem Abbe-Kriterium der Wellenoptik ist die minimale auflösbare Strukturgröße $d$ durch die Wellenlänge der verwendeten Strahlung begrenzt ($d \\approx \\frac{\\lambda}{2}$).\n- **Lichtmikroskop:** Verwendet sichtbares Licht ($\\lambda \\approx 400\\text{–}700\\,\\text{nm}$). Die Beugungsgrenze liegt daher bei ca. $200\\,\\text{nm}$ (Zellkerne und Bakterien sind auflösbar, Viren oder Makromoleküle nicht).\n- **Elektronenmikroskop:** Nutzt die De-Broglie-Materiewellen von Elektronen:\n$$\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2m_e \\cdot E_{\\text{kin}}}}$$\nWerden Elektronen durch Hochspannung (z. B. $10\\text{ bis }100\\,\\text{kV}$) beschleunigt, sinkt ihre De-Broglie-Wellenlänge auf Pikometer-Werte ($\\lambda < 0{,}01\\,\\text{nm}$). Da diese Wellenlänge tausendfach kleiner ist als die des sichtbaren Lichts, verschiebt sich die Beugungsgrenze in den Sub-Nanometerbereich.\n\n**Analyse der Falschantworten:**\n- **A** ist falsch (Elektronen besitzen eine Masse $m_e \\approx 9{,}1 \\cdot 10^{-31}\\,\\text{kg}$).\n- **B** und **D** sind physikalisch unzutreffend.\n- **C** ist falsch (Elektronen zeigen Beugungsphänomene; ihre Welleneigenschaft bestimmt das Auflösungsvermögen)."
+  },
+  {
+    "id": "chem-02-set5-q116",
+    "set": 5,
+    "topic": "Strahlungsleistung & Photonenfluss — Vergleich zweier Farben",
+    "difficulty": "easy",
+    "question": "Zwei Laser (Laser Rot: $\\lambda_{\\text{rot}} = 700\\,\\text{nm}$; Laser Blau: $\\lambda_{\\text{blau}} = 450\\,\\text{nm}$) strahlen mit der exakt gleichen optischen Leistung von jeweils $P = 10\\,\\text{mW}$ ($10\\,\\text{mJ/s}$). Welcher Laser sendet pro Sekunde eine größere Anzahl an Photonen aus?",
+    "options": {
+      "A": "Beide Laser senden pro Sekunde exakt dieselbe Anzahl an Photonen aus, da ihre Wattzahl identisch ist.",
+      "B": "Der blaue Laser sendet mehr Photonen pro Sekunde aus, da blaues Licht eine höhere Frequenz besitzt.",
+      "C": "Der rote Laser sendet mehr Photonen pro Sekunde aus, da jedes einzelne rote Photon weniger Energie trägt als ein blaues Photon.",
+      "D": "Welcher Laser mehr Photonen sendet, hängt von der Raumtemperatur ab.",
+      "E": "Photonen lassen sich bei kontinuierlicher Strahlung physikalisch nicht abzählen."
+    },
+    "correct_answer": "C",
+    "explanation": "Die Strahlungsleistung $P$ ist die pro Zeiteinheit transportierte Gesamtenergie:\n$$P = \\frac{\\Delta E_{\\text{gesamt}}}{\\Delta t} = \\frac{N}{\\Delta t} \\cdot E_{\\text{Photon}}$$\nUmgestellt nach der Photonenrate (Anzahl der Photonen pro Sekunde):\n$$\\frac{N}{\\Delta t} = \\frac{P}{E_{\\text{Photon}}}$$\nDa die Gesamtleistung $P$ für beide Laser identisch ist, verhält sich die Photonenrate streng umgekehrt proportional zur Energie des Einzelphotons:\n- Ein rotes Photon ($\\lambda = 700\\,\\text{nm}$) trägt weniger Energie ($E_{\\text{rot}} \\approx 1{,}77\\,\\text{eV}$) als ein blaues Photon ($\\lambda = 450\\,\\text{nm}$, $E_{\\text{blau}} \\approx 2{,}76\\,\\text{eV}$).\n- Um dieselbe Gesamtleistung von $10\\,\\text{mW}$ bereitzustellen, muss der rote Laser deutlich mehr Photonen pro Sekunde emittieren als der blaue Laser:\n$$\\frac{N_{\\text{rot}}}{N_{\\text{blau}}} = \\frac{E_{\\text{blau}}}{E_{\\text{rot}}} = \\frac{700}{450} \\approx 1{,}56$$\n\n**Analyse der Falschantworten:**\n- **A** ignoriert die unterschiedliche Quantelung der Energie.\n- **B** verwechselt Leistung mit Photonenenergie.\n- **D** und **E** sind fachlich falsch."
+  },
+  {
+    "id": "chem-02-set5-q117",
+    "set": 5,
+    "topic": "Orbitalmodell — Symmetrie und Geometrie von s- und p-Orbitalen",
+    "difficulty": "medium",
+    "question": "Im quantenmechanischen Orbitalmodell wird der Zustand eines Elektrons durch Orbitale (dreidimensionale Aufenthaltswahrscheinlichkeitsdichten $|\\psi|^2$) beschrieben. Welche geometrische Eigenschaft unterscheidet ein atomares s-Orbital fundamental von einem p-Orbital?",
+    "options": {
+      "A": "Ein s-Orbital besitzt zwei rechtwinklige Knotenebenen; ein p-Orbital ist völlig knotenfrei.",
+      "B": "Ein s-Orbital ist kugelsymmetrisch ohne Richtungsabhängigkeit, während ein p-Orbital hantelförmig orientiert ist und eine Knotenebene aufweist, die den Atomkern schneidet.",
+      "C": "Im s-Orbital bewegt sich das Elektron kreisförmig, im p-Orbital auf einer Geraden.",
+      "D": "Ein s-Orbital kann maximal 6 Elektronen aufnehmen, ein p-Orbital nur maximal 2 Elektronen.",
+      "E": "s-Orbitale existieren nur bei Metallen, p-Orbitale nur bei Nichtmetallen."
+    },
+    "correct_answer": "B",
+    "explanation": "Die Orbitale unterscheiden sich durch ihre Nebenquantenzahl $l$, welche die räumliche Gestalt bestimmt:\n- **s-Orbitale ($l = 0$):** Sind streng kugelsymmetrisch (radialsymmetrisch). Die Aufenthaltswahrscheinlichkeit hängt nur vom Kernabstand $r$ ab, nicht von der Raumrichtung. Sie besitzen keine Winkelknotenebene durch das Zentrum.\n- **p-Orbitale ($l = 1$):** Sind hantelförmig entlang der drei Raumachsen ($p_x, p_y, p_z$) orientiert. Sie besitzen eine Knotenebene, die exakt durch den Atomkern verläuft und auf der die Aufenthaltswahrscheinlichkeitsdichte identisch null ist ($|\\psi|^2 = 0$).\n\n**Analyse der Falschantworten:**\n- **A** vertauscht die Knotenebenen.\n- **C** unterliegt dem veralteten Bohrschen Bahnmodell (Elektronen bewegen sich nicht auf deterministischen Bahnen).\n- **D** vertauscht die Schalenkapazitäten ($s$ fasst 2 Elektronen, die drei $p$-Orbitale zusammen 6).\n- **E** ist chemisch falsch (fast alle Atome ab der 2. Periode besitzen sowohl s- als auch p-Orbitale)."
+  },
+  {
+    "id": "chem-02-set5-q118",
+    "set": 5,
+    "topic": "Komplexe Fehleranalyse — Fortgeschrittene Mikrokosmos-Konzepte",
+    "difficulty": "hard",
+    "question": "Welche der folgenden fünf Aussagen über quantenphysikalische Gesetzmäßigkeiten im Mikrokosmos enthält eine unzutreffende (falsche) Behauptung?",
+    "options": {
+      "A": "Das Davisson-Germer-Experiment wies durch Beugungsmuster an Nickel-Einkristallen nach, dass sich Elektronen wie De-Broglie-Materiewellen verhalten.",
+      "B": "Die Heisenbergsche Unschärferelation $\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$ erzwingt, dass ein physikalisches System selbst am absoluten Temperaturnullpunkt ($0\\,\\text{K}$) eine nicht verschwindende Nullpunktsenergie besitzt.",
+      "C": "Im sichtbaren Bereich des Wasserstoffspektrums (Balmer-Serie) nimmt der energetische Abstand zwischen benachbarten Spektrallinien mit wachsender Frequenz immer weiter zu, sodass die Linien im kurzwelligen Bereich immer weiter auseinanderliegen.",
+      "D": "Die Austrittsarbeit $W_A$ beim äußeren Photoeffekt ist eine materialspezifische Eigenschaft der Photokathode und unabhängig von der Frequenz des einfallenden Lichts.",
+      "E": "Ein Photon besitzt eine Ruhemasse von $m_0 = 0$, überträgt jedoch bei Stoßprozessen einen wohlbestimmten mechanischen Impuls von $p = \\frac{h}{\\lambda}$."
+    },
+    "correct_answer": "C",
+    "explanation": "Aussage C ist falsch (und damit die gesuchte Antwort):\nDie Energieniveaus des Wasserstoffatoms gehorchen $E_n = -13{,}6\\,\\text{eV} / n^2$. Für höhere Quantenzahlen $n$ rücken die Energieniveaus immer dichter zusammen ($\\lim_{n \\rightarrow \\infty} (E_{n+1} - E_n) = 0$).\nDaher rücken auch die Spektrallinien der Balmer-Serie bei höheren Frequenzen (kürzeren Wellenlängen) immer enger aneinander, bis sie an der Seriengrenze ($n = \\infty \\rightarrow 2$, $\\lambda \\approx 365\\,\\text{nm}$) in ein kontinuierliches Spektrum übergehen!\nDie Aussagen A, B, D und E sind uneingeschränkt korrekt."
+  },
+  {
+    "id": "chem-02-set5-q119",
+    "set": 5,
+    "topic": "Linienspektren — Maximale Anzahl von Spektrallinien in einer Gasentladung",
+    "difficulty": "medium",
+    "question": "Ein Gas aus atomarem Wasserstoff wird durch energiereiche Elektronenstöße so angeregt, dass sich die Elektronen in den Atomen im Quantenzustand $n = 4$ befinden. Wie viele unterschiedliche Spektrallinien können in der Folge durch spontane Abregung bis in den Grundzustand ($n = 1$) im gesamten Ensemble emittiert werden, und wie verteilen sich diese auf die bekannten Spektralserien?",
+    "options": {
+      "A": "Genau 3 Linien (alle gehören zur Lyman-Serie).",
+      "B": "Genau 4 Linien (jeweils eine für jedes Quantenniveau).",
+      "C": "Insgesamt 6 Linien (3 Lyman-Linien, 2 Balmer-Linien und 1 Paschen-Linie).",
+      "D": "Insgesamt 10 Linien (gleichmäßig im Spektrum verteilt).",
+      "E": "Unendlich viele Linien, da der Zerfall kontinuierlich erfolgt."
+    },
+    "correct_answer": "C",
+    "explanation": "Die Anzahl aller möglichen verschiedenen Zweiniveau-Übergänge zwischen $n$ diskreten Niveaus berechnet sich über die Kombinatorik:\n$$N = \\frac{n \\cdot (n - 1)}{2}$$\nFür $n = 4$ gilt:\n$$N = \\frac{4 \\cdot 3}{2} = 6\\text{ unterschiedliche Spektrallinien}$$\nAufschlüsselung nach den Endniveaus (Spektralserien):\n\n1. **Übergänge nach $n_1 = 1$ (Lyman-Serie, UV):**\n- $4 \\rightarrow 1$ (Lyman-$\\gamma$)\n- $3 \\rightarrow 1$ (Lyman-$\\beta$)\n- $2 \\rightarrow 1$ (Lyman-$\\alpha$)\n$\\rightarrow 3$ Lyman-Linien\n\n2. **Übergänge nach $n_1 = 2$ (Balmer-Serie, VIS):**\n- $4 \\rightarrow 2$ (Balmer-$\\beta$)\n- $3 \\rightarrow 2$ (Balmer-$\\alpha$)\n$\\rightarrow 2$ Balmer-Linien\n\n3. **Übergänge nach $n_1 = 3$ (Paschen-Serie, IR):**\n- $4 \\rightarrow 3$ (Paschen-$\\alpha$)\n$\\rightarrow 1$ Paschen-Linie\n\nSumme: $3 + 2 + 1 = 6$ Linien.\n\n**Analyse der Falschantworten:**\n- **A** vergisst Kaskadenübergänge.\n- **B** nennt stur die Hauptquantenzahl.\n- **D** und **E** widersprechen der quantenmechanischen Diskretisierung."
+  },
+  {
+    "id": "chem-02-set5-q120",
+    "set": 5,
+    "topic": "Chemischer Periodentrend der Austrittsarbeit bei Alkalimetallen",
+    "difficulty": "medium",
+    "question": "Betrachtet man die 1. Hauptgruppe des Periodensystems (Alkalimetalle), sinken die materialcharakteristischen Austrittsarbeiten $W_A$ für den Photoeffekt von oben nach unten systematisch ab:\n$$\\text{Li}\\,(2{,}9\\,\\text{eV}) > \\text{Na}\\,(2{,}4\\,\\text{eV}) > \\text{K}\\,(2{,}3\\,\\text{eV}) > \\text{Rb}\\,(2{,}2\\,\\text{eV}) > \\text{Cs}\\,(2{,}1\\,\\text{eV})$$\nWelche atomare Ursache begründet diesen Trend und macht Caesium zum empfindlichsten Photokathoden-Material für sichtbares Licht?",
+    "options": {
+      "A": "Caesiumatome besitzen keine Neutronen, wodurch die Kernmasse minimal ist.",
+      "B": "Die Austrittsarbeit sinkt, weil Caesium bei Raumtemperatur radioaktiv zerfällt.",
+      "C": "Caesium besitzt eine höhere Elektronegativität als Lithium und stößt Elektronen daher aktiv ab.",
+      "D": "Caesium bildet im metallischen Festkörper kovalente Dreifachbindungen aus.",
+      "E": "Von Lithium zu Caesium wächst die Anzahl der abgeschlossenen inneren Elektronenschalen; der Atomradius wird deutlich größer und die kernnahen Elektronen schirmen die Kernladung effektiver ab, sodass das einzelne Valenzelektron im Metallgitter energetisch viel lockerer gebunden ist und mit minimaler Photonenenergie herausgelöst werden kann."
+    },
+    "correct_answer": "E",
+    "explanation": "Die Austrittsarbeit $W_A$ eines Metalls korreliert eng mit der ersten Ionisierungsenergie seiner Atome:\n- Entlang einer Hauptgruppe von oben nach unten kommt mit jeder Periode eine neue Hauptschale hinzu.\n- Das äußerste Valenzelektron ($ns^1$) befindet sich bei Caesium auf der 6. Schale ($6s^1$), in sehr großem Abstand zum Atomkern.\n- Die 54 inneren Rumpfelektronen schirmen die Kernladung $+55e$ hochgradig ab.\n- Folglich ist das Valenzelektron im metallischen Elektronengas nur sehr schwach gebunden. Es genügt eine minimale Energie von nur $2{,}1\\,\\text{eV}$ (entsprechend einer Grenzwellenlänge von $\\lambda_0 \\approx \\frac{1240}{2{,}1} \\approx 590\\,\\text{nm}$), um es freizusetzen. Caesium reagiert daher bereits auf gelboranges Licht!\n\n**Analyse der Falschantworten:**\n- **A**, **B**, **C** und **D** sind absurde Fehlannahmen über Alkalimetalle."
+  },
+  {
+    "id": "chem-02-set5-q121",
+    "set": 5,
+    "topic": "Unschärferelation — Quantitative Abschätzung im Bereich atomarer Radien",
+    "difficulty": "medium",
+    "question": "Ein Elektron wird experimentell in einem eindimensionalen Bereich der Breite $\\Delta x = 0{,}05\\,\\text{nm}$ ($5 \\cdot 10^{-11}\\,\\text{m}$, etwa halber Durchmesser eines Wasserstoffatoms) nachgewiesen. Welcher Mindestwert resultiert daraus für die Impulsunschärfe $\\Delta p$ des Elektrons?\n(Verwende den gerundeten Wert $\\frac{h}{4\\pi} \\approx 0{,}5 \\cdot 10^{-34}\\,\\text{J}\\cdot\\text{s}$).",
+    "options": {
+      "A": "$\\Delta p \\ge 1{,}0 \\cdot 10^{-45}\\,\\text{kg}\\cdot\\text{m/s}$",
+      "B": "$\\Delta p \\ge 2{,}5 \\cdot 10^{-43}\\,\\text{kg}\\cdot\\text{m/s}$",
+      "C": "$\\Delta p \\ge 5{,}0 \\cdot 10^{-15}\\,\\text{kg}\\cdot\\text{m/s}$",
+      "D": "$\\Delta p \\ge 1{,}0 \\cdot 10^{-22}\\,\\text{kg}\\cdot\\text{m/s}$",
+      "E": "$\\Delta p \\ge 1{,}0 \\cdot 10^{-24}\\,\\text{kg}\\cdot\\text{m/s}$"
+    },
+    "correct_answer": "E",
+    "explanation": "Nach der Heisenbergschen Unschärferelation gilt:\n$$\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi} \\implies \\Delta p \\ge \\frac{h}{4\\pi \\cdot \\Delta x}$$\nWerte einsetzen:\n- $\\Delta x = 0{,}05\\,\\text{nm} = 5 \\cdot 10^{-11}\\,\\text{m}$\n- $\\frac{h}{4\\pi} \\approx 0{,}5 \\cdot 10^{-34}\\,\\text{J}\\cdot\\text{s}$\n$$\\Delta p \\ge \\frac{0{,}5 \\cdot 10^{-34}\\,\\text{J}\\cdot\\text{s}}{5 \\cdot 10^{-11}\\,\\text{m}} = \\frac{0{,}5}{5} \\cdot 10^{-34 - (-11)} = 0{,}1 \\cdot 10^{-23}\\,\\text{kg}\\cdot\\text{m/s} = 1{,}0 \\cdot 10^{-24}\\,\\text{kg}\\cdot\\text{m/s}$$\n(Teilt man diesen Impuls durch die Elektronenmasse $m_e \\approx 9{,}1 \\cdot 10^{-31}\\,\\text{kg}$, resultiert eine Geschwindigkeitsunschärfe von über $10^6\\,\\text{m/s}$!).\n\n**Analyse der Falschantworten:**\n- **A** und **B** multiplizieren die Exponenten fehlerhaft ($-34 + (-11) = -45$).\n- **C** ist um viele Größenordnungen zu groß.\n- **D** verrechnet sich bei den Zehnerpotenzen um den Faktor 100."
+  },
+  {
+    "id": "chem-02-set5-q122",
+    "set": 5,
+    "topic": "Synthese: Balmer-Emission als Anreger eines Photoeffekts",
+    "difficulty": "hard",
+    "question": "Ein Photon, das beim Übergang eines Elektrons von $n = 4$ nach $n = 2$ im Wasserstoffatom emittiert wird ($H_\\beta$-Linie, $\\Delta E = 2{,}55\\,\\text{eV}$), trifft unmittelbar auf eine benachbarte Metalloberfläche mit der Austrittsarbeit $W_A = 1{,}80\\,\\text{eV}$. Tritt ein äußerer Photoeffekt auf, und falls ja, welche Gegenspannung $U_0$ ist nötig, um den resultierenden Photostrom vollständig zu stoppen?",
+    "options": {
+      "A": "Es tritt kein Photoeffekt auf, da die Energie der $H_\\beta$-Linie zu gering ist.",
+      "B": "Es tritt ein Photoeffekt auf; die erforderliche Bremsspannung beträgt $U_0 = 2{,}55\\,\\text{V}$.",
+      "C": "Es tritt ein Photoeffekt auf; die erforderliche Bremsspannung beträgt $U_0 = 1{,}80\\,\\text{V}$.",
+      "D": "Es tritt ein Photoeffekt auf; die erforderliche Bremsspannung beträgt $U_0 = 0{,}75\\,\\text{V}$.",
+      "E": "Es tritt ein Photoeffekt auf; die erforderliche Bremsspannung beträgt $U_0 = 4{,}35\\,\\text{V}$."
+    },
+    "correct_answer": "D",
+    "explanation": "1. **Photonenenergie des Wasserstoffübergangs prüfen:**\n$$E_{\\text{Photon}} = \\Delta E_{4\\rightarrow 2} = 2{,}55\\,\\text{eV}$$\n\n2. **Schwellenbedingung abgleichen:**\nDa $E_{\\text{Photon}} = 2{,}55\\,\\text{eV} > W_A = 1{,}80\\,\\text{eV}$ ist, wird die Austrittsarbeit überschritten $\\rightarrow$ Photoelektrischer Effekt findet statt.\n\n3. **Maximale kinetische Energie und Bremsspannung berechnen:**\n$$E_{\\text{kin,max}} = E_{\\text{Photon}} - W_A = 2{,}55\\,\\text{eV} - 1{,}80\\,\\text{eV} = 0{,}75\\,\\text{eV}$$\n$$e \\cdot U_0 = E_{\\text{kin,max}} \\implies e \\cdot U_0 = 0{,}75\\,\\text{eV} \\implies U_0 = 0{,}75\\,\\text{V}$$\n\n**Analyse der Falschantworten:**\n- **A** verkennt, dass $2{,}55\\,\\text{eV} > 1{,}80\\,\\text{eV}$ ist.\n- **B** nennt die Photonenenergie in Volt.\n- **C** nennt die Austrittsarbeit in Volt.\n- **E** addiert fälschlicherweise Photonenenergie und Austrittsarbeit ($2{,}55 + 1{,}80 = 4{,}35\\,\\text{V}$)."
+  },
+  {
+    "id": "chem-02-set5-q123",
+    "set": 5,
+    "topic": "Atomare Spektren — Absorptionsspektrum von kaltem Wasserstoffgas",
+    "difficulty": "medium",
+    "question": "Leitet man kontinuierliches weißes Licht durch ein Gefäß mit nicht angeregtem, kaltem atomarem Wasserstoffgas bei Raumtemperatur ($T \\approx 20\\ ^\\circ\\text{C}$), beobachtet man im Spektrometer ausschließlich die dunklen Absorptionslinien der Lyman-Serie, jedoch keine einzige Absorptionslinie der Balmer-Serie. Welche quantenphysikalische Ursache begründet dieses Phänomen?",
+    "options": {
+      "A": "Wasserstoffatome können prinzipiell nur ultraviolette Photonen absorbieren; sichtbares Licht wird von Atomen immer reflektiert.",
+      "B": "Bei Raumtemperatur reicht die thermische Energie bei weitem nicht aus, um Elektronen in das Niveau $n = 2$ anzuregen; praktisch alle Atome befinden sich im Grundzustand $n = 1$, weshalb nur Absorptionen stattfinden können, die in $n = 1$ starten (Lyman-Serie).",
+      "C": "Die Balmer-Serie existiert ausschließlich bei Temperaturen über $10^6\\,\\text{K}$.",
+      "D": "Die Heisenbergsche Unschärferelation verbietet die Absorption von sichtbarem Licht im ungeladenen Zustand.",
+      "E": "Weil die Balmer-Linien durch destruktive Interferenz im Gas vollständig ausgelöscht werden."
+    },
+    "correct_answer": "B",
+    "explanation": "Damit ein Atom ein Photon einer Spektrallinie absorbieren kann, muss sich das Elektron bereits auf dem Anfangsniveau dieses Übergangs befinden:\n- **Balmer-Linien:** Erfordern zwingend das Startniveau $n = 2$ (Übergänge von $n = 2 \\rightarrow n \\ge 3$).\n- **Energiedifferenz:** Der erste Anregungssprung vom Grundzustand ($n = 1$) in den Zustand $n = 2$ erfordert eine gewaltige Energie von $\\Delta E = E_2 - E_1 = -3{,}4\\,\\text{eV} - (-13{,}6\\,\\text{eV}) = 10{,}2\\,\\text{eV}$.\n- **Thermische Energie:** Die mittlere thermische Energie der Atome bei Raumtemperatur ($T \\approx 300\\,\\text{K}$) liegt bei nur rund $k_B T \\approx 0{,}025\\,\\text{eV}$ ($\\approx \\frac{1}{40}\\,\\text{eV}$). Diese winzige thermische Energie reicht bei weitem nicht aus, um Elektronen nach $n = 2$ anzuregen.\nFolglich befinden sich bei Raumtemperatur nahezu 100 % aller Wasserstoffatome im Grundzustand ($n = 1$). Sie können daher nur Photonen absorbieren, deren Übergänge in $n = 1$ beginnen — und das ist per definitionem die Lyman-Serie im UV-Bereich.\nErst bei extrem hohen Temperaturen (z. B. in heißen Sternatmosphären bei mehreren tausend Kelvin) sind signifikante Mengen an Atomen thermisch in $n = 2$ besetzt, sodass dort die berühmten Fraunhofer-Balmer-Absorptionslinien des sichtbaren Lichts auftreten.\n\n**Analyse der Falschantworten:**\n- **A**, **C**, **D** und **E** sind physikalisch unzutreffende Scheinerklärungen."
+  },
+  {
+    "id": "chem-02-set5-q124",
+    "set": 5,
+    "topic": "Photoeffekt — Bestimmung der Grenzfrequenz aus zwei Messpunkten",
+    "difficulty": "medium",
+    "question": "In einer Messreihe zum äußeren Photoeffekt werden für zwei verschiedene Frequenzen die folgenden Bremsspannungen gemessen:\n- Messpunkt 1: Bei $f_1 = 6 \\cdot 10^{14}\\,\\text{Hz}$ beträgt die Bremsspannung $U_{0,1} = 0{,}48\\,\\text{V}$.\n- Messpunkt 2: Bei $f_2 = 10 \\cdot 10^{14}\\,\\text{Hz}$ beträgt die Bremsspannung $U_{0,2} = 2{,}14\\,\\text{V}$.\n\nWelche materialcharakteristische Grenzfrequenz $f_0$ besitzt die verwendete Photokathode näherungsweise?\n(Hinweis: Nutze $\\frac{h}{e} \\approx 4{,}14 \\cdot 10^{-15}\\,\\text{V}\\cdot\\text{s}$ bzw. $\\Delta U_0 = \\frac{h}{e} \\cdot \\Delta f$).",
+    "options": {
+      "A": "$f_0 \\approx 1{,}0 \\cdot 10^{14}\\,\\text{Hz}$",
+      "B": "$f_0 \\approx 2{,}4 \\cdot 10^{14}\\,\\text{Hz}$",
+      "C": "$f_0 \\approx 4{,}8 \\cdot 10^{14}\\,\\text{Hz}$",
+      "D": "$f_0 \\approx 6{,}0 \\cdot 10^{14}\\,\\text{Hz}$",
+      "E": "$f_0 \\approx 8{,}0 \\cdot 10^{14}\\,\\text{Hz}$"
+    },
+    "correct_answer": "C",
+    "explanation": "1. **Steigung der Einstein-Geraden prüfen:**\n$$\\frac{\\Delta U_0}{\\Delta f} = \\frac{2{,}14\\,\\text{V} - 0{,}48\\,\\text{V}}{(10 - 6) \\cdot 10^{14}\\,\\text{s}^{-1}} = \\frac{1{,}66\\,\\text{V}}{4 \\cdot 10^{14}\\,\\text{s}^{-1}} = 0{,}415 \\cdot 10^{-14}\\,\\text{V}\\cdot\\text{s} = 4{,}15 \\cdot 10^{-15}\\,\\text{V}\\cdot\\text{s} \\approx \\frac{h}{e}$$\n\n2. **Austrittsarbeit in Elektronenvolt bestimmen:**\nAus der Einstein-Gleichung für Messpunkt 1 folgt:\n$$E_{\\text{kin,1}} = h \\cdot f_1 - W_A \\implies e \\cdot U_{0,1} = h \\cdot f_1 - W_A$$\n$$\\frac{W_A}{e} = \\frac{h}{e} \\cdot f_1 - U_{0,1} = (4{,}14 \\cdot 10^{-15}\\,\\text{V}\\cdot\\text{s}) \\cdot (6 \\cdot 10^{14}\\,\\text{s}^{-1}) - 0{,}48\\,\\text{V}$$\n$$\\frac{W_A}{e} = 2{,}48\\,\\text{V} - 0{,}48\\,\\text{V} = 2{,}00\\,\\text{V} \\implies W_A = 2{,}00\\,\\text{eV}$$\n\n3. **Grenzfrequenz $f_0$ berechnen:**\nAn der Schwelle gilt $h \\cdot f_0 = W_A \\implies f_0 = \\frac{W_A}{h} = \\frac{W_A/e}{h/e}$:\n$$f_0 = \\frac{2{,}00\\,\\text{V}}{4{,}14 \\cdot 10^{-15}\\,\\text{V}\\cdot\\text{s}} \\approx 0{,}483 \\cdot 10^{15}\\,\\text{s}^{-1} \\approx 4{,}8 \\cdot 10^{14}\\,\\text{Hz}$$\n(Probe: Liegt wie erwartet knapp unterhalb von $f_1 = 6 \\cdot 10^{14}\\,\\text{Hz}$).\n\n**Analyse der Falschantworten:**\n- **A** und **B** schätzen die Grenzfrequenz viel zu tief.\n- **D** setzt $f_0 = f_1$ an (bei $f_1$ treten aber bereits Elektronen mit $0{,}48\\,\\text{eV}$ aus!).\n- **E** liegt oberhalb von $f_1$."
+  },
+  {
+    "id": "chem-02-set5-q125",
+    "set": 5,
+    "topic": "Master-Synthese: Vergleich von Photon und Elektron bei gleicher Wellenlänge",
+    "difficulty": "medium",
+    "question": "Gegeben sind ein Photon und ein nicht-relativistisches Elektron, die im Vakuum die exakt gleiche De-Broglie-Wellenlänge von $\\lambda = 0{,}20\\,\\text{nm}$ ($200\\,\\text{pm}$) aufweisen. Welche Aussage über den Impuls $p$, die kinetische Energie des Elektrons ($E_{\\text{kin,e}}$) und die Photonenenergie ($E_{\\text{Photon}}$) ist uneingeschränkt korrekt?\n(Konstanten: $h \\cdot c \\approx 1240\\,\\text{eV}\\cdot\\text{nm}$; $m_e \\approx 9{,}1 \\cdot 10^{-31}\\,\\text{kg}$; $1\\,\\text{eV} \\approx 1{,}6 \\cdot 10^{-19}\\,\\text{J}$).",
+    "options": {
+      "A": "Beide Teilchen besitzen denselben Impuls ($p_{\\text{Photon}} = p_e$), aber das Photon trägt eine dramatisch höhere Energie als das Elektron ($E_{\\text{Photon}} = 6200\\,\\text{eV} \\gg E_{\\text{kin,e}} \\approx 37{,}6\\,\\text{eV}$).",
+      "B": "Beide Teilchen besitzen exakt dieselbe Energie und denselben Impuls, da ihre Wellenlängen identisch sind.",
+      "C": "Das Elektron besitzt einen viel größeren Impuls als das Photon, da das Elektron eine Ruhemasse besitzt.",
+      "D": "Das Photon besitzt eine kinetische Energie von null, da es keine Masse hat.",
+      "E": "Das Elektron besitzt eine höhere Energie als das Photon, da seine Geschwindigkeit größer als $c$ ist."
+    },
+    "correct_answer": "A",
+    "explanation": "Diese Master-Frage fasst den Teilchen-Welle-Dualismus des gesamten Kapitels zusammen:\n\n1. **Impulsvergleich:**\nNach Louis de Broglie gilt für jedes Quantenobjekt:\n$$p = \\frac{h}{\\lambda}$$\nDa $\\lambda = 0{,}20\\,\\text{nm}$ für Photon und Elektron identisch ist, besitzen beide exakt denselben Impuls:\n$$p_{\\text{Photon}} = p_e = \\frac{6{,}6 \\cdot 10^{-34}\\,\\text{J}\\cdot\\text{s}}{0{,}2 \\cdot 10^{-9}\\,\\text{m}} = 3{,}3 \\cdot 10^{-24}\\,\\text{kg}\\cdot\\text{m/s}$$\n\n2. **Photonenenergie ($m_0 = 0$):**\n$$E_{\\text{Photon}} = \\frac{h \\cdot c}{\\lambda} \\approx \\frac{1240\\,\\text{eV}\\cdot\\text{nm}}{0{,}20\\,\\text{nm}} = 6200\\,\\text{eV} = 6{,}2\\,\\text{keV}$$\n\n3. **Kinetische Energie des Elektrons ($m_e > 0$):**\n$$E_{\\text{kin,e}} = \\frac{p^2}{2 m_e} = \\frac{(3{,}3 \\cdot 10^{-24})^2}{2 \\cdot 9{,}1 \\cdot 10^{-31}} \\approx \\frac{10{,}89 \\cdot 10^{-48}}{18{,}2 \\cdot 10^{-31}} \\approx 0{,}6 \\cdot 10^{-17}\\,\\text{J} = 6{,}0 \\cdot 10^{-18}\\,\\text{J}$$\nIn Elektronenvolt:\n$$E_{\\text{kin,e}} = \\frac{6{,}0 \\cdot 10^{-18}\\,\\text{J}}{1{,}6 \\cdot 10^{-19}\\,\\text{J/eV}} \\approx 37{,}6\\,\\text{eV}$$\n\n4. **Synthese:**\nObwohl beide denselben Impuls und dieselbe Wellenlänge tragen, besitzt das masselose Photon ($6200\\,\\text{eV}$, Röntgenstrahlung) eine rund 165-mal höhere Energie als das massebehaftete Elektron ($37{,}6\\,\\text{eV}$)!\n\n**Analyse der Falschantworten:**\n- **B** verwechselt Impulsgleichheit mit Energiegleichheit (gilt nur, wenn beide Teilchen dieselbe Dispersionsrelation hätten).\n- **C** ignoriert die universelle Gültigkeit von $p = h/\\lambda$.\n- **D** und **E** sind absurde physikalische Fehlaussagen."
+  }
+]

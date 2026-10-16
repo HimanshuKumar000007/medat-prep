@@ -1,0 +1,348 @@
+<USER_REQUEST>
+# Task: Implement MedAT KFF — Figuren zusammensetzen (FZ) — Exactly 15 Questions
+
+Act as a senior React/TypeScript developer, SVG geometry engineer, spatial-reasoning assessment designer, and MedAT preparation-content specialist.
+
+Implement a complete, visually accurate **Figuren zusammensetzen (FZ)** section for my existing MedAT preparation platform.
+
+The goal is to create 15 original, high-quality spatial-reasoning questions that reproduce the core task format and difficulty of the MedAT FZ subtest.
+
+**Important: FZ is a visual task. Actual geometric figures must be rendered. Do not implement this as ordinary text-based multiple-choice questions.**
+
+## 1. Non-negotiable requirements
+
+- Exactly **15 questions**.
+- IDs: `KFF-FZ-001` through `KFF-FZ-015`, unless the repository uses a different established naming convention.
+- Five answer choices for every question:
+  - A: A complete geometric target figure.
+  - B: A complete geometric target figure.
+  - C: A complete geometric target figure.
+  - D: A complete geometric target figure.
+  - E: Keine der Antwortmöglichkeiten ist richtig.
+- Exactly one correct answer for each question.
+- Each question contains multiple geometric pieces that must be mentally assembled to determine which target figure they form.
+- Pieces may be rotated but **must never be mirrored**.
+- Every piece must be used exactly once.
+- The correct assembly must leave no gaps and have no overlapping pieces.
+- Candidates must be able to answer by inspecting the figures, without calculations, outside knowledge, or interactive manipulation.
+- Build a proper question bank using the existing React, TypeScript, and UI architecture.
+- Do not modify unrelated BMS, TV, other KFF, or SEK sections.
+
+## 2. Inspect the project before implementing
+
+First inspect:
+
+1. Existing KFF question-bank files and data types.
+2. `generalprobeData.ts`, simulation registration, question loaders, and `index.ts`, if applicable.
+3. The current question rendering components and answer-selection interface.
+4. Existing timer, progress indicator, navigation, scoring, and review components.
+5. Any existing SVG utilities, geometry helpers, canvas components, or visual-question infrastructure.
+
+Follow the repository's naming, exporting, styling, and state-management conventions.
+
+Reuse existing components where appropriate. Do not create duplicate question banks or unnecessarily refactor unrelated code.
+
+If FZ already exists, inspect it carefully before making changes.
+
+## 3. Create actual geometric questions
+
+Every question must visually contain two parts:
+
+### Part A — Given pieces
+
+Render between **3 and 7 separate geometric pieces**, with varied configurations appropriate to the intended difficulty.
+
+Possible piece shapes include:
+
+- Triangles and combinations of triangles.
+- Rectangles and squares.
+- Parallelograms and trapezoids.
+- Concave polygons.
+- Polygonal pieces with distinctive notches or angled edges.
+- Circle sectors and other circular components, when geometric validation supports them.
+
+Avoid using only simple rectangles or identical triangles across all 15 questions. The question set must contain meaningful visual diversity.
+
+Arrange the pieces separately in the source area. Their initial orientations should vary so that candidates need to mentally rotate them.
+
+### Part B — Candidate target figures
+
+Display four complete geometric figures, labeled A, B, C, and D.
+
+The candidate must determine which figure can be assembled exactly from the supplied pieces.
+
+Option E must be a clearly labeled text option:
+
+**E — Keine der Antwortmöglichkeiten ist richtig.**
+
+All four visual alternatives must be distinct and plausible. The distractors should be challenging enough to require careful spatial reasoning rather than being obviously unrelated shapes.
+
+Do not use emoji, ASCII art, textual descriptions of shapes, or decorative approximations instead of actual geometric diagrams.
+
+## 4. Geometry generation and mathematical correctness
+
+This is the most important engineering requirement.
+
+Do not create random SVG shapes and assume that they form a valid puzzle. The geometry must be mathematically consistent and independently verifiable.
+
+### Recommended construction approach
+
+Use deterministic polygon geometry rather than manually drawing shapes without a validation method.
+
+A recommended approach is:
+
+1. Define a target polygon or composite target shape.
+2. Partition that target into smaller polygonal pieces with known coordinates.
+3. Preserve each piece's exact geometry.
+4. Shuffle the pieces and rotate some pieces to generate the source arrangement.
+5. Generate the correct target figure from the original complete shape.
+6. Generate four plausible target shapes in total, including the correct one and three distractors.
+7. Validate that the pieces can be assembled to form the correct target without gaps, overlap, or mirroring.
+8. Verify that none of the other four choices is also a valid assembly, including option E's meaning.
+
+For polygonal puzzles, prefer integer-grid or rational-coordinate geometry wherever possible. This makes area checks, rotations, shared edges, and exact-cover validation more reliable.
+
+You may use a different construction method if it provides equally strong verification.
+
+### Required assembly rules
+
+When testing whether pieces fit a target:
+
+- Allow rotations by the angles supported by the puzzle's geometric construction.
+- Do not permit reflection or mirroring.
+- Do not scale or independently resize individual pieces.
+- Preserve relative piece dimensions.
+- Do not allow pieces to overlap.
+- Do not permit gaps or missing area.
+- Use each piece exactly once.
+- Allow the assembled target to be displayed at a different overall scale if needed, while preserving all relative proportions.
+
+Do not assume that equal total area alone proves that a target is constructible. Area is a useful consistency check, not sufficient proof of a valid tiling.
+
+### Distractor validation
+
+Create distractors that preserve reasonable visual plausibility while differing in geometry.
+
+Use automated checks where possible, including:
+
+- Total area consistency.
+- Polygon boundaries and edge lengths.
+- Shape and angle constraints.
+- Rotation-only congruence.
+- Partition and tiling validity.
+- Exact-cover or equivalent search for the supported geometric model.
+
+If complete geometric verification is not possible with the current architecture, simplify the geometric model rather than presenting unverified puzzles as correct.
+
+**Never publish a question unless its answer key has been independently validated.**
+
+## 5. Visual implementation
+
+Prefer programmatically generated SVG because it provides scalable, crisp geometric figures and can represent exact polygon coordinates.
+
+Every figure should render correctly at different viewport widths and on high-density displays.
+
+Requirements:
+
+- Use clear outlines and restrained, consistent fill colors.
+- Give pieces enough spacing so their boundaries remain distinguishable.
+- Maintain consistent visual scale within each question.
+- Keep source pieces and answer figures visually separated.
+- Label options A–D clearly.
+- Make the E option accessible and selectable like the other answer options.
+- Avoid unnecessary gradients, shadows, glassmorphism effects, animations, or decorative graphics that interfere with geometric interpretation.
+- Prevent clipping, distorted proportions, accidental overlaps, and blurry rendering.
+- Do not use raster AI-generated illustrations as the authoritative geometry unless their exact shapes can be validated independently.
+
+Prefer separate SVG components or reusable geometry-rendering utilities rather than one enormous component containing all 15 questions.
+
+## 6. Difficulty distribution
+
+Create this distribution:
+
+- **4 easy questions:** fewer pieces and relatively recognizable geometric relationships.
+- **7 intermediate questions:** more pieces, varied orientations, and less immediately obvious assemblies.
+- **4 advanced questions:** more complex polygon boundaries, deceptive but valid distractors, and greater mental-rotation demands.
+
+These are internal difficulty labels. Do not display them to candidates unless the existing application explicitly supports difficulty labels.
+
+Difficulty should arise from spatial reasoning, not poor image quality, excessively small shapes, ambiguous edges, or arbitrary complexity.
+
+Vary the correct answers across A, B, C, D, and E. Aim for approximately three correct answers per option, with no predictable pattern.
+
+Never manipulate the geometry or corrupt the answer key merely to achieve balanced answer distribution.
+
+## 7. MedAT-style assessment rules
+
+The candidate-facing instructions should explain:
+
+- The supplied pieces must be assembled mentally.
+- Pieces may be rotated.
+- Pieces may not be mirrored.
+- All pieces must be used.
+- Pieces must fit together without gaps or overlap.
+- The four visual alternatives represent possible complete figures.
+- E means that none of the four alternatives can be assembled from the given pieces.
+- Exactly one answer is correct.
+
+Do not provide a button that rotates or moves the pieces during the timed attempt. Candidates should solve the task through mental spatial visualization, matching the intended FZ skill.
+
+Candidate-facing instructions and terminology should be in natural German.
+
+Create original practice questions. Do not copy official MedAT questions or describe generated questions as officially authored.
+
+## 8. Timer and test interface
+
+Configure the FZ simulation for **15 questions in 20 minutes**, consistent with the documented task format, while following existing project timer conventions.
+
+The interface must include:
+
+- A clear section title: `Figuren zusammensetzen`.
+- A timer displaying the remaining time.
+- A progress indicator showing the current question out of 15.
+- The given geometric pieces.
+- The four visual answer choices and the E option.
+- Answer selection and next/previous navigation.
+- Clear indication of the candidate's selected answer.
+- Preservation of answers when navigating between questions.
+- Appropriate handling of unanswered questions.
+- Submission and results handling consistent with the existing application.
+
+At the end of the timed simulation, follow the application's standard submission rules.
+
+Ensure the timer uses the existing architecture and does not start multiple times because a component rerenders.
+
+Make the page responsive. On desktop, arrange pieces and answer figures in a clear, balanced layout. On narrow screens, stack them sensibly without making the figures too small to inspect.
+
+## 9. Scoring and review mode
+
+Each question has one point for the correct answer and zero points for an incorrect or unanswered response, following the existing KFF scoring convention.
+
+After submission, display:
+
+- The candidate's selected option.
+- The correct answer.
+- Whether the answer was correct.
+- The complete given-piece diagram.
+- The correct target figure.
+- A visual explanation of the assembly whenever practical.
+
+For the visual explanation, use a separate review-only diagram that places each piece into the correct target using verified rotations and translations.
+
+Do not reveal transformation overlays, solution placements, or correct-answer markers during the active timed test.
+
+Keep source geometry immutable so review rendering cannot accidentally alter the original question.
+
+## 10. Recommended data structure
+
+Follow the existing TypeScript architecture. A question will need information equivalent to:
+
+- `id`
+- `difficulty`
+- `pieces`
+- `options`
+- `correctAnswer`
+- `explanation`
+- `solutionTransforms`, when available and useful
+
+Represent polygon points and transformations using an explicit, documented coordinate system.
+
+For example, an illustrative piece definition might look like:
+
+```ts
+type Point = {
+  x: number;
+  y: number;
+};
+
+type PolygonPiece = {
+  id: string;
+  points: Point[];
+};
+
+type FZOption = {
+  id: "A" | "B" | "C" | "D";
+  targetGeometry: PolygonPiece[];
+};
+
+type FZQuestion = {
+  id: string;
+  difficulty: "easy" | "medium" | "hard";
+  pieces: PolygonPiece[];
+  options: FZOption[];
+  correctAnswer: "A" | "B" | "C" | "D" | "E";
+  explanation: string;
+};
+```
+
+This is illustrative only. Adapt it to the actual application types, and extend it with necessary source coordinates, composite target geometry, transformations, and validator metadata.
+
+Avoid runtime geometry calculations that could make a stored answer key nondeterministic.
+
+## 11. Automated validation and tests
+
+Create or extend a deterministic FZ validation script that checks:
+
+1. Exactly 15 questions.
+2. Unique question IDs.
+3. Between 3 and 7 valid pieces per question, unless the documented question design specifies a different count.
+4. Exactly four geometric target options, A–D.
+5. Exactly one correct answer, including E where applicable.
+6. All polygon coordinates are finite and valid.
+7. Every piece has positive area.
+8. No unintended self-intersections or degenerate polygons.
+9. Total piece area matches the correct target's area within the explicitly documented geometry tolerance.
+10. The correct target is constructible by rotations and translations only.
+11. Reflections, scaling of individual pieces, overlaps, and gaps are not used to obtain a solution.
+12. Distractors cannot also be assembled from the given pieces under the supported geometry model.
+13. The declared answer key matches the independently calculated result.
+14. The SVG renderer preserves the intended polygon geometry.
+15. Every SVG renders without clipping at supported screen sizes.
+16. All 15 questions load correctly in the existing application.
+
+Area equality is not sufficient to pass a question. Require geometric construction validation using exact-cover search or an equivalent independent method appropriate to the chosen representation.
+
+If full automated proof is infeasible, use a constrained geometry generator and explicitly document the limits of verification. Do not claim exhaustive verification when only area and visual checks were performed.
+
+Then run:
+
+- `npx tsc --noEmit`
+- `npm run build`
+- Relevant existing tests and the new geometry validator.
+
+If browser testing is available, test answer selection, navigation, timer behavior, responsive rendering, submission, scoring, and solution review.
+
+Fix any regressions caused by the implementation. Report actual test outputs rather than assuming success.
+
+## 12. Final report
+
+When finished, report:
+
+1. Files created or modified.
+2. Confirmation of exactly 15 FZ questions.
+3. All 15 question IDs.
+4. Difficulty distribution.
+5. Correct-answer distribution across A–E.
+6. Geometry-generation and validation method.
+7. Which forms of correctness were verified: area, rotation, assembly, and distractor exclusion.
+8. Results of automated tests, TypeScript, and the production build.
+9. Browser-testing results, if performed.
+10. Any limitations or questions that were not exhaustively verified.
+
+## Acceptance criteria
+
+The implementation is complete only when:
+
+- Exactly 15 original visual FZ questions are available.
+- Each question contains valid geometric source pieces and four candidate target figures plus option E.
+- Every question has exactly one verified correct answer.
+- Rotations are allowed but reflections and individual piece resizing are prohibited.
+- Distractors are plausible, and no second choice can also be assembled correctly.
+- The 20-minute timed interface, navigation, answer selection, scoring, and review mode work correctly.
+- TypeScript, build, and applicable automated tests have been executed, with actual results reported.
+
+Prioritize geometric correctness and authentic spatial reasoning over visual decoration or speed of implementation.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-14T09:36:33+05:30.
+</ADDITIONAL_METADATA>

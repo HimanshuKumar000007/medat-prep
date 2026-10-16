@@ -1,0 +1,449 @@
+const fs = require('fs');
+
+const p1 = `In der klassischen Physiologie galt die Homöostase – die Konstanthaltung lebenswichtiger innerer Milieuparameter wie Körperkerntemperatur, Blutdruck und Glukosespiegel durch starre negative Rückkopplungsschleifen – als das fundamentale Leitprinzip biologischer Stabilität. Neuere neuroendokrine Konzepte erweitern diese Sichtweise durch das Modell der Allostase („Stabilität durch Veränderung“). Allostase beschreibt die Fähigkeit des Organismus, physiologische Sollwerte in antizipatorischer Weise kontinuierlich an wechselnde äußere Anforderungen und psychosoziale Umweltreize anzupassen. Die Steuerung dieses dynamischen Netzwerks erfolgt primär über das Gehirn, welches Umweltanforderungen bewertet und über die Aktivierung des sympathischen Nervensystems sowie der Hypothalamus-Hypophysen-Nebennierenrinden-Achse (HPA-Achse) eine koordinierte Freisetzung primärer Mediatoren – insbesondere von Katecholaminen und Glukokortikoiden wie Cortisol – veranlasst.
+
+Während allostatische Reaktionen im akuten Notfall adaptive, lebenserhaltende Anpassungen ermöglichen – etwa die rasche Bereitstellung von Energie und die Steigerung der kardiovaskulären Leistungsbereitschaft –, führt ihre chronische oder unzureichend regulierte Aktivierung zu gravierenden Schäden. Dieses Phänomen wird als allostatische Last (Allostatic Load) oder in seiner extremen Ausprägung als allostatische Überlastung bezeichnet. Bleiben die primären Mediatoren dauerhaft erhöht oder schlägt ihre nächtliche Rückregulation fehl, greifen sie auf sekundäre physiologische Systeme über. Auf metabolischer und vaskulärer Ebene induziert ein chronischer Cortisol- und Adrenalinüberschuss systemische Insulinresistenzen, endotheliale Dysfunktionen und chronisch-subklinische Gefäßentzündungen. Im Gehirn bewirkt ein persistierender Glukokortikoidexzess strukturelle Remodellierungen, insbesondere eine Atrophie dendritischer Verzweigungen im Hippocampus, was die negative Rückkopplungshemmung der Stressachse weiter schwächt.
+
+Aus dieser progredienten Fehlregulation resultieren schließlich tertiäre klinische Manifestationen wie die arterielle Hypertonie, das metabolische Syndrom sowie depressive Störungen. Für die klinische Risikoeinschätzung ergibt sich daraus eine wichtige methodische Konsequenz: Einzelne isolierte Biomarker wie ein isolierter Blutdruckwert oder ein einzelner Cortisolspiegel besitzen oft nur eine begrenzte diagnostische Aussagekraft. Um den individuellen Verschleißzustand eines Organismus valide zu erfassen, müssen multiparametrische Indizes herangezogen werden, die neuroendokrine, immunologische und metabolische Parameter integrieren. Nur durch eine solche systemische Gesamtbetrachtung lässt sich frühzeitig erkennen, ob die Regulationsgrenzen eines Patienten bereits überschritten sind, noch bevor manifeste irreversible Organschäden auftreten.`;
+
+const p2 = `Die Entwicklung moderner regulatorischer Standards in der pharmazeutischen Forschung ist untrennbar mit der schwersten Arzneimittelkatastrophe des 20. Jahrhunderts verknüpft: der Thalidomid-Krise (im deutschsprachigen Raum als Contergan-Skandal bekannt). Als der Wirkstoff Ende der 1950er-Jahre auf den Markt gebracht wurde, pries der Hersteller ihn als vollkommen nebenwirkungsfreies Beruhigungs- und Schlafmittel an, das sich insbesondere zur Behandlung von Schwangerschaftsübelkeit eigne. Diese verhängnisvolle Fehleinschätzung beruhte auf gravierenden Lücken im damaligen Zulassungswesen: Präklinische Tierversuche beschränkten sich im Wesentlichen auf akute Toxizitätstests an erwachsenen Nagetieren. Systematische Prüfungen auf fruchtschädigende Wirkungen (Teratogenität) bei trächtigen Tieren waren weder gesetzlich vorgeschrieben noch wissenschaftlich etabliert. Infolgedessen wurden Tausende Kinder mit schweren Fehlbildungen der Gliedmaßen – insbesondere dem Fehlen oder der extremen Verkürzung langer Röhrenknochen (Phokomelie) – sowie Organfehlbildungen geboren.
+
+Auf pharmakologischer und molekularbiologischer Ebene offenbarte die nachträgliche Aufarbeitung des Skandals zwei fundamentale Prinzipien der Toxikologie. Zum einen existiert bei Thalidomid eine ausgeprägte Interspezies-Variabilität: Während gängige Versuchstiere wie Mäuse und Ratten gegenüber der teratogenen Wirkung des Moleküls weitgehend unempfindlich sind, reagieren Primaten und der Mensch bereits auf geringe Dosen hochempfindlich. Ein negativer Toxizitätsbefund in einer einzelnen Nagerspezies erlaubt daher keineswegs den unkritischen Rückschluss auf die Sicherheit beim Menschen. Zum anderen spielte die Chiralität des Wirkstoffs eine Rolle: Thalidomid liegt als Razemat zweier spiegelbildlicher Enantiomere vor. Während das (R)-Enantiomer die gewünschte sedierende Wirkung entfaltet, wurde dem (S)-Enantiomer die teratogene Eigenschaft zugeschrieben. Eine therapeutische Isolierung des reinen (R)-Enantiomers erwies sich jedoch als unzureichend, da sich beide Formen im menschlichen Blutplasma rasch spontan ineinander umwandeln.
+
+Die gesellschaftlichen und juristischen Konsequenzen der Katastrophe führten zu einer weltweiten Neuordnung der Arzneimittelgesetzgebung. Aus einem System freiwilliger Herstellerkontrollen entstand ein streng reguliertes Zulassungsverfahren mit mehrstufigen klinischen Studienphasen. Gesetzgeber schrieben verbindlich vor, dass neue Wirkstoffe vor einer Anwendung am Menschen an mehreren Tierspezies, darunter mindestens einer Nicht-Nager-Spezies, auf Teratogenität und Reproduktionstoxizität getestet werden müssen. Zudem wurde die Pharmakovigilanz institutionalisiert: Kontinuierliche Meldesysteme für unerwünschte Arzneimittelwirkungen wurden geschaffen, um seltene Risiken auch nach der Markteinführung systematisch zu überwachen. Der Wandel markierte den Übergang von einer rückschauenden Reaktivität zu einem vorausschauenden, risikobasierten Sicherheitsdispositiv in der modernen Medizin.`;
+
+const p3 = `Das menschliche Immunsystem verfügt über hochspezifische Kontrollmechanismen, um Krankheitserreger und entartete körpereigene Zellen wirksam zu eliminieren, ohne gesunde Gewebe zu schädigen. Eine Schlüsselrolle spielen dabei sogenannte Immuncheckpoints – inhibitorische Signalwege, die auf der Oberfläche von T-Lymphozyten exprimiert werden. Unter physiologischen Bedingungen fungieren Rezeptoren wie PD-1 (Programmed Cell Death Protein 1) oder CTLA-4 als molekulare Bremsen. Wenn sie an ihre korrespondierenden Liganden auf antigenpräsentierenden Zellen oder Gewebezellen binden, dämpfen sie die T-Zell-Aktivität ab, um überschießende Entzündungsreaktionen zu begrenzen und Autoimmunerkrankungen zu verhindern. Viele bösartige Tumoren nutzen diesen physiologischen Schutzmechanismus jedoch gezielt aus (Tumor-Immunescape): Sie überexprimieren Checkpoint-Liganden wie PD-L1 auf ihrer Zelloberfläche, wodurch cytotoxische T-Zellen in einen Zustand funktioneller Erschöpfung (Anergie) versetzt und antitumorale Abwehrreaktionen im Tumormikromilieu blockiert werden.
+
+Die Entwicklung monoklonaler Antikörper, die diese Checkpoint-Interaktionen gezielt blockieren (Immuncheckpoint-Inhibitoren), stellt einen revolutionären Meilenstein der translationalen Onkologie dar. Indem Wirkstoffe die Bindung zwischen PD-1 und PD-L1 oder CTLA-4 und seinen Liganden sterisch behindern, lösen sie die molekulare Bremse. Die T-Lymphozyten gewinnen ihre zytotoxische Effektorfunktion zurück und können Tumorzellen wieder effektiv erkennen und lysieren. Bei verschiedenen therapierefraktären Malignomen wie dem metastasierten Melanom oder nicht-kleinzelligen Lungenkarzinomen führten diese Immuntherapien zu beispiellosen, langanhaltenden Remissionen. Allerdings spricht keineswegs jeder Patient auf die Behandlung an. Das Ansprechen korreliert stark mit spezifischen Biomarkern, etwa der Höhe der PD-L1-Expression im Tumorgewebe und einer hohen Tumormutationslast (TMB), welche die Wahrscheinlichkeit erhöht, dass das Immunsystem tumorspezifische Neoantigene erkennt.
+
+Die therapeutische Entfesselung des Immunsystems birgt jedoch erhebliche klinische Risiken, die als immunvermittelte unerwünschte Ereignisse (irAEs) bezeichnet werden. Da Checkpoint-Inhibitoren systemisch wirken und die physiologische Selbsttoleranz aufheben, können autoreaktive T-Zellklone gesunde Organe attackieren. Die resultierenden Nebenwirkungen ähneln klassischen Autoimmunopathien und manifestieren sich häufig als Entzündungen des Darms (Kolitis), der Lunge (Pneumonitis), der Leber (Hepatitis) oder endokriner Drüsen wie der Schilddrüse und der Hypophyse. Die klinische Herausforderung der modernen Immunonkologie besteht daher in einer permanenten Gratwanderung: Onkologen müssen die Immunreaktion stark genug anfachen, um den Tumor zu vernichten, gleichzeitig aber immunvermittelte Organtoxizitäten durch ein engmaschiges Monitoring und gegebenenfalls den gezielten Einsatz von Immunsuppressiva rechtzeitig beherrschen.`;
+
+const p4 = `Die Bevölkerungsmedizin und die öffentliche Gesundheit (Public Health) stehen bei der Planung von Präventionsmaßnahmen vor grundlegenden theoretischen und ethischen Herausforderungen. Eine der einflussreichsten epidemiologischen Gesetzmäßigkeiten formulierte der britische Epidemiologe Geoffrey Rose mit dem sogenannten Präventionsparadoxon (Prevention Paradox): Eine vorbeugende Maßnahme, die für eine gesamte Bevölkerung einen erheblichen gesundheitlichen Gesamtnutzen erbringt, bietet dem einzelnen teilnehmenden Individuum häufig nur einen verschwindend geringen oder subjektiv kaum spürbaren Vorteil. Wird beispielsweise der Salzkonsum in der gesamten Bevölkerung moderat gesenkt, reduziert dies die absolute Zahl an Schlaganfällen auf Populationsebene um Tausende Fälle pro Jahr. Für den einzelnen gesunden Bürger sinkt das individuelle statistische Erkrankungsrisiko jedoch nur um einen Bruchteil eines Prozents, während er die Einschränkung im Alltag unmittelbar wahrnimmt.
+
+Dieser theoretische Befund zwingt Public-Health-Experten zur Differenzierung zwischen zwei prinzipiellen Präventionsstrategien: dem Hochrisikoansatz und der Populationsstrategie. Der Hochrisikoansatz identifiziert gezielt Personen mit extremen Risikowerten – etwa Patienten mit familiärer Hypercholesterinämie oder manifester Adipositas – und unterzieht sie intensiven medizinischen Interventionen. Dieser Ansatz ist klinisch intuitiv und für die betroffenen Hochrisikopatienten hochgradig motivierend, verhindert jedoch bevölkerungsweit nur einen kleineren Teil aller Krankheitsfälle, da die überwiegende Mehrheit der kardiovaskulären Ereignisse in der zahlenmäßig weitaus größeren Gruppe von Menschen mit nur leicht oder mäßig erhöhten Risikofaktoren auftritt. Die Populationsstrategie hingegen zielt darauf ab, die gesamte Risikoverteilungskurve der Gesamtbevölkerung durch universelle strukturelle Rahmenbedingungen – etwa Tabaksteuern oder Grenzwerte für Transfettsäuren – geringfügig nach links zu verschieben.
+
+Die praktische Umsetzung solcher Strategien kollidiert jedoch regelmäßig mit einem soziologischen Phänomen, das Julian Tudor Hart als „Gesetz der umgekehrten Versorgung“ (Inverse Care Law) beschrieb: Die Verfügbarkeit und Inanspruchnahme qualitativ hochwertiger medizinischer und präventiver Versorgung variiert tendenziell umgekehrt proportional zum tatsächlichen gesundheitlichen Bedarf der jeweiligen Bevölkerungsgruppe. Werden Präventionskampagnen als reine Informationsangebote konzipiert, die individuelles Gesundheitsverhalten appellativ adressieren, profitieren davon überproportional privilegierte Schichten mit hoher Gesundheitskompetenz (Health Literacy). Sozioökonomisch benachteiligte Gruppen mit der höchsten Krankheitslast werden hingegen kaum erreicht, was gesundheitliche Ungleichheiten paradoxerweise weiter verschärft. Eine gerechte und effektive Gesundheitspolitik darf sich daher nicht auf Verhaltensappelle beschränken, sondern muss primär an den strukturellen Lebensverhältnissen (Verhältnisprävention) ansetzen.`;
+
+const sim10Questions = [
+  // ==========================================
+  // TEXT 1 (tv-sim10-text01)
+  // ==========================================
+  {
+    id: 'tv-sim10-q01',
+    questionId: 'tv-sim10-q01',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text01',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Allostase und allostatische Last: Chronischer Stress und neuroendokrine Fehlregulation',
+    set: 10,
+    question: 'Worin besteht laut Text der fundamentale Unterschied zwischen dem Konzept der Homöostase und dem Modell der Allostase?',
+    options: {
+      A: 'Die Homöostase wird ausschließlich durch das Gehirn gesteuert, während die Allostase ohne jede neuronale Beteiligung abläuft.',
+      B: 'Die Allostase dient ausschließlich der Erzeugung akuter Entzündungen, während die Homöostase jede Entzündungsreaktion unterbindet.',
+      C: 'Die Homöostase zielt auf die Konstanthaltung von Parametern ab, während die Allostase eine dynamische, antizipatorische Anpassung physiologischer Sollwerte beschreibt.',
+      D: 'Die Allostase beschreibt die vollständige Inaktivierung der Stressachse bei körperlicher Ruhe.',
+      E: 'Die Homöostase führt bei chronischer Aktivierung zwangsläufig zur Atrophie des Hippocampus.'
+    },
+    correct_answer: 'C',
+    correctAnswer: 'C',
+    explanation: 'Absatz 1 grenzt die beiden Konzepte explizit voneinander ab: Während die Homöostase die Konstanthaltung innerer Milieuparameter über starre Rückkopplungen beschreibt, bezeichnet Allostase die Fähigkeit, physiologische Sollwerte in antizipatorischer Weise dynamisch an wechselnde Anforderungen anzupassen („Stabilität durch Veränderung“) (Option C).',
+    difficulty: 'Leicht',
+    concept: 'Konzeptueller Vergleich / Homöostase vs. Allostase',
+    questionType: 'Konzeptvergleich',
+    estimatedTime: 90,
+    evidenceLocation: 'Absatz 1',
+    tags: ['TV', 'Textverständnis', 'Physiologie', 'Neuroendokrinologie', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p1
+  },
+  {
+    id: 'tv-sim10-q02',
+    questionId: 'tv-sim10-q02',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text01',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Allostase und allostatische Last: Chronischer Stress und neuroendokrine Fehlregulation',
+    set: 10,
+    question: 'Welche pathophysiologische Folge hat ein persistierender Glukokortikoidüberschuss laut Text auf das zentrale Nervensystem?',
+    options: {
+      A: 'Er bewirkt strukturelle Veränderungen im Hippocampus, wodurch die hemmende Rückregulation der Stressachse weiter geschwächt wird.',
+      B: 'Er blockiert die Freisetzung von Katecholaminen und verhindert dadurch jegliche kardiovaskuläre Leistungssteigerung.',
+      C: 'Er führt zu einer sofortigen und irreversiblen Zerstörung aller zerebralen Endothelzellen.',
+      D: 'Er erzwingt eine spontane Absenkung des Blutdrucks durch Hemmung des sympathischen Nervensystems.',
+      E: 'Er verhindert die Entstehung von Insulinresistenzen im peripheren Muskelgewebe.'
+    },
+    correct_answer: 'A',
+    correctAnswer: 'A',
+    explanation: 'Absatz 2 führt aus: Im Gehirn bewirkt ein anhaltender Glukokortikoidexzess strukturelle Remodellierungen, insbesondere eine Atrophie dendritischer Verzweigungen im Hippocampus, was die negative Rückkopplungshemmung der Stressachse weiter schwächt (Option A).',
+    difficulty: 'Mittel',
+    concept: 'Kausalzusammenhang / Neurobiologische Stressfolgen',
+    questionType: 'Kausalanalyse',
+    estimatedTime: 105,
+    evidenceLocation: 'Absatz 2',
+    tags: ['TV', 'Textverständnis', 'Physiologie', 'Neuroendokrinologie', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p1
+  },
+  {
+    id: 'tv-sim10-q03',
+    questionId: 'tv-sim10-q03',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text01',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Allostase und allostatische Last: Chronischer Stress und neuroendokrine Fehlregulation',
+    set: 10,
+    question: 'Welche Schlussfolgerung lässt sich aus den Ausführungen des Autors bezüglich der klinischen Diagnostik allostatischer Überlastung ableiten?',
+    options: {
+      A: 'Da allostatische Last ausschließlich das Gehirn betrifft, sind labormedizinische Bluttests grundsätzlich diagnostisch unbrauchbar.',
+      B: 'Die Messung eines einzelnen Cortisolwerts reicht zur sicheren Vorhersage tertiärer kardiovaskulärer Erkrankungen vollständig aus.',
+      C: 'Eine frühzeitige Diagnose ist prinzipiell unmöglich, da allostatische Veränderungen erst nach dem Eintreten manifester Organschäden messbar werden.',
+      D: 'Eine zuverlässige Beurteilung des physiologischen Gesamtzustands erfordert multiparametrische Indizes, da isolierte Einzelparameter die systemische Vernetzung nicht abbilden.',
+      E: 'Das Modell der Allostase hat gezeigt, dass chronischer Stress die Funktion des Immunsystems grundsätzlich nicht beeinflussen kann.'
+    },
+    correct_answer: 'D',
+    correctAnswer: 'D',
+    explanation: 'Absatz 3 synthetisiert die diagnostische Implikation: Einzelne isolierte Biomarker wie ein Cortisolspiegel besitzen nur begrenzte Aussagekraft; um den Verschleißzustand valide zu erfassen, müssen multiparametrische Indizes genutzt werden, die neuroendokrine, immunologische und metabolische Parameter integrativ verbinden (Option D).',
+    difficulty: 'Schwer',
+    concept: 'Inferenz / Diagnostische Synthese & Methodik',
+    questionType: 'Schlussfolgerung',
+    estimatedTime: 120,
+    evidenceLocation: 'Absatz 3',
+    tags: ['TV', 'Textverständnis', 'Physiologie', 'Neuroendokrinologie', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p1
+  },
+
+  // ==========================================
+  // TEXT 2 (tv-sim10-text02)
+  // ==========================================
+  {
+    id: 'tv-sim10-q04',
+    questionId: 'tv-sim10-q04',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text02',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Der Contergan-Skandal und moderne Arzneimittelsicherheit: Von Thalidomid zur Teratogenitätsprüfung',
+    set: 10,
+    question: 'Welches wesentliche Versäumnis in den ursprünglichen Zulassungsprüfungen führte laut Text zur Fehleinschätzung der Sicherheit von Thalidomid?',
+    options: {
+      A: 'Die vollständige Verweigerung jeglicher chemischer Qualitätskontrollen bei der industriellen Tablettenproduktion.',
+      B: 'Das Fehlen systematischer Prüfungen auf fruchtschädigende Wirkungen (Teratogenität) an trächtigen Tieren.',
+      C: 'Die gesetzliche Verpflichtung, das Medikament ausschließlich an männlichen Primaten zu testen.',
+      D: 'Die absichtliche Beschränkung klinischer Studien auf ältere, nicht-schwangere Patienten.',
+      E: 'Das Verbot, Tierversuche an Nagetieren zur Bestimmung der akuten Toxizität durchzuführen.'
+    },
+    correct_answer: 'B',
+    correctAnswer: 'B',
+    explanation: 'Absatz 1 benennt die methodische Lücke explizit: Präklinische Tierversuche beschränkten sich auf akute Toxizität an erwachsenen Nagern; systematische Prüfungen auf fruchtschädigende Wirkungen (Teratogenität) bei trächtigen Tieren waren weder gesetzlich vorgeschrieben noch wissenschaftlich etabliert (Option B).',
+    difficulty: 'Leicht',
+    concept: 'Detailverständnis / Historische Arzneimittelprüfung',
+    questionType: 'Detail',
+    estimatedTime: 90,
+    evidenceLocation: 'Absatz 1',
+    tags: ['TV', 'Textverständnis', 'Pharmakologie', 'Arzneimittelsicherheit', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p2
+  },
+  {
+    id: 'tv-sim10-q05',
+    questionId: 'tv-sim10-q05',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text02',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Der Contergan-Skandal und moderne Arzneimittelsicherheit: Von Thalidomid zur Teratogenitätsprüfung',
+    set: 10,
+    question: 'Warum war der Versuch, die teratogene Wirkung von Thalidomid durch die Isolierung des wirksamen (R)-Enantiomers zu verhindern, laut Text nicht erfolgreich?',
+    options: {
+      A: 'Weil das isolierte (R)-Enantiomer im Gegensatz zum Razemat keinerlei sedierende Wirkung mehr besaß.',
+      B: 'Weil Primaten ausschließlich auf das (R)-Enantiomer mit schwerer Phokomelie reagierten.',
+      C: 'Weil chemische Trennverfahren zur Enantiomerenisolierung im 20. Jahrhundert technisch unmöglich waren.',
+      D: 'Weil das (R)-Enantiomer in Kontakt mit Magensäure sofort in toxische Nagetier-Metaboliten zerfällt.',
+      E: 'Weil sich die beiden spiegelbildlichen Formen des Moleküls im menschlichen Blutplasma rasch spontan ineinander umwandeln.'
+    },
+    correct_answer: 'E',
+    correctAnswer: 'E',
+    explanation: 'Absatz 2 stellt klar: Eine therapeutische Isolierung des reinen (R)-Enantiomers erwies sich als unzureichend, da sich beide Formen im menschlichen Blutplasma rasch spontan ineinander umwandeln (Option E).',
+    difficulty: 'Mittel',
+    concept: 'Molekularer Mechanismus / Chiralität & In-vivo-Interkonversion',
+    questionType: 'Kausalanalyse',
+    estimatedTime: 105,
+    evidenceLocation: 'Absatz 2',
+    tags: ['TV', 'Textverständnis', 'Pharmakologie', 'Arzneimittelsicherheit', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p2
+  },
+  {
+    id: 'tv-sim10-q06',
+    questionId: 'tv-sim10-q06',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text02',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Der Contergan-Skandal und moderne Arzneimittelsicherheit: Von Thalidomid zur Teratogenitätsprüfung',
+    set: 10,
+    question: 'Welche übergeordnete Lehre zog die internationale Arzneimittelregulation laut Text aus den methodischen Mängeln der präklinischen Thalidomid-Forschung?',
+    options: {
+      A: 'Tierversuche an Nicht-Nagern wurden weltweit verboten und vollständig durch In-vitro-Zellkulturen ersetzt.',
+      B: 'Die Arzneimittelsicherheit gilt bereits dann als nachgewiesen, wenn ein Wirkstoff bei erwachsenen Mäusen keine akute Toxizität hervorruft.',
+      C: 'Negative Toxizitätsbefunde bei einer einzelnen Tierart garantieren keine Sicherheit beim Menschen, weshalb reproduktionstoxische Prüfungen an mehreren Spezies verbindlich wurden.',
+      D: 'Auf mehrstufige klinische Studien am Menschen kann verzichtet werden, wenn präklinische Studien an Primaten negativ ausfallen.',
+      E: 'Die Überwachung von Medikamenten nach der Markteinführung (Pharmakovigilanz) ist überflüssig, da präklinische Tests alle Risiken vorab erfassen.'
+    },
+    correct_answer: 'C',
+    correctAnswer: 'C',
+    explanation: 'Absatz 2 und 3 synthetisieren die regulatorische Reform: Wegen der ausgeprägten Interspezies-Variabilität erlaubt ein negativer Befund bei Nagern keinen Rückschluss auf den Menschen; der Gesetzgeber schrieb daher verbindliche Teratogenitätstests an mehreren Tierspezies (inklusive Nicht-Nagern) sowie eine nachgelagerte Pharmakovigilanz verbindlich vor (Option C).',
+    difficulty: 'Schwer',
+    concept: 'Inferenz / Regulatorische Synthese & Interspezies-Variabilität',
+    questionType: 'Schlussfolgerung',
+    estimatedTime: 120,
+    evidenceLocation: 'Absatz 2 & 3',
+    tags: ['TV', 'Textverständnis', 'Pharmakologie', 'Arzneimittelsicherheit', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p2
+  },
+
+  // ==========================================
+  // TEXT 3 (tv-sim10-text03)
+  // ==========================================
+  {
+    id: 'tv-sim10-q07',
+    questionId: 'tv-sim10-q07',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text03',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Immuncheckpoint-Inhibitoren und Tumor-Escape-Mechanismen: Überwindung der immunologischen Toleranz',
+    set: 10,
+    question: 'Welche physiologische Funktion erfüllen Immuncheckpoints wie PD-1 und CTLA-4 laut Text unter normalen Bedingungen?',
+    options: {
+      A: 'Sie dämpfen die T-Zell-Aktivität ab, um gesunde Gewebe vor überschießenden Entzündungen und Autoimmunität zu schützen.',
+      B: 'Sie beschleunigen das Tumorwachstum, indem sie Nährstoffe direkt in bösartige Zellen transportieren.',
+      C: 'Sie stimulieren die T-Zell-Teilung zur Erzeugung einer dauerhaften Antikörperüberproduktion.',
+      D: 'Sie verhindern die Entstehung von Neoantigenen bei viralen Infektionskrankheiten.',
+      E: 'Sie zersetzen cytotoxische T-Lymphozyten unmittelbar nach ihrer Bildung im Knochenmark.'
+    },
+    correct_answer: 'A',
+    correctAnswer: 'A',
+    explanation: 'Absatz 1 beschreibt die physiologische Funktion: Als molekulare Bremsen dämpfen Checkpoint-Rezeptoren die T-Zell-Aktivität ab, um überschießende Entzündungsreaktionen zu begrenzen und Autoimmunerkrankungen zu verhindern (Option A).',
+    difficulty: 'Leicht',
+    concept: 'Detailverständnis / Physiologische Immunregulation',
+    questionType: 'Detail',
+    estimatedTime: 90,
+    evidenceLocation: 'Absatz 1',
+    tags: ['TV', 'Textverständnis', 'Immunologie', 'Onkologie', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p3
+  },
+  {
+    id: 'tv-sim10-q08',
+    questionId: 'tv-sim10-q08',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text03',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Immuncheckpoint-Inhibitoren und Tumor-Escape-Mechanismen: Überwindung der immunologischen Toleranz',
+    set: 10,
+    question: 'Über welchen im Text beschriebenen Mechanismus entziehen sich viele Tumorzellen dem Angriff des Immunsystems (Tumor-Immunescape)?',
+    options: {
+      A: 'Indem sie die Bindung von CTLA-4 an antigenpräsentierende Zellen enzymatisch vollständig verhindern.',
+      B: 'Indem sie ihre Zelloberfläche mit einer undurchdringlichen Schicht aus monoklonalen Antikörpern überziehen.',
+      C: 'Indem sie die T-Lymphozyten dazu anregen, vermehrt Autoimmunerkrankungen in Nachbarorganen auszulösen.',
+      D: 'Indem sie hemmende Liganden auf ihrer Oberfläche präsentieren, wodurch cytotoxische T-Zellen in einen inaktiven Erschöpfungszustand versetzt werden.',
+      E: 'Indem sie sämtliche tumorspezifischen Mutationen vor dem Kontakt mit T-Zellen aktiv reparieren.'
+    },
+    correct_answer: 'D',
+    correctAnswer: 'D',
+    explanation: 'Absatz 1 erklärt: Tumoren überexprimieren Checkpoint-Liganden wie PD-L1 auf ihrer Zelloberfläche; dadurch werden cytotoxische T-Zellen in einen Zustand funktioneller Erschöpfung (Anergie) versetzt und antitumorale Abwehrreaktionen blockiert (Option D).',
+    difficulty: 'Mittel',
+    concept: 'Wirkungsmechanismus / Tumor-Immunescape',
+    questionType: 'Kausalanalyse',
+    estimatedTime: 105,
+    evidenceLocation: 'Absatz 1',
+    tags: ['TV', 'Textverständnis', 'Immunologie', 'Onkologie', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p3
+  },
+  {
+    id: 'tv-sim10-q09',
+    questionId: 'tv-sim10-q09',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text03',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Immuncheckpoint-Inhibitoren und Tumor-Escape-Mechanismen: Überwindung der immunologischen Toleranz',
+    set: 10,
+    question: 'Welche Erklärung liefert der Text für das Auftreten immunvermittelter unerwünschter Ereignisse (irAEs) bei der Checkpoint-Therapie?',
+    options: {
+      A: 'Die verabreichten Antikörper wandeln sich im Blutplasma spontan in toxische Stoffwechselprodukte um.',
+      B: 'Durch die systemische Aufhebung immunologischer Bremsen können körpereigene Immunzellen auch gesunde Organe attackieren.',
+      C: 'Checkpoint-Inhibitoren führen zu einem vollständigen Zusammenbruch jeglicher Immunzellproduktion im Knochenmark.',
+      D: 'Die Nebenwirkungen entstehen ausschließlich bei Patienten, deren Tumorzellen keine Neoantigene aufweisen.',
+      E: 'Die verabreichten Medikamente blockieren die Aufnahme von Glukokortikoiden in endokrine Gewebe.'
+    },
+    correct_answer: 'B',
+    correctAnswer: 'B',
+    explanation: 'Absatz 3 führt aus: Da Checkpoint-Inhibitoren systemisch wirken und die physiologische Selbsttoleranz aufheben, können autoreaktive T-Zell-Klone gesunde Organe attackieren, was zu Entzündungsreaktionen ähnlich klassischen Autoimmunerkrankungen führt (Option B).',
+    difficulty: 'Mittel',
+    concept: 'Pathophysiologischer Mechanismus / Immuntoxizität',
+    questionType: 'Kausalanalyse',
+    estimatedTime: 100,
+    evidenceLocation: 'Absatz 3',
+    tags: ['TV', 'Textverständnis', 'Immunologie', 'Onkologie', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p3
+  },
+
+  // ==========================================
+  // TEXT 4 (tv-sim10-text04)
+  // ==========================================
+  {
+    id: 'tv-sim10-q10',
+    questionId: 'tv-sim10-q10',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text04',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Das Präventionsparadoxon und die Inverse Care Law: Herausforderungen moderner Public-Health-Interventionen',
+    set: 10,
+    question: 'Worin besteht das von Geoffrey Rose formulierte „Präventionsparadoxon“ laut Text?',
+    options: {
+      A: 'Darin, dass Präventionsmaßnahmen auf Bevölkerungsebene ausnahmslos zu einer Zunahme schwerer Schlaganfälle führen.',
+      B: 'Darin, dass ausschließlich Personen mit extremen Risikowerten von gesamtgesellschaftlichen Reformen profitieren können.',
+      C: 'Darin, dass eine Maßnahme, die der Gesamtbevölkerung großen Nutzen bringt, dem einzelnen Teilnehmer oft nur einen minimalen persönlichen Vorteil bietet.',
+      D: 'Darin, dass ein verringerter Salzkonsum das individuelle Krankheitsrisiko messbar steigert, anstatt es zu senken.',
+      E: 'Darin, dass vorbeugende Maßnahmen stets teurer sind als die nachgelagerte Behandlung manifester Spätstadien.'
+    },
+    correct_answer: 'C',
+    correctAnswer: 'C',
+    explanation: 'Absatz 1 definiert: Das Präventionsparadoxon besagt, dass eine Maßnahme, die für eine gesamte Bevölkerung einen erheblichen Gesamtnutzen erbringt, dem einzelnen Individuum häufig nur einen sehr geringen oder subjektiv kaum spürbaren Vorteil bietet (Option C).',
+    difficulty: 'Mittel',
+    concept: 'Konzeptverständnis / Präventionsparadoxon',
+    questionType: 'Konzeptverständnis',
+    estimatedTime: 100,
+    evidenceLocation: 'Absatz 1',
+    tags: ['TV', 'Textverständnis', 'Epidemiologie', 'Public-Health', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p4
+  },
+  {
+    id: 'tv-sim10-q11',
+    questionId: 'tv-sim10-q11',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text04',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Das Präventionsparadoxon und die Inverse Care Law: Herausforderungen moderner Public-Health-Interventionen',
+    set: 10,
+    question: 'Welche Limitation weist der „Hochrisikoansatz“ in der Präventionsmedizin laut Text auf?',
+    options: {
+      A: 'Er lässt sich bei Patienten mit extremen Risikoprofilen aus ethischen Gründen prinzipiell nicht anwenden.',
+      B: 'Er führt bei den behandelten Hochrisikopatienten zu einer vollständigen Demotivation bezüglich ihres Lebensstils.',
+      C: 'Er erfordert zwingend eine bundesweite Erhöhung von Verbrauchssteuern auf ungesunde Lebensmittel.',
+      D: 'Er kann statistisch überhaupt keine Krankheitsfälle verhindern, da genetische Risiken unabänderlich sind.',
+      E: 'Er verhindert bevölkerungsweit nur einen kleineren Teil aller Fälle, da die Mehrzahl der Erkrankungen in der großen Gruppe mit nur mäßigen Risiken entsteht.'
+    },
+    correct_answer: 'E',
+    correctAnswer: 'E',
+    explanation: 'Absatz 2 begründet: Obwohl der Hochrisikoansatz klinisch plausibel und für Betroffene motivierend ist, verhindert er bevölkerungsweit nur einen kleineren Teil der Fälle, da die Mehrheit der Ereignisse in der zahlenmäßig viel größeren Gruppe mit nur leicht oder mäßig erhöhten Risikofaktoren auftritt (Option E).',
+    difficulty: 'Mittel',
+    concept: 'Epidemiologische Analyse / Hochrisiko- vs. Populationsstrategie',
+    questionType: 'Methodenanalyse',
+    estimatedTime: 105,
+    evidenceLocation: 'Absatz 2',
+    tags: ['TV', 'Textverständnis', 'Epidemiologie', 'Public-Health', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p4
+  },
+  {
+    id: 'tv-sim10-q12',
+    questionId: 'tv-sim10-q12',
+    simulationId: 'tv-sim10',
+    textId: 'tv-sim10-text04',
+    chapter: 'Textverständnis',
+    chapterId: 'tv-scipass',
+    topic: 'Das Präventionsparadoxon und die Inverse Care Law: Herausforderungen moderner Public-Health-Interventionen',
+    set: 10,
+    question: 'Welche übergeordnete Schlussfolgerung zieht der Autor bezüglich der Gestaltung effektiver und sozial gerechter Präventionspolitik?',
+    options: {
+      A: 'Prävention sollte sich ausschließlich auf Informationskampagnen beschränken, da gesetzliche Strukturreformen die individuelle Autonomie verletzen.',
+      B: 'Um soziale Ungleichheiten nicht zu verstärken, müssen strukturelle Verhältnispräventionen Vorrang vor reinen Verhaltensappellen an das Individuum haben.',
+      C: 'Da sozioökonomisch benachteiligte Gruppen schwer erreichbar sind, sollten Präventionsmittel vorrangig für gut informierte Schichten eingesetzt werden.',
+      D: 'Das Gesetz der umgekehrten Versorgung belegt, dass medizinische Vorsorgeuntersuchungen grundsätzlich keinen Einfluss auf die Volksgesundheit haben.',
+      E: 'Eine gerechte Gesundheitspolitik erfordert die vollständige Abschaffung populationsweiter Grenzwerte zugunsten rein privater Initiative.'
+    },
+    correct_answer: 'B',
+    correctAnswer: 'B',
+    explanation: 'Absatz 3 synthetisiert das Problem: Reine Verhaltensappelle erreichen überproportional privilegierte Gruppen und verschärfen Ungleichheiten (Inverse Care Law); eine gerechte und effektive Politik muss daher primär an den strukturellen Lebensverhältnissen (Verhältnisprävention) ansetzen, anstatt sich auf individuelle Verhaltensappelle zu beschränken (Option B).',
+    difficulty: 'Schwer',
+    concept: 'Inferenz / Public-Health-Synthese & Verhältnisprävention',
+    questionType: 'Schlussfolgerung',
+    estimatedTime: 125,
+    evidenceLocation: 'Absatz 3',
+    tags: ['TV', 'Textverständnis', 'Epidemiologie', 'Public-Health', 'MedAT-H'],
+    exam: 'MEDAT-H',
+    section: 'TV',
+    subjectId: 'tv-main',
+    passage: p4
+  }
+];
+
+// Verify distribution
+const diffs = {};
+const answers = {};
+sim10Questions.forEach(q => {
+  diffs[q.difficulty] = (diffs[q.difficulty] || 0) + 1;
+  answers[q.correctAnswer] = (answers[q.correctAnswer] || 0) + 1;
+  if (q.options[q.correctAnswer] === undefined) {
+    throw new Error('Missing option for correct answer in ' + q.id);
+  }
+  if (Object.keys(q.options).length !== 5) {
+    throw new Error('Not exactly 5 options in ' + q.id);
+  }
+});
+
+console.log('Difficulty distribution:', diffs);
+console.log('Answer distribution:', answers);
+
+if (diffs['Leicht'] !== 3 || diffs['Mittel'] !== 6 || diffs['Schwer'] !== 3) {
+  throw new Error('Invalid difficulty distribution!');
+}
+
+const jsonPath = 'src/data/questions/json/textverstaendnis.json';
+const all = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+
+// Filter out any existing sim10 items
+const filtered = all.filter(q => q.simulationId !== 'tv-sim10');
+const updated = [...filtered, ...sim10Questions];
+
+fs.writeFileSync(jsonPath, JSON.stringify(updated, null, 2), 'utf-8');
+console.log('Successfully saved textverstaendnis.json! Total questions now:', updated.length);
+
+fs.writeFileSync('scratch/sim10_data.json', JSON.stringify(sim10Questions, null, 2), 'utf-8');
+console.log('Saved scratch/sim10_data.json successfully!');
