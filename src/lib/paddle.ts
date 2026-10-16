@@ -14,10 +14,20 @@ let paddleInstance: Paddle | null = null;
 
 const env = (import.meta as unknown as { env?: Record<string, string> }).env || {};
 
+const defaultPriceId = "pri_01m4sv454dth7gc5fm52tvhht5";
+const resolvedPriceId =
+  env.VITE_PADDLE_PRICE_ID_ANNULY ||
+  env.VITE_PADDLE_PRICE_ID_ANNUAL ||
+  env.VITE_PADDLE_PRICE_ID_ANNUALLY ||
+  env.VITE_PADDLE_PRICE_ID_MONTHLY ||
+  defaultPriceId;
+
 export const PADDLE_CONFIG = {
   clientToken: env.VITE_PADDLE_CLIENT_TOKEN || "test_ee617a8b37adb9207160fa9f50e",
   environment: (env.VITE_PADDLE_ENV || "sandbox") as "sandbox" | "production",
-  monthlyPriceId: env.VITE_PADDLE_PRICE_ID_MONTHLY || "pri_01m4sv454dth7gc5fm52tvhht5",
+  monthlyPriceId: resolvedPriceId,
+  annualPriceId: resolvedPriceId,
+  priceId: resolvedPriceId,
   productId: env.VITE_PADDLE_PRODUCT_ID || "pro_01m4strby6nzrjc21zeh8jshwp",
   oncePriceId: env.VITE_PADDLE_PRICE_ID_ONCE || "",
 };
