@@ -40,6 +40,13 @@ export default function Home({
     }
   }, [today.estimatedMinutes]);
 
+  const recordedPartsCount = [
+    readiness.breakdown.bms !== null,
+    readiness.breakdown.tv !== null,
+    readiness.breakdown.kff !== null,
+    readiness.breakdown.sek !== null,
+  ].filter(Boolean).length;
+
   // User configures plan explicitly via the "Dein Weg zum MedAT" callout or settings
 
   const handleSavePlan = (minutes: number, days: number) => {
@@ -559,44 +566,50 @@ export default function Home({
           ================================================================= */}
       <div className="grid gap-5 sm:gap-6 lg:grid-cols-12 min-w-0">
         {/* MedAT Readiness Index / Predicted Performance (5 cols) */}
-        <div className="relative overflow-hidden lg:col-span-5 rounded-3xl border border-line bg-paper p-4 sm:p-6 lg:p-7 shadow-xs flex flex-col justify-between min-w-0 transition-all hover:border-line-2">
-          {/* Subtle warm accent glow matching the design system */}
+        <div className="relative overflow-hidden lg:col-span-5 rounded-3xl border border-line/80 bg-paper p-5 sm:p-6 lg:p-7 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.04)] flex flex-col justify-between min-w-0 transition-all hover:border-line-2">
+          {/* Subtle warm ambient glow */}
           <div
-            className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-primary/5 blur-2xl"
+            className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/[0.04] blur-3xl"
             aria-hidden="true"
           />
 
-          <div>
+          <div className="space-y-4">
+            {/* Header: Minimal & Classy */}
             <div className="flex items-center justify-between gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3 py-0.5 text-[10.5px] font-black uppercase tracking-wider text-primary">
-                <IconTarget className="h-3.5 w-3.5 text-primary" />
-                MEDAT-PRÜFUNGSREIFE
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <IconTarget className="h-3.5 w-3.5" />
+                </span>
+                <span className="text-[11.5px] font-bold uppercase tracking-[0.14em] text-ink-3">
+                  MedAT-Prüfungsreife
+                </span>
+              </div>
               {readiness.hasEnoughData ? (
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-paper-3 px-2 py-0.5 text-[10.5px] font-bold text-ink-3 border border-line">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 border border-emerald-500/20">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   Aktiv kalibriert
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-paper-3 px-2 py-0.5 text-[10.5px] font-bold text-ink-4 border border-line">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                  In Kalibrierung
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:text-amber-400 border border-amber-500/20">
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+                  Kalibrierung · {recordedPartsCount}/4
                 </span>
               )}
             </div>
 
             {readiness.hasEnoughData && readiness.score !== null ? (
-              <div className="mt-4">
+              /* Active Calibrated Score View */
+              <div className="space-y-4 pt-1">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <div className="flex items-baseline gap-2">
-                    <span className="display-num text-[44px] sm:text-[52px] text-ink leading-none">
+                    <span className="display-num text-[44px] sm:text-[50px] font-extrabold text-ink leading-none">
                       {readiness.score}
                     </span>
-                    <span className="num text-[17px] sm:text-[19px] font-bold text-ink-4">/ 100</span>
+                    <span className="num text-[17px] font-semibold text-ink-4">/ 100</span>
                   </div>
 
                   <div
-                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] sm:text-[11.5px] font-bold border ${
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11.5px] font-semibold border ${
                       readiness.score >= 78
                         ? "bg-emerald-500/10 text-emerald-700 border-emerald-500/20"
                         : readiness.score >= 65
@@ -613,15 +626,15 @@ export default function Home({
                   </div>
                 </div>
 
-                <p className="mt-1 text-[12.5px] text-ink-3 font-medium">
+                <p className="text-[12.5px] text-ink-3 leading-relaxed">
                   Gewichtete Gesamtreife nach offiziellem Zulassungsschlüssel ({user.examType})
                 </p>
 
                 {/* Precision Progress Track with Zulassungs-Zielzone */}
-                <div className="mt-3.5 space-y-1.5">
-                  <div className="relative h-2.5 w-full rounded-full bg-paper-3 border border-line overflow-hidden">
+                <div className="space-y-1.5 pt-1">
+                  <div className="relative h-2 w-full rounded-full bg-paper-3 border border-line/70 overflow-hidden">
                     <div
-                      className="absolute right-0 top-0 bottom-0 bg-emerald-500/15 border-l border-emerald-500/40"
+                      className="absolute right-0 top-0 bottom-0 bg-emerald-500/20 border-l border-emerald-500/50"
                       style={{ left: "78%" }}
                       title="Zielzone: ≥78% für MedAT-Zulassung"
                     />
@@ -630,316 +643,156 @@ export default function Home({
                       style={{ width: `${Math.min(100, Math.max(0, readiness.score))}%` }}
                     />
                   </div>
-                  <div className="flex justify-between text-[10.5px] text-ink-4 font-semibold px-0.5">
+                  <div className="flex justify-between text-[10.5px] text-ink-4 font-medium px-0.5">
                     <span>0% Basis</span>
-                    <span className="text-primary font-bold">Zielzone: ≥78%</span>
+                    <span className="text-primary font-semibold">Zielzone: ≥78%</span>
                     <span>100% Top</span>
                   </div>
                 </div>
 
-                {/* 4 Pillars Interactive Grid */}
-                <div className="mt-4 grid grid-cols-2 gap-2">
-                  {/* BMS */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: "BMS" })}
-                    className="group rounded-2xl border border-line bg-paper-3/50 p-2.5 sm:p-3 text-left transition-all hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs cursor-pointer"
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">BMS</span>
-                      <span className="font-semibold text-ink-4">40% Gew.</span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className="num text-[17px] sm:text-[19px] font-black text-ink">
-                        {readiness.breakdown.bms !== null ? `${readiness.breakdown.bms}%` : "—"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                        Üben →
-                      </span>
-                    </div>
-                    <div className="mt-1.5 h-1.5 w-full rounded-full bg-line overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-primary transition-all duration-500"
-                        style={{ width: readiness.breakdown.bms !== null ? `${readiness.breakdown.bms}%` : "0%" }}
-                      />
-                    </div>
-                  </button>
-
-                  {/* TV / MF */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: user.examType === "MEDAT-Z" ? "MF" : "TV" })}
-                    className="group rounded-2xl border border-line bg-paper-3/50 p-2.5 sm:p-3 text-left transition-all hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs cursor-pointer"
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">
-                        {user.examType === "MEDAT-Z" ? "MF" : "TV"}
-                      </span>
-                      <span className="font-semibold text-ink-4">
-                        {user.examType === "MEDAT-Z" ? "30% Gew." : "10% Gew."}
-                      </span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className="num text-[17px] sm:text-[19px] font-black text-ink">
-                        {readiness.breakdown.tv !== null ? `${readiness.breakdown.tv}%` : "—"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                        Üben →
-                      </span>
-                    </div>
-                    <div className="mt-1.5 h-1.5 w-full rounded-full bg-line overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-primary transition-all duration-500"
-                        style={{ width: readiness.breakdown.tv !== null ? `${readiness.breakdown.tv}%` : "0%" }}
-                      />
-                    </div>
-                  </button>
-
-                  {/* KFF */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: "KFF" })}
-                    className="group rounded-2xl border border-line bg-paper-3/50 p-2.5 sm:p-3 text-left transition-all hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs cursor-pointer"
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">KFF</span>
-                      <span className="font-semibold text-ink-4">
-                        {user.examType === "MEDAT-Z" ? "20% Gew." : "40% Gew."}
-                      </span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className="num text-[17px] sm:text-[19px] font-black text-ink">
-                        {readiness.breakdown.kff !== null ? `${readiness.breakdown.kff}%` : "—"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                        Üben →
-                      </span>
-                    </div>
-                    <div className="mt-1.5 h-1.5 w-full rounded-full bg-line overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-primary transition-all duration-500"
-                        style={{ width: readiness.breakdown.kff !== null ? `${readiness.breakdown.kff}%` : "0%" }}
-                      />
-                    </div>
-                  </button>
-
-                  {/* SEK */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: "SEK" })}
-                    className="group rounded-2xl border border-line bg-paper-3/50 p-2.5 sm:p-3 text-left transition-all hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs cursor-pointer"
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">SEK</span>
-                      <span className="font-semibold text-ink-4">10% Gew.</span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className="num text-[17px] sm:text-[19px] font-black text-ink">
-                        {readiness.breakdown.sek !== null ? `${readiness.breakdown.sek}%` : "—"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                        Üben →
-                      </span>
-                    </div>
-                    <div className="mt-1.5 h-1.5 w-full rounded-full bg-line overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-primary transition-all duration-500"
-                        style={{ width: readiness.breakdown.sek !== null ? `${readiness.breakdown.sek}%` : "0%" }}
-                      />
-                    </div>
-                  </button>
+                {/* 4 Pillars Grid (Active State) */}
+                <div className="grid grid-cols-2 gap-2.5 pt-1">
+                  {[
+                    { code: "BMS", label: "BMS", weight: "40%", score: readiness.breakdown.bms, target: "BMS" },
+                    { code: user.examType === "MEDAT-Z" ? "MF" : "TV", label: user.examType === "MEDAT-Z" ? "MF" : "TV", weight: user.examType === "MEDAT-Z" ? "30%" : "10%", score: readiness.breakdown.tv, target: user.examType === "MEDAT-Z" ? "MF" : "TV" },
+                    { code: "KFF", label: "KFF", weight: user.examType === "MEDAT-Z" ? "20%" : "40%", score: readiness.breakdown.kff, target: "KFF" },
+                    { code: "SEK", label: "SEK", weight: "10%", score: readiness.breakdown.sek, target: "SEK" },
+                  ].map((pillar) => (
+                    <button
+                      key={pillar.code}
+                      type="button"
+                      onClick={() => onNav("practice", { section: pillar.target as any })}
+                      className="group flex flex-col justify-between rounded-2xl border border-line/80 bg-paper-2/40 p-3 sm:p-3.5 text-left transition-all duration-200 hover:border-primary/40 hover:bg-paper hover:shadow-2xs cursor-pointer"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-[12px] font-bold uppercase tracking-wide text-ink">
+                          {pillar.code}
+                        </span>
+                        <span className="text-[10px] font-medium text-ink-4 bg-paper-3 px-1.5 py-0.5 rounded-md border border-line/50">
+                          {pillar.weight} Gew.
+                        </span>
+                      </div>
+                      <div className="mt-2.5 flex items-baseline justify-between">
+                        <span className="num text-[17px] font-bold text-ink">
+                          {pillar.score !== null ? `${pillar.score}%` : "—"}
+                        </span>
+                        <span className="text-[11px] font-semibold text-ink-3 group-hover:text-primary transition-colors flex items-center gap-0.5">
+                          Üben
+                          <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                        </span>
+                      </div>
+                      <div className="mt-2 h-1 w-full rounded-full bg-line overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-primary transition-all duration-500"
+                          style={{ width: pillar.score !== null ? `${pillar.score}%` : "0%" }}
+                        />
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </div>
             ) : (
-              /* Calibration / Diagnostic State */
-              <div className="mt-4 space-y-3.5">
+              /* Calibration / Diagnostic State (Shown in screenshot) */
+              <div className="space-y-4 pt-1">
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h3 className="display text-[19px] sm:text-[22px] text-ink">
-                      Index in Kalibrierung
-                    </h3>
-                    <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-extrabold text-primary border border-primary/20">
-                      {[
-                        readiness.breakdown.bms !== null,
-                        readiness.breakdown.tv !== null,
-                        readiness.breakdown.kff !== null,
-                        readiness.breakdown.sek !== null,
-                      ].filter(Boolean).length} / 4 Bereiche
-                    </span>
-                  </div>
-                  <p className="mt-1 text-[12.5px] leading-relaxed text-ink-3">
+                  <h3 className="display text-[21px] sm:text-[23px] text-ink font-bold tracking-tight">
+                    Index in Kalibrierung
+                  </h3>
+                  <p className="mt-1 text-[13px] leading-relaxed text-ink-3 font-normal">
                     Löse Aufgaben in mindestens 2 Testteilen, um deinen gewichteten MedAT-Reifegrad freizuschalten.
                   </p>
                 </div>
 
-                {/* Calibration Progress Bar */}
-                <div className="space-y-1">
-                  <div className="relative h-2 w-full rounded-full bg-paper-3 border border-line overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-primary transition-all duration-500"
-                      style={{
-                        width: `${
-                          ([
-                            readiness.breakdown.bms !== null,
-                            readiness.breakdown.tv !== null,
-                            readiness.breakdown.kff !== null,
-                            readiness.breakdown.sek !== null,
-                          ].filter(Boolean).length /
-                            4) *
-                          100
-                        }%`,
-                      }}
-                    />
+                {/* 4-Pillar Segmented Bar Indicator */}
+                <div className="space-y-2">
+                  <div className="grid grid-cols-4 gap-1.5">
+                    {[
+                      { key: "bms", label: "BMS", done: readiness.breakdown.bms !== null },
+                      { key: "tv", label: user.examType === "MEDAT-Z" ? "MF" : "TV", done: readiness.breakdown.tv !== null },
+                      { key: "kff", label: "KFF", done: readiness.breakdown.kff !== null },
+                      { key: "sek", label: "SEK", done: readiness.breakdown.sek !== null },
+                    ].map((seg) => (
+                      <div
+                        key={seg.key}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${
+                          seg.done ? "bg-primary" : "bg-line/80"
+                        }`}
+                      />
+                    ))}
                   </div>
-                  <div className="flex justify-between text-[10.5px] text-ink-4 font-semibold">
+                  <div className="flex items-center justify-between text-[11px] text-ink-4">
                     <span>
-                      {[
-                        readiness.breakdown.bms !== null,
-                        readiness.breakdown.tv !== null,
-                        readiness.breakdown.kff !== null,
-                        readiness.breakdown.sek !== null,
-                      ].filter(Boolean).length === 0
+                      {recordedPartsCount === 0
                         ? "Noch keine Testdaten"
-                        : `${
-                            [
-                              readiness.breakdown.bms !== null,
-                              readiness.breakdown.tv !== null,
-                              readiness.breakdown.kff !== null,
-                              readiness.breakdown.sek !== null,
-                            ].filter(Boolean).length
-                          } von 4 Testteilen erfasst`}
+                        : `${recordedPartsCount} von 4 Testteilen erfasst`}
                     </span>
-                    <span>Aktivierung ab 2 Bereichen</span>
+                    <span className="font-semibold text-ink-3">
+                      {recordedPartsCount >= 2 ? "Bereit zur Berechnung" : "Aktivierung ab 2 Bereichen"}
+                    </span>
                   </div>
                 </div>
 
                 {/* 4 Pillars Interactive Status Tiles */}
-                <div className="grid grid-cols-2 gap-2">
-                  {/* BMS */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: "BMS" })}
-                    className={`group rounded-2xl border p-2.5 sm:p-3 text-left transition-all cursor-pointer ${
-                      readiness.breakdown.bms !== null
-                        ? "border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/50"
-                        : "border-line bg-paper-3/50 hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">BMS</span>
-                      <span className="font-semibold text-ink-4">40% Gew.</span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className={`num text-[15px] sm:text-[17px] font-bold ${readiness.breakdown.bms !== null ? "text-emerald-700" : "text-ink-4"}`}>
-                        {readiness.breakdown.bms !== null ? `${readiness.breakdown.bms}%` : "Ausstehend"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary group-hover:underline">
-                        {readiness.breakdown.bms !== null ? "✓ Bereit" : "Starten →"}
-                      </span>
-                    </div>
-                  </button>
-
-                  {/* TV / MF */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: user.examType === "MEDAT-Z" ? "MF" : "TV" })}
-                    className={`group rounded-2xl border p-2.5 sm:p-3 text-left transition-all cursor-pointer ${
-                      readiness.breakdown.tv !== null
-                        ? "border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/50"
-                        : "border-line bg-paper-3/50 hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">
-                        {user.examType === "MEDAT-Z" ? "MF" : "TV"}
-                      </span>
-                      <span className="font-semibold text-ink-4">
-                        {user.examType === "MEDAT-Z" ? "30% Gew." : "10% Gew."}
-                      </span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className={`num text-[15px] sm:text-[17px] font-bold ${readiness.breakdown.tv !== null ? "text-emerald-700" : "text-ink-4"}`}>
-                        {readiness.breakdown.tv !== null ? `${readiness.breakdown.tv}%` : "Ausstehend"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary group-hover:underline">
-                        {readiness.breakdown.tv !== null ? "✓ Bereit" : "Starten →"}
-                      </span>
-                    </div>
-                  </button>
-
-                  {/* KFF */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: "KFF" })}
-                    className={`group rounded-2xl border p-2.5 sm:p-3 text-left transition-all cursor-pointer ${
-                      readiness.breakdown.kff !== null
-                        ? "border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/50"
-                        : "border-line bg-paper-3/50 hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">KFF</span>
-                      <span className="font-semibold text-ink-4">
-                        {user.examType === "MEDAT-Z" ? "20% Gew." : "40% Gew."}
-                      </span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className={`num text-[15px] sm:text-[17px] font-bold ${readiness.breakdown.kff !== null ? "text-emerald-700" : "text-ink-4"}`}>
-                        {readiness.breakdown.kff !== null ? `${readiness.breakdown.kff}%` : "Ausstehend"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary group-hover:underline">
-                        {readiness.breakdown.kff !== null ? "✓ Bereit" : "Starten →"}
-                      </span>
-                    </div>
-                  </button>
-
-                  {/* SEK */}
-                  <button
-                    type="button"
-                    onClick={() => onNav("practice", { section: "SEK" })}
-                    className={`group rounded-2xl border p-2.5 sm:p-3 text-left transition-all cursor-pointer ${
-                      readiness.breakdown.sek !== null
-                        ? "border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/50"
-                        : "border-line bg-paper-3/50 hover:border-primary/40 hover:bg-paper-3 hover:shadow-xs"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-extrabold text-ink uppercase tracking-wider">SEK</span>
-                      <span className="font-semibold text-ink-4">10% Gew.</span>
-                    </div>
-                    <div className="mt-1 flex items-baseline justify-between">
-                      <span className={`num text-[15px] sm:text-[17px] font-bold ${readiness.breakdown.sek !== null ? "text-emerald-700" : "text-ink-4"}`}>
-                        {readiness.breakdown.sek !== null ? `${readiness.breakdown.sek}%` : "Ausstehend"}
-                      </span>
-                      <span className="text-[10px] font-bold text-primary group-hover:underline">
-                        {readiness.breakdown.sek !== null ? "✓ Bereit" : "Starten →"}
-                      </span>
-                    </div>
-                  </button>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {[
+                    { code: "BMS", label: "BMS", weight: "40%", score: readiness.breakdown.bms, target: "BMS" },
+                    { code: user.examType === "MEDAT-Z" ? "MF" : "TV", label: user.examType === "MEDAT-Z" ? "MF" : "TV", weight: user.examType === "MEDAT-Z" ? "30%" : "10%", score: readiness.breakdown.tv, target: user.examType === "MEDAT-Z" ? "MF" : "TV" },
+                    { code: "KFF", label: "KFF", weight: user.examType === "MEDAT-Z" ? "20%" : "40%", score: readiness.breakdown.kff, target: "KFF" },
+                    { code: "SEK", label: "SEK", weight: "10%", score: readiness.breakdown.sek, target: "SEK" },
+                  ].map((pillar) => (
+                    <button
+                      key={pillar.code}
+                      type="button"
+                      onClick={() => onNav("practice", { section: pillar.target as any })}
+                      className="group flex flex-col justify-between rounded-2xl border border-line/80 bg-paper-2/40 p-3 sm:p-3.5 text-left transition-all duration-200 hover:border-primary/40 hover:bg-paper hover:shadow-2xs cursor-pointer"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-[12px] font-bold uppercase tracking-wide text-ink">
+                          {pillar.code}
+                        </span>
+                        <span className="text-[10px] font-medium text-ink-4 bg-paper-3 px-1.5 py-0.5 rounded-md border border-line/50">
+                          {pillar.weight} Gew.
+                        </span>
+                      </div>
+                      <div className="mt-3 flex items-center justify-between">
+                        {pillar.score !== null ? (
+                          <span className="num text-[16px] font-bold text-emerald-600">
+                            {pillar.score}%
+                          </span>
+                        ) : (
+                          <span className="text-[12px] font-medium text-ink-4 flex items-center gap-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-line-2" />
+                            Ausstehend
+                          </span>
+                        )}
+                        <span className="text-[11px] font-semibold text-ink-3 group-hover:text-primary transition-colors flex items-center gap-0.5">
+                          {pillar.score !== null ? "✓ Bereit" : "Starten"}
+                          <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                        </span>
+                      </div>
+                    </button>
+                  ))}
                 </div>
 
+                {/* Primary CTA Button */}
                 <button
                   type="button"
                   onClick={() => onNav("practice")}
-                  className="btn btn-primary w-full py-2.5 text-[13.5px] font-bold shadow-xs hover:shadow-md cursor-pointer flex items-center justify-center gap-2"
+                  className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-[13.5px] font-bold text-white shadow-xs transition-all duration-200 hover:bg-primary-hover hover:shadow-md active:scale-[0.99] cursor-pointer"
                 >
                   <span>
-                    {[
-                      readiness.breakdown.bms !== null,
-                      readiness.breakdown.tv !== null,
-                      readiness.breakdown.kff !== null,
-                      readiness.breakdown.sek !== null,
-                    ].filter(Boolean).length === 0
+                    {recordedPartsCount === 0
                       ? "Ersten Bereich trainieren"
                       : "Nächsten Bereich kalibrieren"}
                   </span>
-                  <IconArrowRight className="h-4 w-4" />
+                  <IconArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </button>
               </div>
             )}
           </div>
 
-          <div className="border-t border-line/70 pt-3 mt-4 flex items-center justify-between text-[11px] text-ink-4">
+          {/* Footer Legend */}
+          <div className="border-t border-line/60 pt-3 mt-4 flex items-center justify-between text-[11px] text-ink-4">
             <span>
               Schlüssel:{" "}
               {user.examType === "MEDAT-Z"
