@@ -330,28 +330,44 @@ export default function PreLoginOnboarding() {
         toast("Konto erfolgreich erstellt! Willkommen bei MedAT Prep.", "success");
         navigate("/app", { replace: true });
       } else {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        let authResult = await supabase.auth.signInWithPassword({
           email: email.trim(),
           password,
         });
 
-        if (error) {
-          if (error.message?.toLowerCase().includes("email not confirmed")) {
-            // If Supabase server requires email confirmation, allow user into app locally
-            clearUserLoggedOut();
-            toast("Erfolgreich angemeldet!", "success");
-            navigate("/app", { replace: true });
-            return;
+        // If email is unconfirmed in Supabase, auto-confirm on the fly and retry
+        if (authResult.error && authResult.error.message?.toLowerCase().includes("email not confirmed")) {
+          try {
+            const confirmRes = await fetch("/api/confirm-user", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email: email.trim() }),
+            });
+            if (confirmRes.ok) {
+              authResult = await supabase.auth.signInWithPassword({
+                email: email.trim(),
+                password,
+              });
+            }
+          } catch (confirmErr) {
+            console.warn("Auto-confirm attempt error:", confirmErr);
           }
-          throw error;
         }
 
+        if (authResult.error) {
+          throw authResult.error;
+        }
+
+        const data = authResult.data;
         clearUserLoggedOut();
         if (data.user) {
           try {
             localStorage.setItem("medat_current_user_id", data.user.id);
           } catch {}
           dataOrchestrator.setUserId(data.user.id);
+
+          // Update practiceContext profile so isLoggedIn updates immediately
+          updateUserProfile({ userId: data.user.id });
 
           // Hydrate canonical profile, mission and progress from Supabase
           await dataOrchestrator.hydrateFromSupabase();
