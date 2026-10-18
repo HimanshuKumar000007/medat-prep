@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import { LogoMark } from "../lib/icons";
 import { toast } from "../lib/core";
@@ -464,64 +465,68 @@ export function DashboardShell({
       </aside>
 
       {/* Mobile drawer with smooth enter/exit transitions and swipe gestures */}
-      <div
-        className={`fixed inset-0 z-[60] lg:hidden transition-all duration-300 ${
-          mobileOpen ? "visible pointer-events-auto" : "invisible pointer-events-none"
-        }`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation"
-      >
-        {/* Backdrop with smooth opacity transition */}
-        <div
-          className={`absolute inset-0 bg-night/50 backdrop-blur-xs transition-opacity duration-300 ease-out ${
-            mobileOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setMobileOpen(false)}
-          aria-label="Menü schließen"
-        />
-
-        {/* Drawer panel with smooth sliding transform and swipe gesture */}
-        <div
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          className={`absolute left-0 top-0 flex h-full w-[285px] max-w-[85vw] flex-col bg-paper shadow-2xl transition-transform duration-300 cubic-bezier(0.16,1,0.3,1) border-r border-line will-change-transform ${
-            mobileOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          {/* Mobile Drawer Header */}
-          <div className="flex shrink-0 items-center justify-between border-b border-line px-4 py-3.5 bg-paper">
-            <span className="flex items-center gap-2.5">
-              <LogoMark className="h-7 w-7 shrink-0" />
-              <span className="display text-[16px] leading-none text-ink">
-                MedAT{" "}
-                <span className="font-sans font-medium normal-case tracking-normal text-ink-3">
-                  Prep
-                </span>
-              </span>
-            </span>
-            <button
+      {typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className={`fixed inset-0 z-[100] lg:hidden transition-all duration-300 ${
+              mobileOpen ? "visible pointer-events-auto" : "invisible pointer-events-none"
+            }`}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation"
+          >
+            {/* Backdrop with smooth opacity transition */}
+            <div
+              className={`absolute inset-0 bg-night/50 backdrop-blur-xs transition-opacity duration-300 ease-out ${
+                mobileOpen ? "opacity-100" : "opacity-0"
+              }`}
               onClick={() => setMobileOpen(false)}
-              className="flex h-8 w-8 items-center justify-center rounded-xl text-ink-2 transition-colors hover:bg-paper-3 hover:text-ink active:scale-95 cursor-pointer"
               aria-label="Menü schließen"
-            >
-              <IconClose className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Drawer Scrollable Content */}
-          <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
-            <SidebarContent
-              screen={screen}
-              onNav={nav}
-              collapsed={false}
-              isMobile={true}
-              onClose={() => setMobileOpen(false)}
             />
-          </div>
-        </div>
-      </div>
+
+            {/* Drawer panel with smooth sliding transform and swipe gesture */}
+            <div
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              className={`absolute left-0 top-0 flex h-dvh w-[285px] max-w-[85vw] flex-col bg-paper shadow-2xl transition-transform duration-300 cubic-bezier(0.16,1,0.3,1) border-r border-line will-change-transform ${
+                mobileOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
+            >
+              {/* Mobile Drawer Header */}
+              <div className="flex shrink-0 items-center justify-between border-b border-line px-4 py-3.5 bg-paper">
+                <span className="flex items-center gap-2.5">
+                  <LogoMark className="h-7 w-7 shrink-0" />
+                  <span className="display text-[16px] leading-none text-ink">
+                    MedAT{" "}
+                    <span className="font-sans font-medium normal-case tracking-normal text-ink-3">
+                      Prep
+                    </span>
+                  </span>
+                </span>
+                <button
+                  onClick={() => setMobileOpen(false)}
+                  className="flex h-8 w-8 items-center justify-center rounded-xl text-ink-2 transition-colors hover:bg-paper-3 hover:text-ink active:scale-95 cursor-pointer"
+                  aria-label="Menü schließen"
+                >
+                  <IconClose className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Drawer Scrollable Content */}
+              <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pb-[max(1rem,env(safe-area-inset-bottom))]">
+                <SidebarContent
+                  screen={screen}
+                  onNav={nav}
+                  collapsed={false}
+                  isMobile={true}
+                  onClose={() => setMobileOpen(false)}
+                />
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
 
       <div className="flex min-w-0 flex-1 flex-col overflow-x-hidden">
         {/* Top bar (hidden in any result page) */}
