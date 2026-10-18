@@ -371,28 +371,35 @@ export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen bg-paper font-sans text-ink selection:bg-primary-subtle selection:text-primary flex flex-col justify-between">
       {/* ---------------- TOP HEADER ---------------- */}
-      <header className="border-b border-line/80 bg-paper/95 backdrop-blur-md px-4 py-3.5 sm:px-6">
-        <div className="mx-auto flex max-w-4xl items-center justify-between">
+      <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/95 backdrop-blur-md">
+        <div className="wrap flex h-16 items-center justify-between gap-3 sm:gap-6 lg:h-[72px]">
+          {/* Logo matching Homescreen Navbar */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary"
-            aria-label="MedAT Prep Startseite"
+            className="flex items-center gap-2 sm:gap-2.5 transition-transform duration-200 hover:scale-[1.02] shrink-0"
+            aria-label="MedAT Prep — zur Startseite"
           >
-            <LogoMark className="h-8 w-8 text-primary shadow-xs" />
-            <div className="flex flex-col">
-              <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-ink">
-                MedAT<span className="text-primary">.</span>Prep
-              </span>
-              <span className="hidden sm:inline text-[10.5px] font-semibold text-ink-3">
-                KI-Vorbereitung auf den MedAT
-              </span>
-            </div>
+            <LogoMark className="h-8 w-8 sm:h-9 sm:w-9 shrink-0" />
+            <span className="display text-[15px] sm:text-[17px] leading-none text-ink">
+              MedAT <span className="font-sans font-medium normal-case tracking-normal text-ink-3">Prep</span>
+            </span>
           </Link>
 
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-paper-2 px-3 py-1 text-[11px] sm:text-[12px] font-semibold text-ink-2 shadow-2xs">
-            <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-            🇦🇹 Offizieller MedAT-Dienst
-          </span>
+          {/* Right cluster */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              to="/onboarding?mode=login"
+              className="link-tertiary text-xs sm:text-sm font-semibold text-ink-2 hover:text-ink transition-colors px-2 py-1.5"
+            >
+              Anmelden
+            </Link>
+            <Link
+              to="/"
+              className="btn btn-secondary btn-sm px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-xl border border-line shadow-2xs hover:bg-paper-2 transition-all"
+            >
+              Startseite
+            </Link>
+          </div>
         </div>
       </header>
 
