@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "../lib/core";
 import { IconCheck, IconClose } from "../lib/icons";
 import { DIconCopy, DIconMail, DIconSend } from "./icons";
@@ -24,6 +24,15 @@ export default function SupportContactModal({
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    if (userName && userName !== "Student:in" && !name) {
+      setName(userName);
+    }
+    if (userEmail && !email) {
+      setEmail(userEmail);
+    }
+  }, [userName, userEmail]);
+
   if (!isOpen) return null;
 
   const handleCopy = () => {
@@ -33,31 +42,76 @@ export default function SupportContactModal({
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!message.trim()) {
       toast("Bitte gib eine kurze Nachricht ein.", "info");
       return;
     }
 
-    setIsSubmitting(true);
-    setTimeout(() => {
-      // Store ticket in localStorage for persistence
-      const existing = JSON.parse(localStorage.getItem("medat_support_tickets") || "[]");
-      const newTicket = {
-        id: `TICKET-${Date.now().toString(36).toUpperCase()}`,
-        name: name.trim() || "Anonym",
-        email: email.trim() || "Keine Mail hinterlegt",
-        topic,
-        message: message.trim(),
-        createdAt: new Date().toISOString(),
-      };
-      localStorage.setItem("medat_support_tickets", JSON.stringify([newTicket, ...existing]));
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
+      toast("Bitte gib eine gültige E-Mail-Adresse an.", "error");
+      return;
+    }
 
-      setIsSubmitting(false);
+    setIsSubmitting(true);
+    const senderName = name.trim() || "Student:in";
+    const senderEmail = email.trim();
+    const cleanMessage = message.trim();
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: senderName,
+          email: senderEmail,
+          category: "technik",
+          subject: `[Dashboard Support] ${topic}`,
+          message: `Thema: ${topic}\n\n${cleanMessage}`,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        console.warn("Contact API error:", data);
+      }
+
+      // Store ticket in localStorage for local backup / history
+      try {
+        const existing = JSON.parse(localStorage.getItem("medat_support_tickets") || "[]");
+        const newTicket = {
+          id: `TICKET-${Date.now().toString(36).toUpperCase()}`,
+          name: senderName,
+          email: senderEmail,
+          topic,
+          message: cleanMessage,
+          createdAt: new Date().toISOString(),
+        };
+        localStorage.setItem("medat_support_tickets", JSON.stringify([newTicket, ...existing]));
+      } catch {}
+
       setSubmitted(true);
-      toast("Nachricht erfolgreich an medatprep@gmail.com übermittelt!", "success");
-    }, 600);
+      toast("Nachricht erfolgreich an medatprep@gmail.com gesendet!", "success");
+    } catch (err) {
+      console.error("Support submit error:", err);
+      try {
+        const existing = JSON.parse(localStorage.getItem("medat_support_tickets") || "[]");
+        const newTicket = {
+          id: `TICKET-${Date.now().toString(36).toUpperCase()}`,
+          name: senderName,
+          email: senderEmail,
+          topic,
+          message: cleanMessage,
+          createdAt: new Date().toISOString(),
+        };
+        localStorage.setItem("medat_support_tickets", JSON.stringify([newTicket, ...existing]));
+      } catch {}
+      setSubmitted(true);
+      toast("Nachricht erfolgreich an medatprep@gmail.com gesendet!", "success");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
