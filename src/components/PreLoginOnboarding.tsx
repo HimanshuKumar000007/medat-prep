@@ -361,7 +361,7 @@ export default function PreLoginOnboarding() {
     }
   };
 
-  // Forgot Password Trigger
+  // Forgot Password Trigger (IISER architecture via Resend & Serverless API)
   const handleForgotPasswordSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
@@ -371,17 +371,34 @@ export default function PreLoginOnboarding() {
     setAuthLoading(true);
     setAuthError(null);
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-        redirectTo: `${window.location.origin}/#/reset-password`,
+      // 1. Primary: Serverless endpoint with direct Resend email containing ?token=...
+      const res = await fetch("/api/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
       });
-      if (error) throw error;
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Fehler beim Senden des Links.");
+      }
       setResetSuccess(true);
       setResetEmailSentTo(email.trim());
       toast("Link zum Zurücksetzen gesendet! Bitte prüfe deinen Posteingang.", "success");
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Fehler beim Senden des Links zum Zurücksetzen.";
-      setAuthError(msg);
-      toast(msg, "error");
+      console.warn("Forgot password API fallback to Supabase:", err);
+      try {
+        const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+          redirectTo: `${window.location.origin}/#/reset-password`,
+        });
+        if (error) throw error;
+        setResetSuccess(true);
+        setResetEmailSentTo(email.trim());
+        toast("Link zum Zurücksetzen gesendet! Bitte prüfe deinen Posteingang.", "success");
+      } catch (fbErr: any) {
+        const msg = fbErr?.message || (err instanceof Error ? err.message : "Fehler beim Senden des Links zum Zurücksetzen.");
+        setAuthError(msg);
+        toast(msg, "error");
+      }
     } finally {
       setAuthLoading(false);
     }

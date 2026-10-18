@@ -137,7 +137,9 @@ function AuthRedirectManager() {
     const s = window.location.search || "";
     const p = location.pathname || "";
 
+    const hasToken = h.includes("token=") || s.includes("token=");
     const isRecovery =
+      hasToken ||
       h.includes("type=recovery") ||
       s.includes("type=recovery") ||
       p.includes("type=recovery") ||
@@ -148,7 +150,16 @@ function AuthRedirectManager() {
       sessionStorage.getItem("medat_recovery_pending") === "true";
 
     if (isRecovery && !p.startsWith("/reset-password") && !p.startsWith("/passwort-zuruecksetzen")) {
-      navigate("/reset-password", { replace: true });
+      let tokenParam = "";
+      if (s.includes("token=")) {
+        const token = new URLSearchParams(s).get("token");
+        if (token) tokenParam = `?token=${encodeURIComponent(token)}`;
+      } else if (h.includes("token=")) {
+        const queryPart = h.includes("?") ? h.split("?")[1] : "";
+        const token = new URLSearchParams(queryPart).get("token");
+        if (token) tokenParam = `?token=${encodeURIComponent(token)}`;
+      }
+      navigate(`/reset-password${tokenParam}`, { replace: true });
     }
 
     return () => {
@@ -165,7 +176,9 @@ function CatchAllRoute() {
   const s = window.location.search || "";
   const p = location.pathname || "";
 
+  const hasToken = h.includes("token=") || s.includes("token=");
   if (
+    hasToken ||
     h.includes("type=recovery") ||
     s.includes("type=recovery") ||
     p.includes("type=recovery") ||
@@ -175,7 +188,16 @@ function CatchAllRoute() {
     h.includes("error=access_denied") ||
     sessionStorage.getItem("medat_recovery_pending") === "true"
   ) {
-    return <Navigate to="/reset-password" replace />;
+    let tokenParam = "";
+    if (s.includes("token=")) {
+      const token = new URLSearchParams(s).get("token");
+      if (token) tokenParam = `?token=${encodeURIComponent(token)}`;
+    } else if (h.includes("token=")) {
+      const queryPart = h.includes("?") ? h.split("?")[1] : "";
+      const token = new URLSearchParams(queryPart).get("token");
+      if (token) tokenParam = `?token=${encodeURIComponent(token)}`;
+    }
+    return <Navigate to={`/reset-password${tokenParam}`} replace />;
   }
 
   return <Navigate to="/" replace />;

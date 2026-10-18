@@ -19,6 +19,7 @@ export default function ResetPasswordPage() {
 
   // Mode: "update" (when recovery token is active) vs "request" (fallback to ask for a reset email)
   const [mode, setMode] = useState<"update" | "request">("update");
+  const [resetToken, setResetToken] = useState<string | null>(null);
   
   // Inputs
   const [password, setPassword] = useState("");
@@ -33,7 +34,32 @@ export default function ResetPasswordPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [requestSent, setRequestSent] = useState(false);
 
-  // Helper to extract tokens from search, hash, or sessionStorage
+  // Helper to extract custom reset token (IISER architecture)
+  const getCustomResetToken = (): string | null => {
+    // 1. From React Router location.search (?token=...)
+    const locSearch = new URLSearchParams(location.search);
+    if (locSearch.get("token")) return locSearch.get("token")!.trim();
+
+    // 2. From window.location.search
+    const winSearch = new URLSearchParams(window.location.search);
+    if (winSearch.get("token")) return winSearch.get("token")!.trim();
+
+    // 3. From window.location.hash (#/reset-password?token=...)
+    const hash = window.location.hash || "";
+    if (hash.includes("?")) {
+      const hashQuery = hash.split("?")[1];
+      const hashParams = new URLSearchParams(hashQuery);
+      if (hashParams.get("token")) return hashParams.get("token")!.trim();
+    }
+
+    // 4. From sessionStorage
+    const stored = sessionStorage.getItem("medat_reset_token");
+    if (stored) return stored.trim();
+
+    return null;
+  };
+
+  // Helper to extract tokens from search, hash, or sessionStorage (Supabase fallback)
   const getRecoveryTokens = () => {
     const s = window.location.search || "";
     const h = window.location.hash || "";
@@ -66,7 +92,17 @@ export default function ResetPasswordPage() {
     document.title = "Passwort festlegen — MedAT Prep | Sichere Kontowiederherstellung";
     window.scrollTo(0, 0);
 
-    // 1. Listen for Supabase PASSWORD_RECOVERY event
+    // 1. Check for IISER-style custom token FIRST
+    const token = getCustomResetToken();
+    if (token) {
+      setResetToken(token);
+      sessionStorage.setItem("medat_reset_token", token);
+      setMode("update");
+      setError(null);
+      return;
+    }
+
+    // 2. Listen for Supabase PASSWORD_RECOVERY event
     const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === "PASSWORD_RECOVERY" || (event === "SIGNED_IN" && session)) {
         setMode("update");
@@ -74,7 +110,7 @@ export default function ResetPasswordPage() {
       }
     });
 
-    // 2. Check if expired or error
+    // 3. Check if expired or error
     const fullUrl = window.location.href;
     if (
       fullUrl.includes("error_code=otp_expired") ||
@@ -86,7 +122,7 @@ export default function ResetPasswordPage() {
       return;
     }
 
-    // 3. Initialize session from Supabase or tokens
+    // 4. Initialize session from Supabase or tokens
     const initSession = async () => {
       try {
         const { data } = await supabase.auth.getSession();
@@ -111,7 +147,7 @@ export default function ResetPasswordPage() {
           }
         }
 
-        // If arrived with neither session nor tokens, offer request mode
+        // If arrived with neither custom token, session, nor tokens, offer request mode
         setMode("request");
       } catch (err) {
         console.warn("Recovery init check:", err);
@@ -150,11 +186,54 @@ export default function ResetPasswordPage() {
     setError(null);
 
     try {
+      const activeToken = resetToken || getCustomResetToken();
+
+      // 1. IISER Architecture: Call serverless endpoint /api/reset-password if token present
+      if (activeToken) {
+        const response = await fetch("/api/reset-password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: activeToken, password: password.trim() }),
+        });
+
+        const resData = await response.json();
+        if (!response.ok || !resData.success) {
+          throw new Error(resData.error || "Fehler beim Zurücksetzen des Passworts.");
+        }
+
+        sessionStorage.removeItem("medat_reset_token");
+
+        // Auto sign-in if email returned
+        if (resData.email) {
+          try {
+            const { data: loginData } = await supabase.auth.signInWithPassword({
+              email: resData.email,
+              password: password.trim(),
+            });
+            if (loginData?.user?.id) {
+              dataOrchestrator.setUserId(loginData.user.id);
+              await dataOrchestrator.hydrateFromSupabase();
+            }
+          } catch (signInErr) {
+            console.warn("Auto sign-in note:", signInErr);
+          }
+        }
+
+        setIsSuccess(true);
+        clearUserLoggedOut();
+        toast("Passwort erfolgreich aktualisiert!", "success");
+
+        setTimeout(() => {
+          navigate("/app", { replace: true });
+        }, 2200);
+        return;
+      }
+
+      // 2. Fallback: Supabase Session updateUser
       const { accessToken, refreshToken } = getRecoveryTokens();
       let updateSuccessful = false;
       let userId: string | null = null;
 
-      // 1. Try standard Supabase SDK updateUser
       const { data: sessionData } = await supabase.auth.getSession();
       if (sessionData?.session) {
         try {
@@ -170,7 +249,7 @@ export default function ResetPasswordPage() {
         }
       }
 
-      // 2. Direct REST fallback using the recovery access_token
+      // Direct REST fallback using the recovery access_token
       if (!updateSuccessful && accessToken) {
         const response = await fetch("https://vwvacbxbynwiwnnfyjht.supabase.co/auth/v1/user", {
           method: "PUT",
@@ -252,19 +331,36 @@ export default function ResetPasswordPage() {
     setError(null);
 
     try {
-      const redirectUrl = `${window.location.origin}/#/reset-password`;
-      const { error: resetErr } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-        redirectTo: redirectUrl,
+      // 1. IISER Architecture: Send email via /api/forgot-password with Resend
+      const res = await fetch("/api/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
       });
-
-      if (resetErr) throw resetErr;
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Fehler beim Senden des Links.");
+      }
 
       setRequestSent(true);
-      toast("Wiederherstellungs-Link gesendet!", "success");
+      toast("Wiederherstellungs-Link gesendet! Bitte prüfe deinen Posteingang.", "success");
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Fehler beim Anfordern des Links.";
-      setError(msg);
-      toast(msg, "error");
+      console.warn("Forgot password endpoint error, trying Supabase fallback:", err);
+      try {
+        const redirectUrl = `${window.location.origin}/#/reset-password`;
+        const { error: resetErr } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+          redirectTo: redirectUrl,
+        });
+
+        if (resetErr) throw resetErr;
+
+        setRequestSent(true);
+        toast("Wiederherstellungs-Link gesendet!", "success");
+      } catch (fbErr: any) {
+        const msg = fbErr?.message || (err instanceof Error ? err.message : "Fehler beim Anfordern des Links.");
+        setError(msg);
+        toast(msg, "error");
+      }
     } finally {
       setLoading(false);
     }
