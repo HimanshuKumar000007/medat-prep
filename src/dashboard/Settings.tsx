@@ -11,6 +11,7 @@ import { DIconCard, DIconDownload, DIconTrash, DIconLogout } from "./icons";
 import { usePractice } from "./practiceContext";
 import { syncUserProfileToSupabase, checkUserEntitlement } from "../lib/dbSync";
 import { openCheckout, PADDLE_CONFIG } from "../lib/paddle";
+import { triggerPremiumSuccessModal } from "../components/PremiumSuccessModal";
 
 const TABS = [
   "Profil & MedAT-Ausrichtung",
@@ -113,6 +114,7 @@ export default function Settings() {
         },
         onSuccess: () => {
           updateUserProfile({ isPro: true, subscriptionTier: "premium", subscriptionStatus: "active" });
+          triggerPremiumSuccessModal();
           toast("🎉 Willkommen beim MedAT-Vollzugang! Alle Kapitel wurden freigeschaltet.", "success");
         },
       });

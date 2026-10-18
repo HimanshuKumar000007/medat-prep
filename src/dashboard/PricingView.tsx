@@ -10,6 +10,7 @@ import { PRICING, type PricingTier } from "../lib/data";
 import { IconArrowRight, IconCheck } from "../lib/icons";
 import { toast } from "../lib/core";
 import { openCheckout, PADDLE_CONFIG } from "../lib/paddle";
+import { triggerPremiumSuccessModal } from "../components/PremiumSuccessModal";
 import { usePractice } from "./practiceContext";
 import type { Screen } from "./Shell";
 
@@ -52,6 +53,7 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
         },
         onSuccess: () => {
           updateUserProfile({ isPro: true, subscriptionTier: "premium", subscriptionStatus: "active" });
+          triggerPremiumSuccessModal();
           toast("🎉 Willkommen beim MedAT-Vollzugang! Alle Kapitel wurden freigeschaltet.", "success");
           if (onNav) {
             onNav("home");

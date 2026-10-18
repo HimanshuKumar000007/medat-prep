@@ -34,7 +34,7 @@ export default function Pricing() {
             tier,
           },
           onSuccess: () => {
-            window.location.hash = "#/dashboard?upgraded=true";
+            window.location.hash = "#/app?upgraded=true";
           },
         });
         if (opened) {

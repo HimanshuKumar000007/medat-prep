@@ -83,6 +83,10 @@ export async function getPaddle(): Promise<Paddle | null> {
           console.info("[Paddle] Checkout completed successfully!", {
             transactionId: (event.data as any)?.transaction_id || (event.data as any)?.id,
           });
+          // Trigger Austrian Premium Success Celebration Popup (5-second auto-close)
+          if (typeof window !== "undefined") {
+            window.dispatchEvent(new CustomEvent("medat:premium_success"));
+          }
           if (activeCallbacks?.onSuccess) {
             try {
               activeCallbacks.onSuccess(event.data);

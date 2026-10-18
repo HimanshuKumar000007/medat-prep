@@ -9,6 +9,7 @@
 import React, { useEffect, useState } from "react";
 import { track, toast } from "../lib/core";
 import { openCheckout, PADDLE_CONFIG } from "../lib/paddle";
+import { triggerPremiumSuccessModal } from "./PremiumSuccessModal";
 import { usePractice } from "../dashboard/practiceContext";
 import type { Screen } from "../dashboard/Shell";
 
@@ -135,6 +136,7 @@ export const BmsProUpgradeModal: React.FC<BmsProUpgradeModalProps> = ({
         },
         onSuccess: () => {
           updateUserProfile({ isPro: true, subscriptionTier: "premium", subscriptionStatus: "active" });
+          triggerPremiumSuccessModal();
           toast("🎉 Willkommen beim MedAT-Vollzugang! Alle Kapitel wurden freigeschaltet.", "success");
           onClose();
         },

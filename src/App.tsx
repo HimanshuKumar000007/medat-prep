@@ -11,6 +11,7 @@ import Faq from "./components/Faq";
 import { CountdownCTA, Footer, Toast } from "./components/Closing";
 import Dashboard from "./dashboard/Dashboard";
 import PreLoginOnboarding from "./components/PreLoginOnboarding";
+import PremiumSuccessModal from "./components/PremiumSuccessModal";
 import BlogPage from "./pages/BlogPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
@@ -274,9 +275,11 @@ export default function App() {
             <Route path="/register" element={<Navigate to="/onboarding?mode=signup" replace />} />
             <Route path="/signup" element={<Navigate to="/onboarding?mode=signup" replace />} />
             <Route path="/onboarding" element={<PreLoginOnboarding />} />
+            <Route path="/dashboard" element={<Navigate to="/app" replace />} />
             <Route path="/app" element={<Dashboard />} />
             <Route path="*" element={<CatchAllRoute />} />
           </Routes>
+          <PremiumSuccessModal />
           <Toast />
           <LangBanner />
         </HashRouter>

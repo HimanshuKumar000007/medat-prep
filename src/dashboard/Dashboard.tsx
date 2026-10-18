@@ -18,6 +18,7 @@ import { PracticeProvider, usePractice } from "./practiceContext";
 import { dataOrchestrator, syncStateMachine } from "../orchestrator";
 import { checkUserEntitlement } from "../lib/dbSync";
 import { SyncDiagnosticWidget } from "./SyncDiagnosticWidget";
+import { triggerPremiumSuccessModal } from "../components/PremiumSuccessModal";
 
 const TITLES: Record<Screen, string> = {
   home: "Dashboard",
@@ -73,6 +74,7 @@ function DashboardInner() {
 
       // If user is already pro according to verified profile, show success
       if (userProfile.isPro) {
+        triggerPremiumSuccessModal();
         toast("🎉 Willkommen beim MedAT-Vollzugang! Alle 35 BMS-Kapitel wurden freigeschaltet.", "success");
         return;
       }
@@ -91,6 +93,7 @@ function DashboardInner() {
           clearInterval(interval);
           setIsActivatingPremium(false);
           setActivationError(null);
+          triggerPremiumSuccessModal();
           toast("🎉 Willkommen beim MedAT-Vollzugang! Alle 35 BMS-Kapitel wurden freigeschaltet.", "success");
         } else if (attempts >= maxAttempts) {
           clearInterval(interval);
