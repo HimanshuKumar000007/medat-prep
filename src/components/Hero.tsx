@@ -122,9 +122,9 @@ export default function Hero() {
             {t("brauchst. Personalisiert. Auf Deutsch. Für Wien, Innsbruck, Graz und Linz.")}
           </p>
 
-          <div className="hero-enter mt-7 sm:mt-9 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4" style={{ animationDelay: "300ms" }}>
+          <div className="hero-enter mt-7 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4" style={{ animationDelay: "300ms" }}>
             <button
-              className="btn btn-primary group w-full xs:w-auto min-h-[48px] justify-center touch-manipulation"
+              className="btn btn-primary group w-full sm:w-auto min-h-[48px] justify-center touch-manipulation"
               onClick={() => {
                 track("hero_cta_click", { location: "hero", variant: "primary" });
                 window.location.hash = "#/onboarding";
@@ -134,7 +134,7 @@ export default function Hero() {
               <IconArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
             <button
-              className="btn btn-secondary w-full xs:w-auto min-h-[48px] justify-center touch-manipulation"
+              className="btn btn-secondary w-full sm:w-auto min-h-[48px] justify-center touch-manipulation"
               onClick={() => {
                 track("hero_login_click", { location: "hero" });
                 window.location.hash = "#/onboarding?mode=login";
@@ -202,10 +202,10 @@ export default function Hero() {
             <div className="grid grid-cols-1 sm:grid-cols-[36%_64%]">
               {/* Sidebar */}
               <div className="border-b sm:border-b-0 sm:border-r border-line bg-paper-2 p-3 sm:p-4">
-                <div className="flex items-center justify-between sm:block">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-ink-4">Heute</p>
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-ink sm:hidden">
-                    <IconFlame className="h-3.5 w-3.5 text-primary" />
+                <div className="flex items-center justify-between gap-2 sm:block">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-ink-4 shrink-0">Heute</p>
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-ink shrink-0 sm:hidden">
+                    <IconFlame className="h-3.5 w-3.5 text-primary shrink-0" />
                     12 Tage Streak
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export default function Hero() {
           </div>
 
           {/* Floating badges (parallax) */}
-          <div ref={parBadge1} className="absolute -top-3.5 right-1 xs:-top-5 xs:right-2 sm:-top-7 sm:right-0 z-10 lg:-right-8 pointer-events-none">
+          <div ref={parBadge1} className="absolute -top-3.5 right-3 xs:-top-5 sm:-top-7 sm:right-0 z-10 lg:-right-8 pointer-events-none max-w-[calc(100%-1.5rem)]">
             <div className="animate-float rounded-xl border border-line border-l-[3px] border-l-primary bg-paper px-2.5 py-1.5 xs:px-3 xs:py-2 sm:px-4 sm:py-3 shadow-lg">
               <p className="num text-[11px] xs:text-xs sm:text-sm font-extrabold text-ink">15.668 Kandidaten</p>
               <p className="num text-[9.5px] xs:text-[10px] sm:text-[11px] font-semibold text-ink-3">1.950 Plätze · Quote 8:1</p>
