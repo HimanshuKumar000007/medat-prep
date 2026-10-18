@@ -210,6 +210,13 @@
               }
             }
           }
+
+          // 3. Direct path to HashRouter redirect (e.g. /terms -> /#/terms)
+          var p = window.location.pathname;
+          if (p && p !== "/" && p !== "/index.html" && !p.startsWith("/api/") && (!h || h === "#" || h === "#/")) {
+            window.location.replace("/#" + p + (s ? s : ""));
+            return;
+          }
         } catch (e) {
           console.error("Auth redirect interceptor error:", e);
         }
