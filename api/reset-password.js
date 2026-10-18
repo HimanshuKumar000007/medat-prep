@@ -69,9 +69,11 @@ export default async function handler(req, res) {
     }
 
     // 3. Update password in Supabase Auth and invalidate token
-    const cleanMeta = { ...matchedUser.user_metadata };
-    delete cleanMeta.medat_reset_token;
-    delete cleanMeta.medat_reset_expiry;
+    const cleanMeta = {
+      ...matchedUser.user_metadata,
+      medat_reset_token: null,
+      medat_reset_expiry: null,
+    };
 
     const { error: updateErr } = await supabaseAdmin.auth.admin.updateUserById(matchedUser.id, {
       password: password.trim(),
