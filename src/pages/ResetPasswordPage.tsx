@@ -223,10 +223,10 @@ export default function ResetPasswordPage() {
 
         setIsSuccess(true);
         clearUserLoggedOut();
-        toast("Passwort erfolgreich aktualisiert!", "success");
+        toast("Passwort erfolgreich aktualisiert! Bitte melde dich an.", "success");
 
         setTimeout(() => {
-          navigate("/app", { replace: true });
+          navigate("/onboarding?mode=login", { replace: true });
         }, 2200);
         return;
       }
@@ -294,12 +294,12 @@ export default function ResetPasswordPage() {
         await dataOrchestrator.hydrateFromSupabase();
       }
 
-      toast("Passwort erfolgreich aktualisiert!", "success");
+      toast("Passwort erfolgreich aktualisiert! Bitte melde dich an.", "success");
 
-      // Smooth auto-redirect to app after 2.5 seconds
+      // Smooth auto-redirect to login after 2.2 seconds
       setTimeout(() => {
-        navigate("/app", { replace: true });
-      }, 2500);
+        navigate("/onboarding?mode=login", { replace: true });
+      }, 2200);
     } catch (err: unknown) {
       const rawMsg = err instanceof Error ? err.message : String(err);
       let userFriendly = "Fehler beim Aktualisieren des Passworts. Bitte fordere einen neuen Link an.";
@@ -414,16 +414,16 @@ export default function ResetPasswordPage() {
                   Passwort erfolgreich geändert!
                 </h2>
                 <p className="text-[14.5px] leading-relaxed text-ink-2">
-                  Dein neues Passwort ist ab sofort aktiv. Du wirst in wenigen Augenblicken direkt zu deinem Dashboard weitergeleitet.
+                  Dein neues Passwort ist ab sofort aktiv. Du wirst in wenigen Augenblicken direkt zur Anmeldung weitergeleitet.
                 </p>
 
                 <div className="pt-2">
                   <Link
-                    to="/app"
+                    to="/onboarding?mode=login"
                     replace
                     className="btn btn-primary w-full h-12 text-[15px] font-bold shadow-md hover:shadow-lg transition-all"
                   >
-                    Direkt zum Dashboard öffnen →
+                    Direkt zur Anmeldung →
                   </Link>
                 </div>
               </div>
