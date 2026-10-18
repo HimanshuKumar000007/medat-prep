@@ -150,30 +150,55 @@ export default function ResetPasswordPage() {
     setError(null);
 
     try {
-      // 1. Double-check active session, or restore from tokens if lost
-      let { data: { session } } = await supabase.auth.getSession();
+      const { accessToken, refreshToken } = getRecoveryTokens();
+      let updateSuccessful = false;
+      let userId: string | null = null;
 
-      if (!session) {
-        const { accessToken, refreshToken } = getRecoveryTokens();
-        if (accessToken) {
-          const res = await supabase.auth.setSession({
-            access_token: accessToken,
-            refresh_token: refreshToken || accessToken,
+      // 1. Try standard Supabase SDK updateUser
+      const { data: sessionData } = await supabase.auth.getSession();
+      if (sessionData?.session) {
+        try {
+          const { data, error: updateError } = await supabase.auth.updateUser({
+            password: password.trim(),
           });
-          session = res.data?.session ?? null;
+          if (!updateError && data?.user) {
+            updateSuccessful = true;
+            userId = data.user.id;
+          }
+        } catch (e) {
+          console.warn("SDK updateUser error, trying fallback", e);
         }
       }
 
-      if (!session) {
-        throw new Error("Auth session missing!");
+      // 2. Direct REST fallback using the recovery access_token
+      if (!updateSuccessful && accessToken) {
+        const response = await fetch("https://vwvacbxbynwiwnnfyjht.supabase.co/auth/v1/user", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3dmFjYnhieW53aXdubmZ5amh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4MDQzNzMsImV4cCI6MjEwMzM4MDM3M30.bsfxsiS4EKF_HCpVYYliFo4KrJ4krIY6u3GwujEE7nY",
+            "Authorization": `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({ password: password.trim() }),
+        });
+
+        const resData = await response.json();
+        if (response.ok && resData?.id) {
+          updateSuccessful = true;
+          userId = resData.id;
+          if (refreshToken) {
+            try {
+              await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+            } catch (_) {}
+          }
+        } else {
+          const errText = resData?.msg || resData?.message || resData?.error_description;
+          if (errText) throw new Error(errText);
+        }
       }
 
-      const { data, error: updateError } = await supabase.auth.updateUser({
-        password: password.trim(),
-      });
-
-      if (updateError) {
-        throw updateError;
+      if (!updateSuccessful) {
+        throw new Error("Auth session missing!");
       }
 
       setIsSuccess(true);
@@ -183,8 +208,8 @@ export default function ResetPasswordPage() {
       sessionStorage.removeItem("medat_recovery_error");
       clearUserLoggedOut();
 
-      if (data?.user?.id) {
-        dataOrchestrator.setUserId(data.user.id);
+      if (userId) {
+        dataOrchestrator.setUserId(userId);
         await dataOrchestrator.hydrateFromSupabase();
       }
 
