@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { toast } from "../lib/core";
 import { IconArrowRight, IconCheck, IconClose } from "../lib/icons";
 import {
   UNIVERSITIES,
@@ -254,37 +255,35 @@ export default function PlanSetupWizardModal({
                     </div>
                   </button>
 
-                  {/* Option 2: MedAT-Z */}
-                  <button
-                    type="button"
+                  {/* Option 2: MedAT-Z (Coming soon / Demnächst verfügbar) */}
+                  <div
+                    role="button"
+                    tabIndex={-1}
+                    aria-disabled="true"
                     onClick={() => {
-                      setExamType("MEDAT-Z");
-                      if (targetUniversity === "linz") setTargetUniversity("wien");
+                      toast("MedAT-Z ist demnächst verfügbar. Wähle bitte aktuell MedAT-H für deinen Lernplan.", "info");
                     }}
-                    className={`flex items-start gap-3 rounded-2xl border p-4 text-left transition-all cursor-pointer ${
-                      examType === "MEDAT-Z"
-                        ? "border-2 border-red-600 bg-white shadow-xs"
-                        : "border border-slate-200 bg-white hover:border-slate-300"
-                    }`}
+                    className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 p-4 text-left opacity-75 cursor-not-allowed select-none transition-all"
+                    title="MedAT-Z — Demnächst verfügbar"
                   >
                     <span
-                      className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full transition-all ${
-                        examType === "MEDAT-Z"
-                          ? "bg-red-600 text-white"
-                          : "border-2 border-slate-300 text-transparent"
-                      }`}
-                    >
-                      <IconCheck className="h-3 w-3" />
-                    </span>
-                    <div>
-                      <p className="text-[13.5px] font-bold text-slate-900 leading-tight">
-                        MedAT-Z · Zahnmedizin
-                      </p>
-                      <p className="text-[11px] text-slate-500 mt-1 leading-snug">
-                        Inkl. Manuelle Fertigkeiten MF (30%)
+                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-slate-100 text-transparent"
+                      aria-hidden="true"
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-[13.5px] font-bold text-slate-600 leading-tight">
+                          MedAT-Z · Zahnmedizin
+                        </p>
+                        <span className="rounded-md bg-amber-500/10 text-amber-700 border border-amber-500/20 px-2 py-0.5 text-[10.5px] font-bold">
+                          Demnächst verfügbar
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-400 mt-1 leading-snug">
+                        Inkl. Manuelle Fertigkeiten MF (30%) · Folgt in Kürze
                       </p>
                     </div>
-                  </button>
+                  </div>
                 </div>
               </div>
 

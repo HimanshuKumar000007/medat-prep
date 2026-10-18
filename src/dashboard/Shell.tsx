@@ -177,13 +177,9 @@ function SidebarContent({
               </button>
               <button
                 type="button"
-                onClick={() => setExamType("MEDAT-Z")}
-                className={`rounded-lg px-2 py-1 text-[11px] font-black uppercase transition-all cursor-pointer ${
-                  userProfile.examType === "MEDAT-Z"
-                    ? "bg-primary text-white shadow-2xs"
-                    : "text-ink-4 hover:text-ink"
-                }`}
-                title="Zahnmedizin"
+                onClick={() => toast("MedAT-Z ist demnächst verfügbar. Aktuell steht MedAT-H bereit.", "info")}
+                className="rounded-lg px-2 py-1 text-[11px] font-black uppercase text-ink-4/60 hover:text-ink-4 opacity-60 cursor-not-allowed transition-all"
+                title="MedAT-Z — Demnächst verfügbar"
               >
                 Z
               </button>
@@ -590,13 +586,9 @@ export function DashboardShell({
               </button>
               <button
                 type="button"
-                onClick={() => setExamType("MEDAT-Z")}
-                className={`rounded-lg px-2 sm:px-2.5 py-1 text-[11px] sm:text-[11.5px] font-black uppercase transition-all ${
-                  userProfile.examType === "MEDAT-Z"
-                    ? "bg-paper text-primary shadow-xs"
-                    : "text-ink-4 hover:text-ink"
-                }`}
-                title="Zahnmedizin (BMS, MF, KFF, SEK)"
+                onClick={() => toast("MedAT-Z ist demnächst verfügbar. Aktuell steht MedAT-H bereit.", "info")}
+                className="rounded-lg px-2 sm:px-2.5 py-1 text-[11px] sm:text-[11.5px] font-black uppercase text-ink-4/60 hover:text-ink-4 opacity-60 cursor-not-allowed transition-all"
+                title="MedAT-Z — Demnächst verfügbar"
               >
                 <span className="hidden xs:inline">MedAT-</span>Z
               </button>

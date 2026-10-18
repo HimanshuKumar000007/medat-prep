@@ -110,40 +110,33 @@ export default function OnboardingModal({
                 </div>
               </button>
 
-              {/* Option 2: MedAT-Z */}
-              <button
-                type="button"
+              {/* Option 2: MedAT-Z (Coming soon / Demnächst verfügbar) */}
+              <div
+                role="button"
+                tabIndex={-1}
+                aria-disabled="true"
                 onClick={() => {
-                  setExamType("MEDAT-Z");
-                  if (targetUniversity === "linz") setTargetUniversity("wien"); // Linz has no Dentistry
+                  toast("MedAT-Z ist demnächst verfügbar. Wähle bitte aktuell MedAT-H für deine Vorbereitung.", "info");
                 }}
-                className={`group flex w-full items-start gap-4 rounded-2xl border p-5 text-left transition-all duration-200 ${
-                  examType === "MEDAT-Z"
-                    ? "border-primary bg-primary-subtle/40 ring-2 ring-primary/20 shadow-sm"
-                    : "border-line bg-paper hover:border-line-2 hover:bg-paper-3/40"
-                }`}
+                className="flex w-full items-start gap-4 rounded-2xl border border-line/70 bg-paper-2/40 p-5 text-left opacity-75 cursor-not-allowed select-none transition-all"
+                title="MedAT-Z — Demnächst verfügbar"
               >
                 <span
-                  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
-                    examType === "MEDAT-Z"
-                      ? "border-primary bg-primary text-paper"
-                      : "border-line-2 text-transparent"
-                  }`}
-                >
-                  <IconCheck className="h-3.5 w-3.5" />
-                </span>
+                  className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-line-2 bg-paper-3/50 text-transparent"
+                  aria-hidden="true"
+                />
                 <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-[16px] font-bold text-ink">MedAT-Z — Zahnmedizin</h3>
-                    <span className="rounded-md bg-paper-3 px-2 py-0.5 text-[11px] font-black text-ink-4">
-                      Inkl. Drahtbiegen
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <h3 className="text-[16px] font-bold text-ink-2">MedAT-Z — Zahnmedizin</h3>
+                    <span className="rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/25 px-2.5 py-0.5 text-[11px] font-bold">
+                      Demnächst verfügbar
                     </span>
                   </div>
                   <p className="mt-1 text-[13px] leading-relaxed text-ink-3">
-                    BMS (40%), Manuelle Fertigkeiten MF (30%), KFF (20%), SEK (10%). Kein Textverständnis / Implikationen.
+                    BMS (40%), Manuelle Fertigkeiten MF (30%), KFF (20%), SEK (10%). Dieser Track folgt in Kürze.
                   </p>
                 </div>
-              </button>
+              </div>
             </div>
           ) : (
             <div className="space-y-5">
