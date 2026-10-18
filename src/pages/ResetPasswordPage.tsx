@@ -33,45 +33,93 @@ export default function ResetPasswordPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [requestSent, setRequestSent] = useState(false);
 
+  // Helper to extract tokens from search, hash, or sessionStorage
+  const getRecoveryTokens = () => {
+    const s = window.location.search || "";
+    const h = window.location.hash || "";
+
+    const sParams = new URLSearchParams(s.startsWith("?") ? s.substring(1) : s);
+    let hQuery = "";
+    if (h.includes("?")) {
+      hQuery = h.split("?")[1];
+    } else if (h.startsWith("#")) {
+      hQuery = h.substring(1);
+    }
+    const hParams = new URLSearchParams(hQuery);
+
+    const accessToken =
+      sParams.get("access_token") ||
+      hParams.get("access_token") ||
+      sessionStorage.getItem("medat_recovery_access_token") ||
+      "";
+
+    const refreshToken =
+      sParams.get("refresh_token") ||
+      hParams.get("refresh_token") ||
+      sessionStorage.getItem("medat_recovery_refresh_token") ||
+      "";
+
+    return { accessToken, refreshToken };
+  };
+
   useEffect(() => {
     document.title = "Passwort festlegen — MedAT Prep | Sichere Kontowiederherstellung";
     window.scrollTo(0, 0);
 
-    // Listen for Supabase PASSWORD_RECOVERY event
+    // 1. Listen for Supabase PASSWORD_RECOVERY event
     const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === "PASSWORD_RECOVERY") {
+      if (event === "PASSWORD_RECOVERY" || (event === "SIGNED_IN" && session)) {
         setMode("update");
         setError(null);
       }
     });
 
-    // Check if session or recovery hash exists
-    supabase.auth.getSession().then(({ data }) => {
-      const hash = location.hash || window.location.hash || "";
-      const search = location.search || window.location.search || "";
-      const fullUrl = window.location.href;
+    // 2. Check if expired or error
+    const fullUrl = window.location.href;
+    if (
+      fullUrl.includes("error_code=otp_expired") ||
+      fullUrl.includes("otp_expired") ||
+      sessionStorage.getItem("medat_recovery_error") === "otp_expired"
+    ) {
+      setError("Dieser Wiederherstellungs-Link ist leider abgelaufen oder wurde bereits verwendet. Bitte fordere unten einen frischen Link an.");
+      setMode("request");
+      return;
+    }
 
-      if (fullUrl.includes("error_code=otp_expired") || fullUrl.includes("otp_expired")) {
-        setError("Dieser Wiederherstellungs-Link ist leider abgelaufen oder wurde bereits verwendet. Bitte fordere unten einen frischen Link an.");
-        setMode("request");
-        return;
-      }
-      
-      const isRecovery =
-        hash.includes("type=recovery") ||
-        hash.includes("access_token=") ||
-        search.includes("type=recovery") ||
-        search.includes("access_token=") ||
-        sessionStorage.getItem("medat_recovery_pending") === "true" ||
-        Boolean(data.session);
+    // 3. Initialize session from Supabase or tokens
+    const initSession = async () => {
+      try {
+        const { data } = await supabase.auth.getSession();
+        if (data?.session) {
+          setMode("update");
+          setError(null);
+          return;
+        }
 
-      if (!isRecovery && !data.session) {
-        // If arrived with no recovery token or session, offer request mode
+        // Try setting session explicitly if tokens exist
+        const { accessToken, refreshToken } = getRecoveryTokens();
+        if (accessToken) {
+          const { data: setRes, error: setErr } = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken || accessToken,
+          });
+
+          if (setRes?.session && !setErr) {
+            setMode("update");
+            setError(null);
+            return;
+          }
+        }
+
+        // If arrived with neither session nor tokens, offer request mode
         setMode("request");
-      } else {
-        setMode("update");
+      } catch (err) {
+        console.warn("Recovery init check:", err);
+        setMode("request");
       }
-    });
+    };
+
+    initSession();
 
     return () => {
       authListener?.subscription?.unsubscribe?.();
@@ -102,6 +150,24 @@ export default function ResetPasswordPage() {
     setError(null);
 
     try {
+      // 1. Double-check active session, or restore from tokens if lost
+      let { data: { session } } = await supabase.auth.getSession();
+
+      if (!session) {
+        const { accessToken, refreshToken } = getRecoveryTokens();
+        if (accessToken) {
+          const res = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken || accessToken,
+          });
+          session = res.data?.session ?? null;
+        }
+      }
+
+      if (!session) {
+        throw new Error("Auth session missing!");
+      }
+
       const { data, error: updateError } = await supabase.auth.updateUser({
         password: password.trim(),
       });
@@ -112,6 +178,9 @@ export default function ResetPasswordPage() {
 
       setIsSuccess(true);
       sessionStorage.removeItem("medat_recovery_pending");
+      sessionStorage.removeItem("medat_recovery_access_token");
+      sessionStorage.removeItem("medat_recovery_refresh_token");
+      sessionStorage.removeItem("medat_recovery_error");
       clearUserLoggedOut();
 
       if (data?.user?.id) {
@@ -126,12 +195,20 @@ export default function ResetPasswordPage() {
         navigate("/app", { replace: true });
       }, 2500);
     } catch (err: unknown) {
-      const msg =
-        err instanceof Error
-          ? err.message
-          : "Fehler beim Aktualisieren des Passworts. Bitte fordere einen neuen Link an.";
-      setError(msg);
-      toast(msg, "error");
+      const rawMsg = err instanceof Error ? err.message : String(err);
+      let userFriendly = "Fehler beim Aktualisieren des Passworts. Bitte fordere einen neuen Link an.";
+      
+      if (rawMsg.includes("Auth session missing") || rawMsg.includes("session missing")) {
+        userFriendly = "Deine Wiederherstellungs-Sitzung ist abgelaufen oder ungültig. Bitte fordere unten einen neuen Link an.";
+        setMode("request");
+      } else if (rawMsg.includes("same_password")) {
+        userFriendly = "Das neue Passwort darf nicht mit deinem alten Passwort identisch sein.";
+      } else if (rawMsg) {
+        userFriendly = rawMsg;
+      }
+
+      setError(userFriendly);
+      toast(userFriendly, "error");
     } finally {
       setLoading(false);
     }

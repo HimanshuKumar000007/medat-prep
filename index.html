@@ -151,15 +151,36 @@
         try {
           var h = window.location.hash || "";
           var s = window.location.search || "";
-          var isRecovery = h.indexOf("type=recovery") !== -1 || s.indexOf("type=recovery") !== -1;
-          var hasAuthError = h.indexOf("error_code=otp_expired") !== -1 || h.indexOf("error=access_denied") !== -1;
+          
+          var raw = "";
+          if (h.indexOf("access_token=") !== -1) {
+            raw = h.substring(1);
+          } else if (s.indexOf("access_token=") !== -1) {
+            raw = s.substring(1);
+          }
+
+          if (raw) {
+            var params = new URLSearchParams(raw);
+            var aToken = params.get("access_token");
+            var rToken = params.get("refresh_token");
+            var type = params.get("type");
+
+            if (aToken) sessionStorage.setItem("medat_recovery_access_token", aToken);
+            if (rToken) sessionStorage.setItem("medat_recovery_refresh_token", rToken);
+            if (type === "recovery") sessionStorage.setItem("medat_recovery_pending", "true");
+          }
+
+          if (h.indexOf("error_code=otp_expired") !== -1 || h.indexOf("error=access_denied") !== -1) {
+            sessionStorage.setItem("medat_recovery_error", "otp_expired");
+          }
+
+          var isRecovery = h.indexOf("type=recovery") !== -1 || s.indexOf("type=recovery") !== -1 || sessionStorage.getItem("medat_recovery_pending") === "true";
+          var hasAuthError = h.indexOf("error_code=otp_expired") !== -1 || h.indexOf("error=access_denied") !== -1 || sessionStorage.getItem("medat_recovery_error") === "otp_expired";
 
           if (isRecovery || hasAuthError) {
-            sessionStorage.setItem("medat_recovery_pending", "true");
             if (h.indexOf("/reset-password") === -1 && h.indexOf("/passwort-zuruecksetzen") === -1) {
-              if (h.startsWith("#access_token=") || h.startsWith("#error=")) {
-                var rawParams = h.substring(1);
-                var targetUrl = window.location.pathname + "?" + rawParams + "#/reset-password";
+              if (raw) {
+                var targetUrl = window.location.pathname + "?" + raw + "#/reset-password";
                 window.history.replaceState(null, "", targetUrl);
               } else if (!h.startsWith("#/")) {
                 window.location.hash = "#/reset-password";
