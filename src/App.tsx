@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Exam, { StatsBand, TopicTicker } from "./components/Exam";
@@ -28,10 +28,24 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import { PracticeProvider, usePractice } from "./dashboard/practiceContext";
 import { isUserLoggedIn, track } from "./lib/core";
 import { LangBanner, LangProvider } from "./lib/i18n";
+import { supabase } from "./lib/supabase";
 
 function Homepage() {
   const { isLoggedIn } = usePractice();
   const loggedIn = isLoggedIn || isUserLoggedIn();
+
+  // If user arrives via password recovery link, immediately route to reset-password
+  const isRecoveryArrival =
+    typeof window !== "undefined" &&
+    (window.location.hash.includes("type=recovery") ||
+      window.location.search.includes("type=recovery") ||
+      window.location.hash.includes("access_token=") ||
+      window.location.search.includes("access_token=") ||
+      sessionStorage.getItem("medat_recovery_pending") === "true");
+
+  if (isRecoveryArrival) {
+    return <Navigate to="/reset-password" replace />;
+  }
 
   useEffect(() => {
     if (!loggedIn) {
@@ -106,12 +120,74 @@ function ScrollManager() {
   return null;
 }
 
+function AuthRedirectManager() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // 1. Supabase auth recovery event
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") {
+        navigate("/reset-password", { replace: true });
+      }
+    });
+
+    // 2. Direct URL and session checks
+    const h = window.location.hash || "";
+    const s = window.location.search || "";
+    const p = location.pathname || "";
+
+    const isRecovery =
+      h.includes("type=recovery") ||
+      s.includes("type=recovery") ||
+      p.includes("type=recovery") ||
+      p.startsWith("/access_token=") ||
+      p.startsWith("/error=") ||
+      h.includes("error_code=otp_expired") ||
+      h.includes("error=access_denied") ||
+      sessionStorage.getItem("medat_recovery_pending") === "true";
+
+    if (isRecovery && !p.startsWith("/reset-password") && !p.startsWith("/passwort-zuruecksetzen")) {
+      navigate("/reset-password", { replace: true });
+    }
+
+    return () => {
+      authListener?.subscription?.unsubscribe?.();
+    };
+  }, [location, navigate]);
+
+  return null;
+}
+
+function CatchAllRoute() {
+  const location = useLocation();
+  const h = window.location.hash || "";
+  const s = window.location.search || "";
+  const p = location.pathname || "";
+
+  if (
+    h.includes("type=recovery") ||
+    s.includes("type=recovery") ||
+    p.includes("type=recovery") ||
+    p.startsWith("/access_token=") ||
+    p.startsWith("/error=") ||
+    h.includes("error_code=otp_expired") ||
+    h.includes("error=access_denied") ||
+    sessionStorage.getItem("medat_recovery_pending") === "true"
+  ) {
+    return <Navigate to="/reset-password" replace />;
+  }
+
+  return <Navigate to="/" replace />;
+}
+
 export default function App() {
   return (
     <LangProvider>
       <PracticeProvider>
         <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <ScrollManager />
+          <AuthRedirectManager />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/blog" element={<BlogPage />} />
@@ -158,10 +234,12 @@ export default function App() {
             <Route path="/passwort-zuruecksetzen" element={<ResetPasswordPage />} />
             <Route path="/passwort-aendern" element={<ResetPasswordPage />} />
             <Route path="/update-password" element={<ResetPasswordPage />} />
+            <Route path="/access_token=*" element={<Navigate to="/reset-password" replace />} />
+            <Route path="/error=*" element={<Navigate to="/reset-password" replace />} />
             <Route path="/login" element={<Navigate to="/onboarding?mode=login" replace />} />
             <Route path="/onboarding" element={<PreLoginOnboarding />} />
             <Route path="/app" element={<Dashboard />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<CatchAllRoute />} />
           </Routes>
           <Toast />
           <LangBanner />

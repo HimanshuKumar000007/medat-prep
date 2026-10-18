@@ -145,6 +145,32 @@
     </script>
   </head>
   <body>
+    <!-- Supabase Auth / Password Recovery Hash Interceptor for HashRouter -->
+    <script>
+      (function() {
+        try {
+          var h = window.location.hash || "";
+          var s = window.location.search || "";
+          var isRecovery = h.indexOf("type=recovery") !== -1 || s.indexOf("type=recovery") !== -1;
+          var hasAuthError = h.indexOf("error_code=otp_expired") !== -1 || h.indexOf("error=access_denied") !== -1;
+
+          if (isRecovery || hasAuthError) {
+            sessionStorage.setItem("medat_recovery_pending", "true");
+            if (h.indexOf("/reset-password") === -1 && h.indexOf("/passwort-zuruecksetzen") === -1) {
+              if (h.startsWith("#access_token=") || h.startsWith("#error=")) {
+                var rawParams = h.substring(1);
+                var targetUrl = window.location.pathname + "?" + rawParams + "#/reset-password";
+                window.history.replaceState(null, "", targetUrl);
+              } else if (!h.startsWith("#/")) {
+                window.location.hash = "#/reset-password";
+              }
+            }
+          }
+        } catch (e) {
+          console.error("Auth redirect interceptor error:", e);
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -48,12 +48,21 @@ export default function ResetPasswordPage() {
     // Check if session or recovery hash exists
     supabase.auth.getSession().then(({ data }) => {
       const hash = location.hash || window.location.hash || "";
-      const search = location.search || "";
+      const search = location.search || window.location.search || "";
+      const fullUrl = window.location.href;
+
+      if (fullUrl.includes("error_code=otp_expired") || fullUrl.includes("otp_expired")) {
+        setError("Dieser Wiederherstellungs-Link ist leider abgelaufen oder wurde bereits verwendet. Bitte fordere unten einen frischen Link an.");
+        setMode("request");
+        return;
+      }
       
       const isRecovery =
         hash.includes("type=recovery") ||
         hash.includes("access_token=") ||
         search.includes("type=recovery") ||
+        search.includes("access_token=") ||
+        sessionStorage.getItem("medat_recovery_pending") === "true" ||
         Boolean(data.session);
 
       if (!isRecovery && !data.session) {
@@ -102,6 +111,7 @@ export default function ResetPasswordPage() {
       }
 
       setIsSuccess(true);
+      sessionStorage.removeItem("medat_recovery_pending");
       clearUserLoggedOut();
 
       if (data?.user?.id) {
