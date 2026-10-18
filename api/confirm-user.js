@@ -1,12 +1,24 @@
 // api/confirm-user.js - Serverless endpoint to auto-confirm user email in Supabase Auth
 import { createClient } from "@supabase/supabase-js";
 
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "https://vwvacbxbynwiwnnfyjht.supabase.co";
-const SUPABASE_SERVICE_ROLE_KEY =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  Buffer.from("ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnBjM01pT2lKemRYQmhZbUZ6WlNJc0luSmxaaUk2SW5aM2RtRmpZbmhpZVc1M2FYZHVibVo1YW1oMElpd2ljbTlzWlNJNkluTmxjblpwWTJWZmNtOXNaU0lzSW1saGRDSTZNVGM0Tnpnd05ETTNNeXdpWlhod0lqb3lNVEF6TXpnd016Y3pmUS5qaTZuOUNVdm4wOTY0dkg3bW9MYmtrZVQtNXppSjBBYzRQOTBpb3NoeUZr", "base64").toString("utf-8");
+const SUPABASE_URL = "https://vwvacbxbynwiwnnfyjht.supabase.co";
+const CANONICAL_SERVICE_ROLE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3dmFjYnhieW53aXdubmZ5amh0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NzgwNDM3MywiZXhwIjoyMTAzMzgwMzczfQ.ji6n9CUvn0964vH7moLbkkeT-5ziJ0Ac4P90ioshyFk";
 
-const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+function getServiceRoleKey() {
+  const envKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
+  if (envKey && envKey.includes(".") && envKey.length > 50) {
+    try {
+      const payload = JSON.parse(Buffer.from(envKey.split(".")[1], "base64").toString("utf-8"));
+      if (payload.ref === "vwvacbxbynwiwnnfyjht") {
+        return envKey;
+      }
+    } catch {}
+  }
+  return CANONICAL_SERVICE_ROLE_KEY;
+}
+
+const supabaseAdmin = createClient(SUPABASE_URL, getServiceRoleKey(), {
   auth: { autoRefreshToken: false, persistSession: false },
 });
 
