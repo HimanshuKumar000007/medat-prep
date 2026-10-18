@@ -78,29 +78,26 @@ const Ctx = createContext<I18nCtx>({
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() => {
     try {
-      return localStorage.getItem("mprep-lang") === "en" ? "en" : "de";
-    } catch {
-      return "de";
-    }
+      localStorage.setItem("mprep-lang", "de");
+    } catch {}
+    return "de";
   });
 
-  const setLang = (l: Lang) => {
-    setLangState(l);
+  const setLang = (_l: Lang) => {
+    setLangState("de");
     try {
-      localStorage.setItem("mprep-lang", l);
-    } catch {
-      /* private mode — ignore */
-    }
+      localStorage.setItem("mprep-lang", "de");
+    } catch {}
   };
 
   useEffect(() => {
-    document.documentElement.lang = lang;
-    currentLang = lang;
-  }, [lang]);
+    document.documentElement.lang = "de-AT";
+    currentLang = "de";
+  }, []);
 
-  const t = (s: string) => (lang === "en" ? (EN[s] ?? s) : s);
+  const t = (s: string) => s;
 
-  return <Ctx.Provider value={{ lang, setLang, t }}>{children}</Ctx.Provider>;
+  return <Ctx.Provider value={{ lang: "de", setLang, t }}>{children}</Ctx.Provider>;
 }
 
 export function useI18n() {
@@ -111,40 +108,13 @@ export function useT() {
   return useContext(Ctx).t;
 }
 
-/* Non-reactive variant for spots without hook access (e.g. dropdown
-   menus that render fresh on open). Kept in sync by the provider. */
+/* Non-reactive variant for spots without hook access */
 let currentLang: Lang = "de";
 export function tt(s: string): string {
-  return currentLang === "en" ? (EN[s] ?? s) : s;
+  return s;
 }
 
-/* Small floating notice while EN is active (temporary layer). */
+/* LangBanner disabled since Austrian German is the sole language */
 export function LangBanner() {
-  const { lang, setLang } = useI18n();
-  if (lang !== "en") return null;
-  return (
-    <div
-      role="status"
-      className="animate-pop-in fixed bottom-6 right-6 z-[85] flex w-[calc(100%-3rem)] max-w-[330px] items-start gap-3 rounded-xl border border-line bg-night px-4 py-3.5 text-paper shadow-2xl"
-    >
-      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-info/20 text-info" aria-hidden="true">
-        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3.5 12h17M12 3c2.5 2.4 3.8 5.6 3.8 9S14.5 18.6 12 21c-2.5-2.4-3.8-5.6-3.8-9S9.5 5.4 12 3z" />
-        </svg>
-      </span>
-      <div className="min-w-0 flex-1">
-        <p className="text-[13px] font-bold">English preview</p>
-        <p className="mt-0.5 text-[12px] leading-snug text-slate-400">
-          Navigation, hero &amp; dashboard shell are translated — full content stays German for now.
-        </p>
-        <button
-          onClick={() => setLang("de")}
-          className="mt-2 text-[12px] font-bold text-[#FCA5A5] underline-offset-2 transition-colors hover:text-paper hover:underline"
-        >
-          Zurück zu Deutsch
-        </button>
-      </div>
-    </div>
-  );
+  return null;
 }

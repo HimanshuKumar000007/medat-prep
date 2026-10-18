@@ -617,7 +617,7 @@ export const RAW_GENERALPROBE_3_GM_QUESTIONS: GmRecallQuestion[] = [
     simulationId: "generalprobe-3",
     questionNumber: 23,
     category: "cross_card",
-    questionText: "Ordnet man alle acht Personen nach dem Kalendertag ihres Geburtstages chronologisch vom 1. Januar bis zum 31. Dezember (unabhängig vom Geburtsjahr): Welche Person feiert als Vierte im Kalenderjahr Geburtstag?",
+    questionText: "Ordnet man alle acht Personen nach dem Kalendertag ihres Geburtstages chronologisch vom 1. Jänner bis zum 31. Dezember (unabhängig vom Geburtsjahr): Welche Person feiert als Vierte im Kalenderjahr Geburtstag?",
     options: {
       A: "Aris Meisner",
       B: "Quirin Faltin",
@@ -628,7 +628,7 @@ export const RAW_GENERALPROBE_3_GM_QUESTIONS: GmRecallQuestion[] = [
     correctAnswer: "E",
     sourceCardId: "KFF-GM-GP3-CARD-008",
     explanation:
-      "Gedächtnis-Wahrheit:\nChronologische Sortierung aller 8 Geburtstage im Kalenderjahr:\n1. 25.01. – Bodhi Zeidler (Ausweis 7, Januar)\n2. 27.02. – Mira Tischler (Ausweis 4, Februar)\n3. 12.04. – Aris Meisner (Ausweis 1, April)\n4. 30.05. – INES KAUERT (Ausweis 8, Mai)\n5. 08.06. – Quirin Faltin (Ausweis 5, Juni)\n6. 03.08. – Klara Venz (Ausweis 2, August)\n7. 14.10. – Valerie Rohr (Ausweis 6, Oktober)\n8. 19.11. – Leonid Kopp (Ausweis 3, November)\nDie vierte Person im Kalenderjahr ist eindeutig INES KAUERT (30. Mai). Da Ines Kauert unter den Optionen A bis D nicht aufgeführt ist, ist Option E ('Keine der Antwortmöglichkeiten ist richtig') die korrekte Lösung.\n\nDistraktoren-Analyse:\n• Option A: Aris Meisner (12.04.) ist die 3. Person im Kalenderjahr.\n• Option B: Quirin Faltin (08.06.) ist die 5. Person im Kalenderjahr.\n• Option C: Klara Venz (03.08.) ist die 6. Person im Kalenderjahr.\n• Option D: Valerie Rohr (14.10.) ist die 7. Person im Kalenderjahr.\n• Option E ist korrekt, da Ines Kauert in A–D fehlt.",
+      "Gedächtnis-Wahrheit:\nChronologische Sortierung aller 8 Geburtstage im Kalenderjahr:\n1. 25.01. – Bodhi Zeidler (Ausweis 7, Jänner)\n2. 27.02. – Mira Tischler (Ausweis 4, Februar)\n3. 12.04. – Aris Meisner (Ausweis 1, April)\n4. 30.05. – INES KAUERT (Ausweis 8, Mai)\n5. 08.06. – Quirin Faltin (Ausweis 5, Juni)\n6. 03.08. – Klara Venz (Ausweis 2, August)\n7. 14.10. – Valerie Rohr (Ausweis 6, Oktober)\n8. 19.11. – Leonid Kopp (Ausweis 3, November)\nDie vierte Person im Kalenderjahr ist eindeutig INES KAUERT (30. Mai). Da Ines Kauert unter den Optionen A bis D nicht aufgeführt ist, ist Option E ('Keine der Antwortmöglichkeiten ist richtig') die korrekte Lösung.\n\nDistraktoren-Analyse:\n• Option A: Aris Meisner (12.04.) ist die 3. Person im Kalenderjahr.\n• Option B: Quirin Faltin (08.06.) ist die 5. Person im Kalenderjahr.\n• Option C: Klara Venz (03.08.) ist die 6. Person im Kalenderjahr.\n• Option D: Valerie Rohr (14.10.) ist die 7. Person im Kalenderjahr.\n• Option E ist korrekt, da Ines Kauert in A–D fehlt.",
     difficulty: "Schwer",
   },
   {

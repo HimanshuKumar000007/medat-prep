@@ -10,7 +10,7 @@ function ProgressRing() {
   }, []);
   const c = 2 * Math.PI * 30;
   return (
-    <div className="relative h-[76px] w-[76px]">
+    <div className="relative h-[68px] w-[68px] xs:h-[76px] xs:w-[76px] shrink-0">
       <svg viewBox="0 0 76 76" className="h-full w-full -rotate-90">
         <circle cx="38" cy="38" r="30" fill="none" stroke="#F1F5F9" strokeWidth="8" />
         <circle
@@ -27,7 +27,7 @@ function ProgressRing() {
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="num text-[15px] font-extrabold text-ink">{pct}%</span>
+        <span className="num text-[14px] xs:text-[15px] font-extrabold text-ink">{pct}%</span>
       </div>
     </div>
   );
@@ -87,11 +87,11 @@ export default function Hero() {
         <path d="M33 14h34M30 23h40M33 32h34M30 41h40M33 50h34M30 59h40M33 68h34" strokeWidth="0.8" />
       </svg>
 
-      <div className="wrap relative grid items-center gap-14 pb-20 pt-28 md:pt-32 lg:min-h-[calc(100dvh)] lg:grid-cols-[11fr_9fr] lg:gap-12 lg:pb-16 lg:pt-36">
+      <div className="wrap relative grid items-center gap-10 sm:gap-14 pb-16 sm:pb-20 pt-24 xs:pt-28 md:pt-32 lg:min-h-[calc(100dvh)] lg:grid-cols-[11fr_9fr] lg:gap-12 lg:pb-16 lg:pt-36">
         {/* ---------- Left: copy ---------- */}
         <div>
           <span
-            className="hero-enter inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary-muted px-3.5 py-1.5 text-[13px] font-semibold text-primary"
+            className="hero-enter inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary-muted px-3 py-1 xs:px-3.5 xs:py-1.5 text-[11.5px] xs:text-[13px] font-semibold text-primary"
             style={{ animationDelay: "0ms" }}
           >
             <span className="animate-pulse-dot h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
@@ -99,7 +99,7 @@ export default function Hero() {
           </span>
 
           <h1
-            className="hero-enter display mt-6 max-w-[16ch] text-[clamp(2.25rem,5vw+1rem,3.5rem)] text-ink"
+            className="hero-enter display mt-5 sm:mt-6 max-w-[18ch] text-[26px] xs:text-[30px] sm:text-[clamp(1.9rem,5vw+0.75rem,3.5rem)] text-ink tracking-tight"
             style={{ animationDelay: "100ms" }}
           >
             {t("Bestehe den")}{" "}
@@ -113,7 +113,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="hero-enter mt-6 max-w-[540px] text-[clamp(0.9375rem,0.5vw+0.875rem,1.125rem)] leading-relaxed text-ink-2"
+            className="hero-enter mt-4 sm:mt-6 max-w-[540px] text-[14px] xs:text-[15px] sm:text-[clamp(0.9375rem,0.5vw+0.875rem,1.125rem)] leading-relaxed text-ink-2"
             style={{ animationDelay: "200ms" }}
           >
             {t("Mit KI-gestütztem Training für")} <strong className="font-semibold text-ink">{t("BMS, KFF, Textverständnis und SEK")}</strong>.{" "}
@@ -122,9 +122,9 @@ export default function Hero() {
             {t("brauchst. Personalisiert. Auf Deutsch. Für Wien, Innsbruck, Graz und Linz.")}
           </p>
 
-          <div className="hero-enter mt-9 flex flex-wrap items-center gap-4" style={{ animationDelay: "300ms" }}>
+          <div className="hero-enter mt-7 sm:mt-9 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4" style={{ animationDelay: "300ms" }}>
             <button
-              className="btn btn-primary group"
+              className="btn btn-primary group w-full xs:w-auto min-h-[48px] justify-center touch-manipulation"
               onClick={() => {
                 track("hero_cta_click", { location: "hero", variant: "primary" });
                 window.location.hash = "#/onboarding";
@@ -134,7 +134,7 @@ export default function Hero() {
               <IconArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary w-full xs:w-auto min-h-[48px] justify-center touch-manipulation"
               onClick={() => {
                 track("hero_login_click", { location: "hero" });
                 window.location.hash = "#/onboarding?mode=login";
@@ -146,14 +146,14 @@ export default function Hero() {
 
           {/* Social proof */}
           <div
-            className="hero-enter mt-9 flex flex-wrap items-center gap-x-4 gap-y-3"
+            className="hero-enter mt-7 sm:mt-9 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2.5 sm:gap-y-3"
             style={{ animationDelay: "500ms" }}
           >
             <div className="flex" aria-hidden="true">
               {AVATARS.map((a, i) => (
                 <span
                   key={a.init}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-paper text-[10px] font-bold"
+                  className="flex h-7 w-7 xs:h-8 xs:w-8 items-center justify-center rounded-full border-2 border-paper text-[9px] xs:text-[10px] font-bold"
                   style={{ backgroundColor: a.bg, color: a.fg, marginLeft: i === 0 ? 0 : -8, zIndex: AVATARS.length - i }}
                 >
                   {a.init}
@@ -162,21 +162,21 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-1 text-warning" aria-hidden="true">
               {Array.from({ length: 5 }).map((_, i) => (
-                <IconStar key={i} className="h-4 w-4" />
+                <IconStar key={i} className="h-3.5 w-3.5 xs:h-4 xs:w-4" />
               ))}
             </div>
-            <p className="text-sm font-medium text-ink-3">4,9/5 von über 800 MedAT-Kandidat:innen</p>
+            <p className="text-[12.5px] xs:text-sm font-medium text-ink-3">4,9/5 von über 800 MedAT-Kandidat:innen</p>
           </div>
 
           {/* Trust micro-bar */}
           <p
-            className="hero-enter mt-5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-semibold uppercase tracking-[0.05em] text-ink-4"
+            className="hero-enter mt-4 sm:mt-5 flex flex-wrap items-center gap-x-2 sm:gap-x-2.5 gap-y-1 text-[11px] xs:text-xs font-semibold uppercase tracking-[0.05em] text-ink-4"
             style={{ animationDelay: "600ms" }}
             aria-label="Für alle vier Universitäten: MedUni Wien, Innsbruck, Graz, JKU Linz"
           >
             <span>{t("Für alle 4 Unis")}</span>
             {["MedUni Wien", "Innsbruck", "Graz", "JKU Linz"].map((u) => (
-              <span key={u} className="flex items-center gap-2.5">
+              <span key={u} className="flex items-center gap-2 sm:gap-2.5">
                 <span className="text-line-2" aria-hidden="true">·</span>
                 {u}
               </span>
@@ -187,23 +187,29 @@ export default function Hero() {
         {/* ---------- Right: AI dashboard mockup ---------- */}
         <div className="hero-visual-enter relative mx-auto w-full max-w-[540px] lg:max-w-none" style={{ perspective: "1200px" }}>
           <div
-            className="relative rounded-2xl border border-line bg-paper shadow-2xl transition-transform duration-500 [transform:perspective(1100px)_rotateY(-5deg)_rotateX(2deg)] [transform-style:preserve-3d] hover:[transform:perspective(1100px)_rotateY(-2deg)_rotateX(1deg)]"
+            className="relative rounded-2xl border border-line bg-paper shadow-2xl transition-transform duration-500 sm:[transform:perspective(1100px)_rotateY(-5deg)_rotateX(2deg)] sm:[transform-style:preserve-3d] sm:hover:[transform:perspective(1100px)_rotateY(-2deg)_rotateX(1deg)]"
             role="img"
             aria-label="Vorschau des MedAT-Prep-Dashboards mit Übungskarte, Fortschrittsring und KI-Tutor"
           >
             {/* Window chrome */}
-            <div className="flex items-center gap-2 border-b border-line px-5 py-3.5">
+            <div className="flex items-center gap-2 border-b border-line px-4 py-3 sm:px-5 sm:py-3.5">
               <span className="h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true" />
               <span className="h-2.5 w-2.5 rounded-full bg-warning" aria-hidden="true" />
               <span className="h-2.5 w-2.5 rounded-full bg-success" aria-hidden="true" />
-              <span className="num ml-3 text-[11px] font-semibold text-ink-3">app.medat-prep.at / dashboard</span>
+              <span className="num ml-3 text-[10px] sm:text-[11px] font-semibold text-ink-3 truncate">app.medatprep.at / dashboard</span>
             </div>
 
-            <div className="grid grid-cols-[36%_64%]">
+            <div className="grid grid-cols-1 sm:grid-cols-[36%_64%]">
               {/* Sidebar */}
-              <div className="border-r border-line bg-paper-2 p-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-ink-4">Heute</p>
-                <ul className="mt-3 space-y-2.5">
+              <div className="border-b sm:border-b-0 sm:border-r border-line bg-paper-2 p-3 sm:p-4">
+                <div className="flex items-center justify-between sm:block">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-ink-4">Heute</p>
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-ink sm:hidden">
+                    <IconFlame className="h-3.5 w-3.5 text-primary" />
+                    12 Tage Streak
+                  </div>
+                </div>
+                <ul className="mt-2.5 sm:mt-3 space-y-1.5 sm:space-y-2.5">
                   {[
                     { t: "45 Min · KFF-Training", c: "#EF4444", done: true },
                     { t: "30 Min · Bio-Wiederholung", c: "#DC2626", done: false },
@@ -211,7 +217,7 @@ export default function Hero() {
                   ].map((item) => (
                     <li key={item.t} className="flex items-start gap-2">
                       <span
-                        className={`mt-1 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full ${item.done ? "bg-success" : "border-[1.5px] border-line-2 bg-paper"}`}
+                        className={`mt-0.5 sm:mt-1 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full ${item.done ? "bg-success" : "border-[1.5px] border-line-2 bg-paper"}`}
                         aria-hidden="true"
                       >
                         {item.done && <IconCheck className="h-2.5 w-2.5 text-paper" />}
@@ -223,7 +229,7 @@ export default function Hero() {
                   ))}
                 </ul>
 
-                <div className="mt-5 rounded-lg border border-line bg-paper p-3">
+                <div className="hidden sm:block mt-5 rounded-lg border border-line bg-paper p-3">
                   <div className="flex items-center gap-1.5 text-[11px] font-bold text-ink">
                     <IconFlame className="h-4 w-4 text-primary" />
                     12 Tage Streak
@@ -237,19 +243,19 @@ export default function Hero() {
               </div>
 
               {/* Main panel */}
-              <div className="p-4">
-                <div className="rounded-xl border border-line p-3.5">
+              <div className="p-3.5 sm:p-4">
+                <div className="rounded-xl border border-line p-3 sm:p-3.5">
                   <span className="inline-block rounded-md bg-primary-muted px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary">
                     BMS · Biologie
                   </span>
-                  <p className="mt-2 text-[13px] font-semibold leading-snug text-ink">
+                  <p className="mt-2 text-[12.5px] sm:text-[13px] font-semibold leading-snug text-ink">
                     Welche Base paart in der DNA-Doppelhelix mit Adenin?
                   </p>
                   <ul className="mt-2.5 space-y-1.5">
                     {["Cytosin", "Thymin", "Guanin", "Uracil"].map((opt, i) => (
                       <li
                         key={opt}
-                        className={`flex items-center justify-between rounded-lg border px-2.5 py-1.5 text-[12px] ${
+                        className={`flex items-center justify-between rounded-lg border px-2.5 py-1.5 text-[11.5px] sm:text-[12px] ${
                           i === 1
                             ? "border-success/50 bg-success-subtle font-semibold text-ink"
                             : "border-line text-ink-2"
@@ -265,7 +271,7 @@ export default function Hero() {
                   </ul>
                 </div>
 
-                <div className="mt-3 flex items-center gap-3.5">
+                <div className="mt-3 flex items-center gap-3 sm:gap-3.5">
                   <ProgressRing />
                   <div className="min-w-0">
                     <p className="text-[12px] font-bold text-ink">BMS: 68&nbsp;% gemeistert</p>
@@ -275,11 +281,11 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="mt-3 flex items-start gap-2.5 rounded-xl rounded-tl-sm bg-night p-3">
+                <div className="mt-3 flex items-start gap-2.5 rounded-xl rounded-tl-sm bg-night p-2.5 sm:p-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary" aria-hidden="true">
                     <IconSpark className="h-3.5 w-3.5" />
                   </span>
-                  <p className="text-[11px] leading-relaxed text-slate-300">
+                  <p className="text-[10.5px] sm:text-[11px] leading-relaxed text-slate-300">
                     <span className="font-semibold text-paper">KI-Tutor:</span> Gut gemacht! Morgen: aktiver Recall statt
                     Wiederlesen — ich hab dir 12 Karten vorbereitet.
                   </p>
@@ -289,24 +295,24 @@ export default function Hero() {
           </div>
 
           {/* Floating badges (parallax) */}
-          <div ref={parBadge1} className="absolute -top-7 right-0 z-10 lg:-right-8">
-            <div className="animate-float rounded-xl border border-line border-l-[3px] border-l-primary bg-paper px-4 py-3 shadow-lg">
-              <p className="num text-sm font-extrabold text-ink">15.668 Kandidaten</p>
-              <p className="num text-[11px] font-semibold text-ink-3">1.950 Plätze · Quote 8:1</p>
+          <div ref={parBadge1} className="absolute -top-3.5 right-1 xs:-top-5 xs:right-2 sm:-top-7 sm:right-0 z-10 lg:-right-8 pointer-events-none">
+            <div className="animate-float rounded-xl border border-line border-l-[3px] border-l-primary bg-paper px-2.5 py-1.5 xs:px-3 xs:py-2 sm:px-4 sm:py-3 shadow-lg">
+              <p className="num text-[11px] xs:text-xs sm:text-sm font-extrabold text-ink">15.668 Kandidaten</p>
+              <p className="num text-[9.5px] xs:text-[10px] sm:text-[11px] font-semibold text-ink-3">1.950 Plätze · Quote 8:1</p>
             </div>
           </div>
 
-          <div ref={parBadge3} className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 sm:block lg:-right-12">
+          <div ref={parBadge3} className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 sm:block lg:-right-12 pointer-events-none">
             <div className="flex items-center gap-2 rounded-full bg-paper px-3.5 py-2 shadow-md">
               <IconFlame className="h-4 w-4 text-primary" />
               <span className="text-[12px] font-bold text-ink">12 Tage Streak</span>
             </div>
           </div>
 
-          <div ref={parBadge2} className="absolute -bottom-6 left-0 z-10 lg:-left-8">
-            <div className="animate-float-late rounded-xl border border-sek bg-primary-subtle px-4 py-3">
-              <p className="text-[12px] font-bold text-[#991B1B]">Nur ein Versuch pro Jahr.</p>
-              <p className="text-[11px] font-medium text-[#B91C1C]/80">Bereite dich vor, als gäbe es keinen zweiten.</p>
+          <div ref={parBadge2} className="absolute -bottom-5 left-2 sm:-bottom-6 sm:left-0 z-10 hidden sm:block lg:-left-8 pointer-events-none">
+            <div className="animate-float-late rounded-xl border border-sek bg-primary-subtle px-3 py-2 sm:px-4 sm:py-3 shadow-md">
+              <p className="text-[11px] sm:text-[12px] font-bold text-[#991B1B]">Nur ein Versuch pro Jahr.</p>
+              <p className="text-[10px] sm:text-[11px] font-medium text-[#B91C1C]/80">Bereite dich vor, als gäbe es keinen zweiten.</p>
             </div>
           </div>
         </div>

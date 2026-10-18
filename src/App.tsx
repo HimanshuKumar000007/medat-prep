@@ -11,6 +11,19 @@ import Faq from "./components/Faq";
 import { CountdownCTA, Footer, Toast } from "./components/Closing";
 import Dashboard from "./dashboard/Dashboard";
 import PreLoginOnboarding from "./components/PreLoginOnboarding";
+import BlogPage from "./pages/BlogPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import DisclaimerPage from "./pages/DisclaimerPage";
+import ImpressumPage from "./pages/ImpressumPage";
+import MedAT2027TerminePage from "./pages/MedAT2027TerminePage";
+import KFFStrategiePage from "./pages/KFFStrategiePage";
+import QuotenAnalysePage from "./pages/QuotenAnalysePage";
+import BMSMasterplanPage from "./pages/BMSMasterplanPage";
+import TVSEKPage from "./pages/TVSEKPage";
+import TesttagProtokollPage from "./pages/TesttagProtokollPage";
 import { PracticeProvider, usePractice } from "./dashboard/practiceContext";
 import { isUserLoggedIn, track } from "./lib/core";
 import { LangBanner, LangProvider } from "./lib/i18n";
@@ -100,6 +113,46 @@ export default function App() {
           <ScrollManager />
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/medat-2027-termine-fristen" element={<MedAT2027TerminePage />} />
+            <Route path="/medat-2027-termine" element={<MedAT2027TerminePage />} />
+            <Route path="/termine-2027" element={<MedAT2027TerminePage />} />
+            <Route path="/fristen" element={<MedAT2027TerminePage />} />
+            <Route path="/kff-strategie-schnellste-punkte" element={<KFFStrategiePage />} />
+            <Route path="/kff-strategie" element={<KFFStrategiePage />} />
+            <Route path="/kff-punkte" element={<KFFStrategiePage />} />
+            <Route path="/kff-training" element={<KFFStrategiePage />} />
+            <Route path="/kff" element={<KFFStrategiePage />} />
+            <Route path="/quoten-bewerberzahlen-analyse" element={<QuotenAnalysePage />} />
+            <Route path="/quoten" element={<QuotenAnalysePage />} />
+            <Route path="/bewerberzahlen" element={<QuotenAnalysePage />} />
+            <Route path="/grenzraenge" element={<QuotenAnalysePage />} />
+            <Route path="/bms-masterplan-vorbereitung" element={<BMSMasterplanPage />} />
+            <Route path="/bms-masterplan" element={<BMSMasterplanPage />} />
+            <Route path="/bms" element={<BMSMasterplanPage />} />
+            <Route path="/bms-lernplan" element={<BMSMasterplanPage />} />
+            <Route path="/tv-sek-emotionen-textverstaendnis" element={<TVSEKPage />} />
+            <Route path="/tv-sek" element={<TVSEKPage />} />
+            <Route path="/textverstaendnis" element={<TVSEKPage />} />
+            <Route path="/sek" element={<TVSEKPage />} />
+            <Route path="/testtag-protokoll-mentale-staerke" element={<TesttagProtokollPage />} />
+            <Route path="/testtag-protokoll" element={<TesttagProtokollPage />} />
+            <Route path="/testtag" element={<TesttagProtokollPage />} />
+            <Route path="/packliste" element={<TesttagProtokollPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/ueber-uns" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/kontakt" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/datenschutz" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/agb" element={<TermsPage />} />
+            <Route path="/widerruf" element={<TermsPage />} />
+            <Route path="/cancellation" element={<TermsPage />} />
+            <Route path="/disclaimer" element={<DisclaimerPage />} />
+            <Route path="/haftungsausschluss" element={<DisclaimerPage />} />
+            <Route path="/impressum" element={<ImpressumPage />} />
+            <Route path="/imprint" element={<ImpressumPage />} />
             <Route path="/login" element={<Navigate to="/onboarding?mode=login" replace />} />
             <Route path="/onboarding" element={<PreLoginOnboarding />} />
             <Route path="/app" element={<Dashboard />} />

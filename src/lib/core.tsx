@@ -19,7 +19,16 @@ export function reducedMotion(): boolean {
 
 export function scrollToId(id: string) {
   const el = document.getElementById(id);
-  if (!el) return;
+  if (!el) {
+    if (window.location.hash && window.location.hash !== "#/" && !window.location.hash.startsWith("#/?")) {
+      window.location.hash = "#/";
+      setTimeout(() => {
+        const target = document.getElementById(id);
+        target?.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+      }, 150);
+    }
+    return;
+  }
   el.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
 }
 

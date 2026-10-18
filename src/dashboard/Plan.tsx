@@ -413,7 +413,7 @@ export default function Plan({
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-300 backdrop-blur-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse shrink-0" />
-                    <span><span className="hidden sm:inline">YOUR JOURNEY MAP · </span>DEIN WEG ZUM MEDAT</span>
+                    <span><span className="hidden sm:inline">DEIN LERNPFAD · </span>DEIN WEG ZUM MEDAT</span>
                   </div>
                   <button
                     onClick={() => setShowSetupWizard(true)}

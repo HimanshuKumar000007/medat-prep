@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Reveal, nextMedAT, scrollToId, toast, track, useCountdown } from "../lib/core";
-import { IconCalendar, IconCheck, IconSend, LogoMark } from "../lib/icons";
+import { IconCalendar, IconCheck, IconSend, IconShield, LogoMark } from "../lib/icons";
+import LegalTrustModal, { type LegalTab } from "./LegalTrustModal";
 
 /* ---------------- Toast ---------------- */
 const TOAST_STYLE: Record<string, { icon: "check" | "zap" | "alert" | "info"; chip: string }> = {
@@ -61,11 +62,11 @@ export function Toast() {
 function TimeBox({ value, label, tick }: { value: number; label: string; tick?: boolean }) {
   const display = String(value).padStart(2, "0");
   return (
-    <div className="flex min-w-[72px] flex-1 flex-col items-center rounded-xl border border-night-2 bg-night-2/50 px-3 py-4 sm:min-w-[84px]">
-      <span key={tick ? display : undefined} className={`display-num text-[clamp(2rem,3.6vw,2.9rem)] text-paper ${tick ? "animate-pop-in" : ""}`}>
+    <div className="flex min-w-0 flex-1 flex-col items-center rounded-xl border border-night-2 bg-night-2/50 px-1 py-2.5 xs:px-1.5 xs:py-3 sm:px-3 sm:py-4">
+      <span key={tick ? display : undefined} className={`display-num text-[22px] xs:text-[25px] sm:text-[clamp(1.5rem,3.6vw,2.9rem)] text-paper ${tick ? "animate-pop-in" : ""}`}>
         {display}
       </span>
-      <span className="mt-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-500">{label}</span>
+      <span className="mt-1 sm:mt-2 text-[9.5px] xs:text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.08em] sm:tracking-[0.1em] text-slate-500">{label}</span>
     </div>
   );
 }
@@ -92,7 +93,7 @@ export function CountdownCTA() {
   };
 
   return (
-    <section id="countdown" className="relative overflow-hidden bg-night py-20 text-paper lg:py-28">
+    <section id="countdown" className="relative overflow-hidden bg-night py-14 sm:py-20 text-paper lg:py-28">
       <div
         className="pointer-events-none absolute inset-0"
         style={{ background: "radial-gradient(ellipse 60% 60% at 15% 10%, rgba(220,38,38,0.14), transparent)" }}
@@ -100,23 +101,23 @@ export function CountdownCTA() {
       />
       <div className="hex-pattern pointer-events-none absolute inset-0 opacity-[0.03] invert" aria-hidden="true" />
 
-      <div className="wrap relative grid items-center gap-14 lg:grid-cols-[7fr_5fr] lg:gap-20">
+      <div className="wrap relative grid items-center gap-8 sm:gap-14 lg:grid-cols-[7fr_5fr] lg:gap-20">
         <div>
           <Reveal>
             <span className="eyebrow text-[#F87171]">Countdown läuft</span>
-            <h2 className="display mt-4 text-[clamp(1.9rem,3.4vw+0.6rem,2.9rem)]">
+            <h2 className="display mt-3.5 sm:mt-4 text-[26px] xs:text-[30px] sm:text-[clamp(1.75rem,3.4vw+0.6rem,2.9rem)]">
               Der MedAT {next.year}
               <br />
               wartet nicht auf dich.
             </h2>
-            <p className="mt-5 max-w-lg text-[16px] leading-relaxed text-slate-400">
+            <p className="mt-3.5 sm:mt-5 max-w-lg text-[14px] xs:text-[15px] sm:text-[16px] leading-relaxed text-slate-400">
               Am Testtag treten ~13.000 Kandidat:innen an — aber nur eine Handvoll hat wirklich systematisch trainiert.
               Fang heute an, nicht im März.
             </p>
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="mt-9 flex gap-3" role="timer" aria-label={`Countdown bis zum MedAT am ${next.label}`}>
+            <div className="mt-6 sm:mt-9 flex gap-1.5 xs:gap-2 sm:gap-3" role="timer" aria-label={`Countdown bis zum MedAT am ${next.label}`}>
               <TimeBox value={t.days} label="Tage" />
               <TimeBox value={t.hours} label="Std" />
               <TimeBox value={t.minutes} label="Min" />
@@ -125,9 +126,9 @@ export function CountdownCTA() {
           </Reveal>
 
           <Reveal delay={200}>
-            <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 text-[14px]">
-              <span className="flex items-center gap-2.5 text-slate-300">
-                <IconCalendar className="h-5 w-5 text-[#F87171]" />
+            <div className="mt-5 sm:mt-8 flex flex-wrap items-center gap-x-4 sm:gap-x-7 gap-y-2 sm:gap-y-3 text-[12px] xs:text-[13px] sm:text-[14px]">
+              <span className="flex items-center gap-2 sm:gap-2.5 text-slate-300">
+                <IconCalendar className="h-4 w-4 sm:h-5 sm:w-5 text-[#F87171]" />
                 <strong className="font-semibold text-paper">{next.shortLabel}</strong>&nbsp;· österreichweit
               </span>
               <span className="text-slate-500">{next.registrationLabel}</span>
@@ -138,14 +139,14 @@ export function CountdownCTA() {
 
         {/* Signup card */}
         <Reveal delay={150}>
-          <div className="rounded-2xl border border-line bg-paper p-7 text-ink shadow-2xl lg:p-9">
+          <div className="rounded-2xl border border-line bg-paper p-4 xs:p-5 sm:p-7 text-ink shadow-2xl lg:p-9">
             {!sent ? (
               <>
-                <h3 className="text-[21px] font-extrabold tracking-[-0.02em]">Sichere dir deinen kostenlosen Start.</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-ink-2">
-                  Einstufungstest, 200 Übungsfragen und dein Basis-Lernplan — sofort ohne Wartezeit starten.
+                <h3 className="text-[17px] xs:text-[19px] sm:text-[21px] font-extrabold tracking-[-0.02em]">Sichere dir deinen kostenlosen Start.</h3>
+                <p className="mt-1.5 sm:mt-2 text-[13px] xs:text-[13.5px] sm:text-[14px] leading-relaxed text-ink-2">
+                  Persönlicher KI-Lernplan, 200 Übungsfragen und 5-Schritte-Setup — sofort ohne Wartezeit starten.
                 </p>
-                <form className="mt-6" onSubmit={submit} noValidate>
+                <form className="mt-5 sm:mt-6" onSubmit={submit} noValidate>
                   <label htmlFor="signup-email" className="sr-only">
                     E-Mail-Adresse
                   </label>
@@ -165,18 +166,18 @@ export function CountdownCTA() {
                     }}
                   />
                   {error && (
-                    <p id="signup-error" className="animate-fade-up mt-2.5 text-[13px] font-semibold text-primary">
+                    <p id="signup-error" className="animate-fade-up mt-2 text-[12.5px] sm:text-[13px] font-semibold text-primary">
                       {error}
                     </p>
                   )}
-                  <button type="submit" className="btn btn-primary group mt-4 w-full">
+                  <button type="submit" className="btn btn-primary group mt-3.5 sm:mt-4 w-full min-h-[48px] justify-center touch-manipulation">
                     Jetzt kostenlos starten
                     <IconSend className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
                   </button>
                 </form>
-                <ul className="mt-6 space-y-2.5 border-t border-line pt-5">
+                <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-2.5 border-t border-line pt-4 sm:pt-5">
                   {["Keine Kreditkarte erforderlich", "Monatlich kündbar — ohne Drama", "Komplett auf Deutsch"].map((b) => (
-                    <li key={b} className="flex items-center gap-2.5 text-[13px] font-medium text-ink-2">
+                    <li key={b} className="flex items-center gap-2 sm:gap-2.5 text-[12px] xs:text-[13px] font-medium text-ink-2">
                       <IconCheck className="h-3.5 w-3.5 shrink-0 text-success" />
                       {b}
                     </li>
@@ -211,31 +212,70 @@ export function CountdownCTA() {
 }
 
 /* ---------------- Footer ---------------- */
-const FOOTER_COLS = [
+type FooterLink = {
+  label: string;
+  href?: string;
+  legalTab?: LegalTab;
+  badge?: string;
+};
+
+type FooterColumn = {
+  title: string;
+  links: FooterLink[];
+};
+
+const FOOTER_COLS: FooterColumn[] = [
   {
     title: "Produkt",
     links: [
       { label: "Über den MedAT", href: "ueber-medat" },
-      { label: "Lernplan", href: "lernplan" },
-      { label: "Übungsfragen", href: "uebungsfragen" },
-      { label: "Probetests", href: "probetests" },
-      { label: "Preise", href: "preise" },
+      { label: "Lernplan & KI-Coach", href: "lernplan" },
+      { label: "Übungsfragen & BMS", href: "uebungsfragen" },
+      { label: "Probetests & Simulation", href: "probetests" },
+      { label: "Preise & Tarife", href: "preise" },
     ],
   },
   {
     title: "Ressourcen",
     links: [
-      { label: "Einstufungstest", href: "uebungsfragen" },
-      { label: "Blog & Guides", href: "blog" },
-      { label: "FAQ", href: "faq" },
+      { label: "Lernplan erstellen (Gratis)", href: "uebungsfragen" },
+      { label: "Blog & Wissens-Hub", href: "blog" },
+      { label: "FAQ & Antworten", href: "faq" },
       { label: "Termine & Countdown", href: "countdown" },
       { label: "Quoten & Kontingente", href: "quoten" },
+    ],
+  },
+  {
+    title: "Recht & Vertrauen",
+    links: [
+      { label: "Über uns (Team & Mission)", href: "about", badge: "Wien" },
+      { label: "Kontakt & Support", href: "contact", badge: "< 4h" },
+      { label: "Datenschutz (DSGVO)", href: "privacy", badge: "100%" },
+      { label: "AGB & Widerruf", href: "terms", badge: "FAGG" },
+      { label: "Haftungsausschluss (MedUni)", href: "disclaimer" },
+      { label: "Impressum (§ 5 ECG)", href: "impressum" },
     ],
   },
 ];
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const [activeLegalTab, setActiveLegalTab] = useState<LegalTab | null>(null);
+
+  // Listen for global legal modal open requests
+  useEffect(() => {
+    const handleOpenLegal = (e: Event) => {
+      const detail = (e as CustomEvent<{ tab?: LegalTab }>).detail;
+      if (detail && detail.tab) {
+        setActiveLegalTab(detail.tab);
+      } else {
+        setActiveLegalTab("impressum");
+      }
+    };
+    window.addEventListener("mprep:open-legal", handleOpenLegal);
+    return () => window.removeEventListener("mprep:open-legal", handleOpenLegal);
+  }, []);
+
   return (
     <footer className="border-t-4 border-primary bg-night text-slate-400">
       {/* Austrian tricolor hairline */}
@@ -245,7 +285,76 @@ export function Footer() {
         <span className="flex-1 bg-primary" />
       </div>
 
-      <div className="wrap grid gap-12 py-16 lg:grid-cols-[5fr_3fr_3fr]">
+      {/* Austrian Trust & Compliance Banner */}
+      <div className="border-b border-night-2 bg-night-2/30">
+        <div className="wrap grid grid-cols-2 gap-3.5 py-6 sm:grid-cols-4 sm:gap-6">
+          <button
+            type="button"
+            onClick={() => setActiveLegalTab("ueber-uns")}
+            className="group flex items-center gap-3 text-left transition-transform hover:-translate-y-0.5 focus:outline-none"
+            title="Details zu unserem Wiener Team einsehen"
+          >
+            <span className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-[18px] transition-colors group-hover:border-primary/40">
+              🇦🇹
+            </span>
+            <div>
+              <p className="text-[12px] sm:text-[13px] font-bold text-paper group-hover:text-[#F87171] transition-colors">Made in Austria</p>
+              <p className="text-[10.5px] sm:text-[11.5px] text-slate-400">Firmensitz Praterstraße, Wien</p>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveLegalTab("datenschutz")}
+            className="group flex items-center gap-3 text-left transition-transform hover:-translate-y-0.5 focus:outline-none"
+            title="Datenschutzerklärung nach DSGVO einsehen"
+          >
+            <span className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl border border-success/20 bg-success/10 text-success transition-colors group-hover:border-success/40">
+              <IconShield className="h-4 w-4 sm:h-5 sm:w-5" />
+            </span>
+            <div>
+              <p className="text-[12px] sm:text-[13px] font-bold text-paper group-hover:text-success transition-colors">100% DSGVO-konform</p>
+              <p className="text-[10.5px] sm:text-[11.5px] text-slate-400">EU-Server · Null Weitergabe</p>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveLegalTab("agb")}
+            className="group flex items-center gap-3 text-left transition-transform hover:-translate-y-0.5 focus:outline-none"
+            title="14 Tage Widerrufsbelehrung & AGB einsehen"
+          >
+            <span className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl border border-info/20 bg-info/10 text-info transition-colors group-hover:border-info/40">
+              <svg viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </span>
+            <div>
+              <p className="text-[12px] sm:text-[13px] font-bold text-paper group-hover:text-info transition-colors">14 Tage Widerruf</p>
+              <p className="text-[10.5px] sm:text-[11.5px] text-slate-400">Gesetzlicher Schutz nach FAGG</p>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveLegalTab("impressum")}
+            className="group flex items-center gap-3 text-left transition-transform hover:-translate-y-0.5 focus:outline-none"
+            title="Österreichisches Impressum (§ 5 ECG, § 25 Mediengesetz) einsehen"
+          >
+            <span className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl border border-warning/20 bg-warning/10 text-warning transition-colors group-hover:border-warning/40">
+              <svg viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3v18M3 7l9-4 9 4M3 7l9 4 9-4M3 7v10l9 4 9-4V7" />
+              </svg>
+            </span>
+            <div>
+              <p className="text-[12px] sm:text-[13px] font-bold text-paper group-hover:text-warning transition-colors">§ 5 ECG & KSchG</p>
+              <p className="text-[10.5px] sm:text-[11.5px] text-slate-400">Geprüfte Rechtssicherheit</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div className="wrap grid gap-8 sm:gap-10 py-10 sm:py-16 lg:grid-cols-[3.8fr_2.4fr_2.4fr_2.8fr]">
         <div>
           <a
             href="#top"
@@ -256,80 +365,143 @@ export function Footer() {
             className="flex items-center gap-2.5"
             aria-label="Zurück nach oben"
           >
-            <LogoMark className="h-9 w-9" />
-            <span className="display text-[17px] leading-none text-paper">
+            <LogoMark className="h-8 w-8 sm:h-9 sm:w-9" />
+            <span className="display text-[16px] sm:text-[17px] leading-none text-paper">
               MedAT <span className="font-sans font-medium normal-case tracking-normal text-slate-500">Prep</span>
             </span>
           </a>
-          <p className="mt-5 max-w-sm text-[14px] leading-relaxed">
-            Die KI-gestützte Vorbereitung auf den österreichischen Medizin-Aufnahmetest. Gebaut in Wien, für Wien,
-            Innsbruck, Graz und Linz.
+          <p className="mt-3.5 sm:mt-5 max-w-sm text-[13px] sm:text-[14px] leading-relaxed">
+            Die KI-gestützte Vorbereitung auf den österreichischen Medizin-Aufnahmetest. Entwickelt von Wiener
+            Ärzt:innen und MedAT-Top-Platzierer:innen für Wien, Innsbruck, Graz und Linz.
           </p>
-          <div className="mt-6 flex items-center gap-2" aria-hidden="true">
-            <span className="h-1.5 w-8 rounded-full bg-primary" />
-            <span className="h-1.5 w-8 rounded-full bg-slate-700" />
-            <span className="h-1.5 w-8 rounded-full bg-primary" />
-            <span className="ml-3 text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-600">Made in Austria</span>
+          <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2" aria-hidden="true">
+            <span className="h-1.5 w-6 rounded-full bg-primary" />
+            <span className="h-1.5 w-6 rounded-full bg-paper" />
+            <span className="h-1.5 w-6 rounded-full bg-primary" />
+            <span className="ml-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+              Praterstraße · 1020 Wien
+            </span>
+          </div>
+
+          <div className="mt-4 sm:mt-5 flex flex-wrap items-center gap-2">
+            <a
+              href="#/about"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-night-2 bg-night-2/60 px-3 py-1.5 text-[12px] font-semibold text-slate-300 transition-colors hover:border-slate-600 hover:text-paper"
+            >
+              <span>Über das Wiener Team</span>
+              <span className="text-slate-500">→</span>
+            </a>
+            <a
+              href="#/contact"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-night-2 bg-night-2/60 px-3 py-1.5 text-[12px] font-semibold text-slate-300 transition-colors hover:border-slate-600 hover:text-paper"
+            >
+              <span>Support & Hilfe</span>
+              <span className="text-slate-500">→</span>
+            </a>
           </div>
         </div>
 
-        {FOOTER_COLS.map((col) => (
-          <nav key={col.title} aria-label={col.title}>
-            <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-slate-500">{col.title}</p>
-            <ul className="mt-5 space-y-3">
-              {col.links.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={`#${l.href}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToId(l.href);
-                    }}
-                    className="text-[14px] font-medium text-slate-400 transition-colors duration-200 hover:text-paper"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ))}
-      </div>
-
-      {/* Legal */}
-      <div className="border-t border-night-2">
-        <div className="wrap grid gap-10 py-12 text-[12.5px] leading-relaxed lg:grid-cols-2">
-          <div id="impressum">
-            <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-slate-500">Impressum</p>
-            <p className="mt-3">
-              MedAT Prep GmbH · Praterstraße 1, 1020 Wien · FN 512 348 x, Handelsgericht Wien · UID: ATU 74512389 ·
-              Geschäftsführung: M. Gruber · Es gelten unsere AGB sowie die Widerrufsbelehrung. Kontakt:{" "}
-              <a href="mailto:office@medat-prep.at" className="font-semibold text-slate-300 underline-offset-2 transition-colors hover:text-paper hover:underline">
-                office@medat-prep.at
-              </a>
-            </p>
-          </div>
-          <div id="datenschutz">
-            <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-slate-500">Datenschutz</p>
-            <p className="mt-3">
-              Wir verarbeiten deine Daten ausschließlich zur Bereitstellung des Dienstes (DSGVO, Art. 6 Abs. 1 lit. b) —
-              keine Weitergabe an Dritte, kein Verkauf von Profilen. Fragen an{" "}
-              <a href="mailto:datenschutz@medat-prep.at" className="font-semibold text-slate-300 underline-offset-2 transition-colors hover:text-paper hover:underline">
-                datenschutz@medat-prep.at
-              </a>
-              .
-            </p>
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 lg:contents">
+          {FOOTER_COLS.map((col) => (
+            <nav key={col.title} aria-label={col.title}>
+              <p className="text-[11.5px] sm:text-[12px] font-bold uppercase tracking-[0.12em] text-slate-500">{col.title}</p>
+              <ul className="mt-3.5 sm:mt-5 space-y-2 sm:space-y-3">
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    {l.legalTab ? (
+                      <button
+                        onClick={() => setActiveLegalTab(l.legalTab!)}
+                        className="group flex items-center gap-1.5 text-left text-[13px] sm:text-[14px] font-medium text-slate-400 transition-colors duration-200 hover:text-paper"
+                      >
+                        <span>{l.label}</span>
+                        {l.badge && (
+                          <span className="rounded bg-primary/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#F87171]">
+                            {l.badge}
+                          </span>
+                        )}
+                      </button>
+                    ) : (
+                      <a
+                        href={l.href?.startsWith("/") || l.href === "about" || l.href === "blog" || l.href === "contact" || l.href === "kontakt" || l.href === "privacy" || l.href === "datenschutz" || l.href === "terms" || l.href === "agb" || l.href === "widerruf" || l.href === "cancellation" || l.href === "disclaimer" || l.href === "haftungsausschluss" || l.href === "impressum" || l.href === "imprint" ? `#/${l.href?.replace(/^\//, "")}` : `#${l.href}`}
+                        onClick={(e) => {
+                          if (l.href === "about" || l.href === "/about") {
+                            e.preventDefault();
+                            window.location.hash = "#/about";
+                          } else if (l.href === "blog" || l.href === "/blog") {
+                            e.preventDefault();
+                            window.location.hash = "#/blog";
+                          } else if (l.href === "contact" || l.href === "/contact" || l.href === "kontakt" || l.href === "/kontakt") {
+                            e.preventDefault();
+                            window.location.hash = "#/contact";
+                          } else if (l.href === "privacy" || l.href === "/privacy" || l.href === "datenschutz" || l.href === "/datenschutz") {
+                            e.preventDefault();
+                            window.location.hash = "#/privacy";
+                          } else if (l.href === "terms" || l.href === "/terms" || l.href === "agb" || l.href === "/agb" || l.href === "widerruf" || l.href === "/widerruf" || l.href === "cancellation" || l.href === "/cancellation") {
+                            e.preventDefault();
+                            window.location.hash = "#/terms";
+                          } else if (l.href === "disclaimer" || l.href === "/disclaimer" || l.href === "haftungsausschluss" || l.href === "/haftungsausschluss") {
+                            e.preventDefault();
+                            window.location.hash = "#/disclaimer";
+                          } else if (l.href === "impressum" || l.href === "/impressum" || l.href === "imprint" || l.href === "/imprint") {
+                            e.preventDefault();
+                            window.location.hash = "#/impressum";
+                          } else if (l.href) {
+                            e.preventDefault();
+                            scrollToId(l.href);
+                          }
+                        }}
+                        className="group flex items-center gap-1.5 text-left text-[13px] sm:text-[14px] font-medium text-slate-400 transition-colors duration-200 hover:text-paper"
+                      >
+                        <span>{l.label}</span>
+                        {l.badge && (
+                          <span className="rounded bg-primary/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#F87171]">
+                            {l.badge}
+                          </span>
+                        )}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
       </div>
 
       <div className="border-t border-night-2">
-        <div className="wrap flex flex-col items-start justify-between gap-3 py-6 text-[12px] text-slate-600 sm:flex-row sm:items-center">
-          <p>© {year} MedAT Prep GmbH · Alle Rechte vorbehalten.</p>
-          <p>
-            Unabhängiges Angebot — nicht mit den Medizinischen Universitäten affiliiert.{" "}
+        <div className="wrap flex flex-col items-start justify-between gap-3 py-5 sm:py-6 text-[11px] xs:text-[12px] text-slate-500 sm:flex-row sm:items-center">
+          <p>© {year} MedAT Prep GmbH · Alle Rechte vorbehalten. Preise inkl. 20% österr. USt.</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <a
+              href="#/terms"
+              className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
+            >
+              AGB & Widerruf
+            </a>
+            <span className="text-slate-700 hidden sm:inline">·</span>
+            <a
+              href="#/privacy"
+              className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
+            >
+              Datenschutz (DSGVO)
+            </a>
+            <span className="text-slate-700 hidden sm:inline">·</span>
+            <a
+              href="#/disclaimer"
+              className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
+            >
+              Haftungsausschluss (MedUni)
+            </a>
+            <span className="text-slate-700 hidden sm:inline">·</span>
+            <a
+              href="#/impressum"
+              className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
+            >
+              Impressum (§ 5 ECG)
+            </a>
+            <span className="text-slate-700 hidden sm:inline">·</span>
             <button
-              className="font-semibold text-slate-500 transition-colors hover:text-paper"
+              className="font-semibold text-slate-400 transition-colors hover:text-paper"
               onClick={() => {
                 track("cta_footer_top", { location: "footer" });
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -337,9 +509,16 @@ export function Footer() {
             >
               Nach oben ↑
             </button>
-          </p>
+          </div>
         </div>
       </div>
+
+      {/* Legal & Trust Interactive Modal */}
+      <LegalTrustModal
+        isOpen={activeLegalTab !== null}
+        onClose={() => setActiveLegalTab(null)}
+        initialTab={activeLegalTab ?? "impressum"}
+      />
     </footer>
   );
 }

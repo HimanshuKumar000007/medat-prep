@@ -392,7 +392,7 @@ export const RAW_GENERALPROBE_2_GM_QUESTIONS: GmRecallQuestion[] = [
     correctAnswer: "A",
     sourceCardId: "KFF-GM-GP2-CARD-001",
     explanation:
-      "Gedächtnis-Wahrheit:\nMALIK DORN (Ausweis 1) wurde am '05.01.' (5. Januar) geboren. Antwort A ist korrekt.\n\nDistraktoren-Analyse:\n• Option B ('18.06.') ist das Geburtsdatum von Eleni Sommer (Ausweis 2).\n• Option C ('22.08.') ist das Geburtsdatum von Deniz Wenzel (Ausweis 5).\n• Option D ('09.10.') ist das Geburtsdatum von Levin Berg (Ausweis 7).\n• Option E ist falsch, da Option A das korrekte Datum '05.01.' bereitstellt.",
+      "Gedächtnis-Wahrheit:\nMALIK DORN (Ausweis 1) wurde am '05.01.' (5. Jänner) geboren. Antwort A ist korrekt.\n\nDistraktoren-Analyse:\n• Option B ('18.06.') ist das Geburtsdatum von Eleni Sommer (Ausweis 2).\n• Option C ('22.08.') ist das Geburtsdatum von Deniz Wenzel (Ausweis 5).\n• Option D ('09.10.') ist das Geburtsdatum von Levin Berg (Ausweis 7).\n• Option E ist falsch, da Option A das korrekte Datum '05.01.' bereitstellt.",
     difficulty: "Leicht",
   },
   {

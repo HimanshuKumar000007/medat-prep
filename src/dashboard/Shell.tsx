@@ -59,7 +59,7 @@ const NAV_MAIN: { id: Screen; label: string; icon: ReactNode; badge?: string }[]
 ];
 
 const NAV_SECONDARY: { id: Screen; label: string; icon: ReactNode; badge?: string }[] = [
-  { id: "pricing", label: "Tarife & Vollzugang", icon: <DIconCard className="h-5 w-5 text-amber-500" />, badge: "NEU" },
+  { id: "pricing", label: "Tarife & Vollzugang", icon: <DIconCard className="h-5 w-5" />, badge: "NEU" },
   { id: "settings", label: "Einstellungen", icon: <DIconGear /> },
   { id: "help", label: "Hilfe & FAQ", icon: <DIconHelp /> },
 ];
@@ -233,35 +233,37 @@ function SidebarContent({
       <div className="flex-1 min-h-3" />
 
       {/* Premium Upgrade Widget in Sidebar */}
-      {!collapsed ? (
-        <div className="mb-2.5 rounded-2xl border border-amber-500/25 bg-gradient-to-br from-amber-500/10 via-red-500/5 to-transparent p-3 shadow-2xs">
-          <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-amber-500/20 text-amber-600 text-xs font-bold">
-              ★
-            </span>
-            <span className="text-[12.5px] font-bold text-ink">MedAT-Vollzugang</span>
-            <span className="ml-auto rounded-md bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-extrabold text-amber-700">
-              −38 %
-            </span>
+      {!userProfile.isPro && (
+        !collapsed ? (
+          <div className="mb-2.5 rounded-2xl border border-red-200/80 bg-gradient-to-br from-red-50/60 via-paper to-paper p-3 shadow-2xs">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-primary-subtle text-primary text-xs font-bold">
+                ★
+              </span>
+              <span className="text-[12.5px] font-bold text-ink">MedAT-Vollzugang</span>
+              <span className="ml-auto rounded-md bg-primary-subtle px-1.5 py-0.5 text-[10px] font-black text-primary ring-1 ring-primary/20">
+                −38 %
+              </span>
+            </div>
+            <p className="mt-1.5 text-[11px] leading-tight text-ink-3">
+              Alle 5.000+ Fragen, KFF-Trainer & Simulationen freischalten.
+            </p>
+            <button
+              onClick={() => onNav("pricing")}
+              className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-xl bg-night py-1.5 text-[12px] font-bold text-paper shadow-2xs transition-all duration-200 hover:bg-night/90 active:scale-[0.98] cursor-pointer"
+            >
+              Vollzugang freischalten →
+            </button>
           </div>
-          <p className="mt-1.5 text-[11px] leading-tight text-ink-3">
-            Alle 5.000+ Fragen, KFF-Trainer & Simulationen freischalten.
-          </p>
+        ) : (
           <button
             onClick={() => onNav("pricing")}
-            className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-xl bg-night py-1.5 text-[12px] font-bold text-paper shadow-2xs transition-all duration-200 hover:bg-night/90 active:scale-[0.98] cursor-pointer"
+            title="MedAT-Vollzugang freischalten"
+            className="mb-2.5 flex h-9 w-9 mx-auto items-center justify-center rounded-xl bg-primary-subtle text-primary hover:bg-red-100 transition-colors cursor-pointer"
           >
-            Vollzugang freischalten →
+            ★
           </button>
-        </div>
-      ) : (
-        <button
-          onClick={() => onNav("pricing")}
-          title="MedAT-Vollzugang freischalten"
-          className="mb-2.5 flex h-9 w-9 mx-auto items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 hover:bg-amber-500/25 transition-colors cursor-pointer"
-        >
-          ★
-        </button>
+        )
       )}
 
       {/* Streak & Activity widget */}

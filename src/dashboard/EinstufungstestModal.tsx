@@ -29,6 +29,7 @@ interface DiagnosticQuestion {
 }
 
 const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
+  // --- BMS (10 questions: 3 Bio, 3 Chem, 2 Phys, 2 Math) ---
   {
     id: "diag-1",
     pillar: "BMS",
@@ -44,10 +45,38 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
     ],
     correct: 1,
     explanation:
-      "Mitochondrien sind die Kraftwerke der Zelle; an der inneren Mitochondrienmembran findet die Atmungskette statt.",
+      "Mitochondrien sind die Kraftwerke der Zelle; an der inneren Mitochondrienmembran findet die Atmungskette zur ATP-Synthese statt.",
   },
   {
     id: "diag-2",
+    pillar: "BMS",
+    subtest: "Biologie",
+    badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    question: "Welche Aussage zur Meiose im Vergleich zur Mitose beim Menschen trifft zu?",
+    options: [
+      "Aus einer diploiden Urkeimzelle entstehen zwei identische diploide Tochterzellen.",
+      "Die Reduktionsteilung findet in der zweiten meiotischen Teilung statt.",
+      "In der Anaphase I werden homologe Chromosomenpaare getrennt, wodurch haploide Zellen entstehen.",
+      "Ein Crossing-Over tritt ausschließlich in der Metaphase II auf.",
+      "Das Endprodukt der Meiose sind stets vier funktionelle Eizellen bei der Frau.",
+    ],
+    correct: 2,
+    explanation:
+      "In der Anaphase I der Meiose werden die homologen Chromosomenpaare getrennt (Reduktion von 2n auf 1n).",
+  },
+  {
+    id: "diag-3",
+    pillar: "BMS",
+    subtest: "Biologie",
+    badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    question: "Zwei phänotypisch gesunde Eltern bekommen ein Kind mit einer autosomal-rezessiv vererbten Stoffwechselerkrankung. Mit welcher Wahrscheinlichkeit ist das nächste Kind heterozygoter Anlageträger?",
+    options: ["25 %", "33 %", "50 %", "66 %", "75 %"],
+    correct: 2,
+    explanation:
+      "Beide Eltern sind Konduktoren (Aa). Die Nachkommen spalten nach der 2. Mendelschen Regel auf: 1 AA : 2 Aa : 1 aa. Die Wahrscheinlichkeit für Aa beträgt 50 %.",
+  },
+  {
+    id: "diag-4",
     pillar: "BMS",
     subtest: "Chemie",
     badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
@@ -58,7 +87,35 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
       "Bei 25 °C entspricht pH 7 dem Autoprotolyse-Gleichgewicht des Wassers mit [H₃O⁺] = 10⁻⁷ mol/L.",
   },
   {
-    id: "diag-3",
+    id: "diag-5",
+    pillar: "BMS",
+    subtest: "Chemie",
+    badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    question: "Welche Oxidationszahl besitzt Schwefel im Sulfat-Ion (SO₄²⁻)?",
+    options: ["-2", "+2", "+4", "+6", "+8"],
+    correct: 3,
+    explanation:
+      "Sauerstoff hat in Oxiden die Oxidationszahl -2. Bei 4 Sauerstoffatomen (-8) und einer Gesamtladung von -2 gilt: x + 4*(-2) = -2 => x = +6.",
+  },
+  {
+    id: "diag-6",
+    pillar: "BMS",
+    subtest: "Chemie",
+    badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    question: "Wie reagiert ein chemisches Gleichgewicht einer exothermen Gasreaktion nach dem Prinzip von Le Chatelier auf eine Temperaturerhöhung?",
+    options: [
+      "Das Gleichgewicht verschiebt sich zugunsten der Produkte.",
+      "Das Gleichgewicht verschiebt sich zugunsten der Edukte.",
+      "Die Gleichgewichtskonstante K bleibt exakt unverändert.",
+      "Die Reaktionsgeschwindigkeit sinkt auf null.",
+      "Der Gesamtdruck halbiert sich automatisch.",
+    ],
+    correct: 1,
+    explanation:
+      "Bei einer exothermen Reaktion wird Wärme freigesetzt. Eine Temperaturerhöhung verschiebt das Gleichgewicht nach links (zu den Edukten), um dem Zwang auszuweichen.",
+  },
+  {
+    id: "diag-7",
     pillar: "BMS",
     subtest: "Physik",
     badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
@@ -69,7 +126,18 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
       "Arbeit und Energie werden in Joule (J = N·m = kg·m²/s²) gemessen. Watt ist Leistung, Pascal Druck.",
   },
   {
-    id: "diag-4",
+    id: "diag-8",
+    pillar: "BMS",
+    subtest: "Physik",
+    badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    question: "Ein Körper mit einem Volumen von 2 Litern und einer Masse von 3 kg befindet sich vollständig unter Wasser (Dichte 1 kg/L, g ≈ 10 m/s²). Wie groß ist die statische Auftriebskraft?",
+    options: ["10 N", "20 N", "30 N", "50 N", "60 N"],
+    correct: 1,
+    explanation:
+      "Nach dem Archimedischen Prinzip entspricht die Auftriebskraft dem Gewicht des verdrängten Flüssigkeitsvolumens: F_A = rho * V * g = 1000 kg/m³ * 0,002 m³ * 10 m/s² = 20 N.",
+  },
+  {
+    id: "diag-9",
     pillar: "BMS",
     subtest: "Mathematik",
     badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
@@ -80,7 +148,20 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
       "1 Teil 20%-ige Lösung + 3 Teile Wasser = 4 Teile Gesamtvolumen. 20 % / 4 = 5 %.",
   },
   {
-    id: "diag-5",
+    id: "diag-10",
+    pillar: "BMS",
+    subtest: "Mathematik",
+    badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    question: "Wie lautet das Ergebnis von (3 · 10⁴) · (4 · 10⁻⁷) geteilt durch (6 · 10⁻²)?",
+    options: ["0,02", "0,2", "2", "20", "200"],
+    correct: 1,
+    explanation:
+      "Zähler: 3 * 4 = 12, Zehnerpotenzen: 10^(4 + (-7)) = 10⁻³. Zähler = 12 · 10⁻³. Teilen durch 6 · 10⁻²: (12 / 6) · 10^(-3 - (-2)) = 2 · 10⁻¹ = 0,2.",
+  },
+
+  // --- KFF (8 questions: 2 ZF, 2 FZ, 2 GM, 2 IE) ---
+  {
+    id: "diag-11",
     pillar: "KFF",
     subtest: "Zahlenfolgen",
     badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -91,7 +172,18 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
       "Bildungsvorschrift: x_{n+1} = 2 · x_n + 1 (oder Differenzen: +4, +8, +16, +32, +64). 63 + 64 = 127.",
   },
   {
-    id: "diag-6",
+    id: "diag-12",
+    pillar: "KFF",
+    subtest: "Zahlenfolgen",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    question: "4 · 8 · 5 · 10 · 7 · 14 · … — Welche Zahl folgt als nächstes?",
+    options: ["9", "11", "15", "18", "21"],
+    correct: 1,
+    explanation:
+      "Alternierende Operation: *2, -3, *2, -3, *2, -3. Nach 14 folgt 14 - 3 = 11.",
+  },
+  {
+    id: "diag-13",
     pillar: "KFF",
     subtest: "Figuren zusammensetzen",
     badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -108,7 +200,94 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
       "Die beiden Dreiecke ergänzen sich an der Hypotenuse exakt zu einem Quadrat mit der Seitenlänge a.",
   },
   {
-    id: "diag-7",
+    id: "diag-14",
+    pillar: "KFF",
+    subtest: "Figuren zusammensetzen",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    question: "Ein Quadrat wird durch eine Diagonale geteilt, und eine der Hälften nochmals durch die Höhe auf die Hypotenuse halbiert. Aus welchen Teilfiguren besteht das Quadrat nun?",
+    options: [
+      "Drei gleich große Dreiecke",
+      "Ein großes rechtwinkliges Dreieck und zwei kleinere kongruente rechtwinklige Dreiecke",
+      "Zwei Trapeze und ein Quadrat",
+      "Vier ungleichförmige Dreiecke",
+      "Zwei Rechtecke",
+    ],
+    correct: 1,
+    explanation:
+      "Das Quadrat zerfällt in ein halbes Quadrat (großes rechtwinkliges Dreieck) und zwei geviertelte Dreiecke (kleinere kongruente rechtwinklige Dreiecke).",
+  },
+  {
+    id: "diag-15",
+    pillar: "KFF",
+    subtest: "Gedächtnis & Merkfähigkeit",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    question: "Allergieausweis: 'Stefan Gruber, Blutgruppe A+, allergisch gegen Penicillin, Ausweisnr. 4821'. Welche Ausweisnummer und Blutgruppe gehören zu Stefan Gruber?",
+    options: [
+      "4821 · A+",
+      "4812 · 0-",
+      "4821 · B+",
+      "4281 · A+",
+      "4821 · AB+",
+    ],
+    correct: 0,
+    explanation:
+      "Typische MedAT-Gedächtnisabfrage: Name, Blutgruppe (A+) und die vierstellige Ausweisnummer (4821) müssen exakt verknüpft erinnert werden.",
+  },
+  {
+    id: "diag-16",
+    pillar: "KFF",
+    subtest: "Gedächtnis & Merkfähigkeit",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    question: "Allergieausweis: 'Maria Huber, 28 Jahre, Medikament: Cetirizin, Symptom: Urtikaria'. Welches Medikament nimmt Maria Huber ein?",
+    options: [
+      "Ibuprofen",
+      "Cetirizin",
+      "Amoxicillin",
+      "Loratadin",
+      "Prednisolon",
+    ],
+    correct: 1,
+    explanation:
+      "Die Zuordnung von Medikament (Cetirizin) zur Patientin Maria Huber ist das korrekte Gedächtniselement.",
+  },
+  {
+    id: "diag-17",
+    pillar: "KFF",
+    subtest: "Implikationen erkennen",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    question: "Prämissen: 'Alle Säugetiere sind Wirbeltiere.' und 'Einige Wirbeltiere legen Eier.' Welche Schlussfolgerung ist zwingend logisch wahr?",
+    options: [
+      "Alle Säugetiere legen Eier.",
+      "Es gibt Wirbeltiere, die keine Säugetiere sind.",
+      "Einige Tiere, die Eier legen, sind Wirbeltiere.",
+      "Kein Säugetier legt jemals Eier.",
+      "Alle eierlegenden Tiere sind Säugetiere.",
+    ],
+    correct: 2,
+    explanation:
+      "Aus 'Einige A sind B' folgt formal-logisch durch einfache Konversion stets 'Einige B sind A': Wenn einige Wirbeltiere Eier legen, dann sind einige eierlegende Tiere Wirbeltiere.",
+  },
+  {
+    id: "diag-18",
+    pillar: "KFF",
+    subtest: "Implikationen erkennen",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    question: "Aussage: 'Wenn ein Patient Fieber hat, ist der CRP-Wert erhöht.' Welche logisch äquivalente Kontraposition folgt daraus?",
+    options: [
+      "Wenn der CRP-Wert erhöht ist, hat der Patient Fieber.",
+      "Wenn der CRP-Wert nicht erhöht ist, hat der Patient kein Fieber.",
+      "Wenn der Patient kein Fieber hat, ist der CRP-Wert nicht erhöht.",
+      "Ein erhöhter CRP-Wert tritt nur bei Fieber auf.",
+      "Keine der Aussagen ist äquivalent.",
+    ],
+    correct: 1,
+    explanation:
+      "Die Kontraposition von (A => B) lautet formal (nicht B => nicht A): 'Wenn der CRP-Wert nicht erhöht ist, hat der Patient kein Fieber.'",
+  },
+
+  // --- TV (3 questions) ---
+  {
+    id: "diag-19",
     pillar: "TV",
     subtest: "Textverständnis",
     badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
@@ -125,7 +304,71 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
       "Aus dem Text geht direkt hervor, dass bei akut Neutrophile und bei chronisch Makrophagen/Lymphozyten dominieren — das Zellbild differiert.",
   },
   {
-    id: "diag-8",
+    id: "diag-20",
+    pillar: "TV",
+    subtest: "Textverständnis",
+    badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+    question: "Text: 'Die Blut-Hirn-Schranke schützt das ZNS vor zirkulierenden Pathogenen, erschwert jedoch die Passage hydrophiler Pharmaka, weshalb lipidlösliche Moleküle pharmakokinetisch im Vorteil sind.' Welche Schlussfolgerung wird gestützt?",
+    options: [
+      "Lipidlösliche Arzneistoffe können die Blut-Hirn-Schranke generell leichter überwinden als hydrophile Moleküle.",
+      "Die Blut-Hirn-Schranke ist für pathogene Viren stets vollständig permeabel.",
+      "Hydrophile Wirkstoffe erreichen im Gehirn prinzipiell höhere Konzentrationen als im Blutplasma.",
+      "Alle ZNS-Erkrankungen können ohne Arzneipassage geheilt werden.",
+      "Lipophile Moleküle werden an der Blut-Hirn-Schranke komplett abgebaut.",
+    ],
+    correct: 0,
+    explanation:
+      "Der Text stellt explizit dar, dass hydrophile Substanzen erschwert passieren und lipidlösliche Moleküle im Vorteil sind.",
+  },
+  {
+    id: "diag-21",
+    pillar: "TV",
+    subtest: "Textverständnis",
+    badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+    question: "Text: 'In einer randomisierten Doppelblindstudie senkte Wirkstoff X den systolischen Blutdruck um 12 mmHg (p < 0,01), während die Placebogruppe eine Senkung um 2 mmHg zeigte. Nebenwirkungen waren in beiden Gruppen gleich verteilt.' Welche Aussage ist korrekt?",
+    options: [
+      "Placebo hatte absolut keinen messbaren Effekt auf den Blutdruck.",
+      "Wirkstoff X senkte den Blutdruck statistisch signifikant stärker als das Placebo.",
+      "Wirkstoff X verursachte signifikant mehr Nebenwirkungen als das Placebo.",
+      "Der Blutdruck sank in der Verumgruppe um exakt 2 mmHg.",
+      "Die Studie lässt wegen ungleicher Nebenwirkungen keine Schlüsse zu.",
+    ],
+    correct: 1,
+    explanation:
+      "Mit p < 0,01 ist der Unterschied zwischen der Senkung um 12 mmHg (Verum) und 2 mmHg (Placebo) statistisch signifikant.",
+  },
+
+  // --- SEK (3 questions: 1 EE, 1 ER, 1 SE) ---
+  {
+    id: "diag-22",
+    pillar: "SEK",
+    subtest: "Emotionen erkennen",
+    badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
+    question: "Ein Patient zieht während der Schilderung eines bevorstehenden Eingriffs die Augenbrauen zusammen und nach oben, die Augen weit geöffnet, während die Lippen horizontal angespannt sind. Welche primäre Emotion drückt sich hier vorrangig aus?",
+    options: ["Wut", "Furcht / Angst", "Ekel", "Freude", "Verachtung"],
+    correct: 1,
+    explanation:
+      "Nach Paul Ekman sind hochgezogene und zusammengezogene Brauen mit geweiteten Augen und horizontal gespannten Lippen die universellen Merkmale von Angst/Furcht.",
+  },
+  {
+    id: "diag-23",
+    pillar: "SEK",
+    subtest: "Emotionen regulieren",
+    badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
+    question: "Ein Angehöriger reagiert nach einer Verzögerung im Notfallbereich lautstark und gereizt gegenüber dem medizinischen Personal. Welche Handlungsweise ist emotional regulierend und professionell deeskalierend?",
+    options: [
+      "Sofort mit Hausverbot drohen, um Autorität zu demonstrieren.",
+      "Die eigene Frustration zurückstellen, dem Angehörigen aktiv zuhören und den Grund der Verzögerung transparent erklären.",
+      "Den Angehörigen komplett ignorieren und sich anderen Patienten zuwenden.",
+      "Gereizt zurückweisen, dass Notfälle nun einmal unvorhersehbar sind.",
+      "Den Sicherheitsdienst rufen, ohne zuvor ein klärendes Gespräch zu suchen.",
+    ],
+    correct: 1,
+    explanation:
+      "Emotionsregulation im medizinischen Kontext erfordert Selbstkontrolle, aktives Zuhören und transparente Kommunikation zur Deeskalation.",
+  },
+  {
+    id: "diag-24",
     pillar: "SEK",
     subtest: "Soziales Entscheiden",
     badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
@@ -158,11 +401,11 @@ export default function EinstufungstestModal({
 }: EinstufungstestModalProps) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
-  const [secondsLeft, setSecondsLeft] = useState(480); // 8 minutes = 480 seconds
+  const [secondsLeft, setSecondsLeft] = useState(600); // 10 minutes = 600 seconds
   const [isFinished, setIsFinished] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
-  // 8-minute countdown timer
+  // 10-minute countdown timer
   useEffect(() => {
     if (!isOpen || isFinished) return;
     const interval = setInterval(() => {
@@ -244,7 +487,7 @@ export default function EinstufungstestModal({
   const restartTest = () => {
     setCurrentIdx(0);
     setAnswers({});
-    setSecondsLeft(480);
+    setSecondsLeft(600);
     setIsFinished(false);
     setShowReview(false);
   };
@@ -258,6 +501,11 @@ export default function EinstufungstestModal({
     if (answers[idx] === q.correct) totalCorrect++;
   });
   const finalPercentage = Math.round((totalCorrect / DIAGNOSTIC_QUESTIONS.length) * 100);
+
+  const bmsQuestionCount = DIAGNOSTIC_QUESTIONS.filter((q) => q.pillar === "BMS").length;
+  const kffQuestionCount = DIAGNOSTIC_QUESTIONS.filter((q) => q.pillar === "KFF").length;
+  const tvQuestionCount = DIAGNOSTIC_QUESTIONS.filter((q) => q.pillar === "TV").length;
+  const sekQuestionCount = DIAGNOSTIC_QUESTIONS.filter((q) => q.pillar === "SEK").length;
 
   return (
     <div
@@ -275,9 +523,9 @@ export default function EinstufungstestModal({
             </span>
             <div>
               <h3 id="einstufung-modal-title" className="text-base font-bold text-ink">
-                MedAT 8-Minuten-Einstufungstest
+                MedAT 24-Fragen-Einstufungstest
               </h3>
-              <p className="text-xs text-ink-3">BMS · KFF · TV · SEK Orientierungstest</p>
+              <p className="text-xs text-ink-3">BMS (10) · KFF (8) · TV (3) · SEK (3) Orientierungsanalyse</p>
             </div>
           </div>
 
@@ -318,12 +566,12 @@ export default function EinstufungstestModal({
                     {totalAnswered} / {DIAGNOSTIC_QUESTIONS.length} beantwortet
                   </span>
                 </div>
-                <div className="grid grid-cols-8 gap-1.5">
+                <div className="grid grid-cols-12 sm:grid-cols-24 gap-1">
                   {DIAGNOSTIC_QUESTIONS.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentIdx(i)}
-                      className={`h-2 rounded-full transition-all ${
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
                         i === currentIdx
                           ? "bg-primary ring-2 ring-primary/30"
                           : answers[i] !== undefined
@@ -331,6 +579,7 @@ export default function EinstufungstestModal({
                           : "bg-slate-200"
                       }`}
                       aria-label={`Gehe zu Frage ${i + 1}`}
+                      title={`Frage ${i + 1}: ${DIAGNOSTIC_QUESTIONS[i].pillar} · ${DIAGNOSTIC_QUESTIONS[i].subtest}`}
                     />
                   ))}
                 </div>
@@ -345,7 +594,7 @@ export default function EinstufungstestModal({
                     {currentQ.pillar} · {currentQ.subtest}
                   </span>
                   <span className="text-[11px] font-semibold text-ink-4">
-                    Orientierungsfrage #{currentIdx + 1}
+                    Orientierungsfrage #{currentIdx + 1} von {DIAGNOSTIC_QUESTIONS.length}
                   </span>
                 </div>
 
@@ -361,7 +610,7 @@ export default function EinstufungstestModal({
                       <button
                         key={optIdx}
                         onClick={() => handleSelect(optIdx)}
-                        className={`flex w-full items-center gap-3.5 rounded-xl border p-3.5 text-left text-sm transition-all ${
+                        className={`flex w-full items-center gap-3.5 rounded-xl border p-3.5 text-left text-sm transition-all cursor-pointer ${
                           selected
                             ? "border-primary bg-primary-subtle/50 text-ink shadow-xs"
                             : "border-line bg-paper hover:border-slate-300 hover:bg-paper-2 text-ink-2"
@@ -415,9 +664,9 @@ export default function EinstufungstestModal({
                     {DIAGNOSTIC_QUESTIONS.filter(
                       (q, i) => q.pillar === "BMS" && answers[i] === q.correct
                     ).length}{" "}
-                    / 4
+                    / {bmsQuestionCount}
                   </p>
-                  <p className="text-[11px] text-ink-3">Basiswissen</p>
+                  <p className="text-[11px] text-ink-3">Basiswissen (40%)</p>
                 </div>
                 <div className="rounded-xl border border-line bg-paper-2 p-3 text-center">
                   <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
@@ -427,7 +676,7 @@ export default function EinstufungstestModal({
                     {DIAGNOSTIC_QUESTIONS.filter(
                       (q, i) => q.pillar === "KFF" && answers[i] === q.correct
                     ).length}{" "}
-                    / 2
+                    / {kffQuestionCount}
                   </p>
                   <p className="text-[11px] text-ink-3">Kognitiv (40%)</p>
                 </div>
@@ -439,9 +688,9 @@ export default function EinstufungstestModal({
                     {DIAGNOSTIC_QUESTIONS.filter(
                       (q, i) => q.pillar === "TV" && answers[i] === q.correct
                     ).length}{" "}
-                    / 1
+                    / {tvQuestionCount}
                   </p>
-                  <p className="text-[11px] text-ink-3">Textverständnis</p>
+                  <p className="text-[11px] text-ink-3">Textverständnis (10%)</p>
                 </div>
                 <div className="rounded-xl border border-line bg-paper-2 p-3 text-center">
                   <span className="text-[11px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">
@@ -451,9 +700,9 @@ export default function EinstufungstestModal({
                     {DIAGNOSTIC_QUESTIONS.filter(
                       (q, i) => q.pillar === "SEK" && answers[i] === q.correct
                     ).length}{" "}
-                    / 1
+                    / {sekQuestionCount}
                   </p>
-                  <p className="text-[11px] text-ink-3">Sozial-emotional</p>
+                  <p className="text-[11px] text-ink-3">Sozial-emotional (10%)</p>
                 </div>
               </div>
 

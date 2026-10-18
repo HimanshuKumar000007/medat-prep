@@ -234,12 +234,12 @@ export const FAQS: Faq[] = [
   {
     id: "q4",
     q: "Kann ich mich ohne Kurs auf den MedAT vorbereiten?",
-    a: "Ja — genau dafür ist MedAT Prep gebaut. Der kostenlose Einstufungstest zeigt dir in 8 Minuten deinen Stand in allen Testteilen, der KI-Lernplan priorisiert deine Schwächen, und 5.000+ Übungsfragen mit Erklärungen ersetzen den klassischen Präsenzkurs. Viele unserer Top-Kandidat:innen haben ausschließlich digital gelernt.",
+    a: "Ja — genau dafür ist MedAT Prep gebaut. Das geführte 5-Schritte-Setup erstellt deinen maßgeschneiderten KI-Lernplan in unter 2 Minuten, der 24/7 KI-Tutor liefert Schritt-für-Schritt-Erklärungen, und 5.000+ Übungsfragen ersetzen den teuren Präsenzkurs. Viele unserer Top-Kandidat:innen haben ausschließlich digital gelernt.",
   },
   {
     id: "q5",
     q: "Was kostet MedAT Prep?",
-    a: "Der Basis-Zugang ist dauerhaft kostenlos: 200 Übungsfragen, ein Probetest und ein einfacher Lernplan. Premium kostet 39 € pro Jahr (umgerechnet nur ca. 3,25 € pro Monat) und schaltet alle 5.000+ Fragen, alle Probetests, den adaptiven KI-Lernplan und SEK-Training frei. Intensiv (349 € einmalig) ergänzt 1:1-Betreuung bis zum Testtag.",
+    a: "Der Basis-Zugang ist dauerhaft kostenlos: 200 Übungsfragen, 1 vollständiger Probetest, individueller KI-Lernplan und Community-Forum. Premium kostet 39 € pro Jahr (umgerechnet nur ca. 3,25 € pro Monat) und schaltet alle 5.000+ Fragen, den 24/7 MedAT KI-Tutor, alle 4 Probetests, den adaptiven KI-Lernplan und den Schwachstellen-Drill frei. Intensiv (349 € einmalig) ergänzt 1:1-Betreuung bis zum Testtag.",
   },
   {
     id: "q6",
@@ -277,10 +277,10 @@ export const PRICING: PricingTier[] = [
     yearly: 0,
     unit: "free",
     features: [
-      "200 Übungsfragen mit Erklärungen",
-      "1 vollständiger Probetest",
-      "Einstufungstest & Basis-Lernplan",
-      "Community-Forum",
+      "200 kostenlose Fragen (4 volle BMS-Kapitel)",
+      "1 vollständiger Probetest (Generalprobe #1)",
+      "Persönlicher KI-Lernplan & Vorbereitungs-Setup",
+      "Community-Forum & Lerngruppen",
     ],
     cta: "Kostenlos starten",
   },
@@ -293,10 +293,12 @@ export const PRICING: PricingTier[] = [
     yearly: 39,
     unit: "year",
     features: [
-      "Alle 5.000+ Übungsfragen",
+      "Alle 5.000+ Fragen (BMS, KFF, TV & SEK)",
+      "MedAT KI-Tutor: 24/7 Erklärungen & Rechenwege",
       "Adaptiver KI-Lernplan, wöchentlich neu",
       "4 Probetests unter Echtbedingungen",
       "SEK- & KFF-Intensivtraining",
+      "Gezieltes Schwachstellen-Training (Fehler-Hub)",
       "Grenzwert-Prognose & Live-Ranking",
       "Für MedAT-H und MedAT-Z",
       "Volle 12 Monate Zugriff (nur 3,25 € / Monat)",
@@ -334,7 +336,7 @@ export interface Stat {
 export const STATS: Stat[] = [
   { value: 16880, suffix: "", label: "Anmeldungen MedAT 2026", aria: "16.880 Anmeldungen beim MedAT 2026" },
   { value: 1950, suffix: "", label: "Studienplätze gesamt", aria: "1.950 Studienplätze in Human- und Zahnmedizin" },
-  { value: 5000, suffix: "+", label: "Übungsfragen mit Erklärung", aria: "Über 5.000 Übungsfragen mit Erklärung" },
+  { value: 5000, suffix: "+", label: "Fragen nach Stichwortkatalog", aria: "Über 5.000 Übungsfragen nach offiziellem Stichwortkatalog" },
   { value: 4.9, suffix: "/5", label: "aus 800+ Bewertungen", aria: "4,9 von 5 Sternen aus über 800 Bewertungen", decimals: 1 },
 ];
 
@@ -348,9 +350,10 @@ export const DROPDOWN_ITEMS = [
 ];
 
 export const NAV_LINKS = [
-  { label: "Über den MedAT", href: "#ueber-medat", dropdown: true },
   { label: "Lernplan", href: "#lernplan" },
   { label: "Übungsfragen", href: "#uebungsfragen" },
   { label: "Probetests", href: "#probetests" },
   { label: "Blog", href: "#blog" },
+  { label: "Über uns", href: "#/about" },
+  { label: "Kontakt", href: "#/contact" },
 ];

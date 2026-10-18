@@ -92,17 +92,17 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
   const subStats = activeSub ? getSubjectStats(activeSub.id) : null;
 
   return (
-    <section className="rounded-3xl border border-line bg-paper p-5 sm:p-7 shadow-xs" aria-label="Kapitel-Analyse">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <section className="rounded-2xl sm:rounded-3xl border border-line bg-paper p-4 sm:p-7 shadow-xs" aria-label="Kapitel-Analyse">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h2 className="text-[18px] font-bold text-ink">Kapitel- & 5-Set Meisterschaft</h2>
-          <p className="mt-0.5 text-[13px] text-ink-3">
+          <h2 className="text-[17px] sm:text-[18px] font-bold text-ink">Kapitel- & 5-Set Meisterschaft</h2>
+          <p className="mt-0.5 text-[12px] sm:text-[13px] text-ink-3">
             Genauigkeit und Meisterschaftsgrad aller 5 Sets pro Kapitel aus dem MedAT-Stichwortkatalog.
           </p>
         </div>
 
         {/* Section Pills */}
-        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Sektion wählen">
+        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1 -mx-1 px-1 sm:mx-0 sm:px-0 sm:flex-wrap" role="group" aria-label="Sektion wählen">
           {availableSections.map((s) => (
             <button
               key={s.code}
@@ -112,7 +112,7 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
                 const firstSub = SUBJECTS.find((sub) => sub.section === s.code);
                 if (firstSub) setSelectedSubId(firstSub.id);
               }}
-              className={`rounded-xl px-3 py-1.5 text-[12px] font-bold transition-all cursor-pointer ${
+              className={`shrink-0 rounded-xl px-2.5 py-1.5 sm:px-3 text-[11.5px] sm:text-[12px] font-bold transition-all cursor-pointer ${
                 selectedSec === s.code
                   ? "bg-primary text-paper shadow-sm"
                   : "border border-line bg-paper text-ink-3 hover:border-primary/40 hover:text-ink"
@@ -126,13 +126,13 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
 
       {/* Subject Selector Buttons */}
       {availableSubjects.length > 1 && (
-        <div className="mt-4 flex flex-wrap gap-2 border-b border-line pb-3">
+        <div className="mt-4 flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-2.5 -mx-1 px-1 sm:mx-0 sm:px-0 sm:flex-wrap border-b border-line">
           {availableSubjects.map((sub) => (
             <button
               key={sub.id}
               type="button"
               onClick={() => setSelectedSubId(sub.id)}
-              className={`rounded-lg px-3 py-1 text-[12px] font-bold transition-all cursor-pointer ${
+              className={`shrink-0 rounded-lg px-2.5 sm:px-3 py-1 text-[11.5px] sm:text-[12px] font-bold transition-all cursor-pointer ${
                 activeSub?.id === sub.id
                   ? "bg-paper-3 text-ink font-bold border border-line shadow-2xs"
                   : "text-ink-4 hover:text-ink"
@@ -146,32 +146,32 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
 
       {/* Active Subject Summary Banner */}
       {subStats && (
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-line bg-paper-3/50 p-4">
+        <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 rounded-2xl border border-line bg-paper-3/50 p-3.5 sm:p-4">
           <div>
-            <div className="flex items-center gap-2">
-              <p className="text-[15px] font-bold text-ink">{subStats.subject.title}</p>
-              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <p className="text-[14.5px] sm:text-[15px] font-bold text-ink">{subStats.subject.title}</p>
+              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10.5px] sm:text-[11px] font-bold text-slate-600">
                 {subStats.totalQuestions} Fragen im Pool
               </span>
             </div>
-            <p className="text-[12px] text-ink-3 mt-0.5">
+            <p className="text-[11.5px] sm:text-[12px] text-ink-3 mt-0.5">
               {subStats.completedChapters} von {subStats.totalChapters} Kapiteln gemeistert ·{" "}
               {subStats.answeredCount} beantwortet
             </p>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="text-right">
-              <span className="num text-[22px] font-extrabold text-ink">
+          <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 pt-2 sm:pt-0 border-t sm:border-t-0 border-line/50">
+            <div className="text-left sm:text-right">
+              <span className="num text-[20px] sm:text-[22px] font-extrabold text-ink">
                 {subStats.answeredCount > 0 ? `${subStats.accuracy}%` : "—"}
               </span>
-              <p className="text-[10.5px] font-bold text-ink-4 uppercase">Trefferquote</p>
+              <p className="text-[10px] sm:text-[10.5px] font-bold text-ink-4 uppercase">Trefferquote</p>
             </div>
             <button
               type="button"
               onClick={() =>
                 onNav("practice", { section: selectedSec, subjectId: subStats.subject.id })
               }
-              className="btn btn-primary btn-sm text-[12px] font-bold cursor-pointer"
+              className="btn btn-primary btn-sm text-[11.5px] sm:text-[12px] font-bold cursor-pointer"
             >
               Fach öffnen →
             </button>
@@ -181,7 +181,7 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
 
       {/* Chapters & 5-Set Expansion List */}
       {activeSub && (
-        <div className="mt-4 space-y-3">
+        <div className="mt-4 space-y-2.5 sm:space-y-3">
           {activeSub.chapterIds.map((cid) => {
             const ch = CHAPTERS[cid];
             if (!ch) return null;
@@ -196,29 +196,29 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
               >
                 <div
                   onClick={() => setExpandedChapterId(isExpanded ? null : cid)}
-                  className="flex flex-wrap items-center justify-between gap-3 p-4 sm:p-5 cursor-pointer hover:bg-paper-3/40 transition-colors"
+                  className="flex items-center justify-between gap-2.5 sm:gap-3 p-3.5 sm:p-5 cursor-pointer hover:bg-paper-3/40 transition-colors"
                 >
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <p className="truncate text-[15px] font-bold text-ink">{ch.title}</p>
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <p className="truncate text-[14px] sm:text-[15px] font-bold text-ink">{ch.title}</p>
                       {stats.status === "mastered" && (
-                        <span className="rounded-full bg-success-subtle px-2 py-0.5 text-[10.5px] font-bold text-[#166534]">
+                        <span className="shrink-0 rounded-full bg-success-subtle px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[10.5px] font-bold text-[#166534]">
                           ✓ Gemeistert
                         </span>
                       )}
                       {stats.status === "needs_review" && (
-                        <span className="rounded-full bg-warning-subtle px-2 py-0.5 text-[10.5px] font-bold text-[#92400E]">
+                        <span className="shrink-0 rounded-full bg-warning-subtle px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[10.5px] font-bold text-[#92400E]">
                           Wiederholen
                         </span>
                       )}
                     </div>
-                    <p className="truncate text-[12.5px] text-ink-3 mt-0.5">
+                    <p className="truncate text-[11.5px] sm:text-[12.5px] text-ink-3 mt-0.5">
                       {stats.completedSetsCount} / 5 Sets abgeschlossen · {ch.subtitle || ch.description}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-4">
-                    <span className="num text-[16px] font-extrabold text-ink">
+                  <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
+                    <span className="num text-[14px] sm:text-[16px] font-extrabold text-ink">
                       {stats.answeredCount > 0 ? `${stats.accuracy}%` : "Keine Daten"}
                     </span>
                     <button
@@ -227,7 +227,7 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
                         e.stopPropagation();
                         onNav("practice", { chapterId: cid });
                       }}
-                      className="shrink-0 rounded-xl border border-line bg-paper px-3 py-1.5 text-[12px] font-bold text-ink-2 hover:border-primary hover:text-primary transition-colors cursor-pointer"
+                      className="shrink-0 rounded-xl border border-line bg-paper px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-[12px] font-bold text-ink-2 hover:border-primary hover:text-primary transition-colors cursor-pointer"
                     >
                       Üben →
                     </button>
@@ -236,11 +236,11 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
 
                 {/* Expanded 5 Sets Table */}
                 {isExpanded && (
-                  <div className="border-t border-line bg-paper-3/30 p-4 sm:p-5">
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-left text-[12.5px]">
+                  <div className="border-t border-line bg-paper-3/30 p-3 sm:p-5">
+                    <div className="overflow-x-auto scrollbar-none">
+                      <table className="w-full min-w-[420px] text-left text-[12px] sm:text-[12.5px]">
                         <thead>
-                          <tr className="border-b border-line text-[11px] font-bold uppercase tracking-wider text-ink-4">
+                          <tr className="border-b border-line text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider text-ink-4">
                             <th className="pb-2">Set</th>
                             <th className="pb-2">Fokus / Modus</th>
                             <th className="pb-2">Bestleistung</th>
@@ -260,7 +260,7 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
                               </td>
                               <td className="py-2">
                                 <span
-                                  className={`rounded-full px-2 py-0.5 text-[10.5px] font-bold ${
+                                  className={`rounded-full px-2 py-0.5 text-[10px] sm:text-[10.5px] font-bold ${
                                     s.status === "completed"
                                       ? "bg-success-subtle text-[#166534]"
                                       : s.status === "active"
@@ -284,7 +284,7 @@ function ChapterBreakdown({ onNav }: { onNav: (s: Screen, seed?: PracticeSeed) =
                                   type="button"
                                   onClick={() => onNav("practice", { chapterId: cid })}
                                   disabled={s.status === "locked"}
-                                  className="text-[12px] font-bold text-primary hover:underline disabled:opacity-40 disabled:no-underline cursor-pointer"
+                                  className="text-[11.5px] sm:text-[12px] font-bold text-primary hover:underline disabled:opacity-40 disabled:no-underline cursor-pointer"
                                 >
                                   {s.status === "completed"
                                     ? "Wiederholen"
@@ -561,26 +561,28 @@ export default function Stats({
   }, [getWeakAreas]);
 
   return (
-    <div className="animate-screen-in space-y-7 pb-24 pt-2">
+    <div className="animate-screen-in space-y-5 sm:space-y-7 pb-20 sm:pb-24 pt-1 sm:pt-2">
       {/* ─── Top Header & Controls ─── */}
-      <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3.5 sm:gap-4">
         <div>
-          <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <span className="rounded-md bg-primary-subtle px-2.5 py-0.5 text-[11px] font-black uppercase tracking-wider text-primary">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1.5">
+            <span className="rounded-md bg-primary-subtle px-2 py-0.5 text-[10.5px] sm:text-[11px] font-black uppercase tracking-wider text-primary">
               {userProfile.examType}
             </span>
-            <span className="rounded-md bg-paper-3 px-2.5 py-0.5 text-[11px] font-bold text-ink-3">
+            <span className="rounded-md bg-paper-3 px-2 py-0.5 text-[10.5px] sm:text-[11px] font-bold text-ink-3">
               Ziel: {targetUniMeta.shortName}
             </span>
           </div>
-          <h1 className="display text-[30px] sm:text-[34px] text-ink">Statistiken & Fortschritt</h1>
-          <p className="mt-0.5 text-[14.5px] text-ink-3">
+          <h1 className="display text-[26px] xs:text-[28px] sm:text-[34px] text-ink leading-tight">
+            Statistiken & Fortschritt
+          </h1>
+          <p className="mt-0.5 text-[13px] sm:text-[14.5px] text-ink-3">
             Echtzeit-Leistungsanalyse, Meisterschaftsgrade und offizielle MedAT-Zulassungsprognose.
           </p>
         </div>
 
         {/* Time Filter Buttons */}
-        <div className="flex items-center gap-1 rounded-2xl border border-line bg-paper p-1 shadow-2xs">
+        <div className="flex items-center gap-1 rounded-2xl border border-line bg-paper p-1 shadow-2xs w-full sm:w-auto overflow-x-auto scrollbar-none">
           {(
             [
               { id: "all", label: "Gesamt" },
@@ -593,7 +595,7 @@ export default function Stats({
               key={tf.id}
               type="button"
               onClick={() => setTimeFilter(tf.id)}
-              className={`rounded-xl px-3 py-1.5 text-[12px] font-bold transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial rounded-xl px-2.5 sm:px-3 py-1.5 text-center text-[11.5px] sm:text-[12px] font-bold whitespace-nowrap transition-all cursor-pointer ${
                 timeFilter === tf.id
                   ? "bg-primary text-white shadow-xs"
                   : "text-ink-4 hover:text-ink"
@@ -606,33 +608,33 @@ export default function Stats({
       </div>
 
       {/* ─── Top 5 KPI Metrics Grid (100% Real Data) ─── */}
-      <div className="grid grid-cols-2 gap-3.5 sm:gap-4 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-2.5 xs:gap-3.5 sm:gap-4 md:grid-cols-3 lg:grid-cols-5">
         {/* Metric 1: Total Answered */}
-        <div className="card-lift rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs">
-          <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Übungsfragen</p>
-          <div className="mt-2 flex items-baseline gap-2">
-            <span className="num text-[28px] font-black leading-none text-ink">
+        <div className="card-lift rounded-2xl border border-line bg-paper p-3 xs:p-4 sm:p-5 shadow-xs">
+          <p className="text-[10.5px] xs:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Übungsfragen</p>
+          <div className="mt-1.5 xs:mt-2 flex flex-wrap items-baseline gap-1.5 xs:gap-2">
+            <span className="num text-[22px] xs:text-[26px] sm:text-[28px] font-black leading-none text-ink">
               {filteredMetrics.totalAnswered}
             </span>
-            <span className="text-[11px] font-semibold text-ink-3">
+            <span className="text-[10px] xs:text-[11px] font-semibold text-ink-3">
               ({filteredMetrics.totalCorrect} richtig)
             </span>
           </div>
-          <p className="mt-2 text-[11.5px] text-ink-4">
+          <p className="mt-1.5 xs:mt-2 text-[10.5px] xs:text-[11.5px] text-ink-4">
             {timeFilter === "all" ? "Alle Übungen bisher" : `Im Zeitraum (${timeFilter})`}
           </p>
         </div>
 
         {/* Metric 2: Average Accuracy */}
-        <div className="card-lift rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs">
-          <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Ø Trefferquote</p>
-          <div className="mt-2 flex items-baseline gap-2">
-            <span className="num text-[28px] font-black leading-none text-ink">
+        <div className="card-lift rounded-2xl border border-line bg-paper p-3 xs:p-4 sm:p-5 shadow-xs">
+          <p className="text-[10.5px] xs:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Ø Trefferquote</p>
+          <div className="mt-1.5 xs:mt-2 flex flex-wrap items-baseline gap-1.5 xs:gap-2">
+            <span className="num text-[22px] xs:text-[26px] sm:text-[28px] font-black leading-none text-ink">
               {filteredMetrics.totalAnswered > 0 ? `${filteredMetrics.accuracy} %` : "—"}
             </span>
             {filteredMetrics.totalAnswered > 0 && (
               <span
-                className={`flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-[11px] font-bold ${
+                className={`flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-[10px] xs:text-[11px] font-bold ${
                   filteredMetrics.accuracy >= 75
                     ? "bg-success-subtle text-[#166534]"
                     : filteredMetrics.accuracy >= 60
@@ -649,19 +651,19 @@ export default function Stats({
               </span>
             )}
           </div>
-          <p className="mt-2 text-[11.5px] text-ink-4">Ziel: &ge; 75–80 %</p>
+          <p className="mt-1.5 xs:mt-2 text-[10.5px] xs:text-[11.5px] text-ink-4">Ziel: &ge; 75–80 %</p>
         </div>
 
         {/* Metric 3: Projected MedAT Score */}
-        <div className="card-lift rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs">
-          <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Prognose MedAT</p>
-          <div className="mt-2 flex items-baseline gap-2">
-            <span className="num text-[28px] font-black leading-none text-primary">
+        <div className="card-lift rounded-2xl border border-line bg-paper p-3 xs:p-4 sm:p-5 shadow-xs">
+          <p className="text-[10.5px] xs:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Prognose MedAT</p>
+          <div className="mt-1.5 xs:mt-2 flex flex-wrap items-baseline gap-1.5 xs:gap-2">
+            <span className="num text-[22px] xs:text-[26px] sm:text-[28px] font-black leading-none text-primary">
               {projectedMedATScore !== null ? `${projectedMedATScore} %` : "—"}
             </span>
             {projectedMedATScore !== null && (
               <span
-                className={`rounded-md px-1.5 py-0.5 text-[11px] font-bold ${
+                className={`rounded-md px-1.5 py-0.5 text-[10px] xs:text-[11px] font-bold ${
                   projectedMedATScore >= austrianQuotaCutoff
                     ? "bg-emerald-100 text-emerald-800"
                     : "bg-amber-100 text-amber-800"
@@ -671,45 +673,45 @@ export default function Stats({
               </span>
             )}
           </div>
-          <p className="mt-2 text-[11px] text-ink-4 leading-tight">
+          <p className="mt-1.5 xs:mt-2 text-[10px] xs:text-[11px] text-ink-4 leading-tight">
             Offizielle MedAT-Gewichtung (40/40/10/10)
           </p>
         </div>
 
         {/* Metric 4: Open Mistakes */}
-        <div className="card-lift rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs">
-          <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Offene Fehler</p>
-          <div className="mt-2 flex items-baseline gap-2">
-            <span className="num text-[28px] font-black leading-none text-amber-600">
+        <div className="card-lift rounded-2xl border border-line bg-paper p-3 xs:p-4 sm:p-5 shadow-xs">
+          <p className="text-[10.5px] xs:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Offene Fehler</p>
+          <div className="mt-1.5 xs:mt-2 flex flex-wrap items-baseline gap-1.5 xs:gap-2">
+            <span className="num text-[22px] xs:text-[26px] sm:text-[28px] font-black leading-none text-amber-600">
               {wrong.size}
             </span>
-            <span className="text-[11px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">
+            <span className="text-[10px] xs:text-[11px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">
               Fehlerheft
             </span>
           </div>
-          <p className="mt-2 text-[11.5px] text-ink-4">Bereit für Review-Drill</p>
+          <p className="mt-1.5 xs:mt-2 text-[10.5px] xs:text-[11.5px] text-ink-4">Bereit für Review-Drill</p>
         </div>
 
         {/* Metric 5: Study Time & Streak */}
-        <div className="card-lift rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs col-span-2 sm:col-span-1">
-          <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Lernzeit & Streak</p>
-          <div className="mt-2 flex items-baseline gap-2">
-            <span className="num text-[28px] font-black leading-none text-ink">
+        <div className="card-lift rounded-2xl border border-line bg-paper p-3 xs:p-4 sm:p-5 shadow-xs col-span-2 sm:col-span-1">
+          <p className="text-[10.5px] xs:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Lernzeit & Streak</p>
+          <div className="mt-1.5 xs:mt-2 flex flex-wrap items-baseline gap-1.5 xs:gap-2">
+            <span className="num text-[22px] xs:text-[26px] sm:text-[28px] font-black leading-none text-ink">
               {totalStudyMinutes >= 60
                 ? `${(totalStudyMinutes / 60).toFixed(1)} h`
                 : `${totalStudyMinutes} m`}
             </span>
-            <span className="flex items-center gap-1 text-[11px] font-bold text-primary bg-primary-subtle px-1.5 py-0.5 rounded">
+            <span className="flex items-center gap-1 text-[10px] xs:text-[11px] font-bold text-primary bg-primary-subtle px-1.5 py-0.5 rounded">
               <IconFlame className="h-3 w-3" />
               {currentStreak} d
             </span>
           </div>
-          <p className="mt-2 text-[11.5px] text-ink-4">Aktive Übungsdauer</p>
+          <p className="mt-1.5 xs:mt-2 text-[10.5px] xs:text-[11.5px] text-ink-4">Aktive Übungsdauer</p>
         </div>
       </div>
 
       {/* ─── Navigation Tabs Bar ─── */}
-      <div className="flex items-center gap-2 overflow-x-auto border-b border-line pb-2 scrollbar-none">
+      <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto border-b border-line pb-2.5 scrollbar-none -mx-1 px-1 sm:mx-0 sm:px-0">
         {[
           { id: "overview", label: "Übersicht & MedAT-Prognose", count: undefined },
           { id: "subtests", label: "Alle 13 Subtests", count: 13 },
@@ -721,7 +723,7 @@ export default function Stats({
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id as StatsTab)}
-            className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-[13px] font-bold transition-all cursor-pointer ${
+            className={`flex shrink-0 items-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 text-[12px] sm:text-[13px] font-bold transition-all cursor-pointer ${
               activeTab === tab.id
                 ? "bg-slate-900 text-white shadow-xs"
                 : "border border-line bg-paper text-ink-3 hover:bg-slate-50 hover:text-ink"
@@ -730,7 +732,7 @@ export default function Stats({
             <span>{tab.label}</span>
             {tab.count !== undefined && (
               <span
-                className={`rounded-full px-2 py-0.5 text-[10.5px] font-black ${
+                className={`rounded-full px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[10.5px] font-black ${
                   activeTab === tab.id
                     ? "bg-white/20 text-white"
                     : "bg-paper-3 text-ink-3"
@@ -747,32 +749,32 @@ export default function Stats({
           TAB 1: ÜBERSICHT & MEDAT-PROGNOSE
           ================================================================= */}
       {activeTab === "overview" && (
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           {/* MedAT Quota Benchmark & University Cutoff Card */}
-          <div className="rounded-3xl border border-line bg-gradient-to-br from-paper via-paper to-red-50/20 p-6 sm:p-7 shadow-xs">
-            <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="rounded-2xl sm:rounded-3xl border border-line bg-gradient-to-br from-paper via-paper to-red-50/20 p-4 sm:p-7 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-primary bg-primary-subtle px-2.5 py-1 rounded-lg">
+                <span className="text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider text-primary bg-primary-subtle px-2.5 py-1 rounded-lg">
                   Österreichischer Zulassungs-Index
                 </span>
-                <h2 className="mt-2 text-[20px] font-bold text-ink">
+                <h2 className="mt-2 text-[18px] sm:text-[20px] font-bold text-ink">
                   MedAT-Zulassungschance & Quoten-Analyse
                 </h2>
-                <p className="mt-1 text-[13.5px] text-ink-3 max-w-2xl leading-relaxed">
+                <p className="mt-1 text-[12.5px] sm:text-[13.5px] text-ink-3 max-w-2xl leading-relaxed">
                   Deine prognostizierte Gesamtpunktzahl errechnet sich aus der offiziellen Gewichtung:
                   BMS (40%), KFF (40%), TV (10%) und SEK (10%).
                 </p>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="rounded-2xl border border-line bg-paper p-4 text-center min-w-[140px] shadow-2xs">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-ink-4">
+                <div className="rounded-2xl border border-line bg-paper p-3.5 sm:p-4 text-center w-full sm:w-auto sm:min-w-[140px] shadow-2xs">
+                  <span className="text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider text-ink-4">
                     Dein Score
                   </span>
-                  <div className="num text-[28px] font-black text-primary">
+                  <div className="num text-[24px] sm:text-[28px] font-black text-primary">
                     {projectedMedATScore !== null ? `${projectedMedATScore}%` : "—"}
                   </div>
-                  <span className="text-[11px] font-semibold text-ink-3">
+                  <span className="text-[10.5px] sm:text-[11px] font-semibold text-ink-3">
                     {projectedMedATScore !== null && projectedMedATScore >= austrianQuotaCutoff
                       ? "✓ Im Quotenbereich"
                       : "Training empfohlen"}
@@ -782,13 +784,13 @@ export default function Stats({
             </div>
 
             {/* Cutoff Reference Bars with Visual Target Markers */}
-            <div className="mt-6 space-y-4 pt-6 border-t border-line/80">
+            <div className="mt-5 sm:mt-6 space-y-4 pt-5 sm:pt-6 border-t border-line/80">
               {/* Austrian Quota */}
               <div>
-                <div className="flex items-center justify-between text-xs font-bold mb-1.5">
-                  <span className="text-slate-700 flex items-center gap-2">
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between text-[11px] sm:text-xs font-bold gap-0.5 xs:gap-2 mb-1.5">
+                  <span className="text-slate-700 flex items-center gap-1.5 sm:gap-2">
                     <span>🇦🇹</span>
-                    <span>Österreicher-Quote (75% aller Studienplätze)</span>
+                    <span>Österreicher-Quote (75% aller Plätze)</span>
                   </span>
                   <span className="text-slate-900">
                     Cutoff: ~{austrianQuotaCutoff}% ·{" "}
@@ -799,7 +801,7 @@ export default function Stats({
                         </span>
                       ) : (
                         <span className="text-amber-700 font-bold">
-                          -{(austrianQuotaCutoff - projectedMedATScore).toFixed(1)} pp bis zum Cutoff
+                          -{(austrianQuotaCutoff - projectedMedATScore).toFixed(1)} pp bis Cutoff
                         </span>
                       )
                     ) : (
@@ -807,7 +809,7 @@ export default function Stats({
                     )}
                   </span>
                 </div>
-                <div className="relative h-3 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div className="relative h-2.5 sm:h-3 w-full bg-slate-100 rounded-full overflow-hidden">
                   <div
                     className="absolute top-0 bottom-0 w-0.5 bg-slate-400 z-10"
                     style={{ left: `${austrianQuotaCutoff}%` }}
@@ -826,10 +828,10 @@ export default function Stats({
 
               {/* EU Quota */}
               <div>
-                <div className="flex items-center justify-between text-xs font-bold mb-1.5">
-                  <span className="text-slate-700 flex items-center gap-2">
+                <div className="flex flex-col xs:flex-row xs:items-center justify-between text-[11px] sm:text-xs font-bold gap-0.5 xs:gap-2 mb-1.5">
+                  <span className="text-slate-700 flex items-center gap-1.5 sm:gap-2">
                     <span>🇪🇺</span>
-                    <span>EU-Quote (20% der Studienplätze)</span>
+                    <span>EU-Quote (20% der Plätze)</span>
                   </span>
                   <span className="text-slate-900">
                     Cutoff: ~{euQuotaCutoff}% ·{" "}
@@ -840,7 +842,7 @@ export default function Stats({
                         </span>
                       ) : (
                         <span className="text-amber-700 font-bold">
-                          -{(euQuotaCutoff - projectedMedATScore).toFixed(1)} pp bis zum Cutoff
+                          -{(euQuotaCutoff - projectedMedATScore).toFixed(1)} pp bis Cutoff
                         </span>
                       )
                     ) : (
@@ -848,7 +850,7 @@ export default function Stats({
                     )}
                   </span>
                 </div>
-                <div className="relative h-3 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div className="relative h-2.5 sm:h-3 w-full bg-slate-100 rounded-full overflow-hidden">
                   <div
                     className="absolute top-0 bottom-0 w-0.5 bg-slate-400 z-10"
                     style={{ left: `${euQuotaCutoff}%` }}
@@ -866,7 +868,7 @@ export default function Stats({
               </div>
 
               {/* Target University Cutoff */}
-              <div className="pt-2 flex items-center justify-between text-xs text-ink-3">
+              <div className="pt-1.5 sm:pt-2 flex flex-wrap items-center justify-between gap-1 text-[11px] sm:text-xs text-ink-3">
                 <span>
                   Referenzwert für <strong>{targetUniMeta.name}</strong>:
                 </span>
@@ -876,7 +878,7 @@ export default function Stats({
           </div>
 
           {/* Section Weights & Performance Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
             {sectionStatsList.map(({ meta, stats }) => {
               const weight =
                 userProfile.examType === "MEDAT-Z"
@@ -890,26 +892,26 @@ export default function Stats({
               return (
                 <div
                   key={meta.code}
-                  className="rounded-2xl border border-line bg-paper p-5 shadow-xs flex flex-col justify-between"
+                  className="rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold uppercase text-primary bg-primary-subtle px-2 py-0.5 rounded-md">
+                      <span className="text-[11px] sm:text-xs font-bold uppercase text-primary bg-primary-subtle px-2 py-0.5 rounded-md">
                         {meta.code}
                       </span>
-                      <span className="text-xs font-bold text-slate-400">
+                      <span className="text-[11px] sm:text-xs font-bold text-slate-400">
                         {weight}% Gewichtung
                       </span>
                     </div>
 
-                    <h3 className="mt-3 text-[16px] font-bold text-ink">{meta.shortTitle}</h3>
-                    <p className="text-[12px] text-ink-3 line-clamp-2 mt-0.5 leading-relaxed">{meta.description}</p>
+                    <h3 className="mt-2.5 sm:mt-3 text-[15px] sm:text-[16px] font-bold text-ink">{meta.shortTitle}</h3>
+                    <p className="text-[11.5px] sm:text-[12px] text-ink-3 line-clamp-2 mt-0.5 leading-relaxed">{meta.description}</p>
 
-                    <div className="mt-4 flex items-baseline justify-between">
-                      <span className="num text-[24px] font-black text-ink">
+                    <div className="mt-3 sm:mt-4 flex items-baseline justify-between">
+                      <span className="num text-[22px] sm:text-[24px] font-black text-ink">
                         {stats.answeredCount > 0 ? `${stats.accuracy}%` : "—"}
                       </span>
-                      <span className="text-[11.5px] font-semibold text-ink-4">
+                      <span className="text-[11px] sm:text-[11.5px] font-semibold text-ink-4">
                         {stats.answeredCount} von {stats.totalQuestions} Fragen
                       </span>
                     </div>
@@ -924,7 +926,7 @@ export default function Stats({
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-line/60 flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-ink-3">
+                    <span className="text-[10.5px] sm:text-[11px] font-bold text-ink-3">
                       {stats.completedChapters > 0
                         ? `${stats.completedChapters} / ${stats.totalChapters} gemeistert`
                         : stats.answeredCount > 0
@@ -934,7 +936,7 @@ export default function Stats({
                     <button
                       type="button"
                       onClick={() => onNav("practice", { section: meta.code })}
-                      className="text-[12px] font-bold text-primary hover:underline cursor-pointer"
+                      className="text-[11.5px] sm:text-[12px] font-bold text-primary hover:underline cursor-pointer"
                     >
                       Trainieren →
                     </button>
@@ -945,15 +947,15 @@ export default function Stats({
           </div>
 
           {/* Performance Timeline Chart */}
-          <div className="rounded-3xl border border-line bg-paper p-6 sm:p-7 shadow-xs">
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <div className="rounded-2xl sm:rounded-3xl border border-line bg-paper p-4 sm:p-7 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 mb-4 sm:mb-6">
               <div>
-                <h3 className="text-[17px] font-bold text-ink">Trefferquoten- & Lernkurven-Verlauf</h3>
-                <p className="text-[12.5px] text-ink-3">
+                <h3 className="text-[16px] sm:text-[17px] font-bold text-ink">Trefferquoten- & Lernkurven-Verlauf</h3>
+                <p className="text-[12px] sm:text-[12.5px] text-ink-3">
                   Ergebnisse deiner chronologisch absolvierten Fragensets und Prüfungssimulationen.
                 </p>
               </div>
-              <div className="flex items-center gap-3 text-xs font-bold text-ink-4">
+              <div className="flex items-center gap-3 text-[11px] sm:text-xs font-bold text-ink-4">
                 <span className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-primary" />
                   Echtes Ergebnis
@@ -966,9 +968,9 @@ export default function Stats({
             </div>
 
             {timelineChartData.length >= 2 ? (
-              <div className="h-64 w-full">
+              <div className="h-56 sm:h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={timelineChartData} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
+                  <AreaChart data={timelineChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <defs>
                       <linearGradient id="scoreGrad" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#dc2626" stopOpacity={0.25} />
@@ -1025,7 +1027,7 @@ export default function Stats({
                 </ResponsiveContainer>
               </div>
             ) : (
-              <div className="rounded-2xl border border-dashed border-line bg-paper-3/40 p-8 text-center space-y-3">
+              <div className="rounded-2xl border border-dashed border-line bg-paper-3/40 p-6 sm:p-8 text-center space-y-3">
                 <div className="mx-auto h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
                   <IconChart className="h-5 w-5" />
                 </div>
@@ -1052,23 +1054,23 @@ export default function Stats({
           TAB 2: ALLE 13 SUBTESTS
           ================================================================= */}
       {activeTab === "subtests" && (
-        <div className="space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="space-y-5 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <h2 className="text-[18px] font-bold text-ink">Die 13 offiziellen MedAT-Subtests</h2>
-              <p className="text-[13px] text-ink-3">
+              <h2 className="text-[17px] sm:text-[18px] font-bold text-ink">Die 13 offiziellen MedAT-Subtests</h2>
+              <p className="text-[12px] sm:text-[13px] text-ink-3">
                 Detaillierte Analyse jedes Einzelmoduls mit Fragensumme, Trefferquote und Status.
               </p>
             </div>
 
             {/* Subtest Section Filter */}
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1 -mx-1 px-1 sm:mx-0 sm:px-0 sm:flex-wrap">
               {["ALL", "BMS", "KFF", "TV", "SEK"].map((sec) => (
                 <button
                   key={sec}
                   type="button"
                   onClick={() => setSubtestSectionFilter(sec)}
-                  className={`rounded-xl px-3 py-1.5 text-[12px] font-bold transition-all cursor-pointer ${
+                  className={`shrink-0 rounded-xl px-2.5 sm:px-3 py-1.5 text-[11.5px] sm:text-[12px] font-bold transition-all cursor-pointer ${
                     subtestSectionFilter === sec
                       ? "bg-slate-900 text-white shadow-xs"
                       : "border border-line bg-paper text-ink-3 hover:text-ink"
@@ -1080,22 +1082,22 @@ export default function Stats({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
             {filteredSubtests.map((sub) => {
               const { stats, officialCount, mastery } = sub;
 
               return (
                 <div
                   key={sub.id}
-                  className="rounded-2xl border border-line bg-paper p-5 shadow-xs flex flex-col justify-between"
+                  className="rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
-                      <span className="font-mono text-xs font-black uppercase text-primary bg-primary-subtle px-2 py-0.5 rounded-md">
+                      <span className="font-mono text-[11px] sm:text-xs font-black uppercase text-primary bg-primary-subtle px-2 py-0.5 rounded-md">
                         {sub.section} · {officialCount} Aufgaben
                       </span>
                       <span
-                        className={`rounded-full px-2 py-0.5 text-[10.5px] font-bold ${
+                        className={`rounded-full px-2 py-0.5 text-[10px] sm:text-[10.5px] font-bold ${
                           mastery === "mastered"
                             ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
                             : mastery === "in_progress"
@@ -1111,14 +1113,14 @@ export default function Stats({
                       </span>
                     </div>
 
-                    <h3 className="mt-3 text-[16px] font-bold text-ink">{sub.title}</h3>
-                    <p className="mt-1 text-[12px] text-ink-3 line-clamp-2">{sub.description}</p>
+                    <h3 className="mt-2.5 sm:mt-3 text-[15px] sm:text-[16px] font-bold text-ink">{sub.title}</h3>
+                    <p className="mt-0.5 sm:mt-1 text-[11.5px] sm:text-[12px] text-ink-3 line-clamp-2">{sub.description}</p>
 
-                    <div className="mt-4 flex items-baseline justify-between">
-                      <span className="num text-[24px] font-black text-ink">
+                    <div className="mt-3 sm:mt-4 flex items-baseline justify-between">
+                      <span className="num text-[22px] sm:text-[24px] font-black text-ink">
                         {stats.answeredCount > 0 ? `${stats.accuracy}%` : "—"}
                       </span>
-                      <span className="text-[11.5px] font-semibold text-ink-4">
+                      <span className="text-[11px] sm:text-[11.5px] font-semibold text-ink-4">
                         {stats.answeredCount} beantwortet ({stats.correctCount} richtig)
                       </span>
                     </div>
@@ -1137,14 +1139,14 @@ export default function Stats({
                     </div>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-line/60 flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-ink-4">
+                  <div className="mt-4 sm:mt-5 pt-3 border-t border-line/60 flex items-center justify-between">
+                    <span className="text-[10.5px] sm:text-[11px] font-bold text-ink-4">
                       {stats.totalChapters} Kapitel
                     </span>
                     <button
                       type="button"
                       onClick={() => onNav("practice", { section: sub.section, subjectId: sub.id })}
-                      className="btn btn-primary btn-sm text-[12px] font-bold cursor-pointer"
+                      className="btn btn-primary btn-sm text-[11.5px] sm:text-[12px] font-bold cursor-pointer"
                     >
                       Jetzt üben →
                     </button>
@@ -1165,70 +1167,70 @@ export default function Stats({
           TAB 4: GENERALPROBEN & MOCKS
           ================================================================= */}
       {activeTab === "mocks" && (
-        <div className="space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="space-y-5 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
             <div>
-              <h2 className="text-[18px] font-bold text-ink">Prüfungssimulationen & Generalproben</h2>
-              <p className="text-[13px] text-ink-3">
+              <h2 className="text-[17px] sm:text-[18px] font-bold text-ink">Prüfungssimulationen & Generalproben</h2>
+              <p className="text-[12px] sm:text-[13px] text-ink-3">
                 Reale MedAT-Generalproben mit exakt 221 Aufgaben, Zeitlimits und Prüfungsdruck.
               </p>
             </div>
             <button
               type="button"
               onClick={() => onNav("mocks")}
-              className="btn btn-primary btn-sm text-[12.5px] font-bold cursor-pointer"
+              className="btn btn-primary btn-sm text-[12px] sm:text-[12.5px] font-bold cursor-pointer w-full sm:w-auto"
             >
               Generalprobe starten →
             </button>
           </div>
 
           {/* Mocks Overview KPI Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="rounded-2xl border border-line bg-paper p-5 shadow-xs">
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
+            <div className="rounded-2xl border border-line bg-paper p-3.5 sm:p-5 shadow-xs">
+              <p className="text-[10.5px] sm:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
                 Absolvierte Generalproben
               </p>
-              <div className="mt-2 num text-[28px] font-black text-ink">
+              <div className="mt-1.5 sm:mt-2 num text-[22px] sm:text-[28px] font-black text-ink">
                 {mockStats.totalFullMocks}
               </div>
-              <p className="mt-1 text-[11px] text-ink-4">Vollständige 221-Fragen Läufe</p>
+              <p className="mt-1 text-[10.5px] sm:text-[11px] text-ink-4">Vollständige 221-Fragen Läufe</p>
             </div>
 
-            <div className="rounded-2xl border border-line bg-paper p-5 shadow-xs">
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
+            <div className="rounded-2xl border border-line bg-paper p-3.5 sm:p-5 shadow-xs">
+              <p className="text-[10.5px] sm:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
                 Bester Mock-Score
               </p>
-              <div className="mt-2 num text-[28px] font-black text-emerald-700">
+              <div className="mt-1.5 sm:mt-2 num text-[22px] sm:text-[28px] font-black text-emerald-700">
                 {mockStats.bestScore !== null ? `${mockStats.bestScore}%` : "—"}
               </div>
-              <p className="mt-1 text-[11px] text-ink-4">Höchste erreichte Punktzahl</p>
+              <p className="mt-1 text-[10.5px] sm:text-[11px] text-ink-4">Höchste erreichte Punktzahl</p>
             </div>
 
-            <div className="rounded-2xl border border-line bg-paper p-5 shadow-xs">
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
+            <div className="rounded-2xl border border-line bg-paper p-3.5 sm:p-5 shadow-xs">
+              <p className="text-[10.5px] sm:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
                 Ø Durchschnitts-Score
               </p>
-              <div className="mt-2 num text-[28px] font-black text-ink">
+              <div className="mt-1.5 sm:mt-2 num text-[22px] sm:text-[28px] font-black text-ink">
                 {mockStats.averageScore !== null ? `${mockStats.averageScore}%` : "—"}
               </div>
-              <p className="mt-1 text-[11px] text-ink-4">Über alle Full Mocks</p>
+              <p className="mt-1 text-[10.5px] sm:text-[11px] text-ink-4">Über alle Full Mocks</p>
             </div>
 
-            <div className="rounded-2xl border border-line bg-paper p-5 shadow-xs">
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
+            <div className="rounded-2xl border border-line bg-paper p-3.5 sm:p-5 shadow-xs">
+              <p className="text-[10.5px] sm:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">
                 Letzter Trend
               </p>
-              <div className="mt-2 num text-[28px] font-black text-primary">
+              <div className="mt-1.5 sm:mt-2 num text-[22px] sm:text-[28px] font-black text-primary">
                 {mockStats.improvementText}
               </div>
-              <p className="mt-1 text-[11px] text-ink-4">Entwicklung zum Vorlauf</p>
+              <p className="mt-1 text-[10.5px] sm:text-[11px] text-ink-4">Entwicklung zum Vorlauf</p>
             </div>
           </div>
 
           {/* Mock History List */}
           {mockStats.allCompletedMocks.length > 0 ? (
             <div className="space-y-3">
-              <h3 className="text-sm font-bold text-ink uppercase tracking-wider">
+              <h3 className="text-xs sm:text-sm font-bold text-ink uppercase tracking-wider">
                 Historie deiner Prüfungssimulationen
               </h3>
               <div className="divide-y divide-line rounded-2xl border border-line bg-paper overflow-hidden shadow-xs">
@@ -1238,13 +1240,13 @@ export default function Stats({
                   return (
                     <div
                       key={mock.id}
-                      className="p-5 flex flex-wrap items-center justify-between gap-4 hover:bg-paper-3/40 transition-colors"
+                      className="p-3.5 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 hover:bg-paper-3/40 transition-colors"
                     >
                       <div>
-                        <div className="flex items-center gap-2">
-                          <p className="text-[15px] font-bold text-ink">{mock.examTitle}</p>
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                          <p className="text-[14.5px] sm:text-[15px] font-bold text-ink">{mock.examTitle}</p>
                           <span
-                            className={`rounded-full px-2 py-0.5 text-[10.5px] font-bold ${
+                            className={`rounded-full px-2 py-0.5 text-[10px] sm:text-[10.5px] font-bold ${
                               mock.category === "full"
                                 ? "bg-primary-subtle text-primary border border-primary/20"
                                 : "bg-slate-100 text-slate-700"
@@ -1253,31 +1255,28 @@ export default function Stats({
                             {mock.category === "full" ? "Full Generalprobe (221 Q)" : "Quick Simulation"}
                           </span>
                         </div>
-                        <p className="text-[12px] text-ink-3 mt-0.5">
-                          {mock.date} · {Math.round(mock.timeSpentSeconds / 60)} Minuten Bearbeitungszeit ·{" "}
+                        <p className="text-[11.5px] sm:text-[12px] text-ink-3 mt-0.5">
+                          {mock.date} · {Math.round(mock.timeSpentSeconds / 60)} Minuten ·{" "}
                           {mock.correctCount} von {mock.totalQuestions} richtig
                         </p>
                       </div>
 
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 w-full sm:w-auto pt-2.5 sm:pt-0 border-t sm:border-t-0 border-line/50">
                         {/* Sub-score Pills */}
                         {mock.bmsPercent !== undefined && (
-                          <div className="hidden md:flex items-center gap-1.5 text-xs font-mono">
-                            <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-bold">
+                          <div className="flex items-center gap-1 text-[10.5px] sm:text-xs font-mono">
+                            <span className="bg-slate-100 px-1.5 sm:px-2 py-0.5 rounded text-slate-600 font-bold">
                               BMS: {mock.bmsPercent}%
                             </span>
-                            <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-bold">
+                            <span className="bg-slate-100 px-1.5 sm:px-2 py-0.5 rounded text-slate-600 font-bold">
                               KFF: {mock.kffPercent}%
-                            </span>
-                            <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-bold">
-                              SEK: {mock.sekPercent}%
                             </span>
                           </div>
                         )}
 
                         <div className="text-right">
                           <span
-                            className={`num text-[22px] font-black ${
+                            className={`num text-[20px] sm:text-[22px] font-black ${
                               score >= 75 ? "text-emerald-700" : "text-ink"
                             }`}
                           >
@@ -1288,7 +1287,7 @@ export default function Stats({
                         <button
                           type="button"
                           onClick={() => onNav("mocks", { mockAction: "view-generalprobe-results", mockId: mock.mockId })}
-                          className="btn btn-secondary btn-sm text-xs font-bold cursor-pointer"
+                          className="btn btn-secondary btn-sm text-[11.5px] sm:text-xs font-bold cursor-pointer shrink-0"
                         >
                           Ansehen →
                         </button>
@@ -1299,13 +1298,13 @@ export default function Stats({
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl border border-dashed border-line bg-paper-3/40 p-10 text-center space-y-4">
-              <div className="mx-auto h-12 w-12 rounded-2xl bg-red-50 text-primary flex items-center justify-center">
-                <IconTarget className="h-6 w-6" />
+            <div className="rounded-2xl sm:rounded-3xl border border-dashed border-line bg-paper-3/40 p-6 sm:p-10 text-center space-y-3 sm:space-y-4">
+              <div className="mx-auto h-11 w-11 sm:h-12 sm:w-12 rounded-2xl bg-red-50 text-primary flex items-center justify-center">
+                <IconTarget className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div className="max-w-md mx-auto">
-                <h3 className="text-base font-bold text-ink">Noch keine Generalprobe absolviert</h3>
-                <p className="text-xs text-ink-3 mt-1 leading-relaxed">
+                <h3 className="text-[15px] sm:text-base font-bold text-ink">Noch keine Generalprobe absolviert</h3>
+                <p className="text-[11.5px] sm:text-xs text-ink-3 mt-1 leading-relaxed">
                   Überprüfe dein Wissen unter echten Prüfungsbedingungen. Nach Abschluss deiner ersten
                   Generalprobe siehst du hier deinen genauen Score und die Notenaufteilung.
                 </p>
@@ -1326,11 +1325,11 @@ export default function Stats({
           TAB 5: FEHLER & SCHWACHSTELLEN
           ================================================================= */}
       {activeTab === "weaknesses" && (
-        <div className="space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="space-y-5 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
             <div>
-              <h2 className="text-[18px] font-bold text-ink">Fehlerheft & Top-Schwachstellen</h2>
-              <p className="text-[13px] text-ink-3">
+              <h2 className="text-[17px] sm:text-[18px] font-bold text-ink">Fehlerheft & Top-Schwachstellen</h2>
+              <p className="text-[12px] sm:text-[13px] text-ink-3">
                 Gezieltes Training falscher Fragen und Kapitel mit dem größten Verbesserungspotenzial.
               </p>
             </div>
@@ -1339,7 +1338,7 @@ export default function Stats({
               <button
                 type="button"
                 onClick={() => onNav("practice", { mode: "mistakes" })}
-                className="btn btn-primary btn-sm text-[12.5px] font-bold cursor-pointer"
+                className="btn btn-primary btn-sm text-[12px] sm:text-[12.5px] font-bold cursor-pointer w-full sm:w-auto"
               >
                 Fehlerheft trainieren ({wrong.size} Fragen) →
               </button>
@@ -1352,34 +1351,34 @@ export default function Stats({
               <h3 className="text-xs font-bold text-ink uppercase tracking-wider">
                 Identifizierte Schwachstellen (unter 80% Meisterschaft)
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
                 {weakAreas.map(({ chapter, stats }) => (
                   <div
                     key={chapter.id}
-                    className="rounded-2xl border border-line bg-paper p-5 shadow-xs flex flex-col justify-between"
+                    className="rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs font-black uppercase text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">
+                        <span className="font-mono text-[11px] sm:text-xs font-black uppercase text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">
                           {stats.mistakesCount} Fehler
                         </span>
-                        <span className="num text-sm font-bold text-ink">
+                        <span className="num text-xs sm:text-sm font-bold text-ink">
                           {stats.answeredCount > 0 ? `${stats.accuracy}% Quote` : "Offen"}
                         </span>
                       </div>
 
-                      <h4 className="mt-3 text-[15px] font-bold text-ink">{chapter.title}</h4>
-                      <p className="text-[12px] text-ink-3 line-clamp-1">{chapter.description}</p>
+                      <h4 className="mt-2.5 sm:mt-3 text-[14.5px] sm:text-[15px] font-bold text-ink">{chapter.title}</h4>
+                      <p className="text-[11.5px] sm:text-[12px] text-ink-3 line-clamp-1">{chapter.description}</p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-line/60 flex items-center justify-between">
-                      <span className="text-[11px] font-semibold text-slate-400">
+                    <div className="mt-3.5 sm:mt-4 pt-3 border-t border-line/60 flex items-center justify-between">
+                      <span className="text-[10.5px] sm:text-[11px] font-semibold text-slate-400">
                         {stats.completedSetsCount} / 5 Sets abgeschlossen
                       </span>
                       <button
                         type="button"
                         onClick={() => onNav("practice", { chapterId: chapter.id })}
-                        className="btn btn-secondary btn-sm text-xs font-bold cursor-pointer"
+                        className="btn btn-secondary btn-sm text-[11px] sm:text-xs font-bold cursor-pointer"
                       >
                         Kapitel üben →
                       </button>
@@ -1389,7 +1388,7 @@ export default function Stats({
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl border border-line bg-emerald-50/50 p-8 text-center space-y-3">
+            <div className="rounded-2xl sm:rounded-3xl border border-line bg-emerald-50/50 p-6 sm:p-8 text-center space-y-3">
               <div className="mx-auto h-10 w-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
                 <IconCheck className="h-5 w-5" />
               </div>

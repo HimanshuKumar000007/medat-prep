@@ -83,6 +83,14 @@ const SEC_ICONS: Record<SectionCode, (p: { className?: string }) => JSX.Element>
   MF: IconTarget,
 };
 
+const SECTION_LABELS: Record<SectionCode, { mobile: string; tablet: string; desktop: string }> = {
+  BMS: { mobile: "BMS", tablet: "BMS", desktop: "BMS · Basiskenntnisse" },
+  TV: { mobile: "TV", tablet: "Textverständnis", desktop: "Textverständnis" },
+  KFF: { mobile: "KFF", tablet: "KFF", desktop: "KFF · Kognitive Fähigkeiten" },
+  SEK: { mobile: "SEK", tablet: "SEK", desktop: "SEK · Sozial-Emotional" },
+  MF: { mobile: "MF", tablet: "MF", desktop: "MF · Manuelle Fertigkeiten" },
+};
+
 const SET_ICONS: Record<number, string> = {
   1: "🌱", // Grundlagen
   2: "🎯", // Core Practice
@@ -2278,11 +2286,12 @@ export default function Practice({
   return (
     <div className="space-y-5 sm:space-y-8 pb-24 pt-1 sm:pt-2">
       {/* Primary Section Switcher Tabs */}
-      <div className="flex items-center gap-1.5 sm:gap-2 border-b border-slate-200 pb-2.5 sm:pb-4 overflow-x-auto no-scrollbar -mx-3 px-3 sm:mx-0 sm:px-0">
+      <div className="flex items-center gap-1.5 sm:gap-2.5 border-b border-line pb-2.5 sm:pb-3.5 overflow-x-auto scrollbar-none no-scrollbar -mx-3 px-3 sm:mx-0 sm:px-0">
         {availableSections.map((sec) => {
           const isSelected = activeSection === sec.code;
           const SecIcon = SEC_ICONS[sec.code] || DIconDna;
           const weight = userProfile.examType === "MEDAT-Z" ? sec.weightMedATZ : sec.weightMedATH;
+          const labels = SECTION_LABELS[sec.code] || { mobile: sec.shortTitle, tablet: sec.shortTitle, desktop: sec.title };
 
           return (
             <button
@@ -2292,18 +2301,20 @@ export default function Practice({
                 setSelectedSubjectId(null);
                 setSelectedChapterId(null);
               }}
-              className={`shrink-0 flex items-center gap-1.5 sm:gap-2 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-[13px] sm:text-[13.5px] font-bold transition-all whitespace-nowrap active:scale-95 cursor-pointer ${
+              title={sec.title}
+              className={`shrink-0 flex items-center gap-1.5 sm:gap-2 rounded-xl px-3 sm:px-3.5 py-2 sm:py-2.5 text-[12.5px] sm:text-[13px] font-bold transition-all whitespace-nowrap active:scale-95 cursor-pointer ${
                 isSelected
-                  ? "bg-slate-900 text-white shadow-sm"
-                  : "bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200"
+                  ? "bg-slate-900 text-white shadow-xs"
+                  : "border border-line bg-paper text-ink-3 hover:text-ink hover:bg-paper-2"
               }`}
             >
               <SecIcon className="h-4 w-4 shrink-0" />
-              <span className="sm:hidden">{sec.shortTitle}</span>
-              <span className="hidden sm:inline">{sec.title}</span>
+              <span className="md:hidden">{labels.mobile}</span>
+              <span className="hidden md:inline xl:hidden">{labels.tablet}</span>
+              <span className="hidden xl:inline">{labels.desktop}</span>
               <span
                 className={`ml-1 text-[10px] sm:text-[10.5px] font-black rounded-md px-1.5 py-0.5 ${
-                  isSelected ? "bg-white/20 text-white" : "bg-slate-200/90 text-slate-700"
+                  isSelected ? "bg-white/20 text-white" : "bg-paper-3 text-ink-3"
                 }`}
               >
                 {weight}%
@@ -2339,7 +2350,7 @@ export default function Practice({
         <>
           {/* Sub-Subject Switcher for BMS & KFF */}
           {sectionSubjects.length > 1 && (
-            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1 -mx-3 px-3 sm:mx-0 sm:px-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none no-scrollbar pb-1 -mx-3 px-3 sm:mx-0 sm:px-0">
               {sectionSubjects.map((sub) => {
                 const isSubSelected = currentSubject?.id === sub.id;
                 return (

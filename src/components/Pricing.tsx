@@ -53,28 +53,27 @@ export default function Pricing() {
   };
 
   return (
-    <section id="preise" className="relative overflow-hidden bg-paper py-20 lg:py-28">
+    <section id="preise" className="relative overflow-hidden bg-paper py-16 sm:py-20 lg:py-28">
       <div
         className="pointer-events-none absolute inset-0"
         style={{ background: "radial-gradient(ellipse 70% 45% at 50% 0%, rgba(220,38,38,0.05), transparent)" }}
         aria-hidden="true"
       />
       <div className="wrap relative">
-        <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="flex flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-end">
           <Reveal className="max-w-xl">
             <span className="eyebrow">Preise</span>
-            <h2 className="display mt-4 text-[clamp(1.75rem,3vw+0.5rem,2.5rem)] text-ink">
+            <h2 className="display mt-4 text-[26px] xs:text-[30px] sm:text-[clamp(1.75rem,3vw+0.5rem,2.5rem)] text-ink">
               Billiger als ein Semester Panik.
             </h2>
-            <p className="mt-4 text-[16px] leading-relaxed text-ink-2">
+            <p className="mt-3.5 sm:mt-4 text-[14px] xs:text-[15px] sm:text-[16px] leading-relaxed text-ink-2">
               Ein MedAT-Vorbereitungskurs kostet schnell 1.500 €+. MedAT Prep bekommst du ab 0 € — und Premium für
               weniger, als dich ein einziger Nachhilfemonat kosten würde.
             </p>
           </Reveal>
-
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-stretch">
+        <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 lg:grid-cols-3 lg:items-stretch">
           {PRICING.map((tier, i) => {
             const price = tier.id === "premium" ? 39 : tier.once;
             const unitLabel =
@@ -82,29 +81,29 @@ export default function Pricing() {
             return (
               <Reveal key={tier.id} delay={i * 110} className="h-full">
                 <article
-                  className={`card-lift card-lift-xl relative flex h-full flex-col rounded-2xl border bg-paper p-8 ${
+                  className={`card-lift card-lift-xl relative flex h-full flex-col rounded-2xl border bg-paper p-4 xs:p-5 sm:p-8 ${
                     tier.featured ? "border-primary/60 shadow-xl" : "border-line"
                   }`}
                   aria-label={`Tarif ${tier.name}`}
                 >
                   {tier.badge && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-3.5 py-1 text-[12px] font-bold text-paper shadow-red">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-3 sm:px-3.5 py-0.5 sm:py-1 text-[10.5px] sm:text-[12px] font-bold text-paper shadow-red">
                       {tier.badge}
                     </span>
                   )}
-                  <h3 className="text-[19px] font-bold text-ink">{tier.name}</h3>
-                  <p className="mt-1.5 text-[13px] font-medium text-ink-3">{tier.tagline}</p>
+                  <h3 className="text-[17px] sm:text-[19px] font-bold text-ink">{tier.name}</h3>
+                  <p className="mt-1 text-[12px] sm:text-[13px] font-medium text-ink-3">{tier.tagline}</p>
 
-                  <p className="mt-6 flex items-baseline gap-1.5">
-                    <span key={tier.id} className="display-num animate-fade-up inline-block text-[clamp(2.25rem,3vw,2.75rem)] text-ink">
+                  <p className="mt-4 sm:mt-6 flex items-baseline gap-1.5">
+                    <span key={tier.id} className="display-num animate-fade-up inline-block text-[30px] xs:text-[34px] sm:text-[clamp(2.1rem,3vw,2.75rem)] text-ink">
                       {price === 0 ? "0 €" : `${price} €`}
                     </span>
-                    <span className="text-[13px] font-semibold text-ink-3">{unitLabel}</span>
+                    <span className="text-[12px] sm:text-[13px] font-semibold text-ink-3">{unitLabel}</span>
                   </p>
 
-                  <ul className="mt-7 flex-1 space-y-3 border-t border-line pt-7">
+                  <ul className="mt-4 sm:mt-7 flex-1 space-y-2 sm:space-y-3 border-t border-line pt-4 sm:pt-7">
                     {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-[14px] leading-snug text-ink-2">
+                      <li key={f} className="flex items-start gap-2.5 sm:gap-3 text-[13px] sm:text-[14px] leading-snug text-ink-2">
                         <span
                           className={`mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full ${
                             tier.featured ? "bg-primary-subtle text-primary" : "bg-success-subtle text-success"
@@ -119,7 +118,7 @@ export default function Pricing() {
                   </ul>
 
                   <button
-                    className={`btn mt-8 w-full ${tier.featured ? "btn-primary" : "btn-secondary"}`}
+                    className={`btn mt-5 sm:mt-8 w-full min-h-[48px] justify-center touch-manipulation ${tier.featured ? "btn-primary" : "btn-secondary"}`}
                     onClick={() => choose(tier.id)}
                     disabled={loadingTier === tier.id}
                   >
@@ -133,7 +132,7 @@ export default function Pricing() {
         </div>
 
         <Reveal delay={160}>
-          <p className="mt-10 text-center text-[13px] font-medium text-ink-3">
+          <p className="mt-8 sm:mt-10 text-center text-[11.5px] xs:text-[12.5px] sm:text-[13px] font-medium text-ink-3 px-2">
             14 Tage Geld-zurück-Garantie · Jederzeit mit 1 Klick kündbar · Inkl. 20 % österr. USt. · Sofortige Freischaltung
           </p>
         </Reveal>

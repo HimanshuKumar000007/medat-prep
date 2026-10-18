@@ -505,7 +505,7 @@ export default function Mocks({
     if (seed.mockAction === "start-generalprobe") {
       const access = canAccessGeneralprobe(userProfile, recommendedHeroMock.id);
       if (!access.allowed) {
-        setLockedModalMock(recommendedHeroMock);
+        onNav("pricing");
         return;
       }
       setSelectedMockForLaunch(recommendedHeroMock);
@@ -513,7 +513,7 @@ export default function Mocks({
     } else if (seed.mockAction === "view-generalprobe-results") {
       setActiveTab("history");
     }
-  }, [seed, recommendedHeroMock, userProfile]);
+  }, [seed, recommendedHeroMock, userProfile, onNav]);
 
   // Sync result, review, or active full mock exam with Shell header visibility
   useEffect(() => {
@@ -624,7 +624,7 @@ export default function Mocks({
   const openPreTestModal = (mock: MockExamDefinition) => {
     const access = canAccessGeneralprobe(userProfile, mock.id);
     if (!access.allowed) {
-      setLockedModalMock(mock);
+      onNav("pricing");
       return;
     }
     setSelectedMockForLaunch(mock);
@@ -641,7 +641,7 @@ export default function Mocks({
     const access = canAccessGeneralprobe(userProfile, mock.id);
     if (!access.allowed) {
       setIsPreTestModalOpen(false);
-      setLockedModalMock(mock);
+      onNav("pricing");
       return;
     }
     setIsPreTestModalOpen(false);
@@ -1195,8 +1195,7 @@ export default function Mocks({
                     const examId = stats.inProgressExamId || "mock-full-medat-h-1";
                     const access = canAccessGeneralprobe(userProfile, examId);
                     if (!access.allowed) {
-                      const def = OFFICIAL_MOCKS.find((m) => m.id === examId) || OFFICIAL_MOCKS[0];
-                      setLockedModalMock(def);
+                      onNav("pricing");
                       return;
                     }
                     setActiveFullMockDataset(getGeneralprobeDataset(examId));
@@ -1269,14 +1268,14 @@ export default function Mocks({
                       return (
                         <>
                           <button
-                            onClick={() => setLockedModalMock(recommendedHeroMock)}
+                            onClick={() => onNav("pricing")}
                             className="inline-flex items-center gap-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-slate-950 font-black px-8 py-3.5 text-[14.5px] shadow-lg hover:shadow-amber-500/25 transition-all cursor-pointer"
                           >
                             <DIconLock className="h-4 w-4 text-slate-950" />
                             <span>Vollzugang freischalten (39 €) →</span>
                           </button>
                           <button
-                            onClick={() => setLockedModalMock(recommendedHeroMock)}
+                            onClick={() => onNav("pricing")}
                             className="btn btn-secondary px-6 py-3.5 text-[14px] font-bold cursor-pointer"
                           >
                             Pre-Test Checkliste
@@ -1386,13 +1385,16 @@ export default function Mocks({
                 const access = canAccessGeneralprobe(userProfile, exam.id);
                 const isFree = isGeneralprobeFree(exam.id);
                 const isLocked = !access.allowed;
+                const cardDuration = exam.durationText
+                  .replace(" reine Aufgabenzeit + 60 Min. Pause", "")
+                  .replace(" + 60 Min. Pause", "");
 
                 return (
                   <div
                     key={exam.id}
                     onClick={() => {
                       if (isLocked) {
-                        setLockedModalMock(exam);
+                        onNav("pricing");
                       }
                     }}
                     className={`card-lift flex flex-col justify-between rounded-3xl border p-6 sm:p-7 shadow-xs transition-all duration-300 ${
@@ -1453,11 +1455,11 @@ export default function Mocks({
                       </div>
                     </div>
 
-                    <div className="mt-6 flex items-center justify-between border-t border-line pt-4">
-                      <div className="flex items-center gap-3 text-[12px] font-semibold text-ink-4">
-                        <span>⏱ {exam.durationText}</span>
+                    <div className="mt-6 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 border-t border-line pt-4">
+                      <div className="flex items-center gap-2 text-[12px] font-semibold text-ink-4 min-w-0">
+                        <span className="truncate">⏱ {cardDuration}</span>
                         <span>·</span>
-                        <span>{exam.questionCount} Aufgaben</span>
+                        <span className="shrink-0">{exam.questionCount} Aufgaben</span>
                       </div>
 
                       {isLocked ? (
@@ -1465,26 +1467,26 @@ export default function Mocks({
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            setLockedModalMock(exam);
+                            onNav("pricing");
                           }}
-                          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-5 py-2.5 text-[13px] shadow-sm hover:shadow-md transition-all cursor-pointer"
+                          className="shrink-0 whitespace-nowrap inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 active:scale-[0.98] text-slate-950 font-bold px-4 sm:px-5 py-2.5 text-[13px] shadow-sm hover:shadow-md transition-all cursor-pointer"
                         >
-                          <DIconLock className="h-4 w-4" />
-                          <span>Vollzugang freischalten</span>
+                          <DIconLock className="h-4 w-4 shrink-0 text-slate-950" />
+                          <span className="leading-none">Vollzugang freischalten</span>
                         </button>
                       ) : isExamInProgress ? (
                         <button
                           onClick={() => {
                             setActiveFullMockDataset(getGeneralprobeDataset(exam.id));
                           }}
-                          className="btn btn-primary bg-amber-600 hover:bg-amber-700 px-6 py-2.5 text-[13.5px] font-bold shadow-md hover:scale-[1.02] transition-transform cursor-pointer"
+                          className="shrink-0 whitespace-nowrap btn btn-primary bg-amber-600 hover:bg-amber-700 px-6 py-2.5 text-[13.5px] font-bold shadow-md hover:scale-[1.02] transition-transform cursor-pointer"
                         >
                           Fortsetzen →
                         </button>
                       ) : (
                         <button
                           onClick={() => openPreTestModal(exam)}
-                          className="btn btn-primary px-6 py-2.5 text-[13.5px] font-bold shadow-md hover:scale-[1.02] transition-transform cursor-pointer"
+                          className="shrink-0 whitespace-nowrap btn btn-primary px-6 py-2.5 text-[13.5px] font-bold shadow-md hover:scale-[1.02] transition-transform cursor-pointer"
                         >
                           {pastAttempt ? "Wiederholen →" : "Starten →"}
                         </button>
@@ -1938,7 +1940,7 @@ export default function Mocks({
           const targetMock = selectedMockForLaunch || recommendedHeroMock;
           const access = canAccessGeneralprobe(userProfile, targetMock.id);
           if (!access.allowed) {
-            setLockedModalMock(targetMock);
+            onNav("pricing");
             return;
           }
           try {
