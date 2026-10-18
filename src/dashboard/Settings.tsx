@@ -99,7 +99,7 @@ export default function Settings() {
     const priceId =
       PADDLE_CONFIG.monthlyPriceId ||
       PADDLE_CONFIG.oncePriceId ||
-      "pri_01m4sv454dth7gc5fm52tvhht5";
+      "pri_01m57vnth291kxefayhm59y3zx";
 
     setIsOpeningCheckout(true);
     try {

@@ -14,22 +14,22 @@ let paddleInstance: Paddle | null = null;
 
 const env = (import.meta as unknown as { env?: Record<string, string> }).env || {};
 
-const defaultPriceId = "pri_01m4sv454dth7gc5fm52tvhht5";
+const defaultPriceId = "pri_01m57vnth291kxefayhm59y3zx";
 const resolvedPriceId =
-  env.VITE_PADDLE_PRICE_ID_ANNULY ||
+  env.VITE_PADDLE_PRICE_ID_ONCE ||
   env.VITE_PADDLE_PRICE_ID_ANNUAL ||
   env.VITE_PADDLE_PRICE_ID_ANNUALLY ||
   env.VITE_PADDLE_PRICE_ID_MONTHLY ||
   defaultPriceId;
 
 export const PADDLE_CONFIG = {
-  clientToken: env.VITE_PADDLE_CLIENT_TOKEN || "test_ee617a8b37adb9207160fa9f50e",
-  environment: (env.VITE_PADDLE_ENV || "sandbox") as "sandbox" | "production",
+  clientToken: env.VITE_PADDLE_CLIENT_TOKEN || "live_140a16f691817b021a4b3259ef7",
+  environment: (env.VITE_PADDLE_ENV || "production") as "sandbox" | "production",
   monthlyPriceId: resolvedPriceId,
   annualPriceId: resolvedPriceId,
   priceId: resolvedPriceId,
-  productId: env.VITE_PADDLE_PRODUCT_ID || "pro_01m4strby6nzrjc21zeh8jshwp",
-  oncePriceId: env.VITE_PADDLE_PRICE_ID_ONCE || "",
+  productId: env.VITE_PADDLE_PRODUCT_ID || "",
+  oncePriceId: env.VITE_PADDLE_PRICE_ID_ONCE || resolvedPriceId,
 };
 
 /**

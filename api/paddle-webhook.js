@@ -29,9 +29,9 @@ const SUPABASE_SERVICE_ROLE_KEY = getEnv(
 );
 const PADDLE_WEBHOOK_SECRET = getEnv(
   "PADDLE_WEBHOOK_SECRET",
-  "pdl_ntfset_01m57gaksqn578c2a8010svsxk_/67r7Uwr8vNkLeTOYfVliPbXj+SGf1oB"
+  "pdl_ntfset_01m57wem7zwbj47sjkns321dev_T+hfvBnyahtwfM//i//8p8G0k+XL52OI"
 );
-const PADDLE_ENV = getEnv("PADDLE_ENV", "sandbox");
+const PADDLE_ENV = getEnv("PADDLE_ENV", "production");
 
 // Verify Paddle Billing HMAC-SHA256 signature
 export function verifyPaddleSignature(rawBody, signatureHeader, secret = PADDLE_WEBHOOK_SECRET) {
@@ -58,6 +58,7 @@ export function verifyPaddleSignature(rawBody, signatureHeader, secret = PADDLE_
           new Set([
             secret,
             process.env.PADDLE_WEBHOOK_SECRET,
+            "pdl_ntfset_01m57wem7zwbj47sjkns321dev_T+hfvBnyahtwfM//i//8p8G0k+XL52OI",
             "pdl_ntfset_01m57gaksqn578c2a8010svsxk_/67r7Uwr8vNkLeTOYfVliPbXj+SGf1oB",
           ].filter(Boolean))
         );
