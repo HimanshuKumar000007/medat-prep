@@ -15,7 +15,6 @@ import {
   DIconPanel,
   DIconSearch,
   DIconUser,
-  DIconWifiOff,
   DIconZap,
   DIconSparkles,
 } from "./icons";
@@ -593,26 +592,6 @@ export function DashboardShell({
                 <span className="hidden xs:inline">MedAT-</span>Z
               </button>
             </div>
-
-            {/* Offline toggle */}
-            <button
-              onClick={() => {
-                onToggleOffline();
-                toast(
-                  offline
-                    ? "Wieder online — Daten synchronisiert."
-                    : "Offline-Modus aktiv: Fortschritt wird lokal gesichert.",
-                  offline ? "success" : "info"
-                );
-              }}
-              className={`rounded-xl p-1.5 sm:p-2 transition-colors ${
-                offline ? "bg-warning-subtle text-warning" : "text-ink-3 hover:bg-paper-3 hover:text-ink"
-              }`}
-              aria-label="Offline-Modus umschalten"
-              title="Offline-Modus umschalten"
-            >
-              <DIconWifiOff className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
-            </button>
 
             {/* User Profile Menu */}
             <div className="relative">
