@@ -15,11 +15,11 @@ import type { Screen } from "./Shell";
 
 export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) {
   const [loadingTier, setLoadingTier] = useState<string | null>(null);
-  const { userProfile } = usePractice();
+  const { userProfile, updateUserProfile } = usePractice();
 
   const handleSelect = async (tier: PricingTier) => {
     if (tier.id === "free") {
-      toast("Du nutzt bereits den Basis-Zugang.");
+      toast(userProfile.isPro ? "Du hast bereits den MedAT-Vollzugang aktiv." : "Du nutzt bereits den Basis-Zugang.");
       return;
     }
 
@@ -51,7 +51,8 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
           exam_type: userProfile.examType,
         },
         onSuccess: () => {
-          toast("Zahlung erfolgreich abgeschlossen! Premium-Zugang wird aktiviert...", "info");
+          updateUserProfile({ isPro: true, subscriptionTier: "premium", subscriptionStatus: "active" });
+          toast("🎉 Willkommen beim MedAT-Vollzugang! Alle Kapitel wurden freigeschaltet.", "success");
           if (onNav) {
             onNav("home");
           }
@@ -88,6 +89,11 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
       {/* Pricing Cards Grid */}
       <div className="grid gap-6 lg:grid-cols-3 items-stretch">
         {PRICING.map((tier) => {
+          const isUserPro = Boolean(userProfile.isPro);
+          const isCurrentActive =
+            (tier.id === "premium" && isUserPro) ||
+            (tier.id === "free" && !isUserPro);
+
           const price = tier.id === "premium" ? 39 : tier.once;
           const unitLabel =
             tier.unit === "free"
@@ -102,15 +108,23 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
             <div
               key={tier.id}
               className={`relative flex flex-col rounded-3xl border p-7 transition-all duration-200 ${
-                isFeatured
+                isUserPro && tier.id === "premium"
+                  ? "border-emerald-500 bg-gradient-to-b from-emerald-50/40 via-paper to-paper shadow-xl ring-2 ring-emerald-500/20"
+                  : isFeatured
                   ? "border-primary bg-gradient-to-b from-red-50/50 via-paper to-paper shadow-xl ring-2 ring-primary/20"
                   : "border-line bg-paper shadow-xs hover:border-slate-300 hover:shadow-md"
               }`}
             >
-              {tier.badge && (
+              {(isUserPro && tier.id === "premium" ? "Dein aktiver Tarif ✓" : tier.badge) && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-primary px-3.5 py-1 text-[11.5px] font-extrabold text-paper shadow-sm uppercase tracking-wide">
-                    {tier.badge}
+                  <span
+                    className={`rounded-full px-3.5 py-1 text-[11.5px] font-extrabold shadow-sm uppercase tracking-wide ${
+                      isUserPro && tier.id === "premium"
+                        ? "bg-emerald-600 text-paper"
+                        : "bg-primary text-paper"
+                    }`}
+                  >
+                    {isUserPro && tier.id === "premium" ? "Dein aktiver Tarif ✓" : tier.badge}
                   </span>
                 </div>
               )}
@@ -129,8 +143,12 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
                     </span>
                   </div>
                   {tier.id === "premium" && (
-                    <span className="text-[11.5px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md inline-block w-fit">
-                      Nur 3,25 € / Monat · Jederzeit kündbar
+                    <span className={`text-[11.5px] font-bold px-2 py-0.5 rounded-md inline-block w-fit ${
+                      isUserPro
+                        ? "text-emerald-700 bg-emerald-100/70"
+                        : "text-emerald-600 bg-emerald-50"
+                    }`}>
+                      {isUserPro ? "Vollzugang aktiv · 35 BMS-Kapitel freigeschaltet" : "Nur 3,25 € / Monat · Jederzeit kündbar"}
                     </span>
                   )}
                 </div>
@@ -142,7 +160,9 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
                   <li key={feature} className="flex items-start gap-2.5 text-[13.5px] text-ink-2">
                     <span
                       className={`mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full ${
-                        isFeatured
+                        isUserPro && tier.id === "premium"
+                          ? "bg-emerald-100 text-emerald-700"
+                          : isFeatured
                           ? "bg-primary-subtle text-primary"
                           : "bg-success-subtle text-success"
                       }`}
@@ -159,21 +179,27 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
                 <button
                   type="button"
                   onClick={() => handleSelect(tier)}
-                  disabled={loadingTier === tier.id || tier.id === "free"}
-                  className={`flex w-full items-center justify-center gap-2 rounded-xl py-3 px-4 text-sm font-bold transition-all duration-150 cursor-pointer ${
-                    tier.id === "free"
+                  disabled={loadingTier === tier.id || isCurrentActive || (isUserPro && tier.id === "free")}
+                  className={`flex w-full items-center justify-center gap-2 rounded-xl py-3 px-4 text-sm font-bold transition-all duration-150 ${
+                    isUserPro && tier.id === "premium"
+                      ? "bg-emerald-50 text-emerald-700 border border-emerald-300 cursor-default"
+                      : isCurrentActive || (isUserPro && tier.id === "free")
                       ? "bg-paper-3 text-ink-4 cursor-default border border-line"
                       : isFeatured
-                      ? "bg-primary text-paper hover:bg-primary/90 shadow-md shadow-primary/20 active:scale-[0.98]"
-                      : "bg-night text-paper hover:bg-night/90 active:scale-[0.98]"
+                      ? "bg-primary text-paper hover:bg-primary/90 shadow-md shadow-primary/20 active:scale-[0.98] cursor-pointer"
+                      : "bg-night text-paper hover:bg-night/90 active:scale-[0.98] cursor-pointer"
                   }`}
                 >
                   {loadingTier === tier.id
                     ? "Wird geladen..."
-                    : tier.id === "free"
+                    : isUserPro && tier.id === "premium"
+                    ? "Bereits freigeschaltet ✓"
+                    : isCurrentActive
                     ? "Aktueller Basis-Tarif"
+                    : isUserPro && tier.id === "free"
+                    ? "Basis-Tarif"
                     : tier.cta}
-                  {tier.id !== "free" && <IconArrowRight className="h-4 w-4" />}
+                  {!isCurrentActive && !(isUserPro && tier.id === "premium") && <IconArrowRight className="h-4 w-4" />}
                 </button>
               </div>
             </div>

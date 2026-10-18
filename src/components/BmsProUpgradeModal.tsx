@@ -30,7 +30,7 @@ export const BmsProUpgradeModal: React.FC<BmsProUpgradeModalProps> = ({
   chapter,
   onNav,
 }) => {
-  const { userProfile } = usePractice();
+  const { userProfile, updateUserProfile } = usePractice();
   const [isOpeningCheckout, setIsOpeningCheckout] = useState(false);
 
   // Dispatch analytics view event when opened
@@ -134,7 +134,8 @@ export const BmsProUpgradeModal: React.FC<BmsProUpgradeModalProps> = ({
           subject_id: isGeneralprobe ? "generalprobe" : isTv ? "tv" : isKff ? "kff" : isSek ? "sek" : chapter?.subjectId || "bms",
         },
         onSuccess: () => {
-          toast("Zahlung erfolgreich abgeschlossen! Premium-Zugang wird aktiviert...", "info");
+          updateUserProfile({ isPro: true, subscriptionTier: "premium", subscriptionStatus: "active" });
+          toast("🎉 Willkommen beim MedAT-Vollzugang! Alle Kapitel wurden freigeschaltet.", "success");
           onClose();
         },
       });

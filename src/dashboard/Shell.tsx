@@ -612,8 +612,19 @@ export function DashboardShell({
               {menu === "user" && (
                 <div className="animate-pop-in absolute right-0 top-12 z-50 w-60 overflow-hidden rounded-2xl border border-line bg-paper py-2 shadow-xl">
                   <div className="border-b border-line px-4 py-2.5">
-                    <p className="text-[13.5px] font-bold text-ink">{userProfile?.name || "Student:in"}</p>
-                    <p className="text-[11.5px] text-ink-3 mt-0.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-[13.5px] font-bold text-ink truncate">{userProfile?.name || "Student:in"}</p>
+                      {userProfile.isPro ? (
+                        <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[9.5px] font-black uppercase tracking-wider text-emerald-700 ring-1 ring-emerald-600/20 shrink-0">
+                          ★ Vollzugang
+                        </span>
+                      ) : (
+                        <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-ink-4 shrink-0">
+                          Basis
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[11.5px] text-ink-3 mt-0.5 truncate">
                       {userProfile?.examType || "MEDAT-H"} · {UNIVERSITIES[userProfile?.targetUniversity || "undecided"]?.name || "MedUni Wien"}
                     </p>
                   </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "../lib/core";
-import { IconShield } from "../lib/icons";
+import { IconShield, IconCheck, IconArrowRight } from "../lib/icons";
 import {
   UNIVERSITIES,
   type PreparationStage,
@@ -9,10 +9,12 @@ import {
 } from "../content/medat/config";
 import { DIconCard, DIconDownload, DIconTrash, DIconLogout } from "./icons";
 import { usePractice } from "./practiceContext";
-import { syncUserProfileToSupabase } from "../lib/dbSync";
+import { syncUserProfileToSupabase, checkUserEntitlement } from "../lib/dbSync";
+import { openCheckout, PADDLE_CONFIG } from "../lib/paddle";
 
 const TABS = [
   "Profil & MedAT-Ausrichtung",
+  "Mitgliedschaft & Tarif",
   "Datenschutz & Verlauf",
 ] as const;
 type Tab = (typeof TABS)[number];
@@ -29,6 +31,8 @@ export default function Settings() {
   const [daysPerWeek, setDaysPerWeek] = useState<number>(userProfile.studyDaysPerWeek || 5);
   const [isSaving, setIsSaving] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
+  const [isSyncingEntitlement, setIsSyncingEntitlement] = useState(false);
+  const [isOpeningCheckout, setIsOpeningCheckout] = useState(false);
 
   // Keep form in sync when userProfile updates or hydrates from Supabase
   useEffect(() => {
@@ -71,6 +75,57 @@ export default function Settings() {
   const handleResetProgress = () => {
     resetAnswers();
     setConfirmReset(false);
+  };
+
+  const handleSyncEntitlement = async () => {
+    setIsSyncingEntitlement(true);
+    try {
+      const res = await checkUserEntitlement(userProfile.userId);
+      if (res.isPro) {
+        updateUserProfile({ isPro: true, subscriptionTier: "premium", subscriptionStatus: res.subscriptionStatus });
+        toast("🎉 MedAT-Vollzugang ist aktiv und synchronisiert!", "success");
+      } else {
+        toast("Basis-Zugang aktiv. Keine aktive Vollzugangs-Zahlung gefunden.", "info");
+      }
+    } catch {
+      toast("Synchronisierungsfehler. Bitte versuche es später erneut.", "error");
+    } finally {
+      setIsSyncingEntitlement(false);
+    }
+  };
+
+  const handleUpgrade = async () => {
+    const priceId =
+      PADDLE_CONFIG.monthlyPriceId ||
+      PADDLE_CONFIG.oncePriceId ||
+      "pri_01m4sv454dth7gc5fm52tvhht5";
+
+    setIsOpeningCheckout(true);
+    try {
+      const opened = await openCheckout({
+        priceId,
+        userId: userProfile.userId,
+        userEmail: userProfile.email,
+        customData: {
+          user_id: userProfile.userId || "",
+          user_name: userProfile.name,
+          source: "settings_membership_tab",
+        },
+        onSuccess: () => {
+          updateUserProfile({ isPro: true, subscriptionTier: "premium", subscriptionStatus: "active" });
+          toast("🎉 Willkommen beim MedAT-Vollzugang! Alle Kapitel wurden freigeschaltet.", "success");
+        },
+      });
+
+      if (!opened) {
+        toast("Kasse konnte nicht geöffnet werden. Bitte versuche es erneut.", "error");
+      }
+    } catch (e) {
+      console.error("[Settings] Upgrade error:", e);
+      toast("Verbindungsfehler beim Öffnen der Kasse.", "error");
+    } finally {
+      setIsOpeningCheckout(false);
+    }
   };
 
   return (
@@ -226,6 +281,124 @@ export default function Settings() {
                   </button>
                 </div>
               </section>
+            </div>
+          )}
+
+          {tab === "Mitgliedschaft & Tarif" && (
+            <div className="space-y-6">
+              {/* Plan Status Overview Card */}
+              <section className="space-y-6 rounded-3xl border border-line bg-paper p-6 sm:p-7 shadow-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-line">
+                  <div className="flex items-center gap-3.5">
+                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${
+                      userProfile.isPro ? "bg-emerald-50 text-emerald-600" : "bg-primary-subtle text-primary"
+                    }`}>
+                      <DIconCard className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h2 className="text-[17px] font-bold text-ink">
+                          {userProfile.isPro ? "MedAT-Vollzugang (Jahreszugang)" : "MedAT Basis-Zugang (Kostenlos)"}
+                        </h2>
+                        {userProfile.isPro ? (
+                          <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-black uppercase tracking-wider text-emerald-700 ring-1 ring-emerald-600/20">
+                            ★ Aktiv
+                          </span>
+                        ) : (
+                          <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-ink-4">
+                            Basis
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-0.5 text-[13px] text-ink-3">
+                        {userProfile.isPro
+                          ? "Alle 35 BMS-Themen, KFF-Simulationen & Generalproben freigeschaltet."
+                          : "Eingeschränkter Zugang (4 BMS-Kapitel, 1 KFF-Simulation, 1 Generalprobe)."}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="shrink-0">
+                    <span className="text-[20px] font-extrabold text-ink">
+                      {userProfile.isPro ? "39 €" : "0 €"}
+                    </span>
+                    <span className="text-xs text-ink-3 ml-1 font-semibold">
+                      {userProfile.isPro ? "/ Jahr" : "für immer"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Features included */}
+                <div className="space-y-3">
+                  <h3 className="text-[13px] font-bold uppercase tracking-wider text-ink-4">
+                    Im aktuellen Tarif enthalten:
+                  </h3>
+                  <div className="grid gap-2.5 sm:grid-cols-2">
+                    {[
+                      { t: "Alle 35 BMS-Kapitel (Bio, Chem, Phys, Math)", proOnly: true },
+                      { t: "5 KFF-Simulationen & Zeitdruck-Timer", proOnly: true },
+                      { t: "Vollständige SEK-Szenarien & Textverständnis", proOnly: true },
+                      { t: "MedAT-Generalproben #1 & #2 mit Ranglisten", proOnly: true },
+                      { t: "Adaptiver KI-Tutor mit Fehleranalyse", proOnly: false },
+                      { t: "Sichere Cloud-Synchronisation", proOnly: false },
+                    ].map((f) => {
+                      const active = userProfile.isPro || !f.proOnly;
+                      return (
+                        <div
+                          key={f.t}
+                          className={`flex items-center gap-2.5 rounded-xl border p-3 text-[13px] ${
+                            active
+                              ? "border-emerald-200/80 bg-emerald-50/40 text-ink font-medium"
+                              : "border-line bg-paper-3 text-ink-4 line-through opacity-75"
+                          }`}
+                        >
+                          <span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
+                            active ? "bg-emerald-600 text-paper" : "bg-slate-200 text-slate-400"
+                          }`}>
+                            {active ? "✓" : "–"}
+                          </span>
+                          <span className="truncate">{f.t}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="pt-4 border-t border-line flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                  {userProfile.isPro ? (
+                    <div className="flex items-center gap-2 text-xs text-emerald-700 font-semibold">
+                      <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                      Dein Vollzugang ist aktiv. Sichere EU-Abrechnung via Paddle.
+                    </div>
+                  ) : (
+                    <button
+                      onClick={handleUpgrade}
+                      disabled={isOpeningCheckout}
+                      className="btn btn-primary px-5 py-2.5 text-[14px] font-bold shadow-cta flex items-center justify-center gap-2"
+                    >
+                      {isOpeningCheckout ? "Kasse wird geöffnet …" : "Auf Vollzugang upgraden (39 € / Jahr)"}
+                      <IconArrowRight className="h-4 w-4" />
+                    </button>
+                  )}
+
+                  <button
+                    onClick={handleSyncEntitlement}
+                    disabled={isSyncingEntitlement}
+                    className="btn btn-secondary px-4 py-2 text-[13px] font-semibold text-ink-2 hover:text-ink flex items-center justify-center gap-2"
+                  >
+                    {isSyncingEntitlement ? "Wird überprüft …" : "Status jetzt synchronisieren"}
+                  </button>
+                </div>
+              </section>
+
+              {/* Security & Guarantee Note */}
+              <div className="rounded-2xl border border-line bg-paper-2 p-5 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-3">
+                <span>
+                  🔒 Sichere Zahlungsabwicklung nach europäischen Bankstandards via <strong>Paddle Billing</strong>. 14 Tage Geld-zurück-Garantie.
+                </span>
+                <span className="shrink-0 font-semibold text-ink-4">Support: medatprep@gmail.com</span>
+              </div>
             </div>
           )}
 
