@@ -23,7 +23,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { email } = req.body || {};
+    let body = req.body;
+    if (typeof body === "string") {
+      try {
+        body = JSON.parse(body);
+      } catch {}
+    }
+
+    const { email } = body || {};
     if (!email || typeof email !== "string" || !email.includes("@")) {
       return res.status(400).json({ error: "Gültige E-Mail-Adresse erforderlich." });
     }
@@ -60,13 +67,13 @@ export default async function handler(req, res) {
 
       if (updateError) {
         console.error("Failed to auto-confirm user:", updateError);
-        return res.status(500).json({ error: "Bestätigung fehlgeschlagen." });
+        return res.status(500).json({ error: "Bestätigung fehlgeschlagen.", details: updateError.message });
       }
     }
 
-    return res.status(200).json({ success: true, userId: targetUser.id });
+    return res.status(200).json({ success: true, userId: targetUser.id, confirmed: true });
   } catch (err) {
     console.error("api/confirm-user error:", err);
-    return res.status(500).json({ error: "Interner Serverfehler." });
+    return res.status(500).json({ error: "Interner Serverfehler.", details: err?.message });
   }
 }
