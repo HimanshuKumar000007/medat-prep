@@ -34,17 +34,29 @@ function Homepage() {
   const { isLoggedIn } = usePractice();
   const loggedIn = isLoggedIn || isUserLoggedIn();
 
-  // If user arrives via password recovery link, immediately route to reset-password
+  // If user arrives via password recovery link, route to reset-password with query intact
+  const hasToken = typeof window !== "undefined" && (window.location.hash.includes("token=") || window.location.search.includes("token="));
   const isRecoveryArrival =
     typeof window !== "undefined" &&
-    (window.location.hash.includes("type=recovery") ||
+    (hasToken ||
+      window.location.hash.includes("type=recovery") ||
       window.location.search.includes("type=recovery") ||
       window.location.hash.includes("access_token=") ||
-      window.location.search.includes("access_token=") ||
-      sessionStorage.getItem("medat_recovery_pending") === "true");
+      window.location.search.includes("access_token="));
 
   if (isRecoveryArrival) {
-    return <Navigate to="/reset-password" replace />;
+    let tokenParam = "";
+    const s = window.location.search || "";
+    const h = window.location.hash || "";
+    if (s.includes("token=")) {
+      const tok = new URLSearchParams(s).get("token");
+      if (tok) tokenParam = `?token=${encodeURIComponent(tok)}`;
+    } else if (h.includes("token=")) {
+      const q = h.includes("?") ? h.split("?")[1] : "";
+      const tok = new URLSearchParams(q).get("token");
+      if (tok) tokenParam = `?token=${encodeURIComponent(tok)}`;
+    }
+    return <Navigate to={`/reset-password${tokenParam}`} replace />;
   }
 
   useEffect(() => {

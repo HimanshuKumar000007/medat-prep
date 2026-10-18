@@ -77,10 +77,10 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: "Fehler beim Generieren des Links. Bitte versuche es erneut." });
     }
 
-    // 4. Construct direct reset link with token parameter
+    // 4. Construct direct reset link with token parameter (query before hash prevents email client truncation)
     const originHeader = req.headers["origin"] || (req.headers["host"] ? `https://${req.headers["host"]}` : "https://medatprep.at");
     const baseUrl = originHeader.includes("localhost") ? originHeader : "https://medatprep.at";
-    const resetLink = `${baseUrl}/#/reset-password?token=${resetToken}`;
+    const resetLink = `${baseUrl}/?token=${resetToken}#/reset-password`;
 
     const userName = currentMeta.full_name || currentMeta.name || "zukünftige:r Mediziner:in";
 

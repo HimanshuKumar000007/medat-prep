@@ -17,23 +17,6 @@ export default function ResetPasswordPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Mode: "update" (when recovery token is active) vs "request" (fallback to ask for a reset email)
-  const [mode, setMode] = useState<"update" | "request">("update");
-  const [resetToken, setResetToken] = useState<string | null>(null);
-  
-  // Inputs
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [email, setEmail] = useState("");
-
-  // UI state
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [requestSent, setRequestSent] = useState(false);
-
   // Helper to extract custom reset token (IISER architecture)
   const getCustomResetToken = (): string | null => {
     // 1. From React Router location.search (?token=...)
@@ -58,6 +41,25 @@ export default function ResetPasswordPage() {
 
     return null;
   };
+
+  const initialToken = getCustomResetToken();
+
+  // Mode: "update" (when recovery token is active) vs "request" (fallback to ask for a reset email)
+  const [resetToken, setResetToken] = useState<string | null>(initialToken);
+  const [mode, setMode] = useState<"update" | "request">(() => (initialToken ? "update" : "request"));
+  
+  // Inputs
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  // UI state
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [requestSent, setRequestSent] = useState(false);
 
   // Helper to extract tokens from search, hash, or sessionStorage (Supabase fallback)
   const getRecoveryTokens = () => {

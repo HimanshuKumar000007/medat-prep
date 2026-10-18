@@ -145,13 +145,36 @@
     </script>
   </head>
   <body>
-    <!-- Supabase Auth / Password Recovery Hash Interceptor for HashRouter -->
+    <!-- Password Recovery Token & Auth Hash Interceptor for HashRouter -->
     <script>
       (function() {
         try {
           var h = window.location.hash || "";
           var s = window.location.search || "";
           
+          // 1. Check for custom IISER reset token
+          var token = "";
+          if (s.indexOf("token=") !== -1) {
+            var sParams = new URLSearchParams(s.startsWith("?") ? s.substring(1) : s);
+            token = sParams.get("token") || "";
+          }
+          if (!token && h.indexOf("token=") !== -1) {
+            var hQuery = h.indexOf("?") !== -1 ? h.split("?")[1] : (h.startsWith("#") ? h.substring(1) : h);
+            var hParams = new URLSearchParams(hQuery);
+            token = hParams.get("token") || "";
+          }
+
+          if (token) {
+            sessionStorage.setItem("medat_reset_token", token);
+            sessionStorage.removeItem("medat_recovery_error");
+            sessionStorage.removeItem("medat_recovery_pending");
+            if (h.indexOf("/reset-password") === -1) {
+              window.location.hash = "#/reset-password?token=" + encodeURIComponent(token);
+            }
+            return;
+          }
+
+          // 2. Fallback: Supabase access_token handler
           var raw = "";
           if (h.indexOf("access_token=") !== -1) {
             raw = h.substring(1);
