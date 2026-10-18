@@ -101,7 +101,7 @@ export default function PreLoginOnboarding() {
   const [targetUniversity, setTargetUniversity] = useState<TargetUniversity>("undecided");
 
   // Auth modal state (Screen 7)
-  const [authMode, setAuthMode] = useState<"signup" | "login">(() =>
+  const [authMode, setAuthMode] = useState<"signup" | "login" | "forgot" | "update-password">(() =>
     checkIsDirectLogin() ? "login" : "signup"
   );
   const [fullName, setFullName] = useState("");
@@ -109,13 +109,32 @@ export default function PreLoginOnboarding() {
   const [password, setPassword] = useState("");
   const [authLoading, setAuthLoading] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
+  const [resetSuccess, setResetSuccess] = useState(false);
+  const [resetEmailSentTo, setResetEmailSentTo] = useState("");
 
   useEffect(() => {
-    if (checkIsDirectLogin()) {
+    const search = location.search || "";
+    const hash = location.hash || "";
+    if (search.includes("mode=update-password") || hash.includes("type=recovery")) {
+      setStep(6);
+      setAuthMode("update-password");
+    } else if (checkIsDirectLogin()) {
       setStep(6);
       setAuthMode("login");
     }
   }, [location]);
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") {
+        setStep(6);
+        setAuthMode("update-password");
+      }
+    });
+    return () => {
+      authListener?.subscription?.unsubscribe?.();
+    };
+  }, []);
 
   // Focus sections tailored to Exam Type
   const availableSections: { code: SectionCode; title: string; weight: string; desc: string }[] =
@@ -335,6 +354,57 @@ export default function PreLoginOnboarding() {
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Authentifizierungsfehler aufgetreten.";
+      setAuthError(msg);
+      toast(msg, "error");
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  // Forgot Password Trigger
+  const handleForgotPasswordSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
+      setAuthError("Bitte gib eine gültige E-Mail-Adresse an.");
+      return;
+    }
+    setAuthLoading(true);
+    setAuthError(null);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+        redirectTo: `${window.location.origin}/#/onboarding?mode=update-password`,
+      });
+      if (error) throw error;
+      setResetSuccess(true);
+      setResetEmailSentTo(email.trim());
+      toast("Link zum Zurücksetzen gesendet! Bitte prüfe deinen Posteingang.", "success");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Fehler beim Senden des Links zum Zurücksetzen.";
+      setAuthError(msg);
+      toast(msg, "error");
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  // Update Password Trigger (Recovery Session)
+  const handleUpdatePasswordSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!password || password.length < 6) {
+      setAuthError("Das neue Passwort muss mindestens 6 Zeichen lang sein.");
+      return;
+    }
+    setAuthLoading(true);
+    setAuthError(null);
+    try {
+      const { error } = await supabase.auth.updateUser({ password });
+      if (error) throw error;
+      clearUserLoggedOut();
+      await dataOrchestrator.hydrateFromSupabase();
+      toast("Passwort erfolgreich aktualisiert! Willkommen zurück.", "success");
+      navigate("/app", { replace: true });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Fehler beim Aktualisieren des neuen Passworts.";
       setAuthError(msg);
       toast(msg, "error");
     } finally {
@@ -789,158 +859,290 @@ export default function PreLoginOnboarding() {
                   <h2 className="display text-[22px] sm:text-[26px] text-ink">
                     {authMode === "signup"
                       ? "Kostenlosen Account erstellen & Plan sichern"
+                      : authMode === "forgot"
+                      ? "Passwort zurücksetzen"
+                      : authMode === "update-password"
+                      ? "Neues Passwort festlegen"
                       : "Bei deinem Account anmelden"}
                   </h2>
                   <p className="mt-1.5 text-[14px] text-ink-3">
                     {authMode === "signup"
                       ? "Speichert dein Vorbereitungsprofil und schaltet das personalisierte Dashboard frei."
+                      : authMode === "forgot"
+                      ? "Gib deine E-Mail-Adresse ein. Wir senden dir einen sicheren Link zum Zurücksetzen deines Passworts."
+                      : authMode === "update-password"
+                      ? "Wähle ein sicheres neues Passwort für deinen MedAT Prep Account (mindestens 6 Zeichen)."
                       : "Melde dich an, um deinen bestehenden Lernfortschritt fortzusetzen."}
                   </p>
                 </div>
 
-                {/* Google OAuth Button */}
-                <div className="mt-6">
-                  <button
-                    type="button"
-                    onClick={handleGoogleAuth}
-                    disabled={authLoading}
-                    className="flex w-full items-center justify-center gap-3 rounded-xl border border-line-2 bg-paper px-4 py-3 text-[14.5px] font-bold text-ink shadow-xs transition-colors hover:bg-paper-3 focus-visible:outline-2 focus-visible:outline-primary disabled:opacity-60"
-                  >
-                    <svg className="h-5 w-5" viewBox="0 0 24 24">
-                      <path
-                        fill="#4285F4"
-                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                      />
-                      <path
-                        fill="#34A853"
-                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                      />
-                      <path
-                        fill="#FBBC05"
-                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
-                      />
-                      <path
-                        fill="#EA4335"
-                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
-                      />
-                    </svg>
-                    Mit Google fortfahren
-                  </button>
-                </div>
-
-                {/* Divider */}
-                <div className="relative my-6 text-center">
-                  <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-line" />
-                  </div>
-                  <span className="relative bg-paper px-3 text-[12px] font-bold uppercase tracking-wider text-ink-4">
-                    oder mit E-Mail
-                  </span>
-                </div>
-
-                {/* Form */}
-                <form onSubmit={handleAuthSubmit} className="space-y-4">
-                  {authError && (
-                    <div className="rounded-xl border border-primary/20 bg-primary-muted/50 p-3.5 text-center text-[13px] font-medium text-primary">
-                      {authError}
+                {/* Google OAuth Button (Shown for login & signup) */}
+                {(authMode === "login" || authMode === "signup") && (
+                  <>
+                    <div className="mt-6">
+                      <button
+                        type="button"
+                        onClick={handleGoogleAuth}
+                        disabled={authLoading}
+                        className="flex w-full items-center justify-center gap-3 rounded-xl border border-line-2 bg-paper px-4 py-3 text-[14.5px] font-bold text-ink shadow-xs transition-colors hover:bg-paper-3 focus-visible:outline-2 focus-visible:outline-primary disabled:opacity-60 cursor-pointer"
+                      >
+                        <svg className="h-5 w-5" viewBox="0 0 24 24">
+                          <path
+                            fill="#4285F4"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                          />
+                          <path
+                            fill="#34A853"
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                          />
+                          <path
+                            fill="#FBBC05"
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                          />
+                          <path
+                            fill="#EA4335"
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                          />
+                        </svg>
+                        Mit Google fortfahren
+                      </button>
                     </div>
-                  )}
 
-                  {authMode === "signup" && (
-                    <div>
-                      <label className="block text-[13px] font-bold text-ink mb-1">
-                        Dein Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        placeholder="z.B. Lisa"
-                        className="input-field w-full h-11 rounded-xl text-[14px]"
-                      />
-                    </div>
-                  )}
-
-                  <div>
-                    <label className="block text-[13px] font-bold text-ink mb-1">
-                      E-Mail-Adresse
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="deine.email@beispiel.at"
-                      className="input-field w-full h-11 rounded-xl text-[14px]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[13px] font-bold text-ink mb-1">
-                      Passwort
-                    </label>
-                    <input
-                      type="password"
-                      required
-                      minLength={6}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Mindestens 6 Zeichen"
-                      className="input-field w-full h-11 rounded-xl text-[14px]"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={authLoading}
-                    className="btn btn-primary w-full h-12 text-[15px] font-bold mt-2 shadow-md hover:shadow-lg transition-all"
-                  >
-                    {authLoading ? (
-                      <span className="flex items-center gap-2">
-                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-paper border-t-transparent" />
-                        Wird gespeichert...
+                    {/* Divider */}
+                    <div className="relative my-6 text-center">
+                      <div className="absolute inset-0 flex items-center">
+                        <span className="w-full border-t border-line" />
+                      </div>
+                      <span className="relative bg-paper px-3 text-[12px] font-bold uppercase tracking-wider text-ink-4">
+                        oder mit E-Mail
                       </span>
-                    ) : authMode === "signup" ? (
-                      "Kostenloses Konto erstellen & Plan starten →"
-                    ) : (
-                      "Anmelden & Dashboard öffnen →"
-                    )}
-                  </button>
-                </form>
+                    </div>
+                  </>
+                )}
 
-                {/* Auth Mode Switcher */}
-                <div className="mt-5 flex flex-col items-center gap-2 pt-2 text-center text-[13.5px] text-ink-3">
-                  {authMode === "signup" ? (
-                    <p>
-                      Bereits registriert?{" "}
+                {/* Form based on authMode */}
+                {authMode === "forgot" ? (
+                  <form onSubmit={handleForgotPasswordSubmit} className="space-y-4 mt-6">
+                    {authError && (
+                      <div className="rounded-xl border border-primary/20 bg-primary-muted/50 p-3.5 text-center text-[13px] font-medium text-primary">
+                        {authError}
+                      </div>
+                    )}
+
+                    {resetSuccess ? (
+                      <div className="rounded-2xl border border-emerald-500/30 bg-emerald-50 p-5 text-center text-[13.5px] font-medium text-emerald-800 space-y-2">
+                        <div className="text-2xl">✉️</div>
+                        <p className="font-bold text-[15px]">E-Mail zum Zurücksetzen gesendet!</p>
+                        <p className="text-xs text-emerald-700 leading-relaxed">
+                          Wir haben einen Link an <strong>{resetEmailSentTo}</strong> gesendet. Bitte öffne diesen Link in deiner E-Mail, um dein neues Passwort zu vergeben.
+                        </p>
+                      </div>
+                    ) : (
+                      <>
+                        <div>
+                          <label className="block text-[13px] font-bold text-ink mb-1">
+                            E-Mail-Adresse deines Accounts
+                          </label>
+                          <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="deine.email@beispiel.at"
+                            className="input-field w-full h-11 rounded-xl text-[14px]"
+                          />
+                        </div>
+
+                        <button
+                          type="submit"
+                          disabled={authLoading}
+                          className="btn btn-primary w-full h-12 text-[15px] font-bold mt-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
+                        >
+                          {authLoading ? (
+                            <span className="flex items-center gap-2">
+                              <span className="h-4 w-4 animate-spin rounded-full border-2 border-paper border-t-transparent" />
+                              Link wird generiert...
+                            </span>
+                          ) : (
+                            "Link zum Zurücksetzen anfordern →"
+                          )}
+                        </button>
+                      </>
+                    )}
+
+                    <div className="pt-2 text-center">
                       <button
                         type="button"
                         onClick={() => {
                           setAuthMode("login");
                           setAuthError(null);
+                          setResetSuccess(false);
                         }}
-                        className="font-bold text-primary hover:underline"
+                        className="text-[13.5px] font-semibold text-primary hover:underline cursor-pointer"
                       >
-                        Hier anmelden
+                        ← Zurück zur Anmeldung
                       </button>
-                    </p>
-                  ) : (
-                    <p>
-                      Noch kein Konto?{" "}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setAuthMode("signup");
-                          setAuthError(null);
-                        }}
-                        className="font-bold text-primary hover:underline"
-                      >
-                        Kostenlos registrieren
-                      </button>
-                    </p>
-                  )}
-                </div>
+                    </div>
+                  </form>
+                ) : authMode === "update-password" ? (
+                  <form onSubmit={handleUpdatePasswordSubmit} className="space-y-4 mt-6">
+                    {authError && (
+                      <div className="rounded-xl border border-primary/20 bg-primary-muted/50 p-3.5 text-center text-[13px] font-medium text-primary">
+                        {authError}
+                      </div>
+                    )}
+
+                    <div>
+                      <label className="block text-[13px] font-bold text-ink mb-1">
+                        Neues Passwort festlegen
+                      </label>
+                      <input
+                        type="password"
+                        required
+                        minLength={6}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Mindestens 6 Zeichen"
+                        className="input-field w-full h-11 rounded-xl text-[14px]"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={authLoading}
+                      className="btn btn-primary w-full h-12 text-[15px] font-bold mt-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
+                    >
+                      {authLoading ? (
+                        <span className="flex items-center gap-2">
+                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-paper border-t-transparent" />
+                          Passwort wird gespeichert...
+                        </span>
+                      ) : (
+                        "Neues Passwort speichern & anmelden →"
+                      )}
+                    </button>
+                  </form>
+                ) : (
+                  <form onSubmit={handleAuthSubmit} className="space-y-4">
+                    {authError && (
+                      <div className="rounded-xl border border-primary/20 bg-primary-muted/50 p-3.5 text-center text-[13px] font-medium text-primary">
+                        {authError}
+                      </div>
+                    )}
+
+                    {authMode === "signup" && (
+                      <div>
+                        <label className="block text-[13px] font-bold text-ink mb-1">
+                          Dein Name
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={fullName}
+                          onChange={(e) => setFullName(e.target.value)}
+                          placeholder="z.B. Lisa"
+                          className="input-field w-full h-11 rounded-xl text-[14px]"
+                        />
+                      </div>
+                    )}
+
+                    <div>
+                      <label className="block text-[13px] font-bold text-ink mb-1">
+                        E-Mail-Adresse
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="deine.email@beispiel.at"
+                        className="input-field w-full h-11 rounded-xl text-[14px]"
+                      />
+                    </div>
+
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="block text-[13px] font-bold text-ink">
+                          Passwort
+                        </label>
+                        {authMode === "login" && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setAuthMode("forgot");
+                              setAuthError(null);
+                              setResetSuccess(false);
+                            }}
+                            className="text-[12.5px] font-semibold text-primary hover:underline cursor-pointer"
+                          >
+                            Passwort vergessen?
+                          </button>
+                        )}
+                      </div>
+                      <input
+                        type="password"
+                        required
+                        minLength={6}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Mindestens 6 Zeichen"
+                        className="input-field w-full h-11 rounded-xl text-[14px]"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={authLoading}
+                      className="btn btn-primary w-full h-12 text-[15px] font-bold mt-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
+                    >
+                      {authLoading ? (
+                        <span className="flex items-center gap-2">
+                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-paper border-t-transparent" />
+                          Wird gespeichert...
+                        </span>
+                      ) : authMode === "signup" ? (
+                        "Kostenloses Konto erstellen & Plan starten →"
+                      ) : (
+                        "Anmelden & Dashboard öffnen →"
+                      )}
+                    </button>
+                  </form>
+                )}
+
+                {/* Auth Mode Switcher */}
+                {(authMode === "signup" || authMode === "login") && (
+                  <div className="mt-5 flex flex-col items-center gap-2 pt-2 text-center text-[13.5px] text-ink-3">
+                    {authMode === "signup" ? (
+                      <p>
+                        Bereits registriert?{" "}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setAuthMode("login");
+                            setAuthError(null);
+                          }}
+                          className="font-bold text-primary hover:underline cursor-pointer"
+                        >
+                          Hier anmelden
+                        </button>
+                      </p>
+                    ) : (
+                      <p>
+                        Noch kein Konto?{" "}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setAuthMode("signup");
+                            setAuthError(null);
+                          }}
+                          className="font-bold text-primary hover:underline cursor-pointer"
+                        >
+                          Kostenlos registrieren
+                        </button>
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           )}
