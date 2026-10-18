@@ -254,8 +254,6 @@ export default function PreLoginOnboarding() {
       if (authMode === "signup") {
         localStorage.setItem("medat_pending_profile", JSON.stringify(profileData));
 
-        let isRegistered = false;
-
         const { data, error } = await supabase.auth.signUp({
           email: email.trim(),
           password,
@@ -266,6 +264,34 @@ export default function PreLoginOnboarding() {
             },
           },
         });
+
+        // Detect if user already exists in Supabase Auth
+        const isAlreadyRegistered = Boolean(
+          (error && (
+            (error as any).code === "user_already_exists" ||
+            error.status === 422 ||
+            error.message?.toLowerCase().includes("already registered") ||
+            error.message?.toLowerCase().includes("already in use") ||
+            error.message?.toLowerCase().includes("already exists") ||
+            error.message?.toLowerCase().includes("user already")
+          )) ||
+          (!error && data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0)
+        );
+
+        if (isAlreadyRegistered) {
+          localStorage.removeItem("medat_pending_profile");
+          dataOrchestrator.setUserId(null);
+          const austrianError =
+            "Servus! Zu dieser E-Mail-Adresse existiert bereits ein MedAT-Konto. Bitte melde dich an oder setze dein Passwort zurück.";
+          setAuthError(austrianError);
+          toast(austrianError, "error");
+          return;
+        }
+
+        if (error) {
+          throw error;
+        }
+
         const newUid = data?.user?.id;
         if (newUid) {
           try {
@@ -274,44 +300,7 @@ export default function PreLoginOnboarding() {
           dataOrchestrator.setUserId(newUid);
         }
 
-        if (error) {
-          // If already registered, attempt sign in with the provided password
-          if (
-            error.message?.toLowerCase().includes("already registered") ||
-            error.message?.toLowerCase().includes("already in use")
-          ) {
-            const loginRes = await supabase.auth.signInWithPassword({
-              email: email.trim(),
-              password,
-            });
-            if (loginRes.error && !loginRes.error.message?.toLowerCase().includes("email not confirmed")) {
-              throw loginRes.error;
-            }
-            isRegistered = true;
-          } else {
-            throw error;
-          }
-        }
-
-        if (isRegistered) {
-          // User already exists: do NOT overwrite their cloud profile with questionnaire defaults
-          clearUserLoggedOut();
-          if (data?.user?.id) {
-            try {
-              localStorage.setItem("medat_current_user_id", data.user.id);
-            } catch {}
-            dataOrchestrator.setUserId(data.user.id);
-          }
-          await dataOrchestrator.hydrateFromSupabase();
-          toast("Erfolgreich angemeldet! Willkommen zurück.", "success");
-          navigate("/app", { replace: true });
-          return;
-        }
-
         // Genuine new registration: persist initial profile
-        if (newUid) {
-          dataOrchestrator.setUserId(newUid);
-        }
         updateUserProfile(profileData);
 
         if (data?.session) {
@@ -372,7 +361,18 @@ export default function PreLoginOnboarding() {
         navigate("/app", { replace: true });
       }
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Authentifizierungsfehler aufgetreten.";
+      let msg = err instanceof Error ? err.message : "Authentifizierungsfehler aufgetreten.";
+      if (
+        msg.toLowerCase().includes("already registered") ||
+        msg.toLowerCase().includes("already in use") ||
+        msg.toLowerCase().includes("user already") ||
+        msg.toLowerCase().includes("user_already_exists")
+      ) {
+        msg =
+          "Servus! Zu dieser E-Mail-Adresse existiert bereits ein MedAT-Konto. Bitte melde dich an oder setze dein Passwort zurück.";
+      } else if (msg.toLowerCase().includes("invalid login credentials")) {
+        msg = "Ungültige E-Mail-Adresse oder falsches Passwort. Bitte überprüfe deine Eingaben.";
+      }
       setAuthError(msg);
       toast(msg, "error");
     } finally {
@@ -1054,8 +1054,33 @@ export default function PreLoginOnboarding() {
                 ) : (
                   <form onSubmit={handleAuthSubmit} className="space-y-4">
                     {authError && (
-                      <div className="rounded-xl border border-primary/20 bg-primary-muted/50 p-3.5 text-center text-[13px] font-medium text-primary">
-                        {authError}
+                      <div className="rounded-xl border border-primary/30 bg-primary-muted/60 p-4 text-center text-[13.5px] font-medium text-primary space-y-2 shadow-xs">
+                        <div>{authError}</div>
+                        {authMode === "signup" && authError.includes("bereits ein MedAT-Konto") && (
+                          <div className="pt-2 border-t border-primary/20 flex flex-wrap items-center justify-center gap-3 text-xs">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setAuthMode("login");
+                                setAuthError(null);
+                              }}
+                              className="font-bold underline text-primary hover:text-ink cursor-pointer"
+                            >
+                              👉 Direkt zur Anmeldung wechseln
+                            </button>
+                            <span className="text-primary/40">·</span>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setAuthMode("forgot");
+                                setAuthError(null);
+                              }}
+                              className="font-medium underline text-primary hover:text-ink cursor-pointer"
+                            >
+                              Passwort vergessen?
+                            </button>
+                          </div>
+                        )}
                       </div>
                     )}
 
