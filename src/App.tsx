@@ -24,6 +24,7 @@ import QuotenAnalysePage from "./pages/QuotenAnalysePage";
 import BMSMasterplanPage from "./pages/BMSMasterplanPage";
 import TVSEKPage from "./pages/TVSEKPage";
 import TesttagProtokollPage from "./pages/TesttagProtokollPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 import { PracticeProvider, usePractice } from "./dashboard/practiceContext";
 import { isUserLoggedIn, track } from "./lib/core";
 import { LangBanner, LangProvider } from "./lib/i18n";
@@ -153,6 +154,10 @@ export default function App() {
             <Route path="/haftungsausschluss" element={<DisclaimerPage />} />
             <Route path="/impressum" element={<ImpressumPage />} />
             <Route path="/imprint" element={<ImpressumPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/passwort-zuruecksetzen" element={<ResetPasswordPage />} />
+            <Route path="/passwort-aendern" element={<ResetPasswordPage />} />
+            <Route path="/update-password" element={<ResetPasswordPage />} />
             <Route path="/login" element={<Navigate to="/onboarding?mode=login" replace />} />
             <Route path="/onboarding" element={<PreLoginOnboarding />} />
             <Route path="/app" element={<Dashboard />} />
