@@ -271,6 +271,8 @@ export default function App() {
             <Route path="/access_token=*" element={<Navigate to="/reset-password" replace />} />
             <Route path="/error=*" element={<Navigate to="/reset-password" replace />} />
             <Route path="/login" element={<Navigate to="/onboarding?mode=login" replace />} />
+            <Route path="/register" element={<Navigate to="/onboarding?mode=signup" replace />} />
+            <Route path="/signup" element={<Navigate to="/onboarding?mode=signup" replace />} />
             <Route path="/onboarding" element={<PreLoginOnboarding />} />
             <Route path="/app" element={<Dashboard />} />
             <Route path="*" element={<CatchAllRoute />} />

@@ -89,8 +89,24 @@ export default function PreLoginOnboarding() {
     );
   };
 
+  const checkIsDirectSignup = () => {
+    if (typeof window === "undefined") return false;
+    const hash = window.location.hash.toLowerCase();
+    const search = window.location.search.toLowerCase();
+    return (
+      location.pathname === "/register" ||
+      location.pathname === "/signup" ||
+      hash.includes("mode=signup") ||
+      hash.includes("mode=register") ||
+      hash.includes("/register") ||
+      hash.includes("/signup") ||
+      search.includes("mode=signup") ||
+      search.includes("mode=register")
+    );
+  };
+
   // Wizard state (Step 1 to 7)
-  const [step, setStep] = useState<number>(() => (checkIsDirectLogin() ? 6 : 1));
+  const [step, setStep] = useState<number>(() => (checkIsDirectLogin() || checkIsDirectSignup() ? 6 : 1));
 
   // Questionnaire responses
   const [examType, setExamType] = useState<ExamType>("MEDAT-H");
@@ -118,6 +134,9 @@ export default function PreLoginOnboarding() {
     if (search.includes("mode=update-password") || hash.includes("type=recovery")) {
       setStep(6);
       setAuthMode("update-password");
+    } else if (checkIsDirectSignup()) {
+      setStep(6);
+      setAuthMode("signup");
     } else if (checkIsDirectLogin()) {
       setStep(6);
       setAuthMode("login");

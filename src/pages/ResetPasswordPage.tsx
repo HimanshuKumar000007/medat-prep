@@ -388,16 +388,16 @@ export default function ResetPasswordPage() {
           {/* Right cluster */}
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
-              to="/onboarding?mode=login"
+              to="/onboarding?mode=signup"
               className="link-tertiary text-xs sm:text-sm font-semibold text-ink-2 hover:text-ink transition-colors px-2 py-1.5"
             >
-              Anmelden
+              Register
             </Link>
             <Link
               to="/"
               className="btn btn-secondary btn-sm px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-xl border border-line shadow-2xs hover:bg-paper-2 transition-all"
             >
-              Startseite
+              Homepage
             </Link>
           </div>
         </div>
