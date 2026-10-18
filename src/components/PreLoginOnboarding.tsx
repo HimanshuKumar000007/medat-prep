@@ -212,6 +212,9 @@ export default function PreLoginOnboarding() {
       focusAreas,
       onboarded: true,
       planConfigured: true,
+      isPro: false,
+      subscriptionTier: "free",
+      subscriptionStatus: "none",
     });
 
   // Supabase Email Sign Up / Login Handler
@@ -225,6 +228,9 @@ export default function PreLoginOnboarding() {
     // Ensure any legacy un-scoped test data is cleaned up so new user starts completely fresh
     try {
       const legacyKeys = [
+        "medat_is_pro",
+        "medat_subscription_tier",
+        "medat_subscription_status",
         "medat_prep_prod_v1_answers",
         "medat_prep_prod_v1_attempts",
         "medat_prep_prod_v1_bookmarks",

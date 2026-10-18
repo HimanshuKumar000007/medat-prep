@@ -94,13 +94,13 @@ export function isUserPro(user?: Partial<UserProfile> | null): boolean {
   }
 
   // 2. LocalStorage persistence fallback (when offline or before profile hydration)
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && user?.userId) {
     try {
-      const localPro = localStorage.getItem("medat_is_pro");
-      if (localPro === "true") return true;
+      const localScopedPro = localStorage.getItem(`medat_prep_v2_u_${user.userId}_is_pro`);
+      if (localScopedPro === "true") return true;
 
-      const localTier = localStorage.getItem("medat_subscription_tier");
-      if (localTier === "premium" || localTier === "pro" || localTier === "intensiv") {
+      const localScopedTier = localStorage.getItem(`medat_prep_v2_u_${user.userId}_subscription_tier`);
+      if (localScopedTier === "premium" || localScopedTier === "pro" || localScopedTier === "intensiv") {
         return true;
       }
     } catch {
@@ -479,15 +479,19 @@ export function canAccessQuestion(
 /**
  * Helper to explicitly grant or revoke local test Pro status.
  */
-export function setLocalProStatus(isPro: boolean, tier: "free" | "premium" = isPro ? "premium" : "free") {
+export function setLocalProStatus(isPro: boolean, tier: "free" | "premium" = isPro ? "premium" : "free", userId?: string) {
   if (typeof window === "undefined") return;
   try {
-    if (isPro) {
-      localStorage.setItem("medat_is_pro", "true");
-      localStorage.setItem("medat_subscription_tier", tier);
-    } else {
-      localStorage.removeItem("medat_is_pro");
-      localStorage.setItem("medat_subscription_tier", "free");
+    localStorage.removeItem("medat_is_pro");
+    localStorage.removeItem("medat_subscription_tier");
+    if (userId) {
+      if (isPro) {
+        localStorage.setItem(`medat_prep_v2_u_${userId}_is_pro`, "true");
+        localStorage.setItem(`medat_prep_v2_u_${userId}_subscription_tier`, tier);
+      } else {
+        localStorage.removeItem(`medat_prep_v2_u_${userId}_is_pro`);
+        localStorage.setItem(`medat_prep_v2_u_${userId}_subscription_tier`, "free");
+      }
     }
   } catch {}
 }

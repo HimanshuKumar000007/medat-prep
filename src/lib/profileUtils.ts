@@ -178,6 +178,8 @@ export function sanitizeUserProfile(
     (rawConfigured !== false && (p.onboarded === true || p.onboarded === undefined));
   const onboarded = rawOnboarded !== false;
 
+  const resolvedUserId = p.userId || p.user_id || (authUser as any)?.id || undefined;
+
   // 11. Pro Subscription & Access Entitlement
   const rawIsPro = p.isPro ?? p.is_pro;
   const rawTier = p.subscriptionTier ?? p.subscription_tier;
@@ -191,15 +193,15 @@ export function sanitizeUserProfile(
     isPro = true;
   } else if (rawTier === "premium" || rawTier === "pro" || rawTier === "intensiv") {
     isPro = true;
-  } else if (typeof window !== "undefined") {
+  } else if (resolvedUserId && typeof window !== "undefined") {
     try {
-      const localPro = localStorage.getItem("medat_is_pro");
-      const localTier = localStorage.getItem("medat_subscription_tier");
+      const localScopedPro = localStorage.getItem(`medat_prep_v2_u_${resolvedUserId}_is_pro`);
+      const localScopedTier = localStorage.getItem(`medat_prep_v2_u_${resolvedUserId}_subscription_tier`);
       if (
-        localPro === "true" ||
-        localTier === "premium" ||
-        localTier === "pro" ||
-        localTier === "intensiv"
+        localScopedPro === "true" ||
+        localScopedTier === "premium" ||
+        localScopedTier === "pro" ||
+        localScopedTier === "intensiv"
       ) {
         isPro = true;
       }
@@ -226,15 +228,22 @@ export function sanitizeUserProfile(
     ? (typeof rawStatus === "string" && rawStatus ? rawStatus : "active")
     : (typeof rawStatus === "string" && rawStatus ? rawStatus : "none");
 
-  // Keep localStorage aligned
+  // Keep user-scoped localStorage aligned & purge legacy unscoped keys
   if (typeof window !== "undefined") {
     try {
-      localStorage.setItem("medat_is_pro", String(isPro));
-      localStorage.setItem("medat_subscription_tier", subscriptionTier);
+      localStorage.removeItem("medat_is_pro");
+      localStorage.removeItem("medat_subscription_tier");
+      if (resolvedUserId) {
+        if (isPro) {
+          localStorage.setItem(`medat_prep_v2_u_${resolvedUserId}_is_pro`, "true");
+          localStorage.setItem(`medat_prep_v2_u_${resolvedUserId}_subscription_tier`, subscriptionTier);
+        } else {
+          localStorage.removeItem(`medat_prep_v2_u_${resolvedUserId}_is_pro`);
+          localStorage.setItem(`medat_prep_v2_u_${resolvedUserId}_subscription_tier`, "free");
+        }
+      }
     } catch {}
   }
-
-  const resolvedUserId = p.userId || p.user_id || (authUser as any)?.id || undefined;
 
   return {
     name: resolvedName,
