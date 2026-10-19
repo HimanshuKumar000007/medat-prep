@@ -577,7 +577,7 @@ export default function Stats({
             Statistiken & Fortschritt
           </h1>
           <p className="mt-0.5 text-[13px] sm:text-[14.5px] text-ink-3">
-            Echtzeit-Leistungsanalyse, Meisterschaftsgrade und offizielle MedAT-Zulassungsprognose.
+            Echtzeit-Leistungsanalyse, Meisterschaftsgrade und historischer Grenzwert-Vergleich.
           </p>
         </div>
 
@@ -656,7 +656,7 @@ export default function Stats({
 
         {/* Metric 3: Projected MedAT Score */}
         <div className="card-lift rounded-2xl border border-line bg-paper p-3 xs:p-4 sm:p-5 shadow-xs">
-          <p className="text-[10.5px] xs:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Prognose MedAT</p>
+          <p className="text-[10.5px] xs:text-[11.5px] font-bold uppercase tracking-wider text-ink-4">Hochrechnung MedAT</p>
           <div className="mt-1.5 xs:mt-2 flex flex-wrap items-baseline gap-1.5 xs:gap-2">
             <span className="num text-[22px] xs:text-[26px] sm:text-[28px] font-black leading-none text-primary">
               {projectedMedATScore !== null ? `${projectedMedATScore} %` : "—"}
@@ -713,7 +713,7 @@ export default function Stats({
       {/* ─── Navigation Tabs Bar ─── */}
       <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto border-b border-line pb-2.5 scrollbar-none -mx-1 px-1 sm:mx-0 sm:px-0">
         {[
-          { id: "overview", label: "Übersicht & MedAT-Prognose", count: undefined },
+          { id: "overview", label: "Übersicht & Score-Berechnung", count: undefined },
           { id: "subtests", label: "Alle 13 Subtests", count: 13 },
           { id: "chapters", label: "Kapitel & 5-Sets", count: undefined },
           { id: "mocks", label: "Generalproben & Mocks", count: mockStats.totalFullMocks },
@@ -755,13 +755,13 @@ export default function Stats({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider text-primary bg-primary-subtle px-2.5 py-1 rounded-lg">
-                  Österreichischer Zulassungs-Index
+                  Österreichischer Grenzwert-Vergleich
                 </span>
                 <h2 className="mt-2 text-[18px] sm:text-[20px] font-bold text-ink">
-                  MedAT-Zulassungschance & Quoten-Analyse
+                  Historischer Quoten- & Grenzwert-Vergleich
                 </h2>
                 <p className="mt-1 text-[12.5px] sm:text-[13.5px] text-ink-3 max-w-2xl leading-relaxed">
-                  Deine prognostizierte Gesamtpunktzahl errechnet sich aus der offiziellen Gewichtung:
+                  Deine berechnete Gesamtpunktzahl errechnet sich aus der offiziellen Gewichtung:
                   BMS (40%), KFF (40%), TV (10%) und SEK (10%).
                 </p>
               </div>

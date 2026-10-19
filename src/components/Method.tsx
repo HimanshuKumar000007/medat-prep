@@ -10,8 +10,8 @@ const STEPS = [
   },
   {
     n: "02",
-    title: "KI-Lernplan & Tutor",
-    text: "Der Plan wird wöchentlich neu berechnet: Schwächen bekommen Fokuszeit, Stärken nur Erhaltung — mit 24/7 KI-Tutor für jeden Rechenweg.",
+    title: "Strukturierter Lernplan & Tutor",
+    text: "Dein Plan passt sich deinem Lerntempo an: Schwächen bekommen Fokuszeit, Stärken nur Erhaltung — mit 24/7 didaktischer Lernhilfe für jeden Rechenweg.",
   },
   {
     n: "03",
@@ -193,7 +193,7 @@ export default function Method() {
                   {[
                     "4 vollständige Simulationen in Originalzeit (~4,5 h)",
                     "Live-Ranking gegen alle aktiven Nutzer:innen",
-                    "Grenzwert-Prognose für Wien, Innsbruck, Graz & Linz",
+                    "Historischer Grenzwert-Vergleich für Wien, Innsbruck, Graz & Linz",
                   ].map((f) => (
                     <li key={f} className="flex items-start gap-2.5 sm:gap-3 text-[13px] sm:text-[14px] text-slate-300">
                       <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
@@ -348,7 +348,7 @@ export default function Method() {
                   <IconSpark className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
                 </span>
                 <div className="mt-3.5 sm:mt-5 flex items-center justify-between gap-2">
-                  <h3 className="text-[16px] xs:text-[17px] sm:text-[19px] font-bold tracking-[-0.01em] text-ink">MedAT KI-Tutor 24/7</h3>
+                  <h3 className="text-[16px] xs:text-[17px] sm:text-[19px] font-bold tracking-[-0.01em] text-ink">MedAT Lernhilfe & Tutor 24/7</h3>
                   <span className="rounded-md bg-emerald-50 px-2 py-0.5 text-[9.5px] xs:text-[10px] sm:text-[10.5px] font-bold uppercase tracking-wider text-emerald-700 ring-1 ring-emerald-600/20 shrink-0">Im Dashboard</span>
                 </div>
                 <p className="mt-1.5 sm:mt-2 text-[13px] xs:text-[13.5px] sm:text-[14px] leading-relaxed text-ink-2">

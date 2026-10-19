@@ -135,6 +135,9 @@ export default function Pricing() {
           <p className="mt-8 sm:mt-10 text-center text-[11.5px] xs:text-[12.5px] sm:text-[13px] font-medium text-ink-3 px-2">
             14 Tage Geld-zurück-Garantie · Jederzeit mit 1 Klick kündbar · Inkl. 20 % österr. USt. · Sofortige Freischaltung
           </p>
+          <p className="mt-2 text-center text-[10.5px] text-slate-500 max-w-xl mx-auto px-2">
+            Reine E-Learning-Plattform zur selbstständigen Prüfungsvorbereitung. Keine automatischen Zulassungs- oder Auswahlentscheidungen über Personen.
+          </p>
         </Reveal>
       </div>
     </section>

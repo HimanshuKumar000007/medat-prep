@@ -7,7 +7,7 @@ const BENEFITS = [
   "Ziel-Uni (Wien, Graz, Ibk., Linz) & Studienrichtung (Human- vs. Zahnmedizin)",
   "Individuelles Zeitbudget & aktueller Vorbereitungsstand",
   "Maßgeschneiderte Tagesmissionen für deine persönlichen Schwachstellen",
-  "100 % kostenlos — sofortiger Zugriff auf KI-Lernplan & 24/7 Tutor",
+  "100 % kostenlos — sofortiger Zugriff auf deinen Lernplan & 24/7 Lernhilfe",
 ];
 
 export default function Quiz() {

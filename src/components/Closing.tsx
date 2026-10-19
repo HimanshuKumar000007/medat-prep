@@ -144,7 +144,7 @@ export function CountdownCTA() {
               <>
                 <h3 className="text-[17px] xs:text-[19px] sm:text-[21px] font-extrabold tracking-[-0.02em]">Sichere dir deinen kostenlosen Start.</h3>
                 <p className="mt-1.5 sm:mt-2 text-[13px] xs:text-[13.5px] sm:text-[14px] leading-relaxed text-ink-2">
-                  Persönlicher KI-Lernplan, 200 Übungsfragen und 5-Schritte-Setup — sofort ohne Wartezeit starten.
+                  Persönlicher Lernplan, 200 Übungsfragen und 5-Schritte-Setup — sofort ohne Wartezeit starten.
                 </p>
                 <form className="mt-5 sm:mt-6" onSubmit={submit} noValidate>
                   <label htmlFor="signup-email" className="sr-only">
@@ -229,7 +229,7 @@ const FOOTER_COLS: FooterColumn[] = [
     title: "Produkt",
     links: [
       { label: "Über den MedAT", href: "ueber-medat" },
-      { label: "Lernplan & KI-Coach", href: "lernplan" },
+      { label: "Lernplan & Methoden", href: "lernplan" },
       { label: "Übungsfragen & BMS", href: "uebungsfragen" },
       { label: "Probetests & Simulation", href: "probetests" },
       { label: "Preise & Tarife", href: "preise" },
@@ -371,7 +371,7 @@ export function Footer() {
             </span>
           </a>
           <p className="mt-3.5 sm:mt-5 max-w-sm text-[13px] sm:text-[14px] leading-relaxed">
-            Die KI-gestützte Vorbereitung auf den österreichischen Medizin-Aufnahmetest. Entwickelt von Wiener
+            Die interaktive Vorbereitung auf den österreichischen Medizin-Aufnahmetest. Entwickelt von Wiener
             Ärzt:innen und MedAT-Top-Platzierer:innen für Wien, Innsbruck, Graz und Linz.
           </p>
           <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2" aria-hidden="true">
@@ -470,7 +470,12 @@ export function Footer() {
 
       <div className="border-t border-night-2">
         <div className="wrap flex flex-col items-start justify-between gap-3 py-5 sm:py-6 text-[11px] xs:text-[12px] text-slate-500 sm:flex-row sm:items-center">
-          <p>© {year} MedAT Prep GmbH · Alle Rechte vorbehalten. Preise inkl. 20% österr. USt.</p>
+          <div>
+            <p>© {year} MedAT Prep GmbH · Alle Rechte vorbehalten. Preise inkl. 20% österr. USt.</p>
+            <p className="mt-1 text-[10.5px] text-slate-500 max-w-2xl leading-relaxed">
+              Rechtlicher Hinweis: MedAT Prep ist eine unabhängige E-Learning-Plattform zur Prüfungsvorbereitung und zum Selbststudium. Die Plattform trifft keinerlei Zulassungs-, Bewertungs- oder Auswahlentscheidungen über Personen. Zulassungsentscheidungen obliegen ausschließlich den zuständigen Medizinischen Universitäten.
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <a
               href="#/terms"

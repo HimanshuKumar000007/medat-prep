@@ -268,7 +268,7 @@ export default function LegalTrustModal({
                 <div className="p-4 rounded-xl border border-line bg-emerald-50/70 border-emerald-200/60 text-emerald-950 text-xs sm:text-[13px] leading-relaxed">
                   <p className="font-bold text-emerald-900 mb-1">💬 Fachliche Fragen zu Übungsaufgaben:</p>
                   <p>
-                    Wenn du innerhalb einer Übungsfrage oder eines Probetests eine Unklarheit entdeckst, kannst du diese direkt in der Frage markieren oder unserem KI-Tutor eine Nachfrage stellen. Unser didaktisches MedAT-Fachlektorat prüft gemeldete Items laufend.
+                    Wenn du innerhalb einer Übungsfrage oder eines Probetests eine Unklarheit entdeckst, kannst du diese direkt in der Frage markieren oder unserem didaktischen Tutor eine Nachfrage stellen. Unser MedAT-Fachlektorat prüft gemeldete Items laufend.
                   </p>
                 </div>
 
@@ -317,7 +317,7 @@ export default function LegalTrustModal({
                 <div className="space-y-2 text-xs sm:text-sm">
                   <h4 className="font-bold text-ink text-sm sm:text-base">2. Zweck und Rechtsgrundlagen der Verarbeitung</h4>
                   <p>
-                    Wir verarbeiten personenbezogene Daten unserer Nutzer:innen grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen (Einstufungstest, personalisierter KI-Lernplan, Probetests, Fortschrittsauswertung) erforderlich ist.
+                    Wir verarbeiten personenbezogene Daten unserer Nutzer:innen grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen (Einstufungstest, personalisierter Lernplan, Probetests, Lernstatistik) erforderlich ist.
                   </p>
                   <ul className="list-disc pl-5 space-y-1 text-ink-2">
                     <li>
@@ -413,9 +413,12 @@ export default function LegalTrustModal({
                   </p>
                   <ul className="list-disc pl-5 space-y-1 text-ink-2">
                     <li><strong>Basis-Zugang:</strong> 0 € dauerhaft kostenlos (keine Zahlungsdaten erforderlich).</li>
-                    <li><strong>Premium-Zugang:</strong> 39 € für 12 Monate voller Zugriff auf alle 5.000+ Fragen, Simulationen und den KI-Tutor. Keine versteckten Kosten.</li>
+                    <li><strong>Premium-Zugang:</strong> 39 € für 12 Monate voller Zugriff auf alle 5.000+ Fragen, Simulationen und die didaktische Lernhilfe. Keine versteckten Kosten.</li>
                     <li><strong>Intensiv-Paket:</strong> 349 € einmalig inklusive 6 persönlicher Coaching-Sessions bis zum Testtag.</li>
                   </ul>
+                  <p className="text-[11px] text-ink-3 pt-1">
+                    Rechtlicher Hinweis: MedAT Prep ist eine reine E-Learning-Plattform. Die Software trifft keinerlei Zulassungs- oder Auswahlentscheidungen über Personen.
+                  </p>
                 </div>
 
                 <div className="space-y-2 text-xs sm:text-sm">

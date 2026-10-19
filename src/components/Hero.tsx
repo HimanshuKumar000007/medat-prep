@@ -116,7 +116,7 @@ export default function Hero() {
             className="hero-enter mt-4 sm:mt-6 max-w-[540px] text-[14px] xs:text-[15px] sm:text-[clamp(0.9375rem,0.5vw+0.875rem,1.125rem)] leading-relaxed text-ink-2"
             style={{ animationDelay: "200ms" }}
           >
-            {t("Mit KI-gestütztem Training für")} <strong className="font-semibold text-ink">{t("BMS, KFF, Textverständnis und SEK")}</strong>.{" "}
+            {t("Mit interaktivem Training für")} <strong className="font-semibold text-ink">{t("BMS, KFF, Textverständnis und SEK")}</strong>.{" "}
             {t("Keine 20.000 willkürlichen Fragen — sondern die eine Übung, die du")}{" "}
             <em className="not-italic font-semibold text-primary">{t("jetzt")}</em>{" "}
             {t("brauchst. Personalisiert. Auf Deutsch. Für Wien, Innsbruck, Graz und Linz.")}
@@ -286,7 +286,7 @@ export default function Hero() {
                     <IconSpark className="h-3.5 w-3.5" />
                   </span>
                   <p className="text-[10.5px] sm:text-[11px] leading-relaxed text-slate-300">
-                    <span className="font-semibold text-paper">KI-Tutor:</span> Gut gemacht! Morgen: aktiver Recall statt
+                    <span className="font-semibold text-paper">Lern-Tutor:</span> Gut gemacht! Morgen: aktiver Recall statt
                     Wiederlesen — ich hab dir 12 Karten vorbereitet.
                   </p>
                 </div>

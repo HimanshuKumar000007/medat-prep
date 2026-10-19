@@ -397,12 +397,12 @@ export default function AboutPage() {
                     2026/27
                   </span>
                   <h3 className="text-base sm:text-lg font-bold text-ink">
-                    MedAT Prep 2.0: Adaptiver KI-Coach & Live-Ranking
+                    MedAT Prep 2.0: Adaptiver Lern-Coach & Ranking
                   </h3>
                 </div>
                 <p className="mt-2.5 text-sm leading-relaxed text-ink-2">
-                  Einführung des personalisierten Fehler-Trackers, der österreichweiten Grenzwert-Prognose
-                  und der automatischen Stundenplan-Synchronisation.
+                  Einführung des personalisierten Fehler-Trackers, des österreichweiten historischen Grenzwert-Vergleichs
+                  und der automatischen Lernplan-Synchronisation.
                 </p>
               </div>
             </div>

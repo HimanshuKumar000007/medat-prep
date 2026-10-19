@@ -248,8 +248,8 @@ export const FAQS: Faq[] = [
   },
   {
     id: "q7",
-    q: "Wie funktioniert der KI-Lernplan?",
-    a: "Der Algorithmus wertet jede Antwort aus: Thema, Schwierigkeitsgrad, benötigte Zeit und Fehlertyp (Flüchtigkeitsfehler vs. Wissenslücke). Daraus berechnet er wöchentlich neu, welche Inhalte du wiederholen, vertiefen oder nur erhalten musst — inklusive Prognose, wo dein Score am Testtag liegen würde.",
+    q: "Wie funktioniert der adaptive Lernplan?",
+    a: "Das System analysiert deine bearbeiteten Übungsaufgaben nach Themen und Fehlermustern. Daraus strukturiert es deinen Lernplan übersichtlich nach Prioritäten, damit du Wissenslücken gezielt vor dem Testtag schließt.",
   },
 ];
 
@@ -279,7 +279,7 @@ export const PRICING: PricingTier[] = [
     features: [
       "200 kostenlose Fragen (4 volle BMS-Kapitel)",
       "1 vollständiger Probetest (Generalprobe #1)",
-      "Persönlicher KI-Lernplan & Vorbereitungs-Setup",
+      "Persönlicher Lernplan & Vorbereitungs-Setup",
       "Community-Forum & Lerngruppen",
     ],
     cta: "Kostenlos starten",
@@ -294,12 +294,12 @@ export const PRICING: PricingTier[] = [
     unit: "year",
     features: [
       "Alle 5.000+ Fragen (BMS, KFF, TV & SEK)",
-      "MedAT KI-Tutor: 24/7 Erklärungen & Rechenwege",
-      "Adaptiver KI-Lernplan, wöchentlich neu",
+      "Didaktische Lernhilfe: 24/7 Erklärungen & Rechenwege",
+      "Adaptiver Lernplan, wöchentlich aktualisiert",
       "4 Probetests unter Echtbedingungen",
       "SEK- & KFF-Intensivtraining",
       "Gezieltes Schwachstellen-Training (Fehler-Hub)",
-      "Grenzwert-Prognose & Live-Ranking",
+      "Historische Grenzwerte & Punkte-Vergleich",
       "Für MedAT-H und MedAT-Z",
       "Volle 12 Monate Zugriff (nur 3,25 € / Monat)",
     ],

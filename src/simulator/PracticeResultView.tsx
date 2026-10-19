@@ -1140,7 +1140,7 @@ export function PracticeResultView({
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2 text-red-600 text-[11px] font-black uppercase tracking-wider">
                   <span>🇦🇹</span>
-                  <span>{examType} ZULASSUNGSPROGNOSE V10</span>
+                  <span>{examType} HISTORISCHER GRENZWERT-VERGLEICH</span>
                 </div>
 
                 {/* Quota Switcher */}
@@ -1174,10 +1174,10 @@ export function PracticeResultView({
 
               <div>
                 <h3 className="text-[16px] font-black text-slate-900 uppercase tracking-wider">
-                  Universitäts-Zulassungsprognose (Österreich)
+                  Universitäts-Grenzwert-Vergleich (Österreich)
                 </h3>
                 <p className="text-[12.5px] text-slate-500">
-                  Live-Vergleich deines Scores ({accuracy}%) mit den historischen Cutoffs für das gewählte Kontingent.
+                  Statistischer Vergleich deines Scores ({accuracy}%) mit den historischen Cutoffs der Vorjahre. Keine offizielle Zulassungsentscheidung.
                 </p>
               </div>
             </div>

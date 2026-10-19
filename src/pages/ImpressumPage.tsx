@@ -279,6 +279,12 @@ export default function ImpressumPage() {
                     eigenverantwortlichen und chancengerechten Vorbereitung.
                   </p>
                 </div>
+                <div className="p-3.5 rounded-xl border border-line bg-amber-500/10 space-y-1">
+                  <p className="font-bold text-ink text-xs">Aufsichtsrechtlicher Hinweis zur Plattform (E-Learning):</p>
+                  <p className="text-ink-2 text-[11.5px] leading-relaxed">
+                    MedAT Prep ist ein reines E-Learning-Werkzeug zur individuellen Prüfungsvorbereitung. Auf der Plattform kommen keine Systeme zum Einsatz, die rechtliche oder sonstige maßgebliche Entscheidungen über natürliche Personen treffen oder beeinflussen (keine Zulassungs- oder Auswahlentscheidungen im Sinne des Art. 6 / Anhang III KI-VO).
+                  </p>
+                </div>
               </div>
             </div>
 

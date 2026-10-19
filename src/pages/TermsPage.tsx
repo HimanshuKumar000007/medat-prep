@@ -353,7 +353,7 @@ Datum: ______________
                 <div className="rounded-xl border-2 border-primary/30 bg-primary-subtle/30 p-4 space-y-1">
                   <p className="font-bold text-ink text-base">MedAT Premium</p>
                   <p className="text-xl font-extrabold text-primary display-num">39 €</p>
-                  <p className="text-ink-3">Voller Zugriff auf 5.000+ Fragen, BMS, KFF, Textverständnis, Probetests & KI-Tutor für die gesamte MedAT-Saison.</p>
+                  <p className="text-ink-3">Voller Zugriff auf 5.000+ Fragen, BMS, KFF, Textverständnis, Probetests & didaktische Lernhilfe für die gesamte MedAT-Saison.</p>
                 </div>
 
                 <div className="rounded-xl border border-line bg-paper-warm/40 p-4 space-y-1">
@@ -365,7 +365,7 @@ Datum: ______________
 
               <p className="text-sm sm:text-[14.5px] leading-relaxed text-ink-2 pt-2">
                 (2) Die Bezahlung erfolgt über sichere, nach <strong>PCI-DSS Level 1</strong> zertifizierte Payment-Dienstleister
-                (z. B. Stripe, PayPal, Sofortüberweisung/Klarna, Kreditkarte oder EPS). Die Belastung deines Zahlungsmittels
+                (z. B. Paddle, Stripe, PayPal, Kreditkarte oder EPS). Die Belastung deines Zahlungsmittels
                 erfolgt unmittelbar mit Abschluss des Kaufvorgangs.
               </p>
             </div>
@@ -398,7 +398,7 @@ Datum: ______________
                   § 5
                 </span>
                 <h2 className="text-lg sm:text-xl font-bold text-ink">
-                  Gewährleistung & Unabhängigkeits-Haftungsausschluss
+                  Gewährleistung, Unabhängigkeit & E-Learning-Klarstellung
                 </h2>
               </div>
               <p className="text-sm sm:text-[14.5px] leading-relaxed text-ink-2">
@@ -416,10 +416,16 @@ Datum: ______________
                   Innsbruck, Graz oder der JKU Linz.
                 </p>
                 <p>
-                  Obwohl unsere didaktischen Fragen und KI-Lernsysteme auf den offiziellen Stichwortkatalogen von
+                  Obwohl unsere didaktischen Fragen und Lernsysteme auf den offiziellen Stichwortkatalogen von
                   medizinstudieren.at basieren und tausende Studierende erfolgreich vorbereitet haben, hängt das tatsächliche
                   Bestehen des MedAT stets von der individuellen Vorbereitung, dem Fleiß und der Prüfungsform der Kandidat:innen ab.
                   Ein einklagbarer Rechtsanspruch auf das Bestehen des Tests oder einen Medizinstudienplatz besteht daher naturgemäß nicht.
+                </p>
+                <p className="pt-1.5 font-semibold text-ink">
+                  (3) Reine E-Learning-Plattform / Keine Entscheidungsfindung über natürliche Personen:
+                </p>
+                <p>
+                  MedAT Prep ist eine reine E-Learning- und Übungssoftware für das selbstständige Studium. Die Plattform und ihre Software treffen keinerlei Zulassungs-, Auswahl-, Eignungs-, Bewertungs- oder sonstige Entscheidungen über natürliche Personen. Sämtliche Punkteschätzungen oder Testsimulationen dienen ausschließlich der individuellen Lernkontrolle der Nutzer:innen. Zulassungsentscheidungen zum Medizinstudium obliegen ausnahmslos und ausschließlich den zuständigen Medizinischen Universitäten.
                 </p>
               </div>
             </div>

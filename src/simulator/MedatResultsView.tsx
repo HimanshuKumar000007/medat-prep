@@ -236,7 +236,7 @@ export function MedatResultsView({
           { id: "performance", label: "LEISTUNG & THEMEN" },
           { id: "pace", label: "ZEIT-ANALYSE" },
           { id: "solutions", label: "ANTWORT-REVIEW", action: onOpenReview },
-          { id: "progress", label: "ZULASSUNGSPROGNOSE" },
+          { id: "progress", label: "GRENZWERT-VERGLEICH" },
         ].map((tab) => {
           const isActive = activeTab === tab.id;
           return (
@@ -645,16 +645,16 @@ export function MedatResultsView({
       )}
 
       {/* =================================================================
-         TAB CONTENT: ZULASSUNGSPROGNOSE (PROGRESS)
+         TAB CONTENT: GRENZWERT-VERGLEICH (PROGRESS)
          ================================================================= */}
       {activeTab === "progress" && (
         <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-sm space-y-5">
           <div className="space-y-1 border-b border-slate-100 pb-4">
             <h3 className="text-[16px] font-black text-slate-900 uppercase tracking-wider">
-              Universitäts-Zulassungsprognose (Österreich)
+              Historischer Universitäts-Grenzwert-Vergleich (Österreich)
             </h3>
             <p className="text-[12.5px] text-slate-500">
-              Vergleich deines Testergebnisses mit den historischen Aufnahmegrenzen (MedUni Wien, Innsbruck, Graz, Linz).
+              Statistischer Vergleich deines Testergebnisses mit den historischen Aufnahmegrenzen der Vorjahre (MedUni Wien, Innsbruck, Graz, Linz). Keine offizielle Zulassungsentscheidung.
             </p>
           </div>
 

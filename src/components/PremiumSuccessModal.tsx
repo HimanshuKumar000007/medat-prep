@@ -196,7 +196,7 @@ export const PremiumSuccessModal: React.FC<PremiumSuccessModalProps> = ({
             <span className="mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
               <IconCheck className="h-3 w-3" />
             </span>
-            <span>Adaptiver KI-Lernplan mit gezielter Schwachstellen-Analyse</span>
+            <span>Adaptiver Lernplan mit gezielter Schwachstellen-Analyse</span>
           </div>
 
           <div className="flex items-start gap-2.5 text-[13.5px] text-slate-800 font-semibold">

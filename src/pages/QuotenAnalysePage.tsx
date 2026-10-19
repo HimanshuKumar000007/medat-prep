@@ -1447,7 +1447,7 @@ export default function QuotenAnalysePage() {
                     </div>
 
                     <div className="rounded-2xl border border-line bg-paper p-3.5 shadow-2xs">
-                      <p className="text-[10px] font-bold uppercase text-ink-4">Zulassungsprognose</p>
+                      <p className="text-[10px] font-bold uppercase text-ink-4">Historischer Vorjahres-Vergleich</p>
                       <div className="mt-1 space-y-1">
                         <div className="flex items-center justify-between text-[11px] font-bold">
                           <span className="text-ink-2">AT-Quote:</span>
@@ -1459,8 +1459,8 @@ export default function QuotenAnalysePage() {
                             }
                           >
                             {percentileCalculation.atAdmitted
-                              ? "✓ Direktzulassung"
-                              : "⚠️ Grenzbereich / Warteliste"}
+                              ? "✓ Über Vorjahresschnitt"
+                              : "⚠️ Nahe Vorjahresgrenze"}
                           </span>
                         </div>
                         <div className="flex items-center justify-between text-[11px] font-bold">
@@ -1473,11 +1473,12 @@ export default function QuotenAnalysePage() {
                             }
                           >
                             {percentileCalculation.euAdmitted
-                              ? "✓ Direktzulassung"
-                              : "✕ Noch nicht ausreichend"}
+                              ? "✓ Über Vorjahresschnitt"
+                              : "✕ Unter Vorjahresgrenze"}
                           </span>
                         </div>
                       </div>
+                      <p className="text-[9.5px] text-ink-4 mt-1.5 italic">Reiner Richtwert anhand historischer Daten. Keine Zulassungsentscheidung.</p>
                     </div>
                   </div>
 
