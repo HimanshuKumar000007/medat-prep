@@ -26,6 +26,7 @@ import { performanceService } from "../orchestrator/services/performanceService"
 import { journeyService } from "../orchestrator/services/journeyService";
 import { getTodayViennaString, getViennaOffsetDateString } from "../lib/dateService";
 import { sanitizeUserProfile } from "../lib/profileUtils";
+import { identifyUser, resetUser, trackEvent } from "../lib/mixpanel";
 
 export interface UserProfile {
   name: string;
@@ -418,6 +419,19 @@ export const PracticeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     };
   }, []);
 
+  // Mixpanel: Re-identify user whenever session loads or is re-opened
+  useEffect(() => {
+    if (currentUserId) {
+      identifyUser(currentUserId, {
+        name: userProfile.name,
+        email: userProfile.email,
+        examType: userProfile.examType,
+        targetUniversity: userProfile.targetUniversity,
+        isPro: userProfile.isPro,
+      });
+    }
+  }, [currentUserId, userProfile.name, userProfile.email, userProfile.examType, userProfile.targetUniversity, userProfile.isPro]);
+
   // Record daily activity for streak calculation standardized to Europe/Vienna
   const recordActivityDate = useCallback(() => {
     if (!currentUserId) return;
@@ -724,6 +738,17 @@ export const PracticeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         timeSpentSeconds,
       });
 
+      // Mixpanel: Track Core Value Moment
+      trackEvent("practice_set_completed", {
+        set_id: setId,
+        chapter_id: chapterId,
+        score_percent: scorePct,
+        correct_count: correctCount,
+        total_questions: totalQuestions,
+        time_spent_seconds: timeSpentSeconds,
+        passed,
+      });
+
       if (isSet5 && passed) {
         toast("🏆 Kapitel offiziell gemeistert!", "success");
         return { passed: true, chapterMastered: true, score: scorePct };
@@ -849,6 +874,8 @@ export const PracticeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const logout = useCallback(async () => {
     markUserLoggedOut();
+    // Mixpanel: Decouple user identity on logout
+    resetUser();
     try {
       await supabase.auth.signOut({ scope: "local" });
     } catch {}

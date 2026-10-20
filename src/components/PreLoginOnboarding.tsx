@@ -17,6 +17,7 @@ import { generateDailyMissionTemplate, getDailyMissionStorageKey } from "../dash
 import { getViennaDateString } from "../lib/dateService";
 import { dataOrchestrator } from "../orchestrator";
 import { sanitizeUserProfile } from "../lib/profileUtils";
+import { identifyUser, trackEvent } from "../lib/mixpanel";
 
 const CURRENT_YEAR = new Date().getFullYear();
 const NEXT_YEAR = CURRENT_YEAR + 1;
@@ -304,6 +305,20 @@ export default function PreLoginOnboarding() {
             localStorage.setItem("medat_current_user_id", newUid);
           } catch {}
           dataOrchestrator.setUserId(newUid);
+
+          // Mixpanel: Identify newly registered user and track sign_up_completed
+          identifyUser(newUid, {
+            name: fullName.trim() || undefined,
+            email: email.trim(),
+            examType: profileData.examType,
+            targetUniversity: profileData.targetUniversity,
+          });
+          trackEvent("sign_up_completed", {
+            sign_up_method: "email",
+            platform: "web",
+            exam_type: profileData.examType,
+            target_university: profileData.targetUniversity,
+          });
         }
 
         // Genuine new registration: persist initial profile
@@ -372,6 +387,11 @@ export default function PreLoginOnboarding() {
           } catch {}
           dataOrchestrator.setUserId(data.user.id);
 
+          // Mixpanel: Identify existing user on login
+          identifyUser(data.user.id, {
+            email: data.user.email,
+          });
+
           // Update practiceContext profile so isLoggedIn updates immediately
           updateUserProfile({ userId: data.user.id });
 
@@ -403,7 +423,7 @@ export default function PreLoginOnboarding() {
   };
 
   // Forgot Password Trigger (IISER architecture via Resend & Serverless API)
-  const handleForgotPasswordSubmit = async (e: FormEvent) => {
+  const handleForgotPasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
       setAuthError("Bitte gib eine gültige E-Mail-Adresse an.");
@@ -446,7 +466,7 @@ export default function PreLoginOnboarding() {
   };
 
   // Update Password Trigger (Recovery Session)
-  const handleUpdatePasswordSubmit = async (e: FormEvent) => {
+  const handleUpdatePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!password || password.length < 6) {
       setAuthError("Das neue Passwort muss mindestens 6 Zeichen lang sein.");
