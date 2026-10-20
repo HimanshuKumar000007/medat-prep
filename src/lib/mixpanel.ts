@@ -28,6 +28,9 @@ export function initMixpanel(): void {
       track_pageview: false,
       persistence: "localStorage",
       ignore_dnt: false,
+      api_host: "https://api-eu.mixpanel.com",
+      autocapture: true,
+      record_sessions_percent: 100,
     });
 
     // Check EU privacy consent gate status
