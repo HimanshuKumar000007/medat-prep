@@ -63,6 +63,18 @@ export function validatePaddleConfig(): { valid: boolean; errors: string[] } {
 // Automatically validate config once on module load
 validatePaddleConfig();
 
+/**
+ * Pre-initializes Paddle.js eagerly at app startup.
+ * This is critical so that Paddle.js is already loaded and initialized
+ * when the user lands on any page — including /checkout?_ptxn=... links
+ * sent via Paddle's Default Payment Link, dunning emails, etc.
+ * Must be called as early as possible (e.g. in main.tsx).
+ */
+export function preInitPaddle(): void {
+  // Kick off initialization without awaiting — it runs in background
+  getPaddle().catch((err) => console.error("[Paddle] Pre-init error:", err));
+}
+
 // Active checkout event listener state
 let activeCallbacks: {
   onSuccess?: (data?: any) => void;
@@ -188,8 +200,12 @@ export async function openCheckout({
     finalCustomData.email = resolvedEmail;
   }
 
-  const successParam = resolvedUserId ? `upgraded=true&user_id=${encodeURIComponent(resolvedUserId)}` : "upgraded=true";
-  const successUrl = `${window.location.origin}/#/dashboard?${successParam}`;
+  // successUrl must NOT contain a hash fragment (Paddle rejects it).
+  // Use a plain query param on the origin instead; the SPA will handle routing.
+  const successParam = resolvedUserId
+    ? `upgraded=true&user_id=${encodeURIComponent(resolvedUserId)}`
+    : "upgraded=true";
+  const successUrl = `${window.location.origin}/?${successParam}`;
 
   try {
     paddle.Checkout.open({

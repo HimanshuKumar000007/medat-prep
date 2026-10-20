@@ -60,6 +60,15 @@ function Homepage() {
     return <Navigate to={`/reset-password${tokenParam}`} replace />;
   }
 
+  // If arriving from Paddle checkout success redirect (?upgraded=true), send logged-in
+  // users to their dashboard, otherwise stay on homepage (they may need to log in).
+  const isUpgradeReturn =
+    typeof window !== "undefined" &&
+    window.location.search.includes("upgraded=true");
+  if (isUpgradeReturn && loggedIn) {
+    return <Navigate to="/app?upgraded=true" replace />;
+  }
+
   useEffect(() => {
     if (!loggedIn) {
       document.title =
