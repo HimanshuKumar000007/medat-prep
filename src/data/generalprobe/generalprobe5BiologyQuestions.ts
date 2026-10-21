@@ -43,30 +43,30 @@ export interface QcBioGp5QuestionRaw {
 
 export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
   // -------------------------------------------------------------
-  // Kapitel 1: Die menschliche Zelle (bio-01-zelle) - 5 Aufgaben
+  // Kapitel 1: Die menschliche Zelle (bio-01-zelle) - 6 Aufgaben
   // -------------------------------------------------------------
   {
     id: "BIO-BMS-GP5-001",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Cell Biology",
-    subtopic: "Peroxisomen & Zelluläre Entgiftung",
+    subtopic: "Lysosomen & saure Hydrolasen",
     difficulty: "foundational",
-    stem: "Welche biologische Funktion wird maßgeblich durch die Enzyme in den Peroxisomen (Microbodies) menschlicher Zellen vermittelt?",
+    stem: "Welche Aussage beschreibt das physiologische Milieu und die Funktion von Lysosomen in menschlichen Zellen zutreffend?",
     options: {
-      A: "Abbau sehr langkettiger Fettsäuren (VLCFA) via Beta-Oxidation und Zersetzung von toxischem Wasserstoffperoxid durch Katalase",
-      B: "Spaltung von Glykoproteinen durch saure Hydrolasen bei einem optimalen pH-Wert von 4,5–5,0",
-      C: "Synthese von ATP über einen chemiosmotischen Protonengradienten an der inneren Membran",
-      D: "Cotranslationale Modifikation von sekretorischen Polypeptiden durch N-Glykosylierung",
-      E: "Synthese der ribosomalen 45S-Prä-rRNA und Zusammenbau von Ribonukleoproteinpartikeln"
+      A: "Lysosomen halten durch eine basolaterale Na+/K+-ATPase einen alkalischen pH-Wert von ca. 8,5 aufrecht, um sekretorische Proteine zu falten.",
+      B: "Die lysosomalen Enzyme besitzen ihr Aktivitätsoptimum bei neutralem pH-Wert (pH 7,2–7,4) des Zytosols, um den unkontrollierten Abbau zellulärer Strukturen zu beschleunigen.",
+      C: "Lysosomen enthalten saure Hydrolasen mit einem pH-Optimum von ca. 4,5–5,0, welches durch eine ATP-abhängige Protonenpumpe (V-Typ-H+-ATPase) in der Membran aufrechterhalten wird.",
+      D: "Lysosomen sind von einer Doppelmembran umgeben und synthetisieren Proteine für den Export an zelleigenen 70S-Ribosomen.",
+      E: "Lysosomen sind der primäre Bildungsort von Steroidhormonen und Phospholipiden für die Plasmamembran."
     },
-    correct_answer: "A",
-    explanation_correct: "Peroxisomen sind membranumhüllte Organellen, die Oxidoreduktasen enthalten. Sie sind essenziell für den oxidativen Abbau sehr langkettiger Fettsäuren (VLCFA, ≥ C22) mittels einer peroxisomalen Beta-Oxidation zu Octanoyl-CoA sowie für die Synthese von Plasmalogenen (Etherlipide der Myelinscheiden). Bei diesen Oxidationsreaktionen entsteht toxisches Wasserstoffperoxid (H2O2), welches durch das peroxisomale Markerenzym Katalase sofort zu Wasser und molekularem Sauerstoff disproportionisiert wird (2 H2O2 -> 2 H2O + O2).",
+    correct_answer: "C",
+    explanation_correct: "Lysosomen sind einfache membranumhüllte Organellen, die als enzymatischer Verdauungsapparat der Zelle fungieren. Sie enthalten über 40 verschiedene saure Hydrolasen (u. a. Proteasen, Nukleasen, Lipasen, Glykosidasen), deren katalytisches pH-Optimum im sauren Bereich bei ca. pH 4,5–5,0 liegt. Dieses saure Milieu wird aktiv durch eine vakuoläre H+-ATPase (V-Typ-Protonenpumpe) erzeugt, die unter ATP-Hydrolyse Protonen aus dem Zytosol in das Lysosomenlumen pumpt. Dieses Prinzip dient als intrazelluläre Schutzbarriere: Sollte ein Lysosom rupturieren, sind die Enzyme im neutralen Zytosol (pH ca. 7,2) kaum aktiv.",
     explanations_incorrect: {
-      B: "Saure Hydrolasen mit einem pH-Optimum um 4,5–5,0 sind das Kennzeichen von Lysosomen.",
-      C: "Die ATP-Synthese über einen Protonengradienten an einer gefalteten Innenmembran erfolgt in den Mitochondrien.",
-      D: "Cotranslationale N-Glykosylierung findet am rauen Endoplasmatischen Retikulum (RER) statt.",
-      E: "Die Transkription der 45S-Prä-rRNA und der Zusammenbau ribosomaler Vorstufen ist die definierende Aufgabe des Nukleolus im Zellkern."
+      A: "Lysosomen sind sauer (pH 4,5–5,0) und nicht alkalisch; die Na+/K+-ATPase liegt in der Plasmamembran, nicht primär in der Lysosomenmembran.",
+      B: "Das pH-Optimum liegt im sauren Milieu; bei neutralem zytosolischem pH sind lysosomale Enzyme weitgehend inaktiv, um die Zelle vor Autolyse zu schützen.",
+      D: "Lysosomen besitzen eine einfache Biomembran (keine Doppelmembran wie Mitochondrien oder Zellkern) und enthalten weder eigene Ribosomen noch Translation.",
+      E: "Die Synthese von Lipiden und Steroidhormonen ist die Hauptfunktion des glatten Endoplasmatischen Retikulums (SER), nicht der Lysosomen."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -80,22 +80,22 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     section: "BMS",
     primary_topic: "Human Cell Biology",
     subtopic: "Zytoskelett: Mikrotubuli & Motorproteine",
-    difficulty: "intermediate",
-    stem: "Welche Aussage über die Motorproteine des Zytoskeletts und den intrazellulären Transport entlang von Mikrotubuli ist fachlich zutreffend?",
+    difficulty: "foundational",
+    stem: "Welche Aussage zur Struktur von Mikrotubuli und dem intrazellulären Transport entlang dieser Filamente ist korrekt?",
     options: {
-      A: "Dynein wandert unter ATP-Hydrolyse stets gerichtet zum Plus-Ende der Mikrotubuli an der Zellperipherie",
-      B: "Kinesine transportieren Vesikel überwiegend anterograd in Richtung des Mikrotubuli-Plus-Endes, während zytoplasmatisches Dynein den retrograden Transport zum Minus-Ende vermittelt",
-      C: "Myosin-V transportiert Organellen entlang von Intermediärfilamenten aus Desmin und Vimentin",
-      D: "Mikrotubuli bestehen aus Homodimeren von Gamma-Tubulin, die ohne Nucleotidbindung polymerisieren",
-      E: "Colchicin stimuliert die Polymerisation von Mikrotubuli und beschleunigt dadurch den axonalen Transport"
+      A: "Mikrotubuli bestehen aus alpha- und beta-Tubulin-Heterodimeren; Kinesine transportieren zelluläre Fracht typischerweise anterograd in Richtung des Plus-Endes.",
+      B: "Mikrotubuli bestehen aus polymerisiertem G-Aktin und nutzen Myosin-V für den retrograden Transport zum Zellkern.",
+      C: "Dynein ist ein Motorprotein, das Vesikel entlang von Mikrotubuli ausschließlich in Richtung des peripheren Plus-Endes befördert.",
+      D: "Mikrotubuli sind unpolare Proteinfäden ohne strukturelle Ausrichtung, an denen Organellen ausschließlich durch ungerichtete Brownsche Molekularbewegung diffundieren.",
+      E: "Das Mikrotubuli-Organisationszentrum (MTOC/Zentrosom) verankert die Plus-Enden der Mikrotubuli im Zellzentrum nahe dem Zellkern."
     },
-    correct_answer: "B",
-    explanation_correct: "Mikrotubuli sind polarisierte Röhren aus Alpha- und Beta-Tubulin-Heterodimeren mit einem dynamischen Plus-Ende (meist zellperipher gerichtet) und einem Minus-Ende (am Zentrosom/MTOC verankert). Die ATP-abhängigen Motorproteine der Kinesin-Familie wandern typischerweise anterograd zum Plus-Ende (z. B. Transport von Neurotransmittervesikeln zur synaptischen Endigung). Zytoplasmatisches Dynein wandert dagegen retrograd zum Minus-Ende (Rücktransport von Abbauprodukten und Signalendosomen zum Zellkörper).",
+    correct_answer: "A",
+    explanation_correct: "Mikrotubuli sind röhrenförmige Zytoskelettelemente mit einem Außendurchmesser von ca. 25 nm, aufgebaut aus 13 Protofilamenten aus alpha- und beta-Tubulin-Heterodimeren. Sie besitzen eine ausgeprägte Polarität: Das Minus-Ende ist am Zentrosom (MTOC) verankert, während das dynamischere Plus-Ende in die Zellperipherie ragt. Der ATP-getriebene vesikuläre Transport erfolgt gerichtet über spezialisierte Motorproteine: Kinesine bewegen sich vorwiegend anterograd zum Plus-Ende (peripheriewärts), während zytoplasmatisches Dynein retrograd zum Minus-Ende (zentrosomwärts) wandert.",
     explanations_incorrect: {
-      A: "Dynein ist ein Minus-End-gerichteter Motor; das Plus-Ende wird von Kinesin angesteuert.",
-      C: "Myosine sind Actin-assoziierte Motoren und bewegen sich entlang von Mikrofilamenten (Actin), nicht entlang von unpolaren Intermediärfilamenten.",
-      D: "Mikrotubuli bestehen aus Alpha- und Beta-Tubulin-Heterodimeren; die Polymerisation erfordert GTP-Bindung. Gamma-Tubulin bildet lediglich den Keimungsring am Zentrosom.",
-      E: "Colchicin bindet an Tubulindimere und hemmt die Mikrotubulipolymerisation (Spindelgift), wodurch der axonale Transport blockiert wird."
+      B: "G-Aktin polymerisiert zu filamentösem Aktin (Mikrofilamente); Myosine sind Aktin-Motorproteine und interagieren nicht mit Mikrotubuli.",
+      C: "Dynein ist ein Minus-End-gerichtetes Motorprotein; es transportiert retrograd zum Zentrosom, nicht zum Plus-Ende.",
+      D: "Mikrotubuli besitzen eine strikte Polarität (Plus- und Minus-Ende) und dienen als gerichtete Leitschienen für Motorproteine.",
+      E: "Das Zentrosom verankert die Minus-Enden der Mikrotubuli; die wachsenden Plus-Enden weisen nach außen zur Peripherie."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -108,23 +108,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Cell Biology",
-    subtopic: "Zell-Matrix-Verbindungen & Integrine",
+    subtopic: "Membrantransport & sekundär aktiver Symport",
     difficulty: "intermediate",
-    stem: "Welche molekularen Strukturen vermitteln in tierischen Geweben primär die mechanische Verankerung der Zelle an der extrazellulären Matrix über Actinfilamente?",
+    stem: "Wie gelangt D-Glucose über die apikale Membran von Enterozyten im Dünndarm bzw. Tubulusepithelzellen der Niere gegen ihren Konzentrationsgradienten in das Zytosol?",
     options: {
-      A: "Hemidesmosomen über Transmembranproteine der Cadherin-Superfamilie",
-      B: "Gap Junctions (Nexus) aus Hexamern von Connexin-Untereinheiten",
-      C: "Fokale Adhäsionen (Focal Adhesions) über heterodimere Integrine, die intrazellulär über Adapterproteine an Actinfilamente koppeln",
-      D: "Tight Junctions (Zonulae occludentes) über Claudine und Occludine zur Abdichtung des Interzellularspalts",
-      E: "Desmosomen (Maculae adherentes), die über Desmoglein direkt mit der Kernlamina verknüpft sind"
+      A: "Durch direkte enzymatische Phosphorylierung am Transportprotein unter stöchiometrischer Hydrolyse von ATP am apikalen Transporter.",
+      B: "Über einfache passive Diffusion durch die hydrophobe Lipidschicht, begünstigt durch die hohe Konzentration von Gallensalzen.",
+      C: "Durch einen sekundär aktiven Antiport, bei dem der Einstrom von Kaliumionen den Austritt von Glucose erzwingt.",
+      D: "Über einen sekundär aktiven Symport (SGLT), der die Triebkraft des elektrochemischen Natriumgradienten nutzt, welcher primär durch die basolaterale Na+/K+-ATPase erzeugt wird.",
+      E: "Über den passiven Uniporter GLUT2, der Glucose ausschließlich gegen einen steilen Gradienten in die Zelle schleust."
     },
-    correct_answer: "C",
-    explanation_correct: "Fokale Adhäsionen sind spezialisierte Zell-Matrix-Kontakte. Transmembranäre Integrine (Heterodimere aus je einer Alpha- und einer Beta-Kette) binden extrazellulär an ECM-Komponenten wie Fibronektin, Laminin oder Kollagen. Intrazellulär interagiert die zytoplasmatische Domäne der Beta-Integrin-Kette über Adapterproteine (Talin, Vinculin, Alpha-Actinin) mit den Actinfilamenten des Zytoskeletts und vermittelt so mechanische Zugspannung und Signaltransduktion (Inside-Out und Outside-In Signaling).",
+    correct_answer: "D",
+    explanation_correct: "Die zelluläre Aufnahme von Glucose gegen einen steilen chemischen Gradienten an der luminalen/apikalen Membran von Dünndarm-Enterozyten (SGLT1) und proximalen Tubuluszellen der Niere (SGLT2) erfolgt über sekundär aktiven Na+/Glucose-Symport. Der apikale Cotransporter koppelt den thermodynamisch bergab gerichteten Einstrom von Natriumionen (entlang des steilen elektrischen und chemischen Gradienten) an den Transport von Glucose gegen ihren Konzentrationsgradienten in die Zelle. Die Aufrechterhaltung des intrazellulär niedrigen Na+-Spiegels erfordert die primär aktive, ATP-spaltende Na+/K+-ATPase an der basolateralen Membran.",
     explanations_incorrect: {
-      A: "Hemidesmosomen verankern Zellen an der Basallamina (ECM), nutzen aber Alpha6-Beta4-Integrine und koppeln an Intermediärfilamente (Keratine), nicht an Actin; Cadherine vermitteln Zell-Zell-Kontakte.",
-      B: "Gap Junctions sind kommunizierende Zell-Zell-Kanäle aus Connexinen für den Austausch kleiner Moleküle und Ionen.",
-      D: "Tight Junctions dichten den Interzellularraum zwischen benachbarten Epithelzellen ab (Zell-Zell-Kontakt) und trennen apikale von basolateralen Membrandomänen.",
-      E: "Desmosomen verknüpfen benachbarte Zellen untereinander (Zell-Zell) und inserieren an zytoplasmatischen Intermediärfilamenten (Tonofilamenten), nicht an der Kernlamina."
+      A: "SGLT spaltet selbst kein ATP; der Transport ist sekundär aktiv und nutzt die im Na+-Gradienten gespeicherte Energie.",
+      B: "Glucose ist ein polares, hydrophiles Molekül und kann die hydrophobe Membrankerndoppelphase praktisch nicht per einfacher Diffusion überwinden.",
+      C: "Es handelt sich um einen Symport von Na+ und Glucose (beide Moleküle bewegen sich in die gleiche Richtung ins Zytosol), keinen Antiport mit Kalium.",
+      E: "GLUT2 ist ein Carrier für erleichterte (passive) Diffusion an der basolateralen Membran, der Glucose dem Konzentrationsgefälle folgend ins Blut abgibt."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -137,23 +137,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Cell Biology",
-    subtopic: "Zellzyklus-Kontrollpunkte: G1/S & Retinoblastom-Protein",
-    difficulty: "advanced",
-    stem: "Welcher molekulare Mechanismus steuert den Übergang von der G1-Phase in die S-Phase (Restriktionspunkt) im eukaryotischen Zellzyklus?",
+    subtopic: "Zellzyklus: Restriktionspunkt & pRb/E2F-Achse",
+    difficulty: "intermediate",
+    stem: "Welcher molekulare Kontrollmechanismus steuert den Übergang von der G1-Phase in die S-Phase (Passieren des Restriktionspunkts) im humanen Zellzyklus?",
     options: {
-      A: "Dephosphorylierung des Retinoblastom-Proteins (pRb) durch die Phosphatase Cdc25, wodurch pRb den Transkriptionsfaktor E2F irreversibel degradiert",
-      B: "Aktivierung des Anaphase-Promoting Complex (APC/C) durch Bindung von Cdc20 zur Spaltung von Cohesin",
-      C: "Spaltung von Cyclin B durch Caspase-3, wodurch die DNA-Polymerase delta aktiviert wird",
-      D: "Phosphorylierung des Retinoblastom-Proteins (pRb) durch Cyclin D-CDK4/6- und Cyclin E-CDK2-Komplexe, wodurch der Transkriptionsfaktor E2F freigesetzt wird",
-      E: "Direkte Bindung von p53 an den Replikationsursprung, die den Start der DNA-Helikase initiiert"
+      A: "Hypophosphoryliertes pRb bindet an p53 und führt zum sofortigen proteasomalen Abbau von Cyclin E.",
+      B: "Cyclin-D/CDK4/6- und Cyclin-E/CDK2-Komplexe phosphorylieren das Retinoblastom-Protein (pRb), wodurch der Transkriptionsfaktor E2F freigesetzt wird und S-Phase-Gene aktiviert.",
+      C: "Der Anaphase-Promoting Complex (APC/C) degradiert Securin, wodurch Separase die Aktivierung der DNA-Polymerase delta bewirkt.",
+      D: "Dephosphoryliertes pRb wandert in die Mitochondrien und stimuliert die Expression von Cytochrom c zur Initiierung der DNA-Synthese.",
+      E: "p21 bindet direkt an E2F und schleust dieses als Dimer in den Zellkern ein, um die Histonacetylierung zu stoppen."
     },
-    correct_answer: "D",
-    explanation_correct: "Am G1/S-Kontrollpunkt (Restriktionspunkt) liegt das Tumorsuppressorprotein pRb unphosphoryliert vor und bindet an den Transkriptionsfaktor E2F, wodurch dieser inaktiviert wird. Wachstumsfaktoren stimulieren die Expression von Cyclin D, welches mit CDK4 und CDK6 Komplexe bildet. Diese Kinasen phosphorylieren pRb partiell. Nachfolgend phosphoryliert der Cyclin E-CDK2-Komplex pRb hyperaktiv, sodass E2F freigesetzt wird. Freies E2F wandert in den Kern und aktiviert die Transkription essenzieller Gene für die S-Phase (z. B. Cyclin E, Cyclin A, DNA-Polymerasen, Thymidinkinase).",
+    correct_answer: "B",
+    explanation_correct: "Am G1/S-Übergang (Restriktionspunkt) wird die Entscheidung zur DNA-Replikation und Zellteilung getroffen. Im unproliferierenden Zustand (G0 bzw. frühe G1) ist das Tumorsuppressorprotein pRb (Retinoblastom-Protein) hypo- bzw. unphosphoryliert und bindet fest an den Transkriptionsfaktor E2F, wodurch dessen Aktivität inhibiert wird. Nach mitogener Stimulation assemblieren Cyclin D mit CDK4/CDK6 sowie Cyclin E mit CDK2. Diese Kinasen phosphorylieren pRb mehrfach (Hyperphosphorylierung). Das phosphorylierte pRb verliert seine Bindungsaffinität zu E2F; das freigesetzte E2F wandert an Promotoren und induziert die Transkription von Genen, die für den S-Phase-Eintritt erforderlich sind (u. a. Cyclin E, DNA-Polymerasen, Thymidinkinase).",
     explanations_incorrect: {
-      A: "Die Phosphorylierung (nicht Dephosphorylierung) löst E2F von pRb; E2F wird dabei nicht degradiert, sondern aktiviert.",
-      B: "Der APC/C-Cdc20-Komplex steuert den Übergang von der Metaphase in die Anaphase der Mitose durch Abbau von Securin (Freisetzung von Separase zur Cohesinspaltung).",
-      C: "Cyclin B steuert den G2/M-Übergang mit CDK1 (MPF), nicht den G1/S-Übergang; Caspasen sind Apoptoseenzyme.",
-      E: "p53 ist ein Transkriptionsfaktor für DNA-Reparatur und Zellzyklusarrest (induziert p21, einen CDK-Inhibitor), startet aber nicht direkt die Replikationshelikase."
+      A: "Hypophosphoryliertes pRb bindet an E2F, nicht an p53, und Cyclin E wird für die S-Phase benötigt, nicht abgebaut.",
+      C: "Der APC/C-Securin-Separase-Weg steuert den Übergang von der Metaphase zur Anaphase in der Mitose, nicht den G1/S-Übergang.",
+      D: "pRb ist ein nukleäres Protein und wirkt als Transkriptionsregulator im Zellkern; Cytochrom c gehört zur Apoptose/Atmungskette.",
+      E: "p21 ist ein CDK-Inhibitor (CKI), der CDK-Cyclin-Komplexe hemmt und den Zellzyklus arretiert; er aktiviert E2F nicht."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -166,23 +166,52 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Cell Biology",
-    subtopic: "Intrinsische Apoptose & Apoptosombildung",
-    difficulty: "advanced",
-    stem: "Welches Ereignis kennzeichnet die Einleitung der intrinsischen (mitochondrialen) Apoptose in Säugetierzellen nach irreversiblem DNA-Schaden?",
+    subtopic: "Mitose: Spindelkontrollpunkt & Chromatidentrennung",
+    difficulty: "intermediate",
+    stem: "Welcher biochemische Prozess leitet während der mitotischen Zellteilung die Trennung der Schwesterchromatiden am Übergang von der Metaphase zur Anaphase ein?",
     options: {
-      A: "Rekrutierung von FADD und Procaspase-8 an den aktivierten Fas-Todesrezeptor (CD95) an der Plasmamembran",
-      B: "Phosphorylierung von Bcl-2, wodurch es Poren in der mitochondrialen Außenmembran formt",
-      C: "Vollständige Inhibition der Caspase-9 durch Translokation von Smac/DIABLO ins Zytosol",
-      D: "Aktivierung der Na+/K+-ATPase, die zu einer schnellen osmotischen Schwellung und Lyse führt",
-      E: "Oligomerisierung der proapoptotischen Proteine Bax und Bak in der mitochondrialen Außenmembran mit nachfolgender Freisetzung von Cytochrom c ins Zytosol"
+      A: "Die DNA-Ligase I spaltet die Zentromere durch Hydrolyse kovalenter Phosphodiesterbindungen.",
+      B: "Kinetochor-Mikrotubuli depolymerisieren vollständig an ihren Minus-Enden, bevor kinetochoräre Zugspannung aufgebaut wird.",
+      C: "Die RNA-Polymerase II transkribiert Zentromer-spezifische Histone, die die Schwesterchromatiden elektrostatisch abstoßen.",
+      D: "Telomerase verlängert die Chromosomenenden, wodurch Kinetochor-Proteine autokatalytisch inaktiviert werden.",
+      E: "Nach korrekter bipolarer Anheftung aller Kinetochore an Spindelfasern aktiviert der APC/C den Abbau von Securin, woraufhin die aktive Protease Separase den Cohesin-Komplex spaltet."
     },
     correct_answer: "E",
-    explanation_correct: "Die intrinsische Apoptose wird durch zellulären Stress oder DNA-Schaden (via p53) ausgelöst. Proapoptotische BH3-only-Proteine (wie Puma, Noxa, Bid) aktivieren die Effektormoleküle Bax und Bak. Diese oligomerisieren in der mitochondrialen Außenmembran (MOMP: Mitochondrial Outer Membrane Permeabilization) und bilden Poren. Dadurch strömt Cytochrom c aus dem mitochondrialen Intermembranraum ins Zytosol, bindet an Apaf-1 (unter dATP-Verbrauch) und assembliert das heptamere Apoptosom. Dieses rekrutiert und aktiviert die Initiatorcaspase Procaspase-9, welche wiederum die Effektorkaspasen-3 und -7 spaltet.",
+    explanation_correct: "Der Spindelkontrollpunkt (Spindle Assembly Checkpoint, SAC) stellt sicher, dass die Anaphase erst beginnt, wenn alle Chromosomen über ihre Kinetochore amphitelisch (bipolar) mit Kinetochor-Mikrotubuli verbunden sind und unter mechanischer Spannung in der Äquatorialebene stehen. Ist dies erfüllt, wird der zellzyklusspezifische Ubiquitin-Ligase-Komplex APC/C (Anaphase-Promoting Complex/Cyclosome) aktiviert. Der APC/C markiert das Inhibitorprotein Securin für den proteasomalen Abbau. Die dadurch enthemmte Protease Separase spaltet die Scc1/Rad21-Untereinheit des Cohesin-Rings, der die Schwesterchromatiden am Zentromer zusammenhält. Die Kinetochor-Mikrotubuli können nun die getrennten Ein-Chromatid-Chromosomen zu den entgegengesetzten Spindelpolen ziehen.",
     explanations_incorrect: {
-      A: "Der Fas-Rezeptor/FADD/Procaspase-8-Komplex (DISC) ist das Kennzeichen des extrinsischen Signalwegs, nicht des intrinsischen.",
-      B: "Bcl-2 ist ein antiapoptotisches Protein, das die Porenbildung durch Bax/Bak blockiert und selbst keine zytotoxischen Poren formt.",
-      C: "Smac/DIABLO hemmt die IAPs (Inhibitors of Apoptosis Proteins) und fördert dadurch die Caspaseaktivierung, anstatt sie zu inhibieren.",
-      D: "Zellschwellung und Plasmamembranlyse kennzeichnen die Nekrose; bei der Apoptose schrumpft die Zelle, und die Membranintegrität bleibt bis zur Phagozytose intakt."
+      A: "DNA-Ligasen verknüpfen DNA-Stränge und spalten keine Zentromere; die Trennung erfolgt durch proteolytische Spaltung von Cohesin.",
+      B: "Die Depolymerisation erfolgt primär am Plus-Ende am Kinetochor während der Anaphase A, und Spannung ist die Voraussetzung für die Anaphase, nicht deren Folge.",
+      C: "Transkription ruht während der Mitose weitgehend; Chromatidentrennung ist ein proteolytischer, kein transkriptioneller Vorgang.",
+      D: "Telomerase ist während der Mitose nicht an der Kinetochor-Regulation beteiligt; Kinetochore binden Cohesin und Spindelfasern."
+    },
+    metadata: {
+      author: "MedAT BMS Biology QC Engine",
+      status: "verified_medat_compliant",
+      version: "5.0_gp5"
+    }
+  },
+  {
+    id: "BIO-BMS-GP5-006",
+    subject: "BIO",
+    section: "BMS",
+    primary_topic: "Human Cell Biology",
+    subtopic: "Meiose: Chromosomen- und Chromatidensätze",
+    difficulty: "advanced",
+    stem: "Eine menschliche Zelle durchläuft die Meiose. Welche Kombination aus Ploidiegrad (n), Chromosomenzahl und Chromatidenzustand liegt in einer gesunden Tochterzelle unmittelbar nach Abschluss der ersten meiotischen Teilung (Telophase I vor Beginn der Interkinese) vor?",
+    options: {
+      A: "Diploid (2n) mit 46 Ein-Chromatid-Chromosomen (DNA-Gehalt 2C)",
+      B: "Haploid (1n) mit 23 Zwei-Chromatiden-Chromosomen (DNA-Gehalt 2C)",
+      C: "Haploid (1n) mit 23 Ein-Chromatid-Chromosomen (DNA-Gehalt 1C)",
+      D: "Diploid (2n) mit 46 Zwei-Chromatiden-Chromosomen (DNA-Gehalt 4C)",
+      E: "Tetraploid (4n) mit 92 Chromatiden (DNA-Gehalt 4C)"
+    },
+    correct_answer: "B",
+    explanation_correct: "Die Meiose I ist die sogenannte Reduktionsteilung. Vor Beginn der Meiose I verdoppelt die Keimbahnzelle in der S-Phase ihre DNA, sodass eine primäre Spermatozyte bzw. Oozyte diploid mit 46 Zwei-Chromatiden-Chromosomen (2n, 4C) vorliegt. In der Anaphase I werden die homologen Chromosomenpaare getrennt und auf zwei Tochterkerne verteilt. Nach Abschluss der Telophase I besitzt jede Tochterzelle daher einen haploiden Chromosomensatz mit n = 23 Chromosomen. Da jedes Chromosom zu diesem Zeitpunkt jedoch noch aus zwei Schwesterchromatiden besteht, beträgt der DNA-Gehalt 2C (entsprechend 46 Chromatiden pro Zelle). Erst in der Meiose II (Äquationsteilung) werden die Schwesterchromatiden getrennt, sodass schließlich Keimzellen mit 1n, 1C (23 Ein-Chromatid-Chromosomen) resultieren.",
+    explanations_incorrect: {
+      A: "2n mit 46 Ein-Chromatid-Chromosomen entspricht einer somatischen Zelle in der G1-Phase nach einer Mitose.",
+      C: "1n mit 23 Ein-Chromatid-Chromosomen (1C) liegt erst nach Abschluss der Meiose II in reifen Gameten vor.",
+      D: "2n mit 46 Zwei-Chromatiden-Chromosomen (4C) liegt vor Beginn der Meiose I (in G2/Prophase I) vor.",
+      E: "Eine tetraploide Phase mit 4n existiert im regulären meiotischen Zyklus des Menschen nicht."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -191,60 +220,31 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 2: Menschlicher Körper: Histologie, Anatomie & Physiologie (5 Aufgaben)
-  // ---------------------------------------------------------------------------------
-  {
-    id: "BIO-BMS-GP5-006",
-    subject: "BIO",
-    section: "BMS",
-    primary_topic: "Human Body: Histology, Anatomy and Physiology",
-    subtopic: "Kollagensynthese & Extrazelluläre Matrix",
-    difficulty: "foundational",
-    stem: "Welcher Schritt der Kollagenbiosynthese ist obligat von Ascorbinsäure (Vitamin C) abhängig und führt bei deren Mangel zu Skorbut?",
-    options: {
-      A: "Posttranslationale Hydroxylierung von Prolin- und Lysinresten im Lumen des rauen Endoplasmatischen Retikulums",
-      B: "Extrazelluläre Spaltung der N- und C-terminalen Propeptide durch spezifische Peptidasen",
-      C: "Kovalente Quervernetzung der Tropokollagenmoleküle über die Lysyloxidase",
-      D: "Transkription der Prokollagengene an der RNA-Polymerase I im Zellkern",
-      E: "Synthese der Glycin-X-Y-Polypeptidkette an freien zytoplasmatischen Ribosomen"
-    },
-    correct_answer: "A",
-    explanation_correct: "Kollagen besitzt eine charakteristische Triplehelix aus drei Polypeptidketten mit der Wiederholungssequenz Glycin-X-Y (wobei X häufig Prolin und Y Hydroxyprolin ist). Im Lumen des RER werden spezifische Prolyl- und Lysylreste durch Prolyl-4-Hydroxylase und Lysyl-Hydroxylase modifiziert. Diese Enzyme benötigen molekularen Sauerstoff, 2-Oxoglutarat, Fe2+ und Vitamin C (Ascorbinsäure als Kofaktor, der das Eisen im reduzierten Fe2+-Zustand hält). Hydroxyprolin ist essenziell für die Ausbildung intramolekularer Wasserstoffbrücken zur Stabilisierung der Tripelhelix; ohne Vitamin C zerfällt das synthetisierte Kollagen bei Körpertemperatur (Skorbut: Zahnausfall, Gefäßbrüchigkeit, Wundheilungsstörungen).",
-    explanations_incorrect: {
-      B: "Die Spaltung der Propeptide erfolgt extrazellulär durch Prokollagen-Peptidasen und ist unabhängig von Vitamin C.",
-      C: "Die kovalente Quervernetzung durch Lysyloxidase benötigt Kupfer (Cu2+), nicht Vitamin C.",
-      D: "Prokollagengene werden von der RNA-Polymerase II (nicht Pol I) transkribiert.",
-      E: "Prokollagen ist ein sekretorisches Protein und wird an membrangebundenen Ribosomen des rauen ER synthetisiert."
-    },
-    metadata: {
-      author: "MedAT BMS Biology QC Engine",
-      status: "verified_medat_compliant",
-      version: "5.0_gp5"
-    }
-  },
+  // -------------------------------------------------------------
+  // Kapitel 2: Der menschliche Körper (bio-02-koerper) - 7 Aufgaben
+  // -------------------------------------------------------------
   {
     id: "BIO-BMS-GP5-007",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Body: Histology, Anatomy and Physiology",
-    subtopic: "Magenschleimhaut & Belegzellen (Parietalzellen)",
-    difficulty: "intermediate",
-    stem: "Welche physiologische Eigenschaft trifft spezifisch auf die Belegzellen (Parietalzellen) der Magenschleimhaut zu?",
+    subtopic: "Knochengewebe: Osteoblasten, Osteozyten & Osteoklasten",
+    difficulty: "foundational",
+    stem: "Welche Aussage zur zellulären Organisation und zum Umbau des menschlichen Knochengewebes trifft zu?",
     options: {
-      A: "Sie sezernieren Pepsinogen, das erst im sauren Milieu des Magenlumens zu aktivem Pepsin gespalten wird",
-      B: "Sie sezernieren Protonen über eine apikale H+/K+-ATPase und produzieren den für die Vitamin-B12-Resorption essenziellen Intrinsic Factor",
-      C: "Sie bilden eine dicke alkalische Schleimschicht aus Mucinen und Bicarbonat zum Schutz des Epithels",
-      D: "Sie sezernieren Gastrin direkt in das Kapillarsystem der Magenmukosa",
-      E: "Sie werden primär durch Somatostatin zur maximalen Säuresekretion angeregt"
+      A: "Osteoklasten entstehen durch Differenzierung lokaler Chondrozyten und synthetisieren die organische Knochenmatrix (Osteoid).",
+      B: "Osteoblasten sind mehrkernige Riesenzellen des hämatopoetischen Systems, die Knochensubstanz durch Salzsäuresekretion abbauen.",
+      C: "Reifer Lamellenknochen ist im Gegensatz zu Knorpelgewebe vollkommen frei von Blutgefäßen und Nervenfasern.",
+      D: "Osteoblasten synthetisieren Kollagen Typ I und Proteoglykane des Osteoids; eingemauerte Osteoblasten differenzieren zu ruhenden, über Canaliculi vernetzten Osteozyten.",
+      E: "Osteozyten teilen sich im mineralisierten Knochen kontinuierlich mitotisch, um mechanische Mikrorisse sofort durch Zellvermehrung zu schließen."
     },
-    correct_answer: "B",
-    explanation_correct: "Die Belegzellen (Parietalzellen), die vor allem im Korpus und Fundus des Magens lokalisiert sind, besitzen zwei lebenswichtige Funktionen: 1. Säuresekretion: Sie transportieren mittels der apikalen H+/K+-ATPase (Protonenpumpe) aktiv H+-Ionen gegen ein Konzentrationsgefälle von 1:1.000.000 ins Magenlumen im Austausch gegen K+-Ionen (unter HCl-Bildung). 2. Intrinsic-Factor-Sekretion: Sie synthetisieren das Glykoprotein Intrinsic Factor (IF), das im Magen an Vitamin B12 (Cobalamin) bindet und dessen spätere rezeptorvermittelte Resorption im terminalen Ileum ermöglicht.",
+    correct_answer: "D",
+    explanation_correct: "Knochengewebe unterliegt einem lebenslangen Umbau (Remodeling). Osteoblasten (mesenchymalen Ursprungs) synthetisieren die organische Knochenmatrix (Osteoid, vor allem Kollagen Typ I und nicht-kollagene Proteine) und initiieren die Mineralisation mit Calcium-Hydroxylapatit. Werden Osteoblasten von mineralisierter Matrix umgeben, differenzieren sie zu metabolisch ruhenden Osteozyten. Diese liegen in Knochenhöhlen (Lakunen) und kommunizieren über feine Zytoplasmafortsätze in Canaliculi mittels Gap Junctions zur Mechanosensorik. Der Knochenabbau erfolgt durch Osteoklasten, vielkernige Fusionszellen aus der Monozyten/Makrophagen-Linie.",
     explanations_incorrect: {
-      A: "Pepsinogen wird von den Hauptzellen (Chief cells) gebildet, nicht von den Belegzellen.",
-      C: "Der alkalische Bicarbonat-reiche Schleim wird von den oberflächlichen Schleimhautepithelzellen und Nebenzellen produziert.",
-      D: "Gastrin wird von neuroendokrinen G-Zellen im Antrum des Magens ins Blut abgegeben.",
-      E: "Somatostatin aus den D-Zellen hemmt die Säuresekretion der Belegzellen (über Gai-gekoppelte Rezeptoren)."
+      A: "Osteoklasten bauen Knochen ab und stammen von hämatopoetischen Stammzellen (Makrophagenlinie) ab, nicht von Chondrozyten.",
+      B: "Die Beschreibung trifft auf Osteoklasten zu; Osteoblasten sind einkernig und bauen Knochen auf.",
+      C: "Knochengewebe ist im Gegensatz zu bradytrophem, gefäßfreiem Knorpelgewebe stark durchblutet (Havers- und Volkmann-Kanäle).",
+      E: "Osteozyten sind postmitotisch und teilen sich in mineralisierter Knochensubstanz nicht mehr mitotisch."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -257,23 +257,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Body: Histology, Anatomy and Physiology",
-    subtopic: "Leberhistologie: Sinusoide & Disse-Raum",
+    subtopic: "Magenschleimhaut: Belegzellen & Salzsäurebildung",
     difficulty: "intermediate",
-    stem: "Welche Aussage beschreibt korrekt die zelluläre Organisation und Funktion des Disse-Raums (Spatium perisinusoideum) in der menschlichen Leber?",
+    stem: "Welche Zellart der Magenschleimhaut sezerniert Salzsäure (HCl) sowie den Intrinsic Factor, und welche Funktion hat Letzterer?",
     options: {
-      A: "Er trennt die Portader von der Leberarterie innerhalb der Glisson-Trias",
-      B: "Er ist der intrazelluläre Kanal zwischen zwei Hepatozyten, in den primäre Galle abfließt",
-      C: "Er ist der schmale Extrazellulärraum zwischen den fenestrierten Sinusoid-Endothelzellen und den Hepatozyten, in dem Ito-Zellen (Sternzellen) Vitamin A speichern",
-      D: "Er ist dicht mit Flimmerepithel ausgekleidet und transportiert Lymphe direkt in die Vena centralis",
-      E: "Er beherbergt residente Makrophagen (Kupffer-Zellen), die lumenseitig an der Wand der Gallengänge liegen"
+      A: "Die Belegzellen (Parietalzellen); der Intrinsic Factor ist für die spätere enterale Resorption von Vitamin B12 im terminalen Ileum zwingend erforderlich.",
+      B: "Die Hauptzellen; der Intrinsic Factor spaltet Polysaccharide im Duodenum enzymatisch in Disaccharide.",
+      C: "Die Nebenzellen; der Intrinsic Factor dient als alkalischer Schleimfilm zum Schutz vor Selbstverdauung der Mukosa.",
+      D: "Die D-Zellen; der Intrinsic Factor stimuliert die Freisetzung von Gastrin aus den benachbarten G-Zellen.",
+      E: "Die enterochromaffin-ähnlichen (ECL) Zellen; der Intrinsic Factor aktiviert Pepsinogen direkt zu Pepsin."
     },
-    correct_answer: "C",
-    explanation_correct: "Der Disse-Raum (Spatium perisinusoideum) ist der funktionell entscheidende Austauschraum der Leber zwischen den Hepatozytenmikrovilli und dem fenestrierten Sinusoid-Endothel (das keine kontinuierliche Basallamina besitzt). Hier findet der ungehinderte Stoffaustausch von Proteinen, Lipoproteinen und Nährstoffen zwischen Blutplasma und Leberzellen statt. Im Disse-Raum liegen die hepatischen Sternzellen (Ito-Zellen), die physiologisch der Hauptspeicher für Vitamin A (Retinylester) im Körper sind und bei chronischer Leberschädigung zu Myofibroblasten transformieren (Leberzirrhose).",
+    correct_answer: "A",
+    explanation_correct: "Die Magendrüsen des Korpus und Fundus besitzen eine funktionell spezialisierte Zellausstattung: Die Belegzellen (Parietalzellen) sezernieren aktiv Salzsäure (HCl) über eine apikale H+/K+-ATPase, was zu einem stark sauren Magensaft (pH 1–2) führt, der Nahrungsproteine denaturiert, Bakterien abtötet und Pepsinogen aktiviert. Gleichzeitig bilden die Belegzellen das Glykoprotein Intrinsic Factor (IF). IF bindet im Dünndarm Cobalamin (Vitamin B12) und schützt es vor enzymatischer Spaltung. Der IF-B12-Komplex wird schließlich im terminalen Ileum über spezifische Rezeptoren (Cubilin/Amnionless) per Endozytose resorbiert. Ein Mangel an Belegzellen (z. B. atrophische Gastritis) führt zu perniziöser Anämie.",
     explanations_incorrect: {
-      A: "Glisson-Trias enthält Gallengang, Arteria hepatica propria-Ast und Vena portae-Ast im periportalen Bindegewebe, nicht den Disse-Raum.",
-      B: "Kanäle zwischen benachbarten Hepatozyten für Galle sind die Canaliculi biliferi (Gallenkapillaren), die durch Tight Junctions versiegelt sind.",
-      D: "Der Disse-Raum besitzt kein Flimmerepithel; Lymphe fließt in die periportalen Mall-Räume ab, nicht in die Vena centralis.",
-      E: "Kupffer-Zellen sind lebereigene Makrophagen, die dem sinusoidalen Gefäßendothel lumenseitig aufsitzen, nicht in den Gallengängen liegen."
+      B: "Hauptzellen sezernieren Pepsinogen (eine Zymogen-Vorstufe von Pepsin), aber weder Salzsäure noch Intrinsic Factor.",
+      C: "Nebenzellen produzieren Muzine (Schleim) und Bicarbonat zur Bildung der protektiven Schleimhautbarriere.",
+      D: "D-Zellen sezernieren Somatostatin, das hemmend auf die Säure- und Gastrinsekretion wirkt.",
+      E: "ECL-Zellen sezernieren Histamin zur parakrinen Stimulation der Belegzellen; Pepsinogen wird durch den niedrigen pH-Wert aktiviert."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -286,23 +286,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Body: Histology, Anatomy and Physiology",
-    subtopic: "Skelettmuskelkontraktion & Querbrückenzyklus",
+    subtopic: "Exokrines Pankreas & proteolytische Kaskade",
     difficulty: "intermediate",
-    stem: "Welches molekulare Ereignis im Querbrückenzyklus der Skelettmuskulatur bedingt unmittelbar das Lösen des Myosinkopfes vom Actinfilament?",
+    stem: "Wie wird verhindert, dass die vom exokrinen Pankreas synthetisierten proteolytischen Verdauungsenzyme das Pankreasgewebe vorzeitig selbst verdauen?",
     options: {
-      A: "Die Freisetzung von anorganischem Phosphat (Pi) aus dem Myosinkopf",
-      B: "Die Bindung von Calcium an Troponin T",
-      C: "Die Dephosphorylierung der leichten Kette des Myosins durch eine Phosphatase",
-      D: "Die Bindung eines neuen ATP-Moleküls an die Nukleotid-Bindungsstelle des Myosinkopfes",
-      E: "Die Hydrolyse von ATP zu ADP und Pi am ungebundenen Myosin"
+      A: "Proteasen werden im Pankreasgang durch die hohe Konzentration von Magensalzsäure sofort irreversibel inaktiviert.",
+      B: "Das Pankreas bildet ausschließlich aktive Monomere, die erst durch Bindung an Gallensäuren im Colon funktionstüchtig werden.",
+      C: "Proteasen werden als inaktive Vorstufen (Zymogene) sezerniert; erst im Duodenum spaltet die Bürstensaum-Enteropeptidase Trypsinogen zu Trypsin, welches dann die übrigen Zymogene kaskadenartig aktiviert.",
+      D: "Die Langerhans-Inseln sezernieren kontinuierlich Glukagon in die Pankreasgänge, welches Proteasen kompetitiv blockiert.",
+      E: "Pankreaszellen besitzen keine Ribosomen und importieren fertige Proteasen erst bei der Passage durch das Mesenterium."
     },
-    correct_answer: "D",
-    explanation_correct: "Am Ende des Kraftschlags (Power Stroke), nach Freisetzung von Pi und ADP, befindet sich der Myosinkopf in einem starren, fest an das Actin gebundenen Komplex (Rigor-Zustand). Erst die Bindung eines frischen Moleküls ATP an die katalytische Domäne des Myosinkopfes induziert eine Konformationsänderung, die die Affinität zu Actin drastisch senkt und das Ablösen des Myosinkopfes bewirkt. Fehlt ATP nach dem Tod, verharren die Myosinköpfe im gebundenen Zustand an Actin (Totenstarre / Rigor mortis).",
+    correct_answer: "C",
+    explanation_correct: "Um eine lebensbedrohliche Autodigestion (akute Pankreatitis) zu verhindern, synthetisieren die Azinuszellen des exokrinen Pankreas Proteasen als inaktive Enzymvorstufen (Zymogene: z. B. Trypsinogen, Chymotrypsinogen, Proelastase, Procarboxypeptidasen) und verpacken sie zusammen mit Trypsin-Inhibitoren (SPINK1) in Zymogengranula. Erst nach Sekretion in das Duodenum trifft Trypsinogen auf das an der luminalen Enterozytenmembran verankerte Enzym Enteropeptidase (früher Enterokinase). Enteropeptidase spaltet ein kurzes N-terminales Peptid von Trypsinogen ab, wodurch aktives Trypsin entsteht. Trypsin spaltet anschließend autokatalytisch weiteres Trypsinogen und aktiviert kaskadenartig Chymotrypsinogen, Proelastase und Procarboxypeptidasen.",
     explanations_incorrect: {
-      A: "Die Freisetzung von Pi löst den eigentlichen Kraftschlag (Power Stroke, Abkippen des Myosinkopfes von 90° auf 45°) aus, nicht das Lösen.",
-      B: "Calcium bindet an Troponin C (nicht Troponin T), wodurch Tropomyosin verschoben wird und Myosinbindungsstellen freigegeben werden.",
-      C: "Die Phosphorylierung/Dephosphorylierung der leichten Kette reguliert die glatte Muskulatur, nicht den schnellen Skelettmuskelzyklus.",
-      E: "Die Hydrolyse von ATP spannt den Kopf in die 90°-Konformation vor (Cocked State), erfolgt aber am bereits gelösten Myosinkopf."
+      A: "Pankreassaft ist reich an Bicarbonat (pH ca. 8) zur Neutralisierung der Magensäure; saure Magensäure gelangt nicht in den Pankreasgang.",
+      B: "Gallensäuren emulgieren Lipide im Dünndarm und aktivieren keine Proteasen im Dickdarm.",
+      D: "Glukagon ist ein Hormon der alpha-Zellen der Inseln und wird endokrin ins Blut abgegeben, nicht in die Pankreasgänge.",
+      E: "Azinuszellen besitzen ein stark ausgeprägtes raues ER mit dichter Ribosomenbesetzung zur massiven Proteinsynthese."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -315,23 +315,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Body: Histology, Anatomy and Physiology",
-    subtopic: "Nierenphysiologie: Henle-Schleife & Gegenstromprinzip",
+    subtopic: "Nierenphysiologie: Henle-Schleife & Gegenstromsystem",
     difficulty: "advanced",
-    stem: "Welche biophysikalischen Eigenschaften der Henle-Schleife ermöglichen den Aufbau des osmotischen Konzentrationsgradienten im Nierenmark (Gegenstrommultiplikation)?",
+    stem: "Welche Aussage beschreibt die Permeabilitätseigenschaften der Henle-Schleife und die Generierung des osmotischen Konzentrationsgradienten im Nierenmark physikochemisch korrekt?",
     options: {
-      A: "Der dicke aufsteigende Schenkel ist hochgradig wasserpermeabel, während der dünne absteigende Schenkel aktiv NaCl ins Mark pumpt",
-      B: "Sowohl der absteigende als auch der aufsteigende Schenkel sezernieren aktiv Harnstoff gegen ein Konzentrationsgefälle",
-      C: "Die Macula densa im absteigenden Schenkel filtriert Wasser durch hydrostatischen Überdruck",
-      D: "Der absteigende Schenkel transportiert aktiv Kalium über Na+/K+-ATPasen in das Tubuluslumen",
-      E: "Der dünne absteigende Schenkel ist wasserpermeabel (über AQP1) und salzimpermeabel, während der dicke aufsteigende Schenkel wasserundurchlässig ist und aktiv NaCl (über den NKCC2-Kotransporter) ins Interstitium resorbiert"
+      A: "Der dicke aufsteigende Schenkel der Henle-Schleife ist hochgradig wasserdurchlässig und resorbiert Wasser passiv ohne Ionenverschiebung.",
+      B: "Der dünne absteigende Schenkel pumpt aktiv Natrium- und Chloridionen über Na+/K+-ATPasen in das Nierenmark, ist aber für Wasser völlig undurchlässig.",
+      C: "Im proximalen Tubulus wird überhaupt kein Wasser resorbiert, sodass die gesamte Volumenregulation ausschließlich in der Henle-Schleife stattfindet.",
+      D: "Die Henle-Schleife verläuft ausschließlich in der Nierenrinde und erzeugt dort durch Kaliumsekretion einen hyperosmolaren Urin.",
+      E: "Der dünne absteigende Schenkel ist wasserpermeabel (Aquaporin-1), während der dicke aufsteigende Schenkel wasserundurchlässig ist und aktiv Na+, K+ und 2 Cl- (über NKCC2) ins Interstitium transportiert."
     },
     correct_answer: "E",
-    explanation_correct: "Das Gegenstrommultiplikationssystem basiert auf der asymmetrischen Permeabilität der Schleifenschenkel: 1. Der dünne absteigende Schenkel besitzt konstitutiv exprimierte Aquaporin-1-Kanäle (AQP1), ist extrem wasserdurchlässig, aber praktisch impermeabel für Ionen (Wasser strömt osmotisch ins hyperosmolare Markinterstitium; Tubulusharn wird konzentriert). 2. Der dicke aufsteigende Schenkel (TAL) ist absolut wasserundurchlässig (fehlende Aquaporine und dichte Tight Junctions), resorbiert aber massiv Ionen über den apikalen Na+-K+-2Cl--Kotransporter (NKCC2). Dies verdünnt den Harn und reichert das Nierenmark mit Salz an, wodurch die medulläre Hyperosmolarität (bis zu 1200 mOsm/kg) aufrechterhalten wird.",
+    explanation_correct: "Das Gegenstrommultiplikationssystem der Henle-Schleife beruht auf unterschiedlichen Permeabilitäten der Schleifenschenkel: Der dünne absteigende Schenkel weist eine hohe Wasserpermeabilität auf (konstitutive Aquaporin-1-Kanäle), besitzt aber kaum Ionenkanäle oder aktive Transporter. Aufgrund der hohen Osmolarität des Nierenmark-Interstitiums strömt Wasser passiv osmotisch aus dem Tubuluslumen ins Gewebe, wodurch die Tubulusflüssigkeit zur Schleifenspitze hin hyperosmolar wird (bis zu 1.200 mosmol/l). Der dicke aufsteigende Schenkel (TAL) hingegen ist für Wasser funktionell undurchlässig, transportiert aber über den apikalen Na+-K+-2Cl--Kotransporter (NKCC2) aktiv Ionen in das peritubuläre Interstitium. Dadurch wird das Mark hyperosmolar gehalten und der Tubulusharn verdünnt (hypoosmolarer Harn am Übergang zum distalen Tubulus).",
     explanations_incorrect: {
-      A: "Genau umgekehrt: Der aufsteigende Schenkel ist wasserimpermeabel und pumpt Salz; der absteigende Schenkel ist wasserpermeabel.",
-      B: "Harnstoff wird im medullären Sammelrohr (UT-A1/A3) rückresorbiert und rezirkuliert passiv, nicht aktiv durch beide Schleifenschenkel sezerniert.",
-      C: "Die Macula densa liegt am Übergang des TAL zum distalen Tubulus (Chemosensor für NaCl-Konzentration), nicht im absteigenden Schenkel.",
-      D: "Der absteigende Schenkel betreibt keinen aktiven luminalen K+-Transport über ATPasen."
+      A: "Der aufsteigende dicke Schenkel ist wasserundurchlässig; Wasserresorption ohne Ionen erfolgt im absteigenden Schenkel.",
+      B: "Der absteigende Schenkel transportiert Ionen nicht primär aktiv; er lässt Wasser passiv austreten.",
+      C: "Im proximalen Tubulus werden ca. zwei Drittel (ca. 65 %) des filtrierten Wassers und Natriums obligat isoosmotisch rückresorbiert.",
+      D: "Die Henle-Schleifen (insbesondere der juxtamedullären Nephrone) ziehen tief in das Nierenmark hinab und liegen nicht nur in der Rinde."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -339,32 +339,28 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
       version: "5.0_gp5"
     }
   },
-
-  // ---------------------------------------------------------------------------------
-  // Kapitel 3: Immunbiologie & Blut (4 Aufgaben)
-  // ---------------------------------------------------------------------------------
   {
     id: "BIO-BMS-GP5-011",
     subject: "BIO",
     section: "BMS",
-    primary_topic: "Immunobiology",
-    subtopic: "MHC-I vs. MHC-II & T-Zell-Aktivierung",
+    primary_topic: "Human Body: Histology, Anatomy and Physiology",
+    subtopic: "Glomeruläre Filtration & Primärharn",
     difficulty: "foundational",
-    stem: "Welcher Unterschied zwischen den Haupthistokompatibilitätskomplexen MHC-I und MHC-II des menschlichen Immunsystems ist zutreffend?",
+    stem: "Welche Aussage zur glomerulären Filtrationsbarriere der menschlichen Niere und zur Zusammensetzung des Primärharns ist korrekt?",
     options: {
-      A: "MHC-I wird auf nahezu allen kernhaltigen Körperzellen exprimiert und präsentiert endogene Peptide an CD8-positive zytotoxische T-Zellen",
-      B: "MHC-II wird ubiquitär auf Erythrozyten und Thrombozyten exprimiert, um Komplementaktivierung zu verhindern",
-      C: "MHC-I bindet ausschließlich extrazelluläre Proteine, die über Endozytose in Phagosomen aufgenommen wurden",
-      D: "MHC-II interagiert direkt mit dem CD8-Korezeptor zur Auslösung der Granzym-vermittelten Apoptose",
-      E: "MHC-I-Moleküle bestehen aus zwei identischen Beta-2-Mikroglobulin-Ketten ohne Transmembrandomäne"
+      A: "Gesunde Glomeruli filtrieren sämtliche Blutzellen und Plasmaproteine wie Albumin ungehindert in den Primärharn.",
+      B: "Die Filtrationsbarriere besteht aus gefenstertem Kapillarendothel, negativ geladener Basalmembran und Podozyten-Schlitzmembranen; der Primärharn ist weitgehend protein- und zellfrei.",
+      C: "Im Primärharn liegt die Konzentration gelöster Glucose physiologisch zehnmal höher als im Blutplasma.",
+      D: "Ein gesunder Erwachsener bildet unter Ruhebedingungen täglich etwa 1,5 Liter Primärharn in den Nierenkörperchen.",
+      E: "Die glomeruläre Filtration wird primär durch den hohen hydrostatischen Druck in der Bowman-Kapsel angetrieben, der den Blutdruck übersteigt."
     },
-    correct_answer: "A",
-    explanation_correct: "MHC-Klasse-I-Moleküle werden auf praktisch allen kernhaltigen Zellen des Organismus sowie Thrombozyten exprimiert (nicht auf Erythrozyten). Sie präsentieren Peptide aus dem Zytosol (endogene Antigene, z. B. virale Proteine nach Infektion oder mutierte Tumorantigene), die zuvor durch das Proteasom abgebaut und via TAP ins ER transportiert wurden. MHC-I bindet an den T-Zell-Rezeptor und interagiert mit dem CD8-Korezeptor zytotoxischer T-Lymphozyten (Tc). MHC-II hingegen kommt nur auf professionellen antigenpräsentierenden Zellen (APCs: dendritische Zellen, B-Zellen, Makrophagen) vor und präsentiert exogene Antigene an CD4-positive T-Helferzellen (TH).",
+    correct_answer: "B",
+    explanation_correct: "Die glomeruläre Filtrationsbarriere im Nierenkörperchen (Malpighi-Körperchen) besteht aus drei funktionellen Schichten: 1. dem fenestrierten Kapillarendothel, 2. der dreischichtigen glomerulären Basalmembran (reich an negativ geladenem Heparansulfat) und 3. den Podozytenfortsätzen mit ihren Schlitzmembranen (Nephrin/Podocin). Diese Barriere wirkt als kombiniertes Größen- und Ladungsfilter: Moleküle mit einem effektiven Radius > 4 nm sowie negativ geladene Makromoleküle (wie Serumalbumin, 66 kDa) werden elektrostatisch und sterisch zurückgehalten. Der resultierende Primärharn (ca. 180 Liter/Tag beim gesunden Erwachsenen) ist ein protein- und zellarmes Ultrafiltrat des Blutplasmas mit nahezu identischen Konzentrationen an niedermolekularen Substanzen (Glucose, Ionen, Harnstoff).",
     explanations_incorrect: {
-      B: "Erythrozyten sind kernlos und besitzen weder MHC-I noch MHC-II.",
-      C: "MHC-I präsentiert zytosolische/endogene Peptide; extrazelluläre/phagozytierte Antigene werden primär auf MHC-II präsentiert.",
-      D: "MHC-II interagiert mit dem CD4-Korezeptor, nicht mit CD8.",
-      E: "MHC-I besteht aus einer polymorphen Alpha-Schweren Kette (mit 3 Domänen und Transmembrananker) und dem konstanten, nicht-kovalent gebundenen Beta-2-Mikroglobulin."
+      A: "Erythrozyten, Leukozyten und Plasmaproteine werden zurückgehalten; ihr Auftreten im Harn (Hämaturie/Proteinurie) ist pathologisch.",
+      C: "Die Glucosekonzentration im Primärharn entspricht exakt der im Plasma (ca. 5 mmol/l bzw. 90–100 mg/dl); sie wird nicht aktiv angereichert.",
+      D: "1,5 Liter entspricht der täglichen Endharnausscheidung; die Primärharnmenge beträgt etwa 180 Liter pro Tag.",
+      E: "Der effektive Filtrationsdruck wird durch den hydrostatischen Kapillardruck (ca. 50 mmHg) angetrieben, der dem Bowman-Kapseldruck (ca. 12 mmHg) und dem onkotischen Plasmadruck (ca. 25 mmHg) entgegenwirkt."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -376,24 +372,24 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     id: "BIO-BMS-GP5-012",
     subject: "BIO",
     section: "BMS",
-    primary_topic: "Immunobiology",
-    subtopic: "Antikörperklassen & Plazentaschranke",
-    difficulty: "foundational",
-    stem: "Welche Immunglobulinklasse kann als einzige die menschliche Plazentaschranke aktiv überqueren und vermittelt dem Neugeborenen den physiologischen Nestschutz?",
+    primary_topic: "Human Body: Histology, Anatomy and Physiology",
+    subtopic: "Angeborene Immunität: Natürliche Killerzellen & Missing-Self",
+    difficulty: "intermediate",
+    stem: "Über welchen Mechanismus erkennen und eliminieren Natürliche Killerzellen (NK-Zellen) virusinfizierte Zellen oder Tumorzellen gemäß der „Missing-Self“-Hypothese?",
     options: {
-      A: "Pentameres IgM über Bindung an den sekretorischen J-Ketten-Rezeptor",
-      B: "Monomeres IgG über rezeptorvermittelte Transzytose mittels des neonatalen Fc-Rezeptors (FcRn)",
-      C: "Dimeres IgA über passive Filtration durch die Synzytiotrophoblast-Poren",
-      D: "Monomeres IgE über Bindung an hochaffine Fcepsilon-Rezeptoren auf Trophoblasten",
-      E: "Membrangebundenes IgD als B-Zell-Oberflächenrezeptor"
+      A: "NK-Zellen binden über ihren T-Zell-Rezeptor spezifisch an MHC-Klasse-II-Komplexe und induzieren Phagozytose.",
+      B: "NK-Zellen erkennen ausschließlich antikörperbeladene Bakterienkapseln und lysieren diese mittels Lysozym.",
+      C: "NK-Zellen exprimieren Immunglobulin M auf ihrer Membran und bilden nach Kontakt mit Antigenen langlebige Plasmazellen.",
+      D: "NK-Zellen werden durch hohe MHC-Klasse-I-Spiegel auf gesunden Körperzellen zur maximalen Degranulation von Perforin angeregt.",
+      E: "Inhibitorische Rezeptoren auf NK-Zellen binden an körpereigene MHC-Klasse-I-Moleküle; fehlt diese MHC-I-Expression auf veränderten Zellen, entfällt die Hemmung und die Zelle wird durch Perforine und Granzyme lysiert."
     },
-    correct_answer: "B",
-    explanation_correct: "Immunglobulin G (IgG) ist die einzige Antikörperklasse, die physiologisch die menschliche Plazentaschranke überwindet. Der Transport erfolgt im Synzytiotrophoblasten aktiv und gerichtet via rezeptorvermittelte Endozytose und Transzytose über den neonatalen Fc-Rezeptor (FcRn). Dadurch erhält der Fetus mütterliche IgG-Antikörper gegen Infektionserreger, die dem Säugling in den ersten Lebensmonaten als sogenannter Nestschutz dienen.",
+    correct_answer: "E",
+    explanation_correct: "Natürliche Killerzellen (NK-Zellen) gehören zum angeborenen Immunsystem und sind auf das Erkennen entarteter oder virusinfizierter körpereigener Zellen spezialisiert. Ihre Aktivität wird durch das dynamische Gleichgewicht aktivierender und inhibitorischer Rezeptoren gesteuert: Gesunde kernhaltige Körperzellen exprimieren konstitutiv MHC-Klasse-I-Moleküle. Inhibitorische Rezeptoren der NK-Zellen (z. B. KIR-Rezeptoren oder CD94/NKG2A) erkennen intakte MHC-I-Moleküle und senden dominante intrazelluläre Hemmsignale. Viele Viren oder Tumoren unterdrücken die MHC-I-Präsentation ('Downregulation'), um zytotoxischen T-Zellen zu entkommen. Auf solchen Zellen fehlt das inhibitorische Signal ('Missing Self'): Überwiegen die aktivierenden Signale, schüttet die NK-Zelle Perforin (Porenbildung in der Membran) und Granzyme (Induktion von Caspasen und Apoptose) in den synaptischen Spalt aus.",
     explanations_incorrect: {
-      A: "IgM ist ein großes Pentamer (ca. 900 kDa), das die Plazentaschranke nicht überwinden kann; Nachweis von erregerspezifischem IgM im Nabelschnurblut beweist eine fetale Infektion.",
-      C: "IgA gelangt primär postpartal über das Kolostrum und die Muttermilch auf die Schleimhäute des Säuglings, überquert aber nicht die Plazenta.",
-      D: "IgE vermittelt Typ-I-Allergien und Parasitenabwehr; es passiert die Plazenta nicht.",
-      E: "IgD fungiert als Antigenrezeptor auf naiven B-Zellen und wird kaum sezerniert."
+      A: "NK-Zellen besitzen weder T-Zell-Rezeptoren (TCR) noch binden sie primär zur Abtötung an MHC-Klasse II.",
+      B: "Die Zerstörung von Bakterien per Phagozytose ist Aufgabe von Granulozyten und Makrophagen; Lysozym ist ein Enzym der Tränen/des Speichels.",
+      C: "NK-Zellen produzieren keine Antikörper und differenzieren nicht zu Plasmazellen; dies ist die Funktion von B-Lymphozyten.",
+      D: "Hohe MHC-Klasse-I-Spiegel hemmen NK-Zellen; sie verhindern die Degranulation gesunder Zellen."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -406,52 +402,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Human Body: Histology, Anatomy and Physiology",
-    subtopic: "Sekundäre Hämostase & Fibrinpolymerisation",
+    subtopic: "Adaptive Immunität: MHC-Klassen & T-Zell-Aktivierung",
     difficulty: "intermediate",
-    stem: "Welches Enzym spaltet im letzten Schritt der sekundären Hämostase lösliches Fibrinogen in Fibrinmonomere, und welches Enzym stabilisiert das Fibrinnetzwerk kovalent?",
+    stem: "Welche Aussage charakterisiert die funktionelle Differenzierung zwischen MHC-Klasse-I- und MHC-Klasse-II-Molekülen zutreffend?",
     options: {
-      A: "Kallikrein spaltet Fibrinogen; Faktor VIIIa vernetzt die Monomere",
-      B: "Plasmin spaltet Fibrinogen; Protein C bildet Disulfidbrücken",
-      C: "Thrombin (Faktor IIa) spaltet Fibrinogen; Faktor XIIIa (Fibrinstabilisierender Faktor) vernetzt das Fibrin kovalent über Isopeptidbindungen",
-      D: "Faktor Xa spaltet Fibrinogen direkt; Antithrombin III vernetzt das Gerinnsel",
-      E: "Gewebsthromboplastin (Tissue Factor) wandelt Fibrinogen ohne Cofaktoren in unlösliches Fibrin um"
-    },
-    correct_answer: "C",
-    explanation_correct: "In der gemeinsamen Endstrecke der Blutgerinnungskaskade spaltet die Serinprotease Thrombin (aktivierter Faktor IIa) die negativ geladenen Fibrinopeptide A und B von löslichem Fibrinogen ab. Die resultierenden Fibrinmonomere polymerisieren spontan über nicht-kovalente Wechselwirkungen zu einem lockeren Fibringerinnsel. Thrombin aktiviert gleichzeitig Faktor XIII zu Faktor XIIIa (Transglutaminase). Faktor XIIIa bildet kovalente Isopeptidbindungen zwischen Glutamin- und Lysinseitenketten benachbarter Fibrinstränge aus, wodurch ein stabiles, unlösliches Fasergeflecht (roter Thrombus) entsteht.",
-    explanations_incorrect: {
-      A: "Kallikrein spaltet Kininogen zu Bradykinin und aktiviert Faktor XII; Faktor VIIIa ist Cofaktor für FIXa im Tenase-Komplex.",
-      B: "Plasmin ist das zentrale fibrinolytische Enzym, das Fibrin abbaut (Fibrinspaltprodukte / D-Dimere), nicht synthetisiert.",
-      D: "Faktor Xa bildet mit FVa den Prothrombinase-Komplex zur Aktivierung von Prothrombin zu Thrombin, spaltet aber nicht Fibrinogen; Antithrombin III ist ein Inhibitor.",
-      E: "Tissue Factor (TF / Faktor III) initiiert den extrinsischen Gerinnungsweg durch Komplexbildung mit Faktor VIIa."
-    },
-    metadata: {
-      author: "MedAT BMS Biology QC Engine",
-      status: "verified_medat_compliant",
-      version: "5.0_gp5"
-    }
-  },
-  {
-    id: "BIO-BMS-GP5-014",
-    subject: "BIO",
-    section: "BMS",
-    primary_topic: "Immunobiology",
-    subtopic: "NK-Zellen & Missing-Self-Hypothese",
-    difficulty: "advanced",
-    stem: "Welcher Mechanismus erklärt die zytotoxische Aktivierung natürlicher Killerzellen (NK-Zellen) nach der 'Missing-Self'-Hypothese?",
-    options: {
-      A: "NK-Zellen werden ausschließlich aktiviert, wenn spezifische virale Peptide über MHC-II an ihren T-Zell-Rezeptor binden",
-      B: "NK-Zellen phagozytieren Zielzellen nur dann, wenn diese mit sekretorischem IgA opsonisiert sind",
-      C: "Inhibitorische Rezeptoren (KIR) der NK-Zelle erkennen CD4-Moleküle auf gesunden Körperzellen",
-      D: "Inhibitorische Rezeptoren der NK-Zelle erkennen körpereigene MHC-I-Moleküle auf gesunden Zellen; verliert eine virusinfizierte oder entartete Zelle ihre MHC-I-Expression, entfällt das hemmende Signal und aktivierende Signale dominieren",
-      E: "NK-Zellen benötigen zwingend die Unterstützung durch B-Gedächtniszellen zur Ausschüttung von Histamin"
+      A: "MHC-Klasse-I-Moleküle kommen ausschließlich auf professionellen Antigen-präsentierenden Zellen vor und binden extrazelluläre Polysaccharide.",
+      B: "MHC-Klasse-II-Komplexe präsentieren intrazellulär im Zytosol synthetisierte Virusfragmente spezifisch an CD8+-zytotoxische T-Zellen.",
+      C: "Reife menschliche Erythrozyten tragen die höchste Dichte an MHC-Klasse-I-Molekülen aller Blutzellen im Kreislauf.",
+      D: "MHC-Klasse-I-Moleküle befinden sich auf allen kernhaltigen Zellen und präsentieren endogene Peptide an CD8+-T-Zellen; MHC-Klasse-II-Moleküle befinden sich primär auf professionellen APCs und präsentieren exogene Peptide an CD4+-T-Zellen.",
+      E: "MHC-Klasse I und II sind lösliche Serumantikörper, die von unreifen B-Zellen zur Komplementaktivierung sezerniert werden."
     },
     correct_answer: "D",
-    explanation_correct: "NK-Zellen (angeborenes Immunsystem) besitzen inhibitorische Rezeptoren (z. B. KIR = Killer Cell Immunoglobulin-like Receptors, CD94/NKG2A), die konstitutiv an körpereigene MHC-I-Moleküle binden und intrazellulär über ITIM-Motive hemmende Phosphatasen rekrutieren. Viele Viren (z. B. CMV, Adenoviren) oder Tumorzellen regulieren MHC-I herunter, um der Erkennung durch CD8+ T-Zellen zu entgehen. Fehlt das MHC-I-Molekül auf der Zielzelle (Missing Self), bleibt das inhibitorische Signal aus, und aktivierende Rezeptoren (z. B. NKG2D) leiten die Lyse der Zielzelle über Perforin und Granzyme ein.",
+    explanation_correct: "MHC-Moleküle (Major Histocompatibility Complex, beim Menschen HLA) sind membrangebundene Glykoproteine zur Antigenpräsentation: MHC-Klasse-I-Moleküle (HLA-A, -B, -C) werden konstitutiv auf nahezu allen kernhaltigen Körperzellen sowie Thrombozyten exprimiert. Sie präsentieren kurze endogene Peptide (8–10 Aminosäuren aus dem Proteasom/Zytosol) an CD8+-zytotoxische T-Zellen (CTLs). MHC-Klasse-II-Moleküle (HLA-DP, -DQ, -DR) finden sich physiologisch primär auf 'professionellen' antigenpräsentierenden Zellen (APCs: dendritische Zellen, Makrophagen, B-Lymphozyten). Sie präsentieren längere, endozytierte exogene Peptidfragmente (12–25 Aminosäuren aus dem Endolysosomensystem) an CD4+-T-Helferzellen. Reife Erythrozyten besitzen keinen Zellkern und exprimieren keine MHC-I-Moleküle.",
     explanations_incorrect: {
-      A: "NK-Zellen besitzen keinen T-Zell-Rezeptor (TCR) und erkennen Antigene nicht im Kontext von MHC-Restriktion.",
-      B: "NK-Zellen sind keine primären Phagozyten, sondern zytotoxische Effektorzellen; Antikörper-abhängige Toxizität (ADCC) erfolgt über CD16 (FcgRIII) und IgG, nicht IgA.",
-      C: "KIR binden an MHC-Klasse-I-Moleküle, nicht an CD4.",
-      E: "NK-Zellen agieren antigenspezifisch unabhängig von Gedächtniszellen und sezernieren Perforin/Granzyme und Interferon-gamma, kein Histamin (Mastzellen)."
+      A: "MHC-I kommt auf allen kernhaltigen Zellen vor und bindet Peptidfragmente, keine reinen Polysaccharide.",
+      B: "Zytosolische Virusfragmente werden über MHC-Klasse I an CD8+-T-Zellen präsentiert, nicht über MHC-Klasse II.",
+      C: "Reife menschliche Erythrozyten sind kernlos und tragen weder MHC-Klasse-I- noch MHC-Klasse-II-Moleküle.",
+      E: "MHC-Moleküle sind integrale Membranrezeptoren und keine freien Immunglobuline/Antikörper."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -460,31 +427,60 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 4: Frühentwicklung & Fortpflanzung (bio-03-fruehentwicklung) - 4 Aufgaben
-  // ---------------------------------------------------------------------------------
+  // -------------------------------------------------------------
+  // Kapitel 3: Frühentwicklung des Menschen (bio-03-fruehentwicklung) - 4 Aufgaben
+  // -------------------------------------------------------------
+  {
+    id: "BIO-BMS-GP5-014",
+    subject: "BIO",
+    section: "BMS",
+    primary_topic: "Early Human Development",
+    subtopic: "Gametogenese: Spermatogenese vs. Oogenese",
+    difficulty: "foundational",
+    stem: "In welchem wesentlichen Punkt unterscheiden sich die meiotischen Teilungen der humanen Spermatogenese und Oogenese?",
+    options: {
+      A: "Aus einer primären Spermatozyte entstehen nach Abschluss der Meiose vier funktionelle Spermien, während aus einer primären Oozyte durch asymmetrische Zytokinesen nur eine Eizelle und Polkörperchen hervorgehen.",
+      B: "Die Spermatogenese wird vor der Geburt im Stadium der Prophase I arretiert, während die Oogenese erst ab der Pubertät einsetzt.",
+      C: "Die Oogenese liefert pro primäre Oozyte vier identisch große, voll befruchtungsfähige Gameten mit jeweils 46 Chromosomen.",
+      D: "Spermien vollenden ihre Meiose II erst nach erfolgreicher Penetration der Eizellmembran im Uterus.",
+      E: "In der Oogenese findet im Gegensatz zur Spermatogenese kein Crossing-over in der Prophase I statt."
+    },
+    correct_answer: "A",
+    explanation_correct: "Die humane Gametogenese weist fundamentale Unterschiede in Zeitverlauf und Zytokinese auf: Bei der Spermatogenese (beginnend in der Pubertät in den Tubuli seminiferi der Hoden) teilt sich das Zytoplasma symmetrisch, sodass aus einer diploiden primären Spermatozyte nach Meiose I und II vier gleichwertige, haploide Spermatiden hervorgehen, die zu Geißelspermien differenzieren. Bei der Oogenese (beginnt pränatal im Fetalstadium) teilt sich das Zytoplasma in beiden Reifeteilungen extrem asymmetrisch: Es entsteht jeweils eine große Zelle, die nahezu das gesamte Zytoplasma und alle Zellorganellen (v. a. Mitochondrien) behält, sowie winzige Polkörperchen (Polzyten), die zugrunde gehen. Das Ergebnis ist eine einzige reife Eizelle (Ovum) pro primäre Oozyte.",
+    explanations_incorrect: {
+      B: "Die Oogenese wird pränatal im Diktyotän (Prophase I) arretiert; die Spermatogenese beginnt erst mit der Pubertät kontinuierlich neu.",
+      C: "Die Oogenese bildet nur eine funktionelle Eizelle und drei Polkörperchen; die Gameten sind haploid (23 Chromosomen).",
+      D: "Spermien haben ihre meiotischen Teilungen bereits im Hoden vor der Ejakulation vollständig abgeschlossen; die Oozyte vollendet Meiose II bei Befruchtung.",
+      E: "Crossing-over (Pachytän der Prophase I) findet in beiden Keimbahnen regulär statt."
+    },
+    metadata: {
+      author: "MedAT BMS Biology QC Engine",
+      status: "verified_medat_compliant",
+      version: "5.0_gp5"
+    }
+  },
   {
     id: "BIO-BMS-GP5-015",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Early Human Development",
-    subtopic: "Oogenese: Meiose-Arretierungsstadien",
-    difficulty: "foundational",
-    stem: "In welchem meiotischen Entwicklungsstadium verharren die Oozyten eines weiblichen Feten von der späten Fetalperiode bis unmittelbar vor der jeweiligen Ovulation in der Geschlechtsreife?",
+    subtopic: "Befruchtung & Corticale Reaktion / Polyspermieblock",
+    difficulty: "intermediate",
+    stem: "Welcher zellbiologische Mechanismus verhindert bei der humanen Befruchtung das Eindringen weiterer Spermien in die Eizelle (Verhinderung der Polyspermie)?",
     options: {
-      A: "In der Metaphase der Meiose II",
-      B: "In der Anaphase der Meiose I",
-      C: "In der Telophase der Meiose II",
-      D: "In der Interkinese zwischen Meiose I und Meiose II",
-      E: "Im Ruhestadium (Diktyotän) der Prophase der Meiose I"
+      A: "Die Eizelle bildet innerhalb von Sekundenbruchteilen eine mineralisierte Kalkschale um die Plasmamembran aus.",
+      B: "Das Spermium setzt nach der Fusion sofort Säure frei, die alle benachbarten Samenzellen im Eileiter lysiert.",
+      C: "Ein spermieninduzierter intrazellulärer Ca2+-Anstieg in der Eizelle führt zur Exozytose der Rindenkörner (Corticalgranula), deren Enzyme die Zona pellucida verhärten und modifizieren (Zona-Reaktion).",
+      D: "Die Zona pellucida wird durch Akrosin vollständig aufgelöst, sodass keine weiteren Bindungsstellen für Spermien existieren.",
+      E: "Die Eizelle schrumpft sofort auf die Hälfte ihres Volumens, wodurch die perivitelline Membran für Ionen undurchlässig wird."
     },
-    correct_answer: "E",
-    explanation_correct: "Die Oogenese beginnt pränatal: Oogonien vermehren sich durch Mitose und treten im Fetus in die Meiose I ein. Noch vor der Geburt arretieren alle primären Oozyten im Diplotän der Prophase I, einem spezialisierten Ruhezustand, der als Diktyotän bezeichnet wird. In diesem Ruhezustand (als Primordialfollikel) verharren die Oozyten bis zur Pubertät und können dort bis zu 40–50 Jahre verbleiben. Erst durch den präovulatorischen LH-Peak beendet jeweils eine Oozyte die Meiose I und arretiert anschließend in der Metaphase II, die erst bei erfolgreicher Befruchtung abgeschlossen wird.",
+    correct_answer: "C",
+    explanation_correct: "Um eine letale Polyploidie durch Mehrfachbefruchtung (Polyspermie) zu verhindern, besitzt die Eizelle Abwehrmechanismen: Nach Fusion der Membranen von Spermium und Eizelle wird über Phospholipase C-zeta eine Signalkaskade ausgelöst, die zu repetitiven intrazellulären Ca2+-Wellen im Eizellzytosol führt. Dies triggert die Exozytose submembranöser Rindenkörnchen (Corticalgranula) in den perivitellinen Spalt (Corticale Reaktion). Die freigesetzten Enzyme (Proteasen wie Ovastacin, Peroxidasen, Glykosidasen) spalten und vernetzen Proteine der Zona pellucida (Zona-Reaktion). ZP2 und ZP3 werden so modifiziert, dass überzählige Spermien weder anheften noch die Zona pellucida weiter penetrieren können (permanenter langsamer Block gegen Polyspermie). Gleichzeitig vollendet die Eizelle die Meiose II.",
     explanations_incorrect: {
-      A: "In der Metaphase II arretiert die sekundäre Oozyte nach dem Eisprung im Eileiter bis zur Befruchtung durch ein Spermium.",
-      B: "In der Anaphase I werden homologe Chromosomen getrennt; hier erfolgt kein jahrelanger Entwicklungsstopp.",
-      C: "Die Telophase II wird erst nach vollzogener Befruchtung zur Ausstoßung des 2. Polkörperchens durchlaufen.",
-      D: "Die Interkinese ist nur ein kurzes Übergangsstadium ohne DNA-Replikation."
+      A: "Säugetiereizellen bilden keine mineralisierten Kalkschalen (dies existiert bei Vögeln im Uterus nach der Befruchtung).",
+      B: "Das Spermium lysiert keine konkurrierenden Spermien durch Säurefreisetzung.",
+      D: "Die Zona pellucida bleibt bis zur Implantation erhalten und wird nicht aufgelöst; ihre Struktur wird verhärtet.",
+      E: "Eine Volumenhalbierung der Eizelle findet nicht statt und ist kein Mechanismus des Polyspermieblocks."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -497,23 +493,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Early Human Development",
-    subtopic: "Kortikale Reaktion & Polyspermieblock",
+    subtopic: "Blastozyste: Trophoblast vs. Embryoblast",
     difficulty: "intermediate",
-    stem: "Welcher biochemische Prozess verhindert bei der Befruchtung der menschlichen Eizelle verlässlich die Polyspermie (das Eindringen weiterer Spermien)?",
+    stem: "Welche Aussage beschreibt den Aufbau der Blastozyste und die frühe Implantation (Nidation) in das Endometrium zutreffend?",
     options: {
-      A: "Ein intrazellulärer Calcium-Anstieg führt zur Exozytose kortikaler Granula, deren Enzyme die Zona pellucida verhärten und ZP3-Rezeptoren inaktivieren (Zona-Reaktion)",
-      B: "Die Eizelle bildet sofort eine dicke Schicht aus Kollagen Typ I um die Plasmamembran",
-      C: "Das erste Spermium injiziert ATP in den Extrazellulärraum, wodurch alle anderen Spermien die Geißel abwerfen",
-      D: "Die Oozyte senkt ihr Membranpotenzial dauerhaft auf -120 mV ab, was Spermien elektrostatisch abstößt",
-      E: "Die Follikelepithelzellen der Corona radiata schließen sich durch Tight Junctions lückenlos zusammen"
+      A: "Der Trophoblast bildet die drei embryonalen Keimblätter, während der Embryoblast ausschließlich zur mütterlichen Dezidua wird.",
+      B: "Die Implantation erfolgt unmittelbar nach der Befruchtung innerhalb von 12 Stunden im mittleren Drittel der Tuba uterina.",
+      C: "Die Blastozyste nistet sich bereits am Tag 2 nach der Befruchtung unter vollständiger Erhaltung der Zona pellucida ein.",
+      D: "Der Embryoblast differenziert in Synzytiotrophoblast und Zytotrophoblast, um invasiv in uterine Blutgefäße einzuwachsen.",
+      E: "Die Blastozyste schlüpft vor der Nidation aus der Zona pellucida; der äußere Trophoblast bildet Anteile der Plazenta, während der innere Embryoblast den eigentlichen Embryo bildet."
     },
-    correct_answer: "A",
-    explanation_correct: "Nach Fusion des Spermiums mit dem Oolemm (über Juno/Izumo1) wird Phospholipase C zeta (PLCz) freigesetzt. Dies führt zu Oszillationen der zytosolischen Ca2+-Konzentration. Der Calciumanstieg triggert die kortikale Reaktion: Tausende unter der Plasmamembran gelegene kortikale Granula verschmelzen mit dem Oolemm und sezernieren Proteasen, Peroxidasen und Polysaccharide in den perivitellinen Raum. Diese Enzyme spalten das Zona-Protein ZP3 und modifizieren ZP2, wodurch die Zona pellucida verhärtet (Zona-Reaktion) und keine weiteren Spermien mehr anbinden oder penetrieren können (permanenter, langsamer Polyspermieblock).",
+    correct_answer: "E",
+    explanation_correct: "Am Tag 5–6 nach der Befruchtung erreicht der Keim als Blastozyste das Cavum uteri. Die Blastozyste besteht aus einer flüssigkeitsgefüllten Blastozystenhöhle, einer äußeren Hüllschicht (Trophoblast) und einer inneren Zellmasse an einem Pol (Embryoblast). Bevor die Anheftung und Implantation an das Endometrium am Tag 6–7 beginnen kann, muss die Blastozyste durch enzymatische Lyse aus der schützenden Zona pellucida 'schlüpfen' (Hatching). Der Trophoblast differenziert bei der Implantation in den Synzytiotrophoblasten (sezerniert hCG, invasives Wachstum) und Zytotrophoblasten und liefert die embryonalen Anteile von Plazenta und Chorion. Der Embryoblast liefert den gesamten eigentlichen Embryo (über Epiblast und Hypoblast zu den drei Keimblättern) sowie Amnion und Dottersack.",
     explanations_incorrect: {
-      B: "Die Zona pellucida besteht aus Glykoproteinen (ZP1–ZP4), nicht aus fibrillärem Kollagen Typ I.",
-      C: "Die Spermiengeißel wird nicht durch extrazelluläres ATP abgestoßen.",
-      D: "Ein schneller elektrischer Polyspermieblock (Depolarisation) ist bei Seeigeln bekannt, beim Säugetier/Menschen ist der Ca2+-vermittelte kortikale Block (Zona-Reaktion) der primäre und entscheidende Mechanismus.",
-      E: "Die Corona radiata wird von den Spermien mittels der membrangebundenen Hyaluronidase bereits vor der Befruchtung durchdrungen."
+      A: "Der Trophoblast bildet Plazentaanteile, nicht die Keimblätter; der Embryoblast bildet den Embryo, nicht die mütterliche Dezidua.",
+      B: "Die Implantation im Eileiter ist eine pathologische Eileiterschwangerschaft (Extrauteringravidität); regulär nistet sich die Blastozyste an Tag 6–7 im Uterus ein.",
+      C: "Die Blastozyste muss vor der Einnistung zwingend aus der Zona pellucida schlüpfen (Hatching an Tag 5–6).",
+      D: "Synzytio- und Zytotrophoblast entstehen aus dem Trophoblasten, nicht aus dem Embryoblasten."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -526,52 +522,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Early Human Development",
-    subtopic: "Blastozyste & Trophoblastdifferenzierung",
-    difficulty: "intermediate",
-    stem: "Aus welchen zwei primären Zellpopulationen besteht die menschliche Blastozyste am 5. bis 6. Tag nach der Befruchtung, und welche Struktur sezerniert das Schwangerschaftshormon hCG?",
+    subtopic: "Gastrulation & Keimblattderivate",
+    difficulty: "advanced",
+    stem: "Welche Zuordnung zwischen den drei primären embryonalen Keimblättern und ihren definitiven Organderivaten beim Menschen ist anatomisch korrekt?",
     options: {
-      A: "Epiblast und Hypoblast; der Hypoblast sezerniert hCG",
-      B: "Embryoblast (innere Zellmasse) und Trophoblast (äußere Zellschicht); der differenzierte Synzytiotrophoblast sezerniert hCG",
-      C: "Ektoderm und Entoderm; das primäre Mesenchym sezerniert hCG",
-      D: "Morula und Amnionepithel; das Amnion sezerniert hCG",
-      E: "Dottersack und Allantois; die Allantois sezerniert hCG"
+      A: "Ektoderm: Zentralnervensystem und Epidermis; Mesoderm: Herz-Kreislauf-System, Skelettmuskulatur und Nieren; Entoderm: Epithel des Gastrointestinal- und Respirationstrakts.",
+      B: "Ektoderm: Nieren und Nebennierenrinde; Mesoderm: Epithel der Alveolen und Leber; Entoderm: Skelettmuskulatur und Zahnschmelz.",
+      C: "Ektoderm: Skelettknochen und Knorpelgewebe; Mesoderm: Gehirn und Retina; Entoderm: Milz und Blutkörperchen.",
+      D: "Ektoderm: Pankreasparenchym und Schilddrüsenfollikel; Mesoderm: Epidermis der Haut; Entoderm: Peripheres Nervensystem.",
+      E: "Ektoderm: Herzmuskelgewebe; Mesoderm: Zahnschmelz und Cornea; Entoderm: Nebennierenmark und Knorpel."
     },
-    correct_answer: "B",
-    explanation_correct: "Die freie Blastozyste besteht aus der äußeren, einschichtigen Zelllage (Trophoblast) und der innenliegenden Zellanhäufung an einem Pol (Embryoblast / Inner Cell Mass). Aus dem Embryoblasten geht der eigentliche Embryo hervor, während der Trophoblast die fetale Plazenta bildet. Bei der Implantation ins Endometrium differenziert der Trophoblast in den proliferierenden inneren Zytotrophoblasten und den invasiven, mehrkernigen Synzytiotrophoblasten (durch Zellfusion). Der Synzytiotrophoblast sezerniert humanes Choriongonadotropin (hCG), welches den Gelbkörper (Corpus luteum graviditatis) im Ovar stimuliert, weiterhin Progesteron zu produzieren.",
+    correct_answer: "A",
+    explanation_correct: "Während der Gastrulation (3. Entwicklungswoche) entstehen aus dem Epiblasten die drei definitiven Keimblätter mit ihren spezifischen Organderivaten: 1. Ektoderm (Oberflächen- und Neuroektoderm): ZNS (Gehirn, Rückenmark), PNS, Sinnesepithelien von Auge und Innenohr, Epidermis der Haut mit Haaren/Nägeln, Zahnschmelz, Nebennierenmark. 2. Mesoderm (paraxiales, intermediäres, Seitenplattenmesoderm): Knorpel, Knochen, Binde- und Stützgewebe, Skelettmuskulatur, Herz-Kreislauf-System (Herz, Blutgefäße, Blutzellen), Nieren, Ureteren, innere Genitalorgane, Nebennierenrinde, Milz. 3. Entoderm: Epithelauskleidung des gesamten Gastrointestinaltrakts (vom Pharynx bis zum Rektum), Epithelauskleidung des Respirationstrakts (Trachea, Bronchien, Alveolarauskleidung), Parenchym der Verdauungsdrüsen (Leber, Pankreas) sowie Schilddrüse, Nebenschilddrüsen und Auskleidung der Harnblase.",
     explanations_incorrect: {
-      A: "Epiblast und Hypoblast entstehen erst ab Tag 7/8 durch Differenzierung des Embryoblasten (zweiblättrige Keimscheibe).",
-      C: "Ektoderm und Entoderm entstehen erst während der Gastrulation (3. Entwicklungswoche).",
-      D: "Die Morula (16–32-Zellstadium) ist das Vorläuferstadium vor Ausbildung der Blastozystenhöhle.",
-      E: "Dottersack und Allantois sind extraembryonale Organe, die sich erst in der zweiten bzw. dritten Woche formieren."
-    },
-    metadata: {
-      author: "MedAT BMS Biology QC Engine",
-      status: "verified_medat_compliant",
-      version: "5.0_gp5"
-    }
-  },
-  {
-    id: "BIO-BMS-GP5-018",
-    subject: "BIO",
-    section: "BMS",
-    primary_topic: "Early Human Development",
-    subtopic: "Keimblattderivate & Organogenese",
-    difficulty: "intermediate",
-    stem: "Welche Zuordnung eines menschlichen Organs oder Gewebes zu seinem embryonalen Keimblattursprung ist fachlich korrekt?",
-    options: {
-      A: "Das Nebennierenmark stammt aus dem Mesoderm",
-      B: "Die Skelettmuskulatur der Extremitäten stammt aus dem Oberflächenektoderm",
-      C: "Die Schilddrüsenfollikelepithelien stammen aus dem Entoderm, während der Zahnschmelz aus dem Ektoderm hervorgeht",
-      D: "Die Nieren und Harnleiter stammen vollständig aus dem Entoderm",
-      E: "Das gesamte zentrale und periphere Nervensystem stammt aus dem Mesoderm"
-    },
-    correct_answer: "C",
-    explanation_correct: "Das Epithel der Schilddrüse (Thyreozyten), Nebenschilddrüsen, Lunge, Leber und des Gastrointestinaltrakts stammt aus dem Entoderm (Ausstülpung des Vorderdarms). Der Zahnschmelz (Enamelum) ist das am stärksten mineralisierte Gewebe des Körpers und stammt aus den Adamantoblasten (Ameloblasten) des oralen Ektoderms (Schmelzorgan).",
-    explanations_incorrect: {
-      A: "Das Nebennierenmark leitet sich von den Neuralleistenzellen (Ektoderm/Neuroektoderm) ab; die Nebennierenrinde entsteht aus dem Zölomepithel des Mesoderms.",
-      B: "Die Skelettmuskulatur stammt aus den Myotomen der mesodermalen Somiten (paraxiales Mesoderm).",
-      D: "Der Urogenitaltrakt (Nieren, Ureteren, Keimdrüsen) stammt aus dem intermediären Mesoderm.",
-      E: "Das gesamte Nervensystem (ZNS aus Neuralrohr, PNS aus Neuralleiste) ist ektodermalen Ursprungs."
+      B: "Nieren und Nebennierenrinde sind mesodermal; Leber und Alveolarepithel sind entodermal; Skelettmuskel ist mesodermal, Zahnschmelz ektodermal.",
+      C: "Knochen sind mesodermal; Gehirn und Retina sind ektodermal (Neuroektoderm); Milz und Blutzellen sind mesodermal.",
+      D: "Pankreas und Schilddrüse sind entodermal; Epidermis ist ektodermal; PNS entsteht aus ektodermalen Neuralleistenzellen.",
+      E: "Herzmuskel ist mesodermal; Zahnschmelz ist ektodermal; Nebennierenmark entsteht aus ektodermalen Neuralleistenzellen."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -580,31 +547,60 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 5: Genetik, Vererbung & Chromosomen (bio-04-genetik) - 5 Aufgaben
-  // ---------------------------------------------------------------------------------
+  // -------------------------------------------------------------
+  // Kapitel 4: Genetik (bio-04-genetik) - 5 Aufgaben
+  // -------------------------------------------------------------
+  {
+    id: "BIO-BMS-GP5-018",
+    subject: "BIO",
+    section: "BMS",
+    primary_topic: "Genetics, Inheritance and Chromosome Biology",
+    subtopic: "Mendelsche Regeln: Dihybrider Erbgang",
+    difficulty: "foundational",
+    stem: "Welches phänotypische Spaltungsverhältnis resultiert in der F2-Generation bei einer dihybriden Kreuzung reinerbiger Eltern (AABB × aabb) mit vollständiger Dominanz beider Merkmale und ungekoppelter autosomaler Vererbung?",
+    options: {
+      A: "3 : 1",
+      B: "9 : 3 : 3 : 1",
+      C: "1 : 2 : 1",
+      D: "1 : 1 : 1 : 1",
+      E: "12 : 3 : 1"
+    },
+    correct_answer: "B",
+    explanation_correct: "Gemäß der 3. Mendelschen Regel (Unabhängigkeitsregel / freie Rekombination) werden zwei Merkmale unabhängig voneinander vererbt, wenn die zugrunde liegenden Gene auf verschiedenen Chromosomen (oder weit voneinander entfernt auf demselben Chromosom) liegen. Bei einer Kreuzung P: AABB × aabb ist die F1-Generation uniform heterozygot (AaBb, 1. Mendelsche Regel). Werden die F1-Individuen untereinander gekreuzt (AaBb × AaBb), bildet jedes Elternteil vier Gametensorten in gleichen Anteilen (1/4 AB, 1/4 Ab, 1/4 aB, 1/4 ab). Im 16-Felder-Punnett-Quadrat ergibt sich bei vollständiger Dominanz das klassische phänotypische Spaltungsverhältnis von 9 : 3 : 3 : 1 (9 A_B_ : 3 A_bb : 3 aaB_ : 1 aabb).",
+    explanations_incorrect: {
+      A: "3 : 1 ist das monohybride phänotypische Spaltungsverhältnis der F2-Generation bei dominant-rezessivem Erbgang.",
+      C: "1 : 2 : 1 ist das genotypische Spaltungsverhältnis eines monohybriden Erbgangs (1 AA : 2 Aa : 1 aa) bzw. das phänotypische bei intermediärem Erbgang.",
+      D: "1 : 1 : 1 : 1 entsteht bei einer dihybriden Testkreuzung / Rückkreuzung eines heterozygoten Individuums (AaBb × aabb).",
+      E: "12 : 3 : 1 tritt bei dominanter Epistasie auf, nicht bei unabhängiger Spaltung ohne Geninteraktion."
+    },
+    metadata: {
+      author: "MedAT BMS Biology QC Engine",
+      status: "verified_medat_compliant",
+      version: "5.0_gp5"
+    }
+  },
   {
     id: "BIO-BMS-GP5-019",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Genetics, Inheritance and Chromosome Biology",
-    subtopic: "Chromosomenmorphologie: Akrozentrische Chromosomen",
-    difficulty: "foundational",
-    stem: "Welche der folgenden Gruppen umfasst ausschließlich akrozentrische Chromosomen des normalen menschlichen Karyotyps, die Satelliten und Nukleolus-Organisator-Regionen (NOR) tragen?",
+    subtopic: "Autosomal-rezessive Vererbung & Wiederholungsrisiko",
+    difficulty: "intermediate",
+    stem: "Zwei phänotypisch gesunde Eltern haben bereits ein gemeinsames Kind mit Zystischer Fibrose (Mukoviszidose, autosomal-rezessiv vererbt). Mit welcher Wahrscheinlichkeit ist ein weiteres Kind dieses Paares phänotypisch gesund, aber heterozygoter Anlageträger (Konduktor)?",
     options: {
-      A: "Chromosomen 1, 2, 3 und das X-Chromosom",
-      B: "Chromosomen 4, 5, 6 und 7",
-      C: "Chromosomen 9, 10, 11 und 12",
-      D: "Chromosomen 13, 14, 15, 21 und 22",
-      E: "Chromosomen 19, 20 und das Y-Chromosom"
+      A: "25 % (1/4)",
+      B: "33,3 % (1/3)",
+      C: "75 % (3/4)",
+      D: "50 % (1/2)",
+      E: "100 % (1/1)"
     },
     correct_answer: "D",
-    explanation_correct: "Im menschlichen Karyotyp existieren genau fünf Paare akrozentrischer Autosomen: die Chromosomen der D-Gruppe (13, 14, 15) und der G-Gruppe (21, 22). Bei akrozentrischen Chromosomen liegt das Zentromer sehr nah an einem Chromosomenende, sodass ein extrem kurzer p-Arm (Stiel und Satellit) resultiert. Diese kurzen Arme tragen die ribosomalen DNA-Repeats (rDNA für 18S, 5.8S und 28S rRNA), die sogenannten Nukleolus-Organisator-Regionen (NOR). An diesen Chromosomen können Robertsonsche Translokationen auftreten.",
+    explanation_correct: "Da das erste Kind an Zystischer Fibrose (autosomal-rezessiv, Genotyp aa) erkrankt ist, müssen beide phänotypisch gesunden Eltern zwingend heterozygot für das mutierte CFTR-Allel sein (Genotyp beider Eltern: Aa). Bei einer Kreuzung zweier Heterozygoter (Aa × Aa) ergeben sich für jedes nachfolgende Kind unabhängig voneinander folgende Genotypwahrscheinlichkeiten: 25 % AA (homozygot gesund), 50 % Aa (heterozygot gesund / Konduktor) und 25 % aa (homozygot erkrankt). Die Wahrscheinlichkeit, dass ein ungeborenes Kind dieses Paares phänotypisch gesund, aber heterozygoter Anlageträger (Aa) ist, beträgt somit genau 50 % (1/2). (Hinweis: Die Frage bezieht sich auf ein ungeborenes Kind vor Phänotypfeststellung. Unter der Bedingung, dass ein Kind bereits als gesund bekannt ist, wäre die Wahrscheinlichkeit 2/3).",
     explanations_incorrect: {
-      A: "Chromosomen 1, 2, 3 sind große metazentrische bzw. submetazentrische Chromosomen (A-Gruppe); das X-Chromosom ist mittelgroß submetazentrisch (C-Gruppe).",
-      B: "Chromosomen 4 und 5 sind submetazentrisch (B-Gruppe).",
-      C: "Chromosomen 9–12 gehören zur submetazentrischen C-Gruppe.",
-      E: "Chromosomen 19 und 20 sind kleine metazentrische Chromosomen (F-Gruppe)."
+      A: "25 % ist die Wahrscheinlichkeit für ein homozygot gesundes Kind (AA) bzw. für ein erkranktes Kind (aa).",
+      B: "33,3 % (1/3) ist die Wahrscheinlichkeit, dass ein gesundes Kind homozygot gesund (AA) ist.",
+      C: "75 % ist die Gesamtwahrscheinlichkeit für ein phänotypisch gesundes Kind (AA + Aa zusammen).",
+      E: "100 % träfe nur zu, wenn ein Elternteil homozygot krank (aa) und der andere homozygot gesund (AA) wäre."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -617,23 +613,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Genetics, Inheritance and Chromosome Biology",
-    subtopic: "X-chromosomal-dominante Vererbung",
+    subtopic: "X-chromosomal-rezessive Vererbung: Hämophilie A",
     difficulty: "intermediate",
-    stem: "Ein Mann ist an einer seltenen X-chromosomal-dominant vererbten Erkrankung (z. B. Vitamin-D-resistente hypophosphatämische Rachitis) erkrankt. Seine Ehepartnerin ist phänotypisch gesund und homozygot für das Wildtyp-Allel. Mit welcher Wahrscheinlichkeit sind die leiblichen Töchter bzw. Söhne dieses Paares von der Erkrankung betroffen?",
+    stem: "Ein Mann mit Hämophilie A (X-chromosomal-rezessiv) zeugt Kinder mit einer genetisch gesunden, nicht heterozygoten Frau. Welche Aussage über die Nachkommen dieses Paares ist genetisch zutreffend?",
     options: {
-      A: "50% der Töchter und 50% der Söhne",
-      B: "100% der Söhne und 0% der Töchter",
-      C: "0% der Töchter und 0% der Söhne",
-      D: "75% der Töchter und 25% der Söhne",
-      E: "100% der Töchter und 0% der Söhne"
+      A: "50 % der Söhne und 50 % der Töchter sind klinisch an Hämophilie A erkrankt.",
+      B: "Alle Söhne dieses Vaters erben das mutierte Allel und sind Bluter, während Töchter völlig frei von Mutationen sind.",
+      C: "Alle Töchter sind obligate heterozygote Konduktorinnen (Anlageträgerinnen), während alle Söhne gesund und frei vom mutierten Allel sind.",
+      D: "Da Hämophilie dominant über das Y-Chromosom vererbt wird, erkranken 100 % der Nachkommen beiderlei Geschlechts.",
+      E: "Keines der Kinder erbt das mutierte X-Chromosom, da der Vater bei der Befruchtung nur Y-Chromosomen abgibt."
     },
-    correct_answer: "E",
-    explanation_correct: "Bei einem X-chromosomal-dominanten Erbgang trägt der betroffene Vater auf seinem einzigen X-Chromosom das mutierte dominante Allel (X^A Y). An seine Söhne gibt der Vater obligat sein Y-Chromosom weiter (Y). Da die Mutter gesund ist (X^a X^a), erhalten alle Söhne das gesunde mütterliche X^a (X^a Y) und sind zu 0% betroffen. An alle Töchter vererbt der Vater jedoch zwingend sein mutiertes X^A-Chromosom. Da das Merkmal dominant ist, reicht ein einzelnes mutiertes Allel für die Ausprägung des Phänotyps aus (X^A X^a). Daher sind 100% der Töchter betroffen.",
+    correct_answer: "C",
+    explanation_correct: "Bei der X-chromosomal-rezessiven Vererbung besitzt der betroffene Vater den Genotyp X^h Y, während die homozygot gesunde Mutter den Genotyp X^H X^H trägt. Der Vater gibt an alle Söhne zwingend sein Y-Chromosom ab; die Söhne erhalten ihr X-Chromosom ausschließlich von der Mutter (X^H Y). Daher sind 100 % der Söhne phänotypisch gesund und tragen das mutierte Allel nicht. An alle Töchter gibt der Vater zwingend sein einziges X-Chromosom mit dem mutierten Allel (X^h) ab. Die Töchter erhalten vom Vater X^h und von der Mutter X^H (Genotyp: X^H X^h). Da das gesunde Allel X^H dominant ist, sind alle Töchter phänotypisch gesund, aber obligate Konduktorinnen (Überträgerinnen).",
     explanations_incorrect: {
-      A: "50% für beide Geschlechter träfe zu, wenn die Mutter heterozygot betroffen wäre (X^A X^a) und der Vater gesund (X^a Y).",
-      B: "Das Y-Chromosom trägt das Gen nicht; Väter vererben kein X an ihre Söhne.",
-      C: "Die Töchter erhalten zwingend das dominante mutierte Allel und erkranken.",
-      D: "Dies entspricht keinem monogenen Mendel-Spaltungsverhältnis für diese Elternkombination."
+      A: "Söhne können das mutierte Allel vom Vater nicht erben; Töchter sind durch das gesunde mütterliche X-Chromosom phänotypisch geschützt.",
+      B: "Väter vererben ihr X-Chromosom niemals an Söhne, sondern ausschließlich an Töchter.",
+      D: "Hämophilie A liegt auf dem X-Chromosom (Faktor-VIII-Gen), nicht auf dem Y-Chromosom, und wird rezessiv vererbt.",
+      E: "Spermien tragen entweder ein X- oder ein Y-Chromosom; bei der Entstehung von Töchtern wird immer das X-Chromosom übertragen."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -646,23 +642,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Genetics, Inheritance and Chromosome Biology",
-    subtopic: "Mitochondriale Vererbung & Heteroplasmie",
+    subtopic: "AB0- und Rhesus-System: Vererbungsmuster",
     difficulty: "intermediate",
-    stem: "Welches Vererbungsmuster ist charakteristisch für Erkrankungen, die durch Mutationen in der mitochondrialen DNA (mtDNA, z. B. LHON oder MERRF) verursacht werden?",
+    stem: "Eine Mutter hat die Blutgruppe A (Rh-negativ) und der leibliche Vater hat die Blutgruppe B (Rh-negativ). Ihr erstes Kind hat die Blutgruppe 0 (Rh-negativ). Welche weiteren Blutgruppen können künftige Kinder dieses Paares im AB0-System mit welcher Wahrscheinlichkeit haben?",
     options: {
-      A: "Ausschließlich maternale Übertragung: Eine betroffene Mutter kann die Mutation an alle ihre Kinder weitergeben, während ein betroffener Vater die Erkrankung an keines seiner Kinder vererbt",
-      B: "Paternale Übertragung: Väter vererben die Erkrankung an 100% ihrer Söhne über das Spermatozoen-Mitochondrium",
-      C: "Mendelsche 3:1-Spaltung in der F2-Generation bei Kreuzung zweier Träger",
-      D: "X-chromosomale Kopplung mit Bevorzugung des männlichen Geschlechts",
-      E: "Rezidivierende Neumutationen im Zellkern durch DNA-Polymerase gamma"
+      A: "Ausschließlich Blutgruppe 0 zu 100 %, da das rezessive Allel nun fixiert ist.",
+      B: "Ausschließlich Blutgruppe AB zu 100 %, da A und B dominant über 0 sind.",
+      C: "Nur Blutgruppe A zu 50 % oder Blutgruppe B zu 50 %, Blutgruppe 0 kann nicht mehr auftreten.",
+      D: "Blutgruppe AB zu 50 % und Blutgruppe 0 zu 50 %; A und B sind unmöglich.",
+      E: "Alle vier Blutgruppen (A, B, AB und 0) sind mit einer Wahrscheinlichkeit von jeweils genau 25 % möglich."
     },
-    correct_answer: "A",
-    explanation_correct: "Mitochondrien besitzen ein eigenes ringförmiges Genom (mtDNA mit 37 Genen). Bei der Befruchtung steuert die Eizelle ca. 100.000 bis 200.000 Mitochondrien bei, während die wenigen Mitochondrien des Spermiums (im Mittelstück) bei der Befruchtung eliminiert oder durch Ubiquitinierung abgebaut werden. Daher wird mtDNA rein maternal (mütterlicherseits) vererbt. Eine betroffene Frau vererbt die mutierte mtDNA an alle Kinder (Söhne und Töchter), während betroffene Männer die Mutation niemals an ihre Nachkommen weitergeben. Die phänotypische Ausprägung variiert durch Heteroplasmie (Koexistenz mutierter und normaler mtDNA in einer Zelle) und Schwellenwerteffekte.",
+    correct_answer: "E",
+    explanation_correct: "Das Kind hat die Blutgruppe 0, was dem Genotyp 00 (ii) entspricht. Da jedes Kind jeweils ein Allel von jedem Elternteil erhält, muss sowohl die Mutter mit Phänotyp A als auch der Vater mit Phänotyp B Träger des rezessiven 0-Allels sein. Die Genotypen der Eltern sind somit eindeutig: Mutter = A0 (I^A i), Vater = B0 (I^B i). Bei der Kreuzung A0 × B0 entstehen vier gleich wahrscheinliche Genotypen bei den Nachkommen: 25 % AB (I^A I^B, Phänotyp AB), 25 % A0 (I^A i, Phänotyp A), 25 % B0 (I^B i, Phänotyp B) und 25 % 00 (ii, Phänotyp 0). Da beide Eltern Rh-negativ (dd) sind, sind alle Nachkommen ebenfalls rh-negativ (dd).",
     explanations_incorrect: {
-      B: "Paternale Mitochondrien werden nach der Befruchtung aktiv degradiert; es gibt keine paternale mtDNA-Transmission.",
-      C: "Mitochondriale Gene unterliegen nicht den klassischen Mendelschen Regeln der Kernchromosomen.",
-      D: "Die Vererbung ist extrachromosomal/zytoplasmatisch und nicht an Geschlechtschromosomen gekoppelt.",
-      E: "DNA-Polymerase gamma repliziert die mitochondriale DNA, ist aber ein kernkodiertes Enzym; dies erklärt nicht das Vererbungsmuster."
+      A: "Die Gametenbildung erfolgt bei jeder Konzeption unabhängig; die Allele A und B werden weiterhin mit je 50 % vererbt.",
+      B: "Blutgruppe AB entsteht nur mit 25 % Wahrscheinlichkeit (I^A von Mutter und I^B von Vater).",
+      C: "Blutgruppe 0 und AB treten mit jeweils 25 % Wahrscheinlichkeit auf.",
+      D: "Die Genotypen A0 und B0 entstehen mit jeweils 25 % Wahrscheinlichkeit und führen zu den Phänotypen A und B."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -675,52 +671,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Genetics, Inheritance and Chromosome Biology",
-    subtopic: "Strukturelle Chromosomenaberrationen: Inversionen",
-    difficulty: "intermediate",
-    stem: "Wie unterscheidet sich eine perizentrische Inversion von einer parazentrischen Inversion eines Chromosoms?",
-    options: {
-      A: "Eine perizentrische Inversion betrifft zwei verschiedene Chromosomen, während eine parazentrische Inversion innerhalb desselben Chromosoms stattfindet",
-      B: "Eine perizentrische Inversion schließt das Zentromer in das invertierte Chromosomensegment ein, während eine parazentrische Inversion ausschließlich auf einem Chromosomenarm liegt",
-      C: "Eine perizentrische Inversion führt immer zu einem doppelten Chromosomensatz (Polyploidie)",
-      D: "Eine parazentrische Inversion schließt stets die Telomerregionen beider Arme ein",
-      E: "Bei einer perizentrischen Inversion geht genetisches Material verloren (Deletion), während die parazentrische Inversion balanciert bleibt"
-    },
-    correct_answer: "B",
-    explanation_correct: "Bei einer Inversion bricht ein Chromosom an zwei Stellen, das Bruchstück dreht sich um 180° und wird wieder eingefügt (balancierte Aberration ohne Nettoverlust von genetischem Material). Bei einer perizentrischen Inversion (peri = um herum) liegen die beiden Bruchpunkte auf unterschiedlichen Chromosomenarmen, sodass das Zentromer innerhalb des invertierten Segments liegt; dies kann das Zentromerverhältnis und damit die Form des Chromosoms verändern. Bei einer parazentrischen Inversion (para = neben) liegen beide Bruchpunkte auf demselben Arm (entweder nur im p-Arm oder nur im q-Arm), sodass das Zentromer nicht beteiligt ist.",
-    explanations_incorrect: {
-      A: "Inversionen betreffen definitionsgemäß immer nur ein einzelnes Chromosom; Umlagerungen zwischen zwei Chromosomen sind Translokationen.",
-      C: "Polyploidie betrifft ganze Chromosomensätze, keine segmentalen Inversionen.",
-      D: "Parazentrische Inversionen liegen innerhalb eines Arms und schließen Telomere typischerweise nicht beidseits ein.",
-      E: "Beide Inversionstypen sind per se balanciert (ohne Verlust genetischer Substanz), können aber in der Meiose zu unbalancierten Gameten führen."
-    },
-    metadata: {
-      author: "MedAT BMS Biology QC Engine",
-      status: "verified_medat_compliant",
-      version: "5.0_gp5"
-    }
-  },
-  {
-    id: "BIO-BMS-GP5-023",
-    subject: "BIO",
-    section: "BMS",
-    primary_topic: "Genetics, Inheritance and Chromosome Biology",
-    subtopic: "Hardy-Weinberg-Gleichgewicht & Heterozygotenfrequenz",
+    subtopic: "Chromosomenaberrationen: Turner- vs. Klinefelter-Syndrom",
     difficulty: "advanced",
-    stem: "In einer Population im Hardy-Weinberg-Gleichgewicht beträgt die Häufigkeit (Inzidenz) von Neugeborenen mit der autosomal-rezessiven Erkrankung Mukoviszidose (Cystische Fibrose) 1 zu 2.500 (q^2 = 0,0004). Wie hoch ist in dieser Population gerundet die Häufigkeit gesunder heterozygoter Anlagenträger (2pq)?",
+    stem: "Welche Aussage charakterisiert die gonosomalen Chromosomenaberrationen Turner-Syndrom und Klinefelter-Syndrom aus zytogenetischer und phänotypischer Sicht korrekt?",
     options: {
-      A: "Etwa 1 zu 2.500 (ca. 0,04%)",
-      B: "Etwa 1 zu 500 (ca. 0,2%)",
-      C: "Etwa 1 zu 25 bis 1 zu 26 (ca. 3,8% bis 4%)",
-      D: "Etwa 1 zu 10 (ca. 10%)",
-      E: "Etwa 1 zu 2 (ca. 50%)"
+      A: "Das Turner-Syndrom weist den Karyotyp 45,X auf (weiblicher Phänotyp, Ovardysgenesie, kein Barr-Körperchen); das Klinefelter-Syndrom weist den Karyotyp 47,XXY auf (männlicher Phänotyp, Hodenhypoplasie, Vorhandensein eines Barr-Körperchens).",
+      B: "Das Turner-Syndrom beruht auf einer Trisomie des Chromosoms 21 (Karyotyp 47,XX,+21) und betrifft ausschließlich Männer.",
+      C: "Patienten mit Klinefelter-Syndrom sind phänotypisch weiblich und besitzen zwei Y-Chromosomen (Karyotyp 48,XYY).",
+      D: "Sowohl beim Turner- als auch beim Klinefelter-Syndrom handelt es sich um balancierte reziproke Translokationen zwischen Autosomen ohne Verlust von Erbmaterial.",
+      E: "Frauen mit Turner-Syndrom besitzen zwei inaktivierte Barr-Körperchen in jeder somatischen Zelle."
     },
-    correct_answer: "C",
-    explanation_correct: "Nach dem Hardy-Weinberg-Gesetz gilt: p^2 + 2pq + q^2 = 1 und p + q = 1. 1. Gegeben ist die Häufigkeit der homozygot Betroffenen: q^2 = 1/2.500 = 0,0004. 2. Daraus folgt die Allelfrequenz des mutierten rezessiven Allels: q = sqrt(0,0004) = 0,02 (= 1/50). 3. Die Frequenz des gesunden dominanten Allels beträgt: p = 1 - q = 1 - 0,02 = 0,98. 4. Die Heterozygotenfrequenz (Trägerfrequenz) berechnet sich als: 2pq = 2 * 0,98 * 0,02 = 0,0392 = 3,92%. 1 / 0,0392 = ca. 25,5. Somit ist etwa 1 von 25 bis 26 Personen in dieser Population ein gesunder Konduktor für Mukoviszidose.",
+    correct_answer: "A",
+    explanation_correct: "Gonosomale Aneuploidien entstehen meist durch Nondisjunktion während der elterlichen Meiose: Das Turner-Syndrom ist die einzige lebensfähige Monosomie beim Menschen mit dem Karyotyp 45,X (oder 45,X0). Betroffene Individuen sind phänotypisch weiblich (aufgrund des Fehlens des SRY-Gens auf dem Y-Chromosom); Leitsymptome sind Kleinwuchs, Pterygium colli, primäre Amenorrhö und bindegewebige 'Streak-Gonaden' (Infertilität). Da nur ein X-Chromosom vorliegt, findet keine X-Inaktivierung statt (kein Barr-Körperchen). Das Klinefelter-Syndrom weist den Karyotyp 47,XXY auf (gelegentlich 48,XXXY). Betroffene Individuen sind phänotypisch männlich (SRY vorhanden); Leitsymptome sind Hochwuchs, Hodenhypoplasie mit Azoospermie, Testosteronmangel und Gynäkomastie. Da zwei X-Chromosomen vorliegen, wird eines epigenetisch inaktiviert, sodass in Zellkernen ein Barr-Körperchen nachweisbar ist.",
     explanations_incorrect: {
-      A: "0,04% ist q^2, die Häufigkeit der homozygot Erkrankten, nicht der Heterozygoten.",
-      B: "0,2% wäre q/10, ein Rechenfehler bei der Wurzelziehung.",
-      D: "10% ist viel zu hoch für diese Allelfrequenz (q = 0,02).",
-      E: "50% träfe nur bei einer Allelfrequenz von p = q = 0,5 zu."
+      B: "Trisomie 21 ist das Down-Syndrom (eine Autosomenaberration), nicht das Turner-Syndrom.",
+      C: "Patienten mit Klinefelter-Syndrom (47,XXY) sind phänotypisch männlich; 47,XYY ist das Diplo-Y-Syndrom.",
+      D: "Es handelt sich um numerische Chromosomenaberrationen (Aneuploidien), nicht um balancierte Strukturumbauten.",
+      E: "Frauen mit Turner-Syndrom (45,X) besitzen überhaupt kein Barr-Körperchen, da ihr einziges X-Chromosom aktiv bleibt."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -729,31 +696,60 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 6: Molekulargenetik & Methoden (bio-05-molgen) - 5 Aufgaben
-  // ---------------------------------------------------------------------------------
+  // -------------------------------------------------------------
+  // Kapitel 5: Molekulare Genetik (bio-05-molgen) - 5 Aufgaben
+  // -------------------------------------------------------------
+  {
+    id: "BIO-BMS-GP5-023",
+    subject: "BIO",
+    section: "BMS",
+    primary_topic: "Molecular Genetics and Genetic Methods",
+    subtopic: "DNA-Struktur: Basenpaarung & Doppelhelix",
+    difficulty: "foundational",
+    stem: "Welche Aussage zur chemischen Struktur der B-DNA-Doppelhelix im menschlichen Zellkern ist korrekt?",
+    options: {
+      A: "Guanin paart mit Cytosin über zwei kovalente Disulfidbrücken im Zentrum der Doppelhelix.",
+      B: "Die beiden komplementären Einzelstränge verlaufen parallel in identischer 5'→3'-Orientierung.",
+      C: "Die stickstoffhaltigen Basen sind über Esterbindungen direkt an die Phosphatgruppen des Rückgrats gebunden.",
+      D: "Adenin paart mit Thymin über zwei Wasserstoffbrücken, Guanin mit Cytosin über drei Wasserstoffbrücken; die Stränge verlaufen antiparallel.",
+      E: "In nativer DNA ist die molare Menge an Guanin stets exakt identisch mit der molaren Menge an Thymin (Chargaff-Regel)."
+    },
+    correct_answer: "D",
+    explanation_correct: "Die B-DNA-Doppelhelix nach Watson und Crick besteht aus zwei antiparallelen Polynukleotidsträngen (ein Strang verläuft in 5'→3'-Richtung, der Gegenstrang in 3'→5'-Richtung). Das hydrophile Rückgrat aus Desoxyribose und Phosphatresten (verknüpft über 3',5'-Phosphodiesterbindungen) liegt außen. Die hydrophoben Basen ragen nach innen und paaren komplementär über Wasserstoffbrücken: Das Purin Adenin paart spezifisch mit dem Pyrimidin Thymin über zwei Wasserstoffbrücken; das Purin Guanin paart mit dem Pyrimidin Cytosin über drei Wasserstoffbrücken. Daraus resultiert die Chargaff-Regel: A = T und G = C, sodass der Gehalt an Purinen (A + G) gleich dem Gehalt an Pyrimidinen (T + C) ist.",
+    explanations_incorrect: {
+      A: "Guanin und Cytosin paaren über drei nicht-kovalente Wasserstoffbrücken, nicht über Disulfidbrücken.",
+      B: "Die Einzelstränge verlaufen streng antiparallel (gegenläufig).",
+      C: "Die Basen sind über N-glykosidische Bindungen an das C1'-Atom der Desoxyribose gebunden; Phosphate verknüpfen C3' und C5'.",
+      E: "Nach den Chargaff-Regeln ist G = C und A = T; G = T gilt im Allgemeinen nicht (nur wenn G-C und A-T zufällig exakt 25 % betragen)."
+    },
+    metadata: {
+      author: "MedAT BMS Biology QC Engine",
+      status: "verified_medat_compliant",
+      version: "5.0_gp5"
+    }
+  },
   {
     id: "BIO-BMS-GP5-024",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Molecular Genetics and Genetic Methods",
-    subtopic: "DNA-Replikation: Leit- & Folgestrangsynthese",
-    difficulty: "foundational",
-    stem: "Warum erfolgt die Synthese des Folgestrangs bei der eukaryotischen DNA-Replikation diskontinuierlich in Form von Okazaki-Fragmenten?",
+    subtopic: "DNA-Replikation: Leitstrang vs. Folgestrang",
+    difficulty: "intermediate",
+    stem: "Warum wird an der Replikationsgabel der Leitstrang kontinuierlich, der Folgestrang jedoch diskontinuierlich (in Okazaki-Fragmenten) synthetisiert?",
     options: {
-      A: "Weil die DNA-Polymerasen Nukleotide nur an das 5'-Triphosphat-Ende anfügen können",
-      B: "Weil Topoisomerasen die Replikationsgabel nur in 100-Basenpaar-Schritten entwinden",
-      C: "Weil Desoxyribonukleosidtriphosphate (dNTPs) nur an Einzelstrang-Bindeproteine binden können",
-      D: "Weil alle bekannten DNA-Polymerasen eine Kette strikt nur in 5'->3'-Richtung synthetisieren können und die Stränge der Doppelhelix antiparallel verlaufen",
-      E: "Weil die DNA-Ligase die Vorlage in 3'->5'-Richtung kontinuierlich zerschneidet"
+      A: "Weil die DNA-Helicase nur den Leitstrang entwenden kann, während der Folgestrang durch RNA-Polymerasen zerschnitten wird.",
+      B: "Weil DNA-Polymerasen Nukleotide ausschließlich an ein freies 3'-OH-Ende anhängen können (Syntheserichtung nur 5'→3'), die beiden Matrizenstränge an der Gabel jedoch gegenläufig orientiert sind.",
+      C: "Weil für den Folgestrang keine Desoxyribonukleosidtriphosphate (dNTPs) zur Verfügung stehen, sondern Ribonukleotide verwendet werden müssen.",
+      D: "Weil Topoisomerasen die Synthese des Folgestrangs alle 200 Basenpaare durch Doppelstrangbrüche stoppen.",
+      E: "Weil der Folgestrang keinen RNA-Primer benötigt und daher langsamer polymerisiert."
     },
-    correct_answer: "D",
-    explanation_correct: "Die beiden Stränge der DNA-Doppelhelix sind antiparallel orientiert (ein Strang verläuft 5'->3', der Gegenstrang 3'->5'). Alle zellulären DNA-Polymerasen können neue Nukleotide enzymatisch ausschließlich an ein freies 3'-OH-Ende des wachsenden Stranges anfügen; die Synthese verläuft daher biochemisch ausnahmslos in 5'->3'-Richtung. Da die Replikationsgabel nur in eine Richtung aufwandert, kann nur der Leitstrang (Leading Strand) kontinuierlich in Gabelrichtung synthetisiert werden. Der Folgestrang (Lagging Strand) muss von der Gabel weg diskontinuierlich in kurzen Abschnitten (Okazaki-Fragmente, jeweils beginnend mit einem RNA-Primer) repliziert werden, die später durch die DNA-Ligase verknüpft werden.",
+    correct_answer: "B",
+    explanation_correct: "Alle zellulären DNA-Polymerasen besitzen eine fundamentale biochemische Restriktion: Sie können neue DNA-Ketten ausschließlich in 5'→3'-Richtung verlängern, indem sie die 5'-Phosphatgruppe des eintretenden dNTPs kovalent an die freie 3'-OH-Gruppe des vorherigen Nukleotids knüpfen. Da die beiden elterlichen Stränge antiparallel verlaufen, bewegt sich die Replikationsgabel an einem Strang (Leitstrangmatrize, 3'→5') in Syntheserichtung (5'→3'), sodass die DNA-Polymerase kontinuierlich hinter der Helicase herwandern kann. Am Folgestrangmatrizenstrang (5'→3') läuft die Synthese entgegen der Wanderungsrichtung der Gabel. Daher muss die Primase wiederholt neue RNA-Primer setzen, von denen aus die DNA-Polymerase delta kurze Stücke (Okazaki-Fragmente, ca. 100–200 Nukleotide bei Eukaryoten) synthetisiert. Diese werden anschließend durch DNA-Ligase kovalent verbunden.",
     explanations_incorrect: {
-      A: "Die Polymerase benötigt ein freies 3'-OH-Ende; das 5'-Triphosphat stammt vom ankommenden dNTP.",
-      B: "Topoisomerasen lösen Verdrillungen (Torsionsspannung) durch Strangbrüche, bestimmen aber nicht die Fragmentlänge.",
-      C: "Single-Strand Binding Proteins (SSB / RPA) stabilisieren Einzelstränge, binden aber keine dNTPs zur Synthese.",
-      E: "Die DNA-Ligase schließt Phosphodiesterbindungen, sie schneidet keine DNA."
+      A: "Die Helicase entwunden beide Stränge gleichermaßen am Gabelpunkt.",
+      C: "Beide Stränge werden aus identischen dNTPs (dATP, dCTP, dGTP, dTTP) synthetisiert.",
+      D: "Topoisomerasen bauen Verdrillungsspannungen (Supercoils) vor der Gabel ab; sie stoppen die Replikation nicht gezielt.",
+      E: "Der Folgestrang benötigt zwingend für jedes einzelne Okazaki-Fragment einen eigenen RNA-Primer (Primase)."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -766,23 +762,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Molecular Genetics and Genetic Methods",
-    subtopic: "RNA-Polymerasen in Eukaryoten",
+    subtopic: "Eukaryotische Transkription: RNA-Polymerasen I, II & III",
     difficulty: "intermediate",
-    stem: "Welche der folgenden Aussagen ordnet die eukaryotischen RNA-Polymerasen korrekt ihren primären Transkriptionsprodukten zu?",
+    stem: "Welche eukaryotische RNA-Polymerase transkribiert proteinkodierende Gene zur Synthese von prä-mRNA im menschlichen Zellkern?",
     options: {
-      A: "RNA-Polymerase I synthetisiert mRNA; RNA-Polymerase II synthetisiert tRNA; RNA-Polymerase III synthetisiert 28S rRNA",
-      B: "RNA-Polymerase II synthetisiert ausschließlich Transfer-RNAs (tRNAs) und ribosomale 5S rRNA",
-      C: "RNA-Polymerase I synthetisiert alle microRNAs (miRNAs); RNA-Polymerase III transkribiert proteinkodierende Gene",
-      D: "RNA-Polymerase I transkribiert mitochondriale Gene; RNA-Polymerase II transkribiert chloroplastidäre DNA",
-      E: "RNA-Polymerase I synthetisiert die großen rRNAs (28S, 18S, 5.8S); RNA-Polymerase II synthetisiert mRNA und snRNA; RNA-Polymerase III synthetisiert tRNA und 5S rRNA"
+      A: "RNA-Polymerase I, die ausschließlich im Nukleoplasma aktiv ist und keine TATA-Box erkennt.",
+      B: "Die mitochondriale DNA-Polymerase gamma unter Verwendung von Transfer-RNAs.",
+      C: "RNA-Polymerase II; sie synthetisiert Vorläufer der messenger-RNA (prä-mRNA) sowie die meisten snRNAs und microRNAs.",
+      D: "RNA-Polymerase III, die vorwiegend für die Transkription der 28S- und 18S-rRNAs im Nukleolus zuständig ist.",
+      E: "Die bakterielle Primase (DnaG), die nach Translokation in den Kern Gene ohne Transkriptionsfaktoren abliest."
     },
-    correct_answer: "E",
-    explanation_correct: "Im eukaryotischen Zellkern existieren drei spezialisierte RNA-Polymerasen: 1. RNA-Polymerase I (im Nukleolus): Synthetisiert das große 45S-Prä-rRNA-Transkript, aus dem die 18S-, 5.8S- und 28S-rRNAs prozessiert werden (ca. 80% der zellulären RNA). 2. RNA-Polymerase II (im Karyoplasma): Transkribiert alle proteinkodierenden Gene zu prä-mRNA sowie snRNAs (Spliceosom) und lncRNAs. 3. RNA-Polymerase III (im Karyoplasma): Synthetisiert kleine, stabile RNAs, insbesondere alle Transfer-RNAs (tRNAs), die 5S rRNA und die U6 snRNA.",
+    correct_answer: "C",
+    explanation_correct: "Eukaryoten besitzen drei verschiedene nukleäre RNA-Polymerasen mit strikter Funktionsteilung: 1. RNA-Polymerase I: lokalisiert im Nukleolus, synthetisiert die 45S-prä-rRNA, aus der durch Prozessierung die 18S-, 5.8S- und 28S-rRNAs der Ribosomen hervorgehen. 2. RNA-Polymerase II: transkribiert alle Protein-kodierenden Gene in heterogene Kern-RNA (hnRNA / prä-mRNA) sowie die meisten snRNAs (U1, U2, U4, U5) und miRNAs. Sie wird hochsensitiv durch das Gift des Knollenblätterpilzes (alpha-Amanitin) gehemmt. 3. RNA-Polymerase III: transkribiert kleine funktionelle RNAs, darunter alle tRNAs, die 5S-rRNA (als einzige rRNA außerhalb des Nukleolus) und die U6-snRNA.",
     explanations_incorrect: {
-      A: "Vollständig vertauschte Zuordnung.",
-      B: "tRNA und 5S rRNA werden von RNA-Polymerase III transkribiert.",
-      C: "Proteinkodierende Gene werden von Pol II transkribiert, nicht von Pol III.",
-      D: "Mitochondrien besitzen eine eigene, bakterienähnliche mitochondriale RNA-Polymerase (POLRMT)."
+      A: "RNA-Polymerase I liegt im Nukleolus und synthetisiert 18S, 5.8S und 28S rRNA, keine mRNA.",
+      B: "Polymerase gamma ist die Replikations-Polymerase der mitochondrialen DNA und transkribiert keine nukleären Gene.",
+      D: "RNA-Polymerase III synthetisiert tRNAs und 5S-rRNA; 28S- und 18S-rRNA stammen von RNA-Polymerase I.",
+      E: "Primase synthetisiert kurze RNA-Primer für die DNA-Replikation und ist keine nukleäre Transkriptions-Polymerase."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -795,23 +791,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Molecular Genetics and Genetic Methods",
-    subtopic: "Posttranskriptionale Modifikationen: Spleißen & Cap",
+    subtopic: "RNA-Prozessierung: Capping, Spleißen & Polyadenylierung",
     difficulty: "intermediate",
-    stem: "Welcher molekulare Reifungsschritt findet bei menschlicher prä-mRNA im Zellkern statt und schützt das 5'-Ende vor vorzeitigem exonukleotischem Abbau?",
+    stem: "Welche Modifikationen durchläuft ein primäres RNA-Transkript (prä-mRNA) bei Eukaryoten im Zellkern, bevor es als reife mRNA ins Zytoplasma exportiert werden kann?",
     options: {
-      A: "Anheften einer 7-Methylguanosin-Kappe über eine ungewöhnliche 5'-5'-Triphosphatbindung (Capping)",
-      B: "Polyadenylierung durch Verknüpfung von 200 Guaninresten am 5'-Ende",
-      C: "Zerschneiden der Exons durch das Spleißosom und Verknüpfung der Introns",
-      D: "Methylierung aller Adeninbasen zur Initiierung der Translation am Stopcodon",
-      E: "Entfernung der TATA-Box durch eine Endonuklease"
+      A: "Translation am rauen ER, Verknüpfung mit Ubiquitin und Einschleusung in das Proteasom.",
+      B: "Entfernung sämtlicher Exons durch Topoisomerasen, Ligation der verbleibenden Introns und Phosphorylierung am 3'-Ende.",
+      C: "Synthese eines Thymin-Schwanzes am 5'-Ende und Umwandlung aller Ribosen in Desoxyribosen durch Ribonukleotid-Reduktase.",
+      D: "Replikation zu einer stabilen RNA-DNA-Doppelhelix über reverse Transkription.",
+      E: "Anfügen einer 7-Methylguanosin-Kappe (5'-Cap), enzymatisches Herausschneiden der Introns (Spleißen) und Anheften eines Poly(A)-Schwanzes am 3'-Ende."
     },
-    correct_answer: "A",
-    explanation_correct: "Das 5'-Capping erfolgt kotranskriptionell bereits nach Synthese der ersten 20–30 Nukleotide: Ein Guanylyltransferase-Enzymkomplex bindet an die phosphorylierte CTD-Domäne der RNA-Polymerase II und verknüpft ein Guanosinmonophosphat über eine seltene 5'-zu-5'-Triphosphatbrücke mit dem ersten Nukleotid der prä-mRNA. Das Guanosin wird anschließend an Position N7 methyliert (m7G-Cap). Das Cap schützt die mRNA vor dem Abbau durch zelluläre 5'->3'-Exonukleasen, dient als Bindestelle für den Cap-Binding-Complex (CBC) für den Kernexport und wird im Zytosol vom Translationsinitiationsfaktor eIF4E erkannt.",
+    correct_answer: "E",
+    explanation_correct: "Das primäre Transkript der RNA-Polymerase II (prä-mRNA) muss vor dem Export durch Kernporen ins Zytoplasma drei essenzielle Prozessierungsschritte im Zellkern durchlaufen: 1. 5'-Capping: Bereits während der frühen Elongation wird ein 7-Methylguanosin-Rest über eine unkonventionelle 5'-5'-Triphosphatbindung an das 5'-Ende geknüpft. Dies schützt vor 5'-Exonukleasen und dient als Erkennungssignal für Ribosomen. 2. Spleißen (Splicing): Das Spleißosom (aus snRNPs wie U1, U2, U4/U6, U5) schneidet die nicht-kodierenden Introns präzise heraus und verknüpft die kodierenden Exons. Alternatives Spleißen ermöglicht die Synthese verschiedener Proteinisoformen aus einer Prä-mRNA. 3. Polyadenylierung: Nach Spaltung an einem Konsensus-Signal (AAUAAA) am 3'-Ende hängt die Poly(A)-Polymerase template-frei ca. 200–250 Adenin-Nukleotide (Poly-A-Schwanz) an, was Stabilität und Translationsinitiation fördert.",
     explanations_incorrect: {
-      B: "Der Poly(A)-Schwanz besteht aus Adeninresten (nicht Guanin) und wird am 3'-Ende (nicht am 5'-Ende) angehängt.",
-      C: "Das Spleißosom entfernt Introns und verknüpft die Exons (nicht umgekehrt).",
-      D: "N6-Methyladenosin (m6A) ist eine epigenetische RNA-Modifikation, betrifft aber nicht alle Basen und startet keine Translation am Stopcodon.",
-      E: "Die TATA-Box liegt in der genomischen Promoter-DNA und wird gar nicht in die mRNA transkribiert."
+      A: "Translation findet im Zytosol/am RER statt und ist kein Kern-Prozessierungsschritt der mRNA; Ubiquitin markiert Proteine für den Abbau.",
+      B: "Introns werden entfernt und Exons zusammengefügt, nicht umgekehrt.",
+      C: "Die Kappe enthält 7-Methylguanosin (kein Thymin); RNA behält ihre Ribosen und wird nicht in Desoxyribose umgewandelt.",
+      D: "Eukaryotische mRNA verbleibt einzelsträngig und wird nicht zu einer RNA-DNA-Doppelhelix repliziert."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -824,52 +820,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Molecular Genetics and Genetic Methods",
-    subtopic: "Translation: Aminoacyl-tRNA-Synthetasen",
+    subtopic: "Epigenetik: DNA-Methylierung & Histonmodifikation",
     difficulty: "advanced",
-    stem: "Wie wird die hohe Translationsgenauigkeit bei der Beladung der tRNAs mit ihren korrekten Aminosäuren biochemisch gewährleistet?",
+    stem: "Welche biochemischen Veränderungen an Chromatin führen typischerweise zur transkriptionellen Stilllegung (Gen-Silencing) eines eukaryotischen Genbereichs?",
     options: {
-      A: "Das Ribosom überprüft an der A-Stelle die chemische Struktur der Seitenkette jeder Aminosäure",
-      B: "Spezifische Aminoacyl-tRNA-Synthetasen erkennen sowohl die korrekte Aminosäure als auch das passende tRNA-Molekül und besitzen eine hydrolytische Korrekturlesefunktion (Editing-Zentrum)",
-      C: "Die Peptidyltransferase spaltet falsch beladene tRNAs irreversibel in Mononukleotide",
-      D: "Der genetische Code enthält für jede Aminosäure exakt ein einziges unzweideutiges Codon",
-      E: "tRNAs binden Aminosäuren spontan ohne enzymatische Katalyse über ionische Bindungen am Anticodon"
+      A: "Vollständige Abspaltung aller Histonproteine und irreversible Spaltung von Phosphodiesterbindungen.",
+      B: "Hypermethylierung von Cytosin-Basen in CpG-Inseln der Promotorregion sowie Deacetylierung von Histon-Lysinresten (durch HDACs).",
+      C: "Hyperacetylierung von Histonen durch Histonacetyltransferasen (HATs) bei gleichzeitigem Verlust der DNA-Methylierung.",
+      D: "Phosphorylierung der 2'-OH-Gruppen der Desoxyribose, wodurch RNA-Polymerasen dauerhaft an die DNA binden.",
+      E: "Austausch von Adenin gegen Guanin im TATA-Box-Bereich durch DNA-Polymerasen."
     },
     correct_answer: "B",
-    explanation_correct: "Das Ribosom kontrolliert während der Translation nur die Basenpaarung zwischen Codon und Anticodon, nicht aber, ob die tRNA mit der richtigen Aminosäure beladen ist. Daher liegt die primäre Genauigkeit bei den Aminoacyl-tRNA-Synthetasen. Jede Synthetase besitzt eine Bindungstasche für ihre spezifische Aminosäure und erkennt distinkte Sequenzelemente der tRNA (Anticodonschleife und Akzeptorarm). Viele Synthetasen besitzen zudem ein zweites katalytisches Zentrum (Editing Site): Ähnliche, fälschlich aktivierte Aminosäuren (z. B. Valin statt Isoleucin) passen in das engere Editing-Zentrum und werden dort hydrolytisch gespalten, bevor die fehlerhafte Aminoacyl-tRNA freigesetzt werden kann (Fehlerrate < 10^-4).",
+    explanation_correct: "Epigenetische Regulation steuert die Genexpression ohne Veränderung der primären DNA-Nukleotidsequenz. Zur transkriptionellen Repression (Heterochromatin-Bildung und Gen-Silencing) tragen zwei Hauptmechanismen koordiniert bei: 1. DNA-Methylierung: DNA-Methyltransferasen (DNMTs) übertragen eine Methylgruppe auf Kohlenstoff C5 von Cytosin in CG-Dinukleotiden (CpG-Inseln) im Promotorbereich. Dies verhindert die Bindung von Transkriptionsfaktoren und rekrutiert Methyl-CpG-Bindeproteine (MeCP2). 2. Histondeacetylierung: MeCP2 rekrutiert Histondeacetylasen (HDACs). HDACs entfernen Acetylgruppen von den positiv geladenen epsilon-Aminogruppen der Lysinreste in Histonschwänzen. Die positive Ladung der Histone wird wiederhergestellt, wodurch sie fest an das negativ geladene Phosphatrückgrat der DNA binden. Das Chromatin kondensiert zum dichten, für die RNA-Polymerase II unzugänglichen Heterochromatin.",
     explanations_incorrect: {
-      A: "Das Ribosom prüft nur die Codon-Anticodon-Passung in der Dekodierungsregion der 40S-Untereinheit, nicht die Aminosäure selbst.",
-      C: "Die Peptidyltransferase verknüpft Aminosäuren zu Peptidketten, besitzt aber keine Editing-Aktivität für freie tRNAs.",
-      D: "Der genetische Code ist degeneriert (redundant); die meisten Aminosäuren werden durch 2 bis 6 Synonymcodons kodiert (z. B. Leucin, Serin, Arginin durch je 6 Codons).",
-      E: "Die Beladung ist ein enzymatischer, ATP-abhängiger zweistufiger Prozess, bei dem die Aminosäure an das 3'-CCA-Ende esterartig geknüpft wird."
-    },
-    metadata: {
-      author: "MedAT BMS Biology QC Engine",
-      status: "verified_medat_compliant",
-      version: "5.0_gp5"
-    }
-  },
-  {
-    id: "BIO-BMS-GP5-028",
-    subject: "BIO",
-    section: "BMS",
-    primary_topic: "Molecular Genetics and Genetic Methods",
-    subtopic: "Polymerase-Kettenreaktion (PCR): Reaktionsschritte",
-    difficulty: "foundational",
-    stem: "In welcher Reihenfolge laufen die drei zyklischen Reaktionsschritte einer standardmäßigen Polymerase-Kettenreaktion (PCR) ab?",
-    options: {
-      A: "Elongation (ca. 72 °C) -> Denaturierung (ca. 95 °C) -> Primer-Annealing (ca. 55 °C)",
-      B: "Primer-Annealing (ca. 95 °C) -> Ligation (ca. 37 °C) -> Denaturierung (ca. 72 °C)",
-      C: "Denaturierung der DNA-Doppelstränge (ca. 95 °C) -> Primer-Annealing (ca. 50–65 °C) -> Elongation durch thermostabile DNA-Polymerase (ca. 72 °C)",
-      D: "Translation (ca. 37 °C) -> Transkription (ca. 60 °C) -> Replikation (ca. 95 °C)",
-      E: "Restriktionsverdau (ca. 37 °C) -> Gelelektrophorese (ca. 20 °C) -> Denaturierung (ca. 95 °C)"
-    },
-    correct_answer: "C",
-    explanation_correct: "Jeder Zyklus der PCR besteht aus drei temperaturabhängigen Schritten: 1. Denaturierung (~94–98 °C): Aufbrechen der Wasserstoffbrückenbindungen zwischen den komplementären Basensträngen; es entstehen einzelsträngige DNA-Vorlagen. 2. Primer-Annealing (~50–65 °C): Spezifische Anlagerung der synthetischen Vorwärts- und Rückwärts-Oligonukleotid-Primer an die flankierenden Sequenzen der Zielregion. 3. Elongation / Extension (~72 °C): Die hitzestabile DNA-Polymerase (z. B. Taq-Polymerase aus Thermus aquaticus) synthetisiert ausgehend von den 3'-OH-Enden der Primer komplementäre Stränge unter Einbau freier dNTPs.",
-    explanations_incorrect: {
-      A: "Falsche Reihenfolge (Elongation steht am Ende jedes Zyklus).",
-      B: "Bei 95 °C denaturiert DNA; Primer können bei dieser Temperatur nicht binden (Annealing liegt bei 50–65 °C).",
-      D: "PCR ist eine reine In-vitro-DNA-Replikationsmethode und umfasst weder Transkription noch Translation.",
-      E: "Restriktionsverdau und Elektrophorese sind separate Methoden der DNA-Analytik, keine Teilschritte des PCR-Thermozyklus."
+      A: "Epigenetische Stilllegung erfolgt durch Chromatinkondensation, nicht durch Abbau von Histonen oder DNA-Strangbrüche.",
+      C: "Histonacetylierung durch HATs neutralisiert positive Ladungen, lockert das Chromatin (Euchromatin) und stimuliert die Transkription.",
+      D: "Desoxyribose in DNA besitzt keine 2'-OH-Gruppe (nur H am C2').",
+      E: "Basenaustausche sind genetische Mutationen, keine epigenetischen Modifikationen."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -878,31 +845,60 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 7: Zellstoffwechsel & Energiegewinnung (bio-06-stoffwechsel) - 4 Aufgaben
-  // ---------------------------------------------------------------------------------
+  // -------------------------------------------------------------
+  // Kapitel 6: Zellstoffwechsel & Bioenergetik (bio-06-stoffwechsel) - 4 Aufgaben
+  // -------------------------------------------------------------
+  {
+    id: "BIO-BMS-GP5-028",
+    subject: "BIO",
+    section: "BMS",
+    primary_topic: "Zellstoffwechsel & Energiegewinnung",
+    subtopic: "ATP-Molekülstruktur & Hydrolyse",
+    difficulty: "foundational",
+    stem: "Aus welchen chemischen Bausteinen ist das universelle Energieträgermolekül Adenosintriphosphat (ATP) aufgebaut, und welcher Bindungstyp setzt bei der Spaltung zu ADP die nutzbare freie Enthalpie frei?",
+    options: {
+      A: "Aus Guanin, Desoxyribose und drei Phosphatresten; Spaltung einer Peptidbindung.",
+      B: "Aus Adenin, Ribulose und zwei Phosphatresten; Spaltung einer glykosidischen Bindung.",
+      C: "Aus der Purinbase Adenin, dem Pentosezucker Ribose und drei Phosphatgruppen; Spaltung einer energiereichen Phosphorsäureanhydridbindung.",
+      D: "Aus Cytosin, Glucose und drei Sulfatgruppen; Spaltung einer Esterbindung.",
+      E: "Aus Uracil, Desoxyribose und einer Triphosphatgruppe; Spaltung einer Disulfidbrücke."
+    },
+    correct_answer: "C",
+    explanation_correct: "Adenosintriphosphat (ATP) ist das universelle chemische Energieäquivalent aller lebenden Zellen. Es besteht aus dem Nukleosid Adenosin (die Purinbase Adenin ist N-glykosidisch an das C1'-Atom der Pentose D-Ribose gebunden) und drei Phosphatgruppen (alpha, beta, gamma), die am C5'-Atom der Ribose verknüpft sind. Während die alpha-Phosphatgruppe über eine Phosphorsäureesterbindung an die Ribose gebunden ist, sind die beiden äußeren Phosphatgruppen (alpha-beta und beta-gamma) über Phosphorsäureanhydridbindungen miteinander verknüpft. Die Hydrolyse der terminalen Phosphorsäureanhydridbindung (ATP + H2O → ADP + P_i) weist eine stark negative freie Standardenthalpie auf (Delta G°' ≈ -30,5 kJ/mol bzw. unter physiologischen Zellbedingungen ca. -50 kJ/mol).",
+    explanations_incorrect: {
+      A: "ATP enthält Adenin (nicht Guanin) und Ribose (nicht Desoxyribose); Peptidbindungen verknüpfen Aminosäuren.",
+      B: "Der Zucker ist Ribose (nicht Ribulose) und es liegen drei Phosphatreste vor, keine zwei (zwei Phosphatreste bilden ADP).",
+      D: "ATP enthält Adenin und Phosphatgruppen, keine Sulfatgruppen.",
+      E: "ATP enthält kein Uracil und keine Disulfidbrücken (Disulfidbrücken existieren zwischen Cysteinresten in Proteinen)."
+    },
+    metadata: {
+      author: "MedAT BMS Biology QC Engine",
+      status: "verified_medat_compliant",
+      version: "5.0_gp5"
+    }
+  },
   {
     id: "BIO-BMS-GP5-029",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Zellstoffwechsel & Energiegewinnung",
-    subtopic: "Enzymkinetik: Michaelis-Menten & Km-Wert",
-    difficulty: "foundational",
-    stem: "Was gibt die Michaelis-Konstante (Km-Wert) in der Enzymkinetik nach Michaelis und Menten direkt an?",
+    subtopic: "Glykolyse: PFK-1-Regulation & Nettoausbeute",
+    difficulty: "intermediate",
+    stem: "Welche Nettoausbeute an energiereichen Verbindungen liefert die Glykolyse beim Abbau von 1 Mol Glucose zu 2 Mol Pyruvat im Zytosol, und wie wird das Schlüsselenzym Phosphofructokinase-1 (PFK-1) allosterisch reguliert?",
     options: {
-      A: "Die maximale Geschwindigkeit Vmax, die bei vollständiger Enzyminaktivierung erreicht wird",
-      B: "Die Konzentration des Enzyms, bei der alle allosterischen Effektoren abdissoziieren",
-      C: "Die Aktivierungsenergie, die zur Spaltung des Übergangszustands nötig ist",
-      D: "Die Substratkonzentration, bei der die Reaktionsgeschwindigkeit exakt die Hälfte der Maximalgeschwindigkeit (1/2 Vmax) beträgt",
-      E: "Das Temperaturoptimum, bei dem ein Enzym denaturiert"
+      A: "Netto 2 Mol ATP und 2 Mol NADH + H+; PFK-1 wird allosterisch durch AMP und Fructose-2,6-bisphosphat aktiviert sowie durch hohe ATP- und Citratkonzentrationen gehemmt.",
+      B: "Netto 36 Mol ATP und 6 Mol FADH2; PFK-1 wird durch hohe ATP-Spiegel maximal stimuliert.",
+      C: "Netto 4 Mol ATP und 0 Mol NADH; PFK-1 wird ausschließlich durch Sauerstoffmangel gehemmt.",
+      D: "Netto 1 Mol GTP und 1 Mol Lactat; PFK-1 spaltet Glucose direkt in zwei Moleküle Kohlendioxid.",
+      E: "Netto 2 Mol ATP, aber kein NADH; PFK-1 wird durch Citrat allosterisch aktiviert."
     },
-    correct_answer: "D",
-    explanation_correct: "Die Michaelis-Menten-Konstante Km ist definiert als diejenige Substratkonzentration [S], bei der die enzymatische Reaktionsgeschwindigkeit v genau die Hälfte der Maximalgeschwindigkeit erreicht (v = Vmax/2). Sie besitzt die Einheit einer Konzentration (mol/l) und ist ein inverses Maß für die scheinbare Affinität des Enzyms zu seinem Substrat: Ein kleiner Km-Wert bedeutet, dass bereits sehr geringe Substratkonzentrationen genügen, um das Enzym halbmaximal zu sättigen (hohe Affinität); ein großer Km-Wert reflektiert eine niedrige Affinität.",
+    correct_answer: "A",
+    explanation_correct: "Die Glykolyse läuft im Zytosol ab und spaltet 1 Mol D-Glucose (C6) in 2 Mol Pyruvat (C3). In der Vorbereitungsphase werden zunächst 2 Mol ATP investiert (Phosphorylierung durch Hexokinase und PFK-1). In der Ertragsphase werden durch Substratkettenphosphorylierung 4 Mol ATP gebildet, sodass der Nettogewinn genau 2 Mol ATP pro Mol Glucose beträgt. Zudem werden 2 Mol NAD+ zu 2 Mol NADH + H+ reduziert. Das wichtigste Schrittmacherenzym der Glykolyse ist die Phosphofructokinase-1 (PFK-1), welche Fructose-6-phosphat zu Fructose-1,6-bisphosphat phosphoryliert. PFK-1 wird allosterisch aktiviert durch Signale niedrigen Energiestatus (AMP, ADP) sowie potent durch Fructose-2,6-bisphosphat. Hohe Konzentrationen von ATP (Signal für ausreichende Energie) und Citrat (aus dem Citratzyklus) wirken als allosterische Inhibitoren.",
     explanations_incorrect: {
-      A: "Vmax ist die Maximalgeschwindigkeit bei vollständiger Substratsättigung des Enzyms, nicht bei Enzyminaktivierung.",
-      B: "Km bezieht sich auf die Substratkonzentration, nicht auf die Enzymkonzentration.",
-      C: "Die Aktivierungsenergie wird durch Enzyme gesenkt, aber nicht durch den Km-Wert beziffert (dies beschreibt die Arrhenius-Gleichung).",
-      E: "Das Temperaturoptimum ist eine kinetische Eigenschaft der Proteinstabilität, nicht der Km-Wert."
+      B: "36 ATP entstehen erst durch die gesamte aerobe Zellatmung (inkl. Citratzyklus und Atmungskette im Mitochondrium), nicht in der Glykolyse allein; ATP hemmt PFK-1.",
+      C: "Brutto entstehen 4 ATP, aber netto nur 2 ATP (da 2 ATP am Anfang verbraucht werden); 2 NADH werden regulär gebildet.",
+      D: "Lactat entsteht erst bei anaerober Milchsäuregärung; PFK-1 bildet Fructose-1,6-bisphosphat und spaltet kein CO2 ab.",
+      E: "Es entstehen 2 Mol NADH, und Citrat hemmt PFK-1 (Signal für hohe Substratsättigung des Citratzyklus), aktiviert sie nicht."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -915,23 +911,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Zellstoffwechsel & Energiegewinnung",
-    subtopic: "Glykolyse: Schrittmacherenzym PFK-1",
+    subtopic: "Atmungskette: Elektronentransport & Protonenpumpsysteme",
     difficulty: "intermediate",
-    stem: "Welcher allosterische Effektor wirkt als stärkster physiologischer Aktivator des Schrittmacherenzyms Phosphofructokinase-1 (PFK-1) in der menschlichen Glykolyse?",
+    stem: "Welche Proteinkomplexe der mitochondrialen Atmungskette pumpen bei der Oxidation von NADH bzw. FADH2 aktiv Protonen aus der Matrix in den Intermembranraum?",
     options: {
-      A: "Hohe Konzentrationen von ATP",
-      B: "Citrat aus dem Mitochondrium",
-      C: "Glukagon über cAMP-abhängige Proteinkinase A",
-      D: "NADH/H+ aus der oxidativen Phosphorylierung",
-      E: "Fructose-2,6-bisphosphat (F-2,6-BP)"
+      A: "Ausschließlich Komplex II (Succinat-Dehydrogenase) pumpt Protonen, während Komplexe I, III und IV reine Elektronencarrier sind.",
+      B: "Alle vier Komplexe (I, II, III und IV) pumpen jeweils exakt 4 Protonen pro übertragenem Elektronenpaar.",
+      C: "Nur die ATP-Synthase pumpt Protonen aus der Matrix in den Intermembranraum unter direktem ATP-Verbrauch.",
+      D: "Die Komplexe I, III und IV pumpen Protonen in den Intermembranraum; Komplex II pumpt hingegen keine Protonen.",
+      E: "Kein Komplex pumpt Protonen; der Gradient entsteht ausschließlich durch passiven Ausstrom von Hydrogencarbonat."
     },
-    correct_answer: "E",
-    explanation_correct: "Die Phosphofructokinase-1 (PFK-1), die Fructose-6-phosphat unter ATP-Verbrauch zu Fructose-1,6-bisphosphat phosphoryliert, ist das zentrale Schrittmacherenzym der Glykolyse. Ihr potentester allosterischer Aktivator ist Fructose-2,6-bisphosphat (F-2,6-BP), welches durch das bifunktionelle Enzym PFK-2 synthetisiert wird (stimuliert durch Insulin bei hoher Glukoseverfügbarkeit). F-2,6-BP überwindet die allosterische Hemmung von PFK-1 durch ATP und steigert die Glykolyserate dramatisch. Auch AMP ist ein allosterischer Aktivator (Signal für Energiemangel).",
+    correct_answer: "D",
+    explanation_correct: "Die Atmungskette an der inneren Mitochondrienmembran besteht aus vier Multiproteinkomplexen (I–IV), Ubichinon (Coenzym Q) und Cytochrom c: Komplex I (NADH-Dehydrogenase-Komplex) übernimmt Elektronen von NADH+H+, überträgt sie auf Ubichinon und pumpt 4 H+ pro Elektronenpaar in den Intermembranraum. Komplex II (Succinat-Dehydrogenase des Citratzyklus) oxidiert Succinat zu Fumarat, überträgt Elektronen von FADH2 auf Ubichinon, setzt aber aufgrund der geringen Redoxpotentialdifferenz keine ausreichende freie Enthalpie frei und pumpt KEINE Protonen. Komplex III (Cytochrom-c-Reduktase) überträgt Elektronen über den Q-Zyklus auf Cytochrom c und pumpt 4 H+. Komplex IV (Cytochrom-c-Oxidase) überträgt Elektronen auf molekularen Sauerstoff (1/2 O2 + 2 H+ → H2O) und pumpt 2 H+. Der resultierende elektrochemische Protonengradient treibt die ATP-Synthase bei Rückstrom der Protonen in die Matrix an.",
     explanations_incorrect: {
-      A: "Hohe ATP-Konzentrationen signalisieren Energieüberschuss und hemmen PFK-1 allosterisch.",
-      B: "Citrat aus dem Citratzyklus signalisiert ausreichende Bausteine und hemmt PFK-1 allosterisch.",
-      C: "Glukagon phosphoryliert die PFK-2 via PKA, inaktiviert deren Kinasedomäne und senkt den F-2,6-BP-Spiegel, wodurch die Glykolyse in der Leber gehemmt wird.",
-      D: "Ein hohes NADH/NAD+-Verhältnis hemmt Dehydrogenasen, ist aber kein allosterischer PFK-1-Aktivator."
+      A: "Komplex II ist der einzige Komplex der Kette, der keine Protonen pumpt; I, III und IV sind die Protonenpumpen.",
+      B: "Komplex II pumpt 0 Protonen; Komplex IV pumpt 2 Protonen pro Elektronenpaar.",
+      C: "Die ATP-Synthase nutzt den passiven Rückstrom von Protonen in die Matrix zur ATP-Synthese; sie pumpt keine Protonen hinaus.",
+      E: "Der Protonengradient wird aktiv durch die redoxgetriebenen Protonenpumpen der Komplexe I, III und IV erzeugt."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -944,52 +940,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Zellstoffwechsel & Energiegewinnung",
-    subtopic: "Atmungskette & Chemiosmotische Kopplung",
+    subtopic: "Fotosynthese: Lichtreaktion vs. Calvin-Zyklus",
     difficulty: "advanced",
-    stem: "Welche Komplexe der mitochondrialen Atmungskette pumpen bei der Oxidation von NADH/H+ Protonen aus der Matrix in den Intermembranraum?",
+    stem: "Worin besteht der funktionelle Zusammenhang zwischen den lichtabhängigen Reaktionen in den Thylakoidmembranen und dem lichtunabhängigen Calvin-Zyklus im Stroma der Chloroplasten?",
     options: {
-      A: "Komplex I, Komplex III und Komplex IV",
-      B: "Komplex II und Komplex IV",
-      C: "Ausschließlich Komplex II (Succinat-Dehydrogenase)",
-      D: "Ausschließlich die ATP-Synthase (Komplex V) in umgekehrter Richtung",
-      E: "Komplex I und Komplex II, während Komplex III Elektronen direkt auf Wasser überträgt"
+      A: "Die Lichtreaktion fixiert Kohlendioxid an Ribulose-1,5-bisphosphat, während der Calvin-Zyklus Wasser spaltet und molekularen Sauerstoff freisetzt.",
+      B: "Der Calvin-Zyklus liefert ATP und NADPH für die Photolyse des Wassers an Photosystem II.",
+      C: "Die Thylakoidmembranen synthetisieren Glucose direkt aus Sonnenlicht ohne Beteiligung des Stromas.",
+      D: "In der Lichtreaktion wird Sauerstoff verbraucht, um im Calvin-Zyklus Pyruvat zu Milchsäure zu reduzieren.",
+      E: "Die Lichtreaktion nutzt Lichtenergie zur Photolyse des Wassers (O2-Freisetzung) und erzeugt ATP sowie NADPH + H+, welche im Calvin-Zyklus im Stroma zur Reduktion von CO2 zu Kohlenhydraten verbraucht werden."
     },
-    correct_answer: "A",
-    explanation_correct: "Die mitochondriale Atmungskette besteht aus vier Multienzymkomplexen in der inneren Mitochondrienmembran: Komplex I (NADH-Ubichinon-Oxidoreduktase) pumpt 4 H+ pro oxidiertem NADH. Komplex II (Succinat-Dehydrogenase / FADH2-Einspeisung) ist integraler Bestandteil des Citratzyklus, überspannt die Membran nicht vollständig und pumpt keine Protonen. Komplex III (Cytochrom-c-Reduktase) pumpt im Q-Zyklus 4 H+. Komplex IV (Cytochrom-c-Oxidase) überträgt Elektronen auf O2 (unter Bildung von H2O) und pumpt 2 H+. Somit fungieren genau die Komplexe I, III und IV als Protonenpumpen (insgesamt 10 H+ pro NADH), die den elektrochemischen Protonengradienten für Komplex V (ATP-Synthase) aufbauen.",
+    correct_answer: "E",
+    explanation_correct: "Die oxygene Fotosynthese gliedert sich in zwei räumlich und funktionell gekoppelte Teilprozesse: 1. Lichtabhängige Reaktionen (in den Thylakoidmembranen der Chloroplasten): Lichtquanten werden durch Antennenkomplexe (Chlorophyll a/b, Carotinoide) absorbiert und zum Reaktionszentrum von Photosystem II (P680) geleitet. Am wasserspaltenden Mangankomplex von PS II findet die Photolyse des Wassers statt: 2 H2O → O2 + 4 H+ + 4 e-. Die Elektronen fließen über Plastochinon, den Cytochrom-b6f-Komplex und Plastocyanin zu Photosystem I (P700) und reduzieren schließlich über Ferredoxin NADP+ zu NADPH + H+. Der durch Elektronentransport aufgebaute Protonengradient treibt die CF_oCF_1-ATP-Synthase an (Photophosphorylierung). 2. Lichtunabhängige Reaktionen / Calvin-Zyklus (im Stroma): Das Schlüsselenzym RuBisCO fixiert CO2 an Ribulose-1,5-bisphosphat. Unter stöchiometrischem Verbrauch der in der Lichtreaktion bereitgestellten chemischen Energie (ATP) und Reduktionsäquivalente (NADPH + H+) wird 3-Phosphoglycerat zu Glycerinaldehyd-3-phosphat (Triosephosphat) reduziert, woraus Glucose und Stärke regeneriert werden.",
     explanations_incorrect: {
-      B: "Komplex II pumpt keine Protonen; ihm fehlt der Transmembrankanal.",
-      C: "Komplex II katalysiert die Oxidation von Succinat zu Fumarat ohne Protonentranslokation.",
-      D: "Komplex V (ATP-Synthase) pumpt unter physiologischen Bedingungen keine Protonen heraus, sondern nutzt den Rückstrom von Protonen in die Matrix zur ATP-Synthese.",
-      E: "Komplex IV (nicht Komplex III) überträgt Elektronen final auf Sauerstoff unter Bildung von Wasser."
-    },
-    metadata: {
-      author: "MedAT BMS Biology QC Engine",
-      status: "verified_medat_compliant",
-      version: "5.0_gp5"
-    }
-  },
-  {
-    id: "BIO-BMS-GP5-032",
-    subject: "BIO",
-    section: "BMS",
-    primary_topic: "Zellstoffwechsel & Energiegewinnung",
-    subtopic: "Anaerobe Glykolyse & Lactat-Dehydrogenase",
-    difficulty: "intermediate",
-    stem: "Welche biologische Notwendigkeit erzwingt bei intensivem Sauerstoffmangel (Hypoxie/Anoxie) im arbeitenden Muskel die Reduktion von Pyruvat zu Lactat durch die Lactat-Dehydrogenase (LDH)?",
-    options: {
-      A: "Die direkte Synthese von zusätzlichen 4 Molekülen ATP pro Pyruvat",
-      B: "Die Reoxidation von NADH/H+ zu NAD+, welches für die Fortführung der Glykolyse am Enzym Glycerinaldehyd-3-phosphat-Dehydrogenase (GAPDH) zwingend benötigt wird",
-      C: "Die Neutralisierung des intrazellulären pH-Wertes zur Verhinderung einer Muskelazidose",
-      D: "Die Aktivierung des Citratzyklus über einen alternativen Lactat-Transporter",
-      E: "Die Speicherung von Sauerstoff in Form von Milchsäurekristallen"
-    },
-    correct_answer: "B",
-    explanation_correct: "In der Glykolyse wird bei der Oxidation von Glycerinaldehyd-3-phosphat (GAP) zu 1,3-Bisphosphoglycerat durch das Enzym GAPDH stöchiometrisch NAD+ zu NADH/H+ reduziert. Unter aeroben Bedingungen wird NADH/H+ über Malat-Aspartat- oder Glycerin-3-phosphat-Shuttles in den Mitochondrien reoxidiert. Fehlt Sauerstoff als terminaler Elektronenakzeptor, staut sich NADH an und der zytosolische NAD+-Pool erschöpft sich rasch, was die Glykolyse stoppen würde. Die Lactat-Dehydrogenase (LDH) reduziert Pyruvat zu Lactat und oxidiert dabei NADH/H+ zurück zu NAD+, sodass die ATP-Gewinnung über die Glykolyse auch unter anaeroben Bedingungen weiterlaufen kann.",
-    explanations_incorrect: {
-      A: "Bei der LDH-Reaktion selbst entsteht kein ATP; sie dient ausschließlich der NAD+-Regeneration.",
-      C: "Die Bildung von Milchsäure senkt den pH-Wert (Lactatazidose), neutralisiert ihn also nicht.",
-      D: "Der Citratzyklus steht bei Sauerstoffmangel mangels terminaler Elektronenakzeptoren weitgehend still.",
-      E: "Milchsäure bindet keinen Sauerstoff."
+      A: "Die Spaltung von Wasser und O2-Freisetzung erfolgt in der Lichtreaktion an PS II; CO2-Fixierung erfolgt im Calvin-Zyklus.",
+      B: "Die Lichtreaktion erzeugt ATP und NADPH; der Calvin-Zyklus verbraucht diese und regeneriert ADP und NADP+.",
+      C: "Die Kohlenhydratsynthese (Calvin-Zyklus) findet im Stroma statt, nicht in den Thylakoidmembranen.",
+      D: "In der Lichtreaktion wird kein Sauerstoff verbraucht, sondern O2 durch H2O-Oxidation freigesetzt; Fotosynthese bildet keine Milchsäure."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -998,31 +965,60 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 8: Herz-Kreislauf & Blut (bio-07-herzkreislauf) - 2 Aufgaben
-  // ---------------------------------------------------------------------------------
+  // -------------------------------------------------------------
+  // Kapitel 7: Herz-Kreislauf-System (bio-07-herzkreislauf) - 3 Aufgaben
+  // -------------------------------------------------------------
+  {
+    id: "BIO-BMS-GP5-032",
+    subject: "BIO",
+    section: "BMS",
+    primary_topic: "Herz-Kreislauf-System",
+    subtopic: "Herzzyklus: Phasen & Klappenmechanik",
+    difficulty: "foundational",
+    stem: "Welcher Klappenzustand charakterisiert die isovolumetrische Anspannungsphase der Kammersystole des menschlichen Herzens?",
+    options: {
+      A: "Sowohl die Segelklappen (Mitral- und Trikuspidalklappe) als auch die Taschenklappen (Aorten- und Pulmonalklappe) sind geschlossen.",
+      B: "Die Segelklappen sind weit geöffnet, während die Taschenklappen fest verschlossen sind.",
+      C: "Die Taschenklappen sind geöffnet und die Segelklappen sind ebenfalls weit geöffnet.",
+      D: "Die Aortenklappe ist geöffnet, damit das Blut drucklos in die Vena cava zurückströmen kann.",
+      E: "Alle vier Klappen sind geöffnet, sodass ein ungehinderter Druckausgleich zwischen Vorhöfen und Ventrikeln stattfindet."
+    },
+    correct_answer: "A",
+    explanation_correct: "Die Kammersystole gliedert sich in zwei Phasen: 1. Anspannungsphase (isovolumetrische Kontraktion): Die Ventrikelmyozyten kontrahieren nach Erregung. Durch den beginnenden Druckanstieg in den Kammern schließen die AV-Klappen (Mitral- und Trikuspidalklappe) sofort ('1. Herzton'). Da der Kammerdruck den diastolischen Druck in Aorta (ca. 80 mmHg) und Truncus pulmonalis (ca. 10 mmHg) noch nicht übersteigt, bleiben auch die Taschenklappen geschlossen. Da Flüssigkeiten inkompressibel sind und alle vier Klappen geschlossen sind, steigt der Druck steil an, während das Kammervolumen exakt konstant bleibt (isovolumetrisch). 2. Austreibungsphase: Sobald der Kammerdruck den Aorten- bzw. Pulmonalisdruck übersteigt, öffnen sich die Taschenklappen und das Schlagvolumen (ca. 70 ml) wird ausgeworfen.",
+    explanations_incorrect: {
+      B: "Geöffnete Segelklappen bei geschlossenen Taschenklappen kennzeichnen die Füllungsphase der Diastole.",
+      C: "Wären alle Klappen geöffnet, würde kein gerichteter Druckaufbau zustande kommen.",
+      D: "Die Aortenklappe öffnet sich erst in der Austreibungsphase zur Aorta hin; Blut strömt niemals aus der Aorta in die Vena cava zurück.",
+      E: "Zu keinem Zeitpunkt des regulären Herzzyklus sind alle vier Klappen gleichzeitig geöffnet."
+    },
+    metadata: {
+      author: "MedAT BMS Biology QC Engine",
+      status: "verified_medat_compliant",
+      version: "5.0_gp5"
+    }
+  },
   {
     id: "BIO-BMS-GP5-033",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Herz-Kreislauf-System",
-    subtopic: "Gefäßsystem & Windkesselfunktion",
-    difficulty: "foundational",
-    stem: "Welche anatomische Struktur und biophysikalische Eigenschaft ermöglicht die sogenannte Windkesselfunktion der herznahen großen Arterien (Aorta)?",
+    subtopic: "Erregungsleitungssystem: AV-Knoten-Verzögerung",
+    difficulty: "intermediate",
+    stem: "Welche physiologische Bedeutung hat die ausgeprägte Leitungsverzögerung der elektrischen Erregung im Atrioventrikularknoten (AV-Knoten) des Herzens?",
     options: {
-      A: "Eine dicke Schicht aus quergestreifter Skelettmuskulatur, die sich synchron mit den Ventrikeln kontrahiert",
-      B: "Zahlreiche Taschenklappen in der Wand der Aorta descendens zur Verhinderung des Rückstroms",
-      C: "Ein hoher Anteil elastischer Fasern in der Tunica media, der die Speicherung von Druckenergie während der Systole und deren kontinuierliche Abgabe während der Diastole erlaubt",
-      D: "Kollagene Verankerungen am Zwerchfell, die das Lumen atemabhängig aufdehnen",
-      E: "Eine kontinuierliche Kapillarisierung der Adventitia zur Drosselung des Blutdrucks auf 0 mmHg"
+      A: "Sie beschleunigt die Depolarisation der Ventrikel, sodass Vorhöfe und Kammern vollkommen synchron kontrahieren.",
+      B: "Sie verhindert, dass die elektrische Erregung das His-Bündel erreicht, und stoppt die Kammersystole im Ruhezustand.",
+      C: "Sie verzögert die Erregungsüberleitung von den Vorhöfen auf die Kammern um ca. 0,1 Sekunden, damit die Vorhofsystole abgeschlossen ist und die Kammern optimal mit Blut gefüllt sind, bevor die Kammersystole beginnt.",
+      D: "Sie induziert die spontane Erschlaffung der Aorta ascendens zur Senkung des peripheren Widerstands.",
+      E: "Sie dient ausschließlich der Produktion von natriuretischen Peptiden (ANP) zur Steigerung des Blutdrucks."
     },
     correct_answer: "C",
-    explanation_correct: "Die herznahen großen Arterien (Aorta und Truncus arteriosus) sind Arterien vom elastischen Typ. Ihre Tunica media enthält dichte Netze elastischer Fasern und Membranen. Während der ventrikulären Austreibungsphase (Systole) dehnt sich die Aortenwand durch das ausgeworfene Schlagvolumen passiv auf und speichert einen Teil der kinetischen Energie als elastische Dehnungsenergie (Windkessel). In der Diastole, wenn die Aortenklappe geschlossen ist, federt die elastische Wand zurück und treibt das Blut weiter vorwärts. Dadurch wird der diskontinuierliche, pulsatile Blutauswurf des Herzens in einen weitgehend kontinuierlichen peripheren Blutstrom umgewandelt und die Blutdruckamplitude gedämpft.",
+    explanation_correct: "Das kardiale Erregungsleitungssystem besteht aus spezialisierten Kardiomyozyten. Die Erregung entsteht spontan im Sinusknoten (primärer Schrittmacher) und breitet sich über das Vorhofmyokard zum AV-Knoten (sekundärer Schrittmacher) aus. Das Ventrikelmyokard ist durch das bindegewebige Herzskelett (Anulus fibrosus) elektrisch vollständig von den Vorhöfen isoliert; die einzige physiologische muskuläre Überleitungsbrücke ist das His-Bündel am AV-Knoten. Im AV-Knoten ist die Leitungsgeschwindigkeit aufgrund dünner Fasern und weniger Gap Junctions extrem verlangsamt (Leitungsverzögerung um ca. 60–100 ms). Dies stellt sicher, dass die mechanische Vorhofkontraktion vollständig abgeschlossen ist und die Ventrikel maximal gefüllt sind, bevor die Kammerkontraktion von der Herzspitze aus einsetzt. Zudem schützt der AV-Knoten durch seine lange Refraktärzeit die Kammern vor zu hohen Frequenzen bei Vorhoftachykardien.",
     explanations_incorrect: {
-      A: "Arterien enthalten glatte Muskulatur, niemals quergestreifte Skelettmuskulatur.",
-      B: "Taschenklappen befinden sich am Abgang der Aorta aus dem linken Ventrikel (Aortenklappe), nicht entlang der Aorta descendens.",
-      D: "Das Zwerchfell beeinflusst den intraabdominellen Druck, begründet aber nicht die elastische Windkesselfunktion der Aorta.",
-      E: "Die Vasa vasorum versorgen die Gefäßwand, drosseln aber nicht den arteriellen Blutdruck auf 0 mmHg."
+      A: "Synchrones Kontrahieren von Vorhof und Kammer wäre dysfunktional, da die Kammerfüllung behindert würde.",
+      B: "Die Erregung wird physiologisch an das His-Bündel weitergeleitet; ein Ausfall wäre ein pathologischer AV-Block III. Grades.",
+      D: "Der AV-Knoten innerviert nicht die Gefäßwand der Aorta.",
+      E: "ANP wird vom Vorhofmyokard bei Dehnung sezerniert und senkt das Blutvolumen/den Blutdruck; es wird nicht im AV-Knoten zur Blutdrucksteigerung gebildet."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -1035,23 +1031,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Herz-Kreislauf-System",
-    subtopic: "Herzmechanik: Ejektionsfraktion & Schlagvolumen",
-    difficulty: "intermediate",
-    stem: "Bei einer gesunden erwachsenen Person wird im Ruhe-Echokardiogramm ein linksventrikuläres enddiastolisches Volumen (EDV) von 120 ml und ein endsystolisches Volumen (ESV) von 48 ml gemessen. Wie hoch sind das Schlagvolumen (SV) und die Ejektionsfraktion (EF) dieser Person?",
+    subtopic: "Hämoglobin: Sauerstoff-Bindungskurve & Bohr-Effekt",
+    difficulty: "advanced",
+    stem: "Welche Veränderung des physiologischen Milieus im stoffwechselaktiven Muskelgewebe bewirkt eine Rechtsverschiebung der Hämoglobin-Sauerstoff-Bindungskurve (Bohr-Effekt) und was ist die physiologische Konsequenz?",
     options: {
-      A: "SV = 48 ml; EF = 40%",
-      B: "SV = 168 ml; EF = 71%",
-      C: "SV = 60 ml; EF = 50%",
-      D: "SV = 72 ml; EF = 60%",
-      E: "SV = 96 ml; EF = 80%"
+      A: "Ein Anstieg des pH-Werts (Alkalose) und Kälte; Hämoglobin bindet Sauerstoff fester und gibt weniger O2 an das Gewebe ab.",
+      B: "Ein Anstieg von pCO2, ein Absinken des pH-Werts (Zunahme von H+-Ionen), ein Temperaturanstieg sowie erhöhtes 2,3-Bisphosphoglycerat (2,3-BPG); dies senkt die O2-Affinität von Hämoglobin und erleichtert die O2-Abgabe.",
+      C: "Eine vollständige Zerstörung der Quartärstruktur von Hämoglobin durch Kohlenmonoxid.",
+      D: "Eine Abnahme des arteriellen pCO2 bei gleichzeitigem Absinken des 2,3-BPG-Spiegels in den Erythrozyten.",
+      E: "Ein massiver Einstrom von Natriumionen in das Hämoglobinmolekül, der das Häm-Eisen oxidiert."
     },
-    correct_answer: "D",
-    explanation_correct: "Das Schlagvolumen (SV) ist das Blutvolumen, das die Herzkammer pro Herzschlag auswirft: SV = EDV - ESV = 120 ml - 48 ml = 72 ml. Die Ejektionsfraktion (EF) ist der prozentuale Anteil des enddiastolischen Volumens, der ausgeworfen wird: EF = (SV / EDV) * 100% = (72 ml / 120 ml) * 100% = 0,60 * 100% = 60%. Ein Wert von 60% liegt im physiologischen Normbereich eines gesunden Erwachsenen (55–70%).",
+    correct_answer: "B",
+    explanation_correct: "Die Bindung von Sauerstoff an Hämoglobin (Tetramer aus 2 alpha- und 2 beta-Ketten) folgt einer sigmoidalen S-förmigen Sauerstoff-Bindungskurve infolge positiver Kooperativität. Im stoffwechselaktiven Gewebe (z. B. arbeitender Skelettmuskel) fallen vermehrt Stoffwechselendprodukte an: pCO2 steigt (Hyperkapnie), Milchsäure/H+ senken den pH-Wert (Azidose), die Gewebetemperatur steigt lokal und in Erythrozyten akkumuliert 2,3-Bisphosphoglycerat (2,3-BPG). Diese allosterischen Effektoren binden bevorzugt an die desoxygenierte T-Form (Tense-State) des Hämoglobins und stabilisieren sie. Dies führt zu einer Rechtsverschiebung der O2-Bindungskurve (Bohr-Effekt): Bei gleichem Gewebe-Sauerstoffpartialdruck (pO2) sinkt die Sauerstoffsättigung von Hämoglobin, was bedeutet, dass Sauerstoff wesentlich leichter und in größerer Menge an das sauerstoffbedürftige Gewebe abgegeben wird.",
     explanations_incorrect: {
-      A: "48 ml ist das ESV; 40% wäre eine pathologisch reduzierte EF.",
-      B: "168 ml ist die Summe (EDV + ESV), nicht die Differenz.",
-      C: "Falsche Subtraktion.",
-      E: "Falsche Werteberechnung."
+      A: "Alkalose (hoher pH), Kälte und niedriges pCO2 bewirken eine Linksverschiebung (hohe O2-Affinität, wie in der Lunge) und erschweren die O2-Abgabe.",
+      C: "Der Bohr-Effekt ist eine reversible Konformationsänderung zwischen T- und R-Zustand und keine Zerstörung der Quartärstruktur.",
+      D: "Niedriges pCO2 und niedriges 2,3-BPG verschieben die Kurve nach links, nicht nach rechts.",
+      E: "Natriumionen oxidieren kein Häm-Eisen; Oxidation zu Fe3+ erzeugt dysfunktionales Methämoglobin."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -1060,31 +1056,31 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 9: Atmung & Gasaustausch (bio-08-atmung) - 2 Aufgaben
-  // ---------------------------------------------------------------------------------
+  // -------------------------------------------------------------
+  // Kapitel 8: Atmungssystem (bio-08-atmung) - 3 Aufgaben
+  // -------------------------------------------------------------
   {
     id: "BIO-BMS-GP5-035",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Atmungssystem",
-    subtopic: "Alveolensurfactant & Laplace-Gesetz",
+    subtopic: "Lungenalveolen, Surfactant & Pneumozyten",
     difficulty: "intermediate",
-    stem: "Welche biologische Substanz wird von Pneumozyten Typ II in den Alveolen sezerniert, und welche lebenswichtige Funktion übt sie aus?",
+    stem: "Welche Zellen der Alveolarwand bilden den Surfactant-Faktor, und welche primäre physikochemische Funktion erfüllt dieser in der menschlichen Lunge?",
     options: {
-      A: "Mucin, welches Fremdkörper über das Flimmerepithel zur Glottis transportiert",
-      B: "Carboanhydrase, die Bicarbonat im Alveolarraum direkt in gasförmiges CO2 umwandelt",
-      C: "Histamin, das durch Bronchokonstriktion den Atemwiderstand im Schlaf maximiert",
-      D: "Pepsin, das inhalierte Proteinantigene in den Alveolen enzymatisch zerstört",
-      E: "Surfactant (Dipalmitoylphosphatidylcholin), das die Oberflächenspannung der Alveolen herabsetzt und deren Kollabieren bei der Exspiration verhindert"
+      A: "Pneumozyten Typ I; er erhöht die Oberflächenspannung, um das Einatmen von Staubpartikeln zu verhindern.",
+      B: "Alveolarmakrophagen; er baut lysosomale Enzyme in der Pleurahöhle ab.",
+      C: "Epithelzellen der Trachea; er verflüssigt den Speichel im Kehlkopf.",
+      D: "Pneumozyten Typ II (Alveolarepithelzellen Typ II); er setzt die Oberflächenspannung an der Alveolaroberfläche herab und verhindert so das Kollabieren kleiner Alveolen bei der Exspiration.",
+      E: "Endothelzellen der Lungenkapillaren; er erzeugt einen permanenten Unterdruck im Alveolarlumen."
     },
-    correct_answer: "E",
-    explanation_correct: "Pneumozyten Typ II (Alveolarepithelzellen Typ II) sezernieren Surfactant (Surface Active Agent), ein Phospholipid-Protein-Gemisch, dessen Hauptbestandteil Dipalmitoylphosphatidylcholin (DPPC) zusammen mit Surfactant-Proteinen (SP-A, SP-B, SP-C, SP-D) ist. Nach dem Laplace-Gesetz (P = 2 * gamma / r) wäre der kollabierende Druck in kleinen Alveolen mit geringem Radius r bei konstanter Oberflächenspannung gamma viel höher als in großen Alveolen, was zur Entleerung kleiner Alveolen in große und zum Atelektasen-Kollaps führen würde. Surfactant setzt die Oberflächenspannung gamma drastisch herab (besonders stark bei abnehmender Alveolengröße in der Exspiration), stabilisiert unterschiedlich große Alveolen und senkt die zur Inspiration erforderliche Atemarbeit.",
+    correct_answer: "D",
+    explanation_correct: "Die Alveolarepithelwand setzt sich aus zwei Hauptzelltypen zusammen: Pneumozyten Typ I (decken über 95 % der Alveolaroberfläche als extrem dünne Epithelzellen ab und bilden mit dem Kapillarendothel die Blut-Luft-Schranke für den Gasaustausch) und Pneumozyten Typ II (kubische Alveolarzellen, ca. 5 % der Oberfläche). Pneumozyten Typ II synthetisieren und sezernieren Surfactant (Surface Active Agent), ein Gemisch aus Phospholipiden (vor allem Dipalmitoylphosphatidylcholin, DPPC) und spezifischen Surfactant-Proteinen (SP-A, -B, -C, -D). An der Phasengrenze zwischen wässrigem Alveolarfilm und Alveolarluft senkt Surfactant die Oberflächenspannung drastisch herab. Gemäß dem Laplace-Gesetz (Kollapsdruck P = 2*T/r) verhindert dies, dass kleinere Alveolen (kleinerer Radius r) bei der Exspiration in größere Alveolen entleert werden und kollabieren (Atelektase). Zudem verringert Surfactant die elastische Atemarbeit bei der Inspiration.",
     explanations_incorrect: {
-      A: "Schleim (Mucin) wird von Becherzellen im Bronchialbaum gebildet; in den Alveolen gibt es keine Becherzellen und kein Flimmerepithel.",
-      B: "Carboanhydrase ist ein erythrozytäres und tubuläres Enzym, liegt aber nicht frei im Alveolarlumen vor.",
-      C: "Histamin wird von Mastzellen sezerniert und führt pathologisch bei Asthma zur Bronchokonstriktion, ist aber kein Surfactant.",
-      D: "Pepsin ist ein Magenenzym und kommt in den Atemwegen nicht vor."
+      A: "Pneumozyten Typ I sind für die Diffusion zuständig und bilden keinen Surfactant; Surfactant erniedrigt die Oberflächenspannung, statt sie zu erhöhen.",
+      B: "Alveolarmakrophagen phagozytieren inhalierte Partikel und Mikroorganismen, synthetisieren aber keinen Surfactant.",
+      C: "Die Trachea enthält Flimmerepithel und Becherzellen für die mukoziliäre Clearance, bildet aber keinen alveolären Surfactant.",
+      E: "Kapillarendothelzellen kleiden die Blutgefäße aus; Unterdruck im Alveolarlumen entsteht dynamisch bei Inspiration durch Thoraxexpansion."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -1097,23 +1093,52 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Atmungssystem",
-    subtopic: "Sauerstoffbindungskurve & 2,3-Bisphosphoglycerat (2,3-BPG)",
-    difficulty: "advanced",
-    stem: "Welche physiologische Veränderung führt zu einer Rechtsverschiebung der Sauerstoff-Bindungskurve des Hämoglobins und erleichtert dadurch die Sauerstoffabgabe im peripheren Gewebe?",
+    subtopic: "Atemmechanik: Zwerchfell & Pleuradruck",
+    difficulty: "intermediate",
+    stem: "Wie verändern sich die Aktivität des Zwerchfells und der Druck im Pleuraspalt (intrapleuraler Druck) während der physiologischen Ruhe-Inspiration beim Menschen?",
     options: {
-      A: "Ein Anstieg der Temperatur, ein Abfall des pH-Wertes (Azidose / Bohr-Effekt), ein Anstieg des pCO2 sowie ein Anstieg der Konzentration von 2,3-Bisphosphoglycerat (2,3-BPG)",
-      B: "Ein Abfall der Temperatur (Hypothermie) und ein Anstieg des pH-Wertes (Alkalose)",
-      C: "Eine vollständige Abwesenheit von 2,3-Bisphosphoglycerat in den Erythrozyten",
-      D: "Eine Vergiftung mit Kohlenmonoxid (CO), die eine Rechtsverschiebung erzwingt",
-      E: "Der Ersatz von adultem Hämoglobin HbA durch fetales Hämoglobin HbF"
+      A: "Das Zwerchfell kontrahiert und senkt sich nach kaudal; der intrapleurale Druck wird noch negativer (subatmosphärischer), wodurch die Lunge passiv gedehnt wird und Luft einströmt.",
+      B: "Das Zwerchfell erschlafft und wölbt sich nach kranial; der Pleuradruck steigt auf +15 mmHg über den atmosphärischen Druck.",
+      C: "Das Zwerchfell kontrahiert nach kranial in den Brustkorb; die Lunge wird komprimiert und der Alveolardruck steigt an.",
+      D: "Der Pleuraspalt öffnet sich zur Außenluft, sodass atmosphärische Luft direkt in das Cavum pleurae einströmt.",
+      E: "Die Zwerchfellbewegung spielt bei Ruhe keine Rolle, da Einatmung ausschließlich durch Erschlaffung der inneren Interkostalmuskeln erfolgt."
     },
     correct_answer: "A",
-    explanation_correct: "Eine Rechtsverschiebung der Sauerstoffbindungskurve bedeutet eine Senkung der Sauerstoffaffinität des Hämoglobins (P50-Wert steigt). Dies bewirkt, dass bei gleichem Sauerstoffpartialdruck mehr O2 an das Gewebe abgegeben wird. Vier Faktoren begünstigen die desoxygenierte T-Form (Tense State) des Hämoglobins und verursachen eine Rechtsverschiebung: 1. Erhöhung der H+-Konzentration (pH-Abfall / Azidose, sogenannter Bohr-Effekt), 2. Erhöhung des pCO2, 3. Erhöhung der Temperatur (z. B. im stoffwechselaktiven Arbeitsmuskel oder bei Fieber), 4. Erhöhte Konzentration von 2,3-Bisphosphoglycerat (2,3-BPG) in den Erythrozyten (allosterischer Effektor, der in der zentralen Tasche des Desoxyhämoglobins bindet).",
+    explanation_correct: "Die Ruheinspiration ist ein aktiver neuromuskulärer Vorgang, dessen Hauptmotor das Zwerchfell (Diaphragma, innerviert vom N. phrenicus C3–C5) ist (unterstützt von den Mm. intercostales externi). Bei Kontraktion flacht sich die Zwerchfellkuppel ab und senkt sich nach kaudal (Bauchhöhlenwärts), wodurch sich der Thoraxraum in Längsrichtung vergrößert. Da die Lunge über den hauchdünnen serösen Flüssigkeitsfilm im geschlossenen Pleuraspalt adhärent an der Thoraxwand haftet, sinkt der intrapleurale Druck von ca. -0,5 kPa (-5 cm H2O) bei Atemruhelage auf ca. -0,8 kPa (-8 cm H2O) am Ende der Inspiration ab. Dieser gesteigerte Transpulmonaldruck dehnt das elastische Lungengewebe auf. Das intrapulmonale Alveolarvolumen nimmt zu, der Druck in den Alveolen sinkt unter den atmosphärischen Umgebungsdruck (um ca. -0,1 kPa) und Außenluft strömt entlang des Druckgefälles in die Atemwege.",
     explanations_incorrect: {
-      B: "Hypothermie und Alkalose bewirken eine Linksverschiebung (erhöhte Affinität, erschwerte Sauerstoffabgabe).",
-      C: "Mangel an 2,3-BPG (z. B. in alten Blutkonserven) führt zu einer extremen Linksverschiebung.",
-      D: "CO bindet mit 200–300-fach höherer Affinität an Hämoglobin und blockiert Bindungsstellen, stabilisiert die R-Form und bewirkt eine gefährliche Linksverschiebung der restlichen Untereinheiten.",
-      E: "Fetales Hämoglobin (HbF) bindet 2,3-BPG schlechter und besitzt eine höhere O2-Affinität als adultes HbA (Linksverschiebung, um O2 aus dem mütterlichen Blut aufzunehmen)."
+      B: "Das Erschlaffen und Aufwölben des Zwerchfells nach kranial erfolgt bei der Exspiration; der Pleuradruck bleibt physiologisch stets subatmosphärisch.",
+      C: "Kontraktion senkt das Zwerchfell nach kaudal (abwärts) und dehnt die Lunge, anstatt sie zu komprimieren.",
+      D: "Eine Eröffnung des Pleuraspalts zur Außenluft ist ein Pneumothorax, der zum Zusammenfallen der Lunge führt.",
+      E: "Das Zwerchfell leistet ca. 60–80 % der Ruheinspirationsarbeit; die Mm. intercostales interni dienen primär der forcierten Exspiration."
+    },
+    metadata: {
+      author: "MedAT BMS Biology QC Engine",
+      status: "verified_medat_compliant",
+      version: "5.0_gp5"
+    }
+  },
+  {
+    id: "BIO-BMS-GP5-037",
+    subject: "BIO",
+    section: "BMS",
+    primary_topic: "Atmungssystem",
+    subtopic: "Atemregulation: Chemorezeptoren & Hyperkapnie",
+    difficulty: "advanced",
+    stem: "Welcher chemische Parameter liefert beim gesunden Menschen unter physiologischen Ruhebedingungen den primären und stärksten Antrieb für die neuronale Steuerung der Atmung im Hirnstamm?",
+    options: {
+      A: "Ein Absinken des arteriellen Sauerstoffpartialdrucks (pO2) unter 95 mmHg im linken Vorhof.",
+      B: "Ein Anstieg des osmotischen Drucks im Plasma, der vom Hypothalamus über Oxytocin vermittelt wird.",
+      C: "Die totale Abwesenheit von Kohlendioxid im arteriellen Blut.",
+      D: "Der direkte Einstrom von Bicarbonat-Ionen aus dem Blutplasma in das Atemzentrum über Carrier-Proteine.",
+      E: "Der arterielle Kohlendioxid-Partialdruck (pCO2), der über zentrale Chemorezeptoren in der Medulla oblongata durch Detektion von Protonen (H+) im Liquor cerebrospinalis vermittelt wird."
+    },
+    correct_answer: "E",
+    explanation_correct: "Die neuronale Rhythmusgenerierung der Atmung erfolgt in der Formatio reticularis der Medulla oblongata (dorsale und ventrale respiratorische Gruppe). Der sensitivste und stärkste physiologische Atemantrieb beim gesunden Menschen ist der arterielle Kohlendioxid-Partialdruck (Normwert: paCO2 ≈ 40 mmHg). Bereits ein geringer Anstieg um 2–5 mmHg (Hyperkapnie) vervielfacht das Atemminutenvolumen. Dieser Reiz wird primär (zu ca. 70–80 %) über zentrale Chemorezeptoren an der ventralen Oberfläche der Medulla oblongata vermittelt: Unpolares CO2 diffundiert frei und rasch über die Blut-Hirn-Schranke in den Liquor cerebrospinalis. Dort reagiert es mit Wasser (katalysiert durch Carboanhydrase) zu Kohlensäure, die in H+ und HCO3- dissoziiert (CO2 + H2O ↔ H2CO3 ↔ H+ + HCO3-). Da der Liquor kaum Proteine als Puffer enthält, führt dies zu einem prompten Abfall des Liquor-pH-Wertes. Die H+-Ionen stimulieren die zentralen Chemorezeptoren und steigern die ventilatorische Aktivität. Periphere Chemorezeptoren (Glomera carotica/aortica) reagieren primär auf Hypoxie (pO2 < 60 mmHg).",
+    explanations_incorrect: {
+      A: "Der Hypoxie-Antrieb über arterielle pO2-Rezeptoren greift erst bei ausgeprägtem Sauerstoffabfall (pO2 < 60 mmHg) als Reserveantrieb ein.",
+      B: "Plasmadruck und Osmolarität regulieren die Durst- und ADH-Freisetzung im Hypothalamus, nicht primär den Atemrhythmus.",
+      C: "Abwesenheit von CO2 (Hypokapnie) dämpft das Atemzentrum bis zur Apnoe (Atemstillstand).",
+      D: "Bicarbonat und geladene Protonen können die Blut-Hirn-Schranke nur sehr langsam passieren; CO2 diffundiert lipophil ungehindert."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -1122,60 +1147,31 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     }
   },
 
-  // ---------------------------------------------------------------------------------
-  // Kapitel 10: Nervensystem & Hormonsystem (bio-09-nervensystem) - 4 Aufgaben
-  // ---------------------------------------------------------------------------------
-  {
-    id: "BIO-BMS-GP5-037",
-    subject: "BIO",
-    section: "BMS",
-    primary_topic: "Nervensystem",
-    subtopic: "Ruhemembranpotenzial & Na+/K+-ATPase",
-    difficulty: "intermediate",
-    stem: "Welcher Ionenstrom und welcher Transporter sind primär für die Entstehung und dauerhafte Aufrechterhaltung des negativen Ruhemembranpotenzials (ca. -70 mV) eines menschlichen Neurons verantwortlich?",
-    options: {
-      A: "Ein kontinuierlicher Einstrom von Natriumionen durch spannungsabhängige Natriumkanäle",
-      B: "Ein passiver K+-Ausstrom durch K+-Leckkanäle entlang des chemischen Gradienten sowie die elektrogene Na+/K+-ATPase (3 Na+ nach außen / 2 K+ nach innen)",
-      C: "Ein aktiver Calciumaustausch über den sarcoplasmatischen Ryanodin-Rezeptor",
-      D: "Ein elektrogener Ausstrom von Chloridionen über GABA-A-Rezeptoren",
-      E: "Die vollständige Impermeabilität der Zellmembran für sämtliche anorganischen Kationen"
-    },
-    correct_answer: "B",
-    explanation_correct: "Das Ruhemembranpotenzial menschlicher Nervenzellen (ca. -70 bis -80 mV) beruht auf zwei Grundprinzipien: 1. Konzentrationsgradienten: Die Na+/K+-ATPase pumpt aktiv unter ATP-Verbrauch 3 Na+-Ionen aus der Zelle heraus und 2 K+-Ionen in die Zelle hinein, wodurch intrazellulär eine hohe K+-Konzentration (~140 mM) und extrazellulär eine hohe Na+-Konzentration (~145 mM) etabliert wird. 2. Selektive Membranpermeabilität: Im Ruhezustand ist die Membran durch konstitutiv geöffnete K+-Leckkanäle (z. B. K2P-Kanäle) weit überwiegend für K+-Ionen permeabel. K+ diffundiert entlang seines Konzentrationsgradienten nach außen, wodurch positive Ladung exportiert wird und das Zellinnere negativ geladen zurückbleibt, bis sich ein elektrochemisches Gleichgewicht (nahe dem K+-Gleichgewichtspotenzial nach Nernst bei ca. -90 mV) einstellt.",
-    explanations_incorrect: {
-      A: "Na+-Einstrom depolarisiert die Zelle (Aktionspotenzial), baut aber kein negatives Ruhepotenzial auf.",
-      C: "Ryanodin-Rezeptoren setzen Calcium aus dem ER/SR frei und regulieren die Muskelkontraktion, nicht das neuronale Ruhepotenzial.",
-      D: "GABA-A-Rezeptoren sind ligandengesteuerte Ionenkanäle, die bei Aktivierung zu einem Cl--Einstrom (Hyperpolarisation) führen, steuern aber nicht das konstitutive Ruhepotenzial.",
-      E: "Wäre die Membran völlig impermeabel, gäbe es keinen Ladungstransport und kein messbares Diffusionspotenzial."
-    },
-    metadata: {
-      author: "MedAT BMS Biology QC Engine",
-      status: "verified_medat_compliant",
-      version: "5.0_gp5"
-    }
-  },
+  // -------------------------------------------------------------
+  // Kapitel 9: Nervensystem & Sinnesorgane (bio-09-nervensystem) - 3 Aufgaben
+  // -------------------------------------------------------------
   {
     id: "BIO-BMS-GP5-038",
     subject: "BIO",
     section: "BMS",
     primary_topic: "Nervensystem",
-    subtopic: "Chemische Synapse & SNARE-Komplex",
-    difficulty: "advanced",
-    stem: "Welches Protein fungiert an der präsynaptischen Membran als primärer Calciumsensor für die Auslösung der schnellen synaptischen Vesikelexozytose?",
+    subtopic: "Ruhemembranpotenzial & Aktionspotenzial",
+    difficulty: "foundational",
+    stem: "Welche Ionenleitfähigkeit ist primär für das negative Ruhemembranpotenzial (ca. -70 mV) eines menschlichen Neurons verantwortlich, und welcher Mechanismus leitet die rasche Depolarisationsphase des Aktionspotenzials ein?",
     options: {
-      A: "Syntaxin-1, das durch Spaltung von GTP die Vesikelmembran öffnet",
-      B: "Clathrin, welches die Exozytoseporen durch Gitterbildung aufweitet",
-      C: "Synaptotagmin-1, das bei Bindung von Ca2+ eine Konformationsänderung erfährt und den SNARE-Komplex zur Membranfusion antreibt",
-      D: "Acetylcholinesterase, die Calcium direkt in die synaptische Endigung transportiert",
-      E: "Myelin basic protein (MBP), das die präsynaptische Membran elektrisch depolarisiert"
+      A: "Das Ruhepotenzial beruht auf Natriumausstrom; die Depolarisation wird durch Öffnung spannungsabhängiger Chloridkanäle eingeleitet.",
+      B: "Das Ruhepotenzial beruht ausschließlich auf Calciumeinstrom; die Depolarisation wird durch Schließen aller Ionenkanäle bewirkt.",
+      C: "Das Ruhepotenzial wird primär durch die hohe Kaliumruhepermeabilität (K+-Hintergrundkanäle) dominiert; die Depolarisation beruht auf dem schlagartigen Einstrom von Na+ durch spannungsabhängige Natriumkanäle.",
+      D: "Das Ruhepotenzial liegt bei +60 mV; die Depolarisation bringt das Potenzial auf -100 mV durch K+-Einstrom.",
+      E: "Das Ruhepotenzial wird durch den aktiven Einstrom von Proteinanionen aus dem Extrazellulärraum erzeugt."
     },
     correct_answer: "C",
-    explanation_correct: "An der chemischen Synapse sind synaptische Vesikel über den v-SNARE-Partner (Synaptobrevin / VAMP) und t-SNAREs (Syntaxin-1 und SNAP-25) an der aktiven Zone der präsynaptischen Plasmamembran vorverankert (Docking & Priming). Trifft ein Aktionspotenzial ein, öffnen sich spannungsgesteuerte Ca2+-Kanäle (Cav2.1/Cav2.2), und Ca2+ strömt lokal massiv ein. Synaptotagmin-1, ein integrales Vesikelprotein mit zwei zytoplasmatischen C2-Domänen, bindet kooperativ bis zu 5 Ca2+-Ionen. Dies induziert eine rasche Konformationsänderung und Insertion in die Plasmamembran, wodurch der SNARE-Komplex vollständig verdrillt wird und die Fusionspore in Bruchteilen einer Millisekunde zur Transmitterfreisetzung aufreißt.",
+    explanation_correct: "Das Ruhemembranpotenzial einer Nervenzelle liegt bei ca. -70 mV (Zellinneres negativ gegenüber Zelläußerem). Es resultiert aus den asymmetrischen Ionenkonzentrationen (innen: viel K+, wenig Na+, wenig Cl-, viele nicht-permeable Proteinanionen; außen: viel Na+, viel Cl-, wenig K+) und den unterschiedlichen Membranleitfähigkeiten im Ruhezustand: Die Membran ist im Ruhezustand vor allem für Kaliumionen durchlässig (offene K+-Einwärtsgleichrichter- bzw. Hintergrund-Leak-Kanäle). K+ diffundiert seinem Konzentrationsgradienten folgend nach außen, bis das elektrische Gegenfeld den Diffusionsdruck kompensiert (Kaliumdiffusionspotenzial nach der Nernst-Gleichung). Die Na+/K+-ATPase erhält die Gradienten unter ATP-Spaltung aufrecht. Überschreitet ein Reiz am Axonhügel das Schwellenpotenzial (ca. -50 bis -55 mV), öffnen sich schlagartig spannungsabhängige Natriumkanäle. Natrium strömt massiv entlang seines elektrischen und chemischen Gradienten ein, was zur steilen Depolarisation und zum Overshoot (+30 mV) führt.",
     explanations_incorrect: {
-      A: "Syntaxin-1 ist ein t-SNARE-Protein der Plasmamembran; es spaltet kein GTP.",
-      B: "Clathrin ist an der rezeptorvermittelten Endozytose (Vesikel-Recycling) beteiligt, nicht an der schnellen Exozytose.",
-      D: "Acetylcholinesterase baut Acetylcholin im synaptischen Spalt ab, ist aber kein Calciumsensor oder Transporter.",
-      E: "MBP ist ein Strukturprotein der Myelinscheide von Oligodendrozyten und Schwann-Zellen."
+      A: "Natrium strömt bei Depolarisation ein (nicht aus); Chloridkanäle erzeugen typischerweise inhibitorische Hyperpolarisationen (IPSP).",
+      B: "Calciumeinstrom ist für die Transmitterfreisetzung an der Synapse wichtig, erzeugt aber nicht das neuronale Ruhepotenzial.",
+      D: "Das Ruhepotenzial ist negativ (-70 mV); Depolarisation verschiebt das Potenzial ins Positive (Richtung +30 mV).",
+      E: "Proteinanionen sind impermeabel im Zytosol gefangen und werden nicht aus dem Extrazellulärraum importiert."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -1188,23 +1184,23 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     subject: "BIO",
     section: "BMS",
     primary_topic: "Nervensystem",
-    subtopic: "Hormonsystem: Signaltransduktion hydrophiler vs. lipophiler Hormone",
-    difficulty: "intermediate",
-    stem: "Welcher grundsätzliche Unterschied besteht im Wirkungsmechanismus zwischen hydrophilen Hormonen (z. B. Adrenalin, Glukagon, Insulin) und lipophilen Hormonen (z. B. Cortisol, Testosteron, Östradiol)?",
+    subtopic: "Chemische Synapse: Ca2+-Einstrom & SNARE-Komplex",
+    difficulty: "advanced",
+    stem: "Welche Abfolge molekularer Ereignisse führt an einer chemischen Synapse im Zentralnervensystem unmittelbar nach Eintreffen eines Aktionspotenzials zur Transmitterfreisetzung?",
     options: {
-      A: "Hydrophile Hormone passieren ungehindert die Lipiddoppelkombination der Plasmamembran und binden an zytosolische Chaperone",
-      B: "Lipophile Hormone binden ausschließlich an Ionenkanal-gekoppelte Membranrezeptoren und bewirken eine Depolarisation innerhalb von Millisekunden",
-      C: "Hydrophile Hormone binden an nukleäre Zinkfinger-Transkriptionsfaktoren, während lipophile Hormone nur über G-Proteine wirken",
-      D: "Hydrophile Hormone binden an membranständige Rezeptoren und wirken über sekundäre Botenstoffe (Second Messenger) oder Tyrosinkinasen, während lipophile Hormone die Plasmamembran durchqueren und an intrazelluläre Rezeptoren binden, die als Transkriptionsfaktoren die Genexpression modulieren",
-      E: "Lipophile Hormone werden im Blut frei ohne Bindungsproteine gelöst transportiert, während hydrophile Hormone an Albumin gekoppelt sein müssen"
+      A: "Das Aktionspotenzial öffnet spannungsabhängige Kaliumkanäle; K+-Einstrom spaltet Vesikelproteine enzymatisch in freie Neurotransmitter.",
+      B: "Die präsynaptische Depolarisation öffnet spannungsgesteuerte Calciumkanäle; der resultierende Ca2+-Einstrom aktiviert den Calciumsensor Synaptotagmin, was die SNARE-vermittelte Membranfusion und Exozytose der synaptischen Vesikel auslöst.",
+      C: "Neurotransmitter werden durch Transkription im synaptischen Spalt erst bei Depolarisation de novo synthetisiert.",
+      D: "Natriumionen strömen in den synaptischen Spalt und zerstören die postsynaptischen Rezeptoren zur Erregungsweiterleitung.",
+      E: "Die synaptischen Vesikel wandern per Endozytose zurück ins Soma, wo sie ihren Inhalt in den Zellkern entleeren."
     },
-    correct_answer: "D",
-    explanation_correct: "1. Hydrophile Hormone (Peptidhormone, Katecholamine) können die hydrophobe Phospholipid-Doppelschicht der Zellmembran nicht durchdringen. Sie binden an extrazelluläre Domänen membranständiger Rezeptoren: entweder G-Protein-gekoppelte Rezeptoren (GPCR, z. B. Glukagon, Adrenalin) unter Generierung von Second Messengern (cAMP, IP3, DAG, Ca2+) oder Rezeptor-Tyrosinkinasen (z. B. Insulin). Die Signalübertragung ist sehr schnell (Sekunden bis Minuten) über Phosphorylierungskaskaden. 2. Lipophile Hormone (Steroidhormone, Schilddrüsenhormone) diffundieren passiv durch die Plasmamembran. Sie binden im Zytoplasma oder Zellkern an nukleäre Rezeptoren. Der Hormon-Rezeptor-Komplex dimerisiert, bindet an spezifische DNA-Sequenzen (Hormone Response Elements, HRE) und wirkt direkt als Transkriptionsfaktor. Die Wirkung setzt verzögert ein (Stunden bis Tage), hält aber lange an.",
+    correct_answer: "B",
+    explanation_correct: "Die elektromechanische Kopplung an der chemischen Synapse vollzieht sich in exakt choreografierten Schritten: 1. Das über das Axon einlaufende Aktionspotenzial depolarisiert die präsynaptische Boutonmembran. 2. Dies führt zur raschen Öffnung spannungsgesteuerter Calciumkanäle (v. a. Ca_v2.1 [P/Q-Typ] und Ca_v2.2 [N-Typ]). 3. Calcium strömt entlang des steilen elektrochemischen Gradienten (extrazellulär ca. 1–2 mM vs. intrazellulär ca. 100 nM) lokal in die aktive Zone ein. 4. Ca2+ bindet mit hoher Affinität an den Calciumsensor Synaptotagmin-1 auf der Membran der angedockten synaptischen Vesikel. 5. Dies löst das vollständige Verdrillen des SNARE-Komplexes aus (v-SNARE Synaptobrevin/VAMP interagiert mit den t-SNAREs Syntaxin-1 und SNAP-25 auf der präsynaptischen Plasmamembran). Durch die freigesetzte Fusionsenergie verschmelzen Vesikel- und Plasmamembran innerhalb von Mikrosekunden und der Neurotransmitter (z. B. Glutamat) ergießt sich quantal in den synaptischen Spalt.",
     explanations_incorrect: {
-      A: "Hydrophile Hormone können die Membran nicht frei passieren.",
-      B: "Lipophile Hormone wirken primär genomisch über intrazelluläre Rezeptoren, nicht über Ionenkanäle.",
-      C: "Genau vertauscht: Nukleäre Zinkfinger-Rezeptoren sind typisch für Steroidhormone.",
-      E: "Lipophile Hormone benötigen Transporter im Blut (Albumin, SHBG, CBG); hydrophile Hormone sind frei im Plasma löslich."
+      A: "Kalium strömt bei Kanalöffnung aus der Zelle heraus und beendet die Depolarisation; es löst keine Exozytose aus.",
+      C: "Neurotransmitter sind bereits in synaptischen Vesikeln vorverpackt; Transkription/Translation ist viel zu langsam für synaptische Transmission.",
+      D: "Neurotransmitter binden spezifisch an postsynaptische Rezeptoren und zerstören diese nicht.",
+      E: "Vesikel verschmelzen per Exozytose an der präsynaptischen Membran; die Rückgewinnung erfolgt lokal über Clathrin-vermittelte Endozytose."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -1216,24 +1212,24 @@ export const RAW_GENERALPROBE_5_BIO_QUESTIONS: QcBioGp5QuestionRaw[] = [
     id: "BIO-BMS-GP5-040",
     subject: "BIO",
     section: "BMS",
-    primary_topic: "Human Body: Histology, Anatomy and Physiology",
-    subtopic: "Renin-Angiotensin-Aldosteron-System (RAAS)",
+    primary_topic: "Nervensystem",
+    subtopic: "Evolution: Homologiekriterien nach Remane",
     difficulty: "advanced",
-    stem: "Welche Reaktionskaskade und physiologischen Wirkungen kennzeichnen das Renin-Angiotensin-Aldosteron-System (RAAS) bei Abfall des systemischen Blutdrucks?",
+    stem: "Welche biologische Beziehung besteht zwischen dem Armskelett des Menschen, dem Grabbein des Maulwurfs und der Brustflosse des Bartenwals, und nach welchem Kriterium wird dies begründet?",
     options: {
-      A: "Die Leber sezerniert Renin; Renin spaltet Angiotensin II direkt in Aldosteron; Aldosteron hemmt die Natriumresorption im proximalen Tubulus",
-      B: "Der Hypophysenhinterlappen schüttet Angiotensinogen aus; ACE in der Leber wandelt es in Bradykinin um, was zu starker Vasodilatation führt",
-      C: "Die Macula densa hemmt die Reninausschüttung; Angiotensin I bindet an AT1-Rezeptoren und blockiert die Aldosteronfreisetzung",
-      D: "Die Nebennierenrinde sezerniert ACE; ACE spaltet Renin in Angiotensin I; Angiotensin I führt zur massiven Ausscheidung von Kalium und Wasser",
-      E: "Der juxtaglomeruläre Apparat der Niere sezerniert Renin; Renin spaltet Angiotensinogen zu Angiotensin I; das endotheliale ACE (vor allem der Lunge) spaltet Angiotensin I zu Angiotensin II; Angiotensin II bewirkt Vasokonstriktion und stimuliert in der Nebennierenrinde die Ausschüttung von Aldosteron"
+      A: "Es handelt sich um analoge Organe infolge konvergenter Anpassung an identische physikalische Fortbewegungsarten, begründet durch das Kriterium der gleichen Funktion.",
+      B: "Es handelt sich um atavistische Rudimente ohne genetischen Bezug zu Wirbeltieren.",
+      C: "Es handelt sich um chimäre Strukturen, die durch horizontalen Gentransfer zwischen Säugetieren und Vögeln entstanden sind.",
+      D: "Es handelt sich um homologe Organe infolge divergenter Entwicklung aus einer gemeinsamen Grundform; der anatomische Nachweis erfolgt primär über das Kriterium der Lage (identische Knochenreihenfolge: Humerus, Radius/Ulna, Karpalknochen, Metakarpalia, Phalangen).",
+      E: "Es handelt sich um vollkommen funktionslose Zufallsmutationen, die keinem der klassischen Kriterien von Remane genügen."
     },
-    correct_answer: "E",
-    explanation_correct: "Bei renaler Minderperfusion, Hyponatriämie oder Sympathikusaktivierung sezernieren die granulierten Zellen des juxtaglomerulären Apparates (JGA) der Niere das proteolytische Enzym Renin. Renin spaltet das von der Leber konstitutiv gebildete Plasmaprotein Angiotensinogen in das Dekapeptid Angiotensin I (Ang I). Im Kapillarendothel (besonders der Lungenstrombahn) wandelt das membranständige Angiotensin-Converting Enzyme (ACE) Ang I in das biologisch hochaktive Oktapeptid Angiotensin II um. Angiotensin II bindet an AT1-Rezeptoren und bewirkt: 1. Starke arterielle Vasokonstriktion (Blutdruckanstieg), 2. Stimulation der Aldosteron-Sekretion in der Zona glomerulosa der Nebennierenrinde (führt zu gesteigerter renaler Na+- und Wasserretention sowie K+-Ausscheidung), 3. Stimulation der ADH-Freisetzung im Hypophysenhinterlappen und Auslösung von Durstgefühl.",
+    correct_answer: "D",
+    explanation_correct: "Homologe Organe sind morphologische Strukturen verschiedener Taxa, die auf einen gemeinsamen evolutionären Vorfahren zurückgehen (divergente Evolution), auch wenn sie durch Anpassung an unterschiedliche Umweltbedingungen sekundär stark divergierende Funktionen ausüben (z. B. Greifhand des Menschen, Grabschaufel des Maulwurfs, Schwimmflosse des Wals, Flugflügel der Fledermaus). Der wissenschaftliche Nachweis der Homologie erfolgt nach den drei Kriterien von Remane: 1. Kriterium der Lage: Strukturen sind homolog, wenn sie in einem vergleichbaren Gefügesystem die gleiche relative Lage einnehmen. Alle Tetrapodenvorderextremitäten weisen trotz extremer Größen- und Formunterschiede denselben Grundbauplan auf (proximal ein Oberarmknochen [Humerus], zwei Unterarmknochen [Radius und Ulna], Handwurzelknochen [Carpalia], Mittelhandknochen [Metacarpalia] und Fingerknochen [Phalangen]). 2. Kriterium der spezifischen Qualität (Feinbau). 3. Kriterium der Kontinuität (fossile oder ontogenetische Übergangsformen). Analoge Organe (wie Insekten- und Vogelflügel) hingegen entstehen durch konvergente Evolution bei ähnlichen Umweltanforderungen ohne gemeinsamen Bauplan.",
     explanations_incorrect: {
-      A: "Renin stammt aus der Niere (nicht der Leber); Aldosteron stimuliert die Na+-Resorption im Sammelrohr, hemmt sie nicht.",
-      B: "Angiotensinogen stammt aus der Leber; ACE inaktiviert Bradykinin, erzeugt es nicht.",
-      C: "Niedriger NaCl-Gehalt an der Macula densa stimuliert (nicht hemmt) die Reninausschüttung.",
-      D: "ACE stammt aus Endothelzellen (v. a. Lunge), nicht aus der Nebennierenrinde; Angiotensin II (nicht Ang I) ist das primäre Effektorpeptid."
+      A: "Flosse, Grabbein und Arm sind homolog, nicht analog; analoge Organe beruhen auf Konvergenz ohne gemeinsamen anatomischen Bauplan.",
+      B: "Es sind funktionstüchtige, hochentwickelte Extremitäten und keine atavistischen Rudimente.",
+      C: "Horizontaler Gentransfer spielt bei der Entstehung des Wirbeltierskeletts keine Rolle; die Ähnlichkeit beruht auf vertikaler Abstammung.",
+      E: "Das Extremitätenskelett der Landwirbeltiere ist das klassische Paradebeispiel für das Homologiekriterium der Lage nach Remane."
     },
     metadata: {
       author: "MedAT BMS Biology QC Engine",
@@ -1252,11 +1248,8 @@ function mapChapterId(primaryTopic: string, subtopic: string): string {
       if (subtopic.includes("Nervensystem") || subtopic.includes("Achse") || subtopic.includes("Cortisol")) {
         return "bio-09-nervensystem";
       }
-      if (subtopic.includes("Niere") || subtopic.includes("Filtration") || subtopic.includes("Sammelrohr") || subtopic.includes("Henle")) {
-        return "bio-08-atmung";
-      }
-      if (subtopic.includes("RAAS") || subtopic.includes("Renin")) {
-        return "bio-07-herzkreislauf";
+      if (subtopic.includes("Niere") || subtopic.includes("Filtration") || subtopic.includes("Sammelrohr")) {
+        return "bio-02-koerper";
       }
       return "bio-02-koerper";
     case "Early Human Development":
@@ -1274,8 +1267,6 @@ function mapChapterId(primaryTopic: string, subtopic: string): string {
       return "bio-08-atmung";
     case "Nervensystem":
       return "bio-09-nervensystem";
-    case "Immunobiology":
-      return "bio-02-koerper";
     default:
       return "bio-01-zelle";
   }

@@ -180,7 +180,7 @@ export const OFFICIAL_MOCKS: MockExamDefinition[] = [
     sectionsText: "BMS (94) · TV (12) · KFF (75) · SEK (40)",
     questionCount: 221,
     difficulty: "Original MedAT-Niveau",
-    bestFor: "Fünfter vollständiger Prüfungsdurchlauf zur Festigung der Teststrategie",
+    bestFor: "Fünfter vollständiger Prüfungsdurchlauf zur Festigung aller Kompetenzen",
     potentialBoost: "Testtag-Modus",
     tags: ["GENERALPROBE", "ORIGINAL ÜBUNGSAUFGABEN", "HUMANMEDIZIN"],
     premium: true,

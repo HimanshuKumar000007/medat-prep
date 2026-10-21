@@ -1007,7 +1007,7 @@ export function buildGeneralprobe5Dataset(): GeneralprobeDataset {
 
   const fz = buildFzSimulationQuestions(5);
   const gmCards = buildGmSimulationCards(5);
-  const gmRecallQuestions = [...RAW_GENERALPROBE_1_GM_QUESTIONS];
+  const gmRecallQuestions = [...RAW_GENERALPROBE_4_GM_QUESTIONS];
   const gmStoredQuestions = buildGmSimulationQuestions(5);
   const zf = buildZfSimulationQuestions(5);
   const wf = buildWfSimulationQuestions(5);
