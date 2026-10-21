@@ -108,6 +108,39 @@ export default async function handler(req, res) {
       }
     }
 
+    // Also check completed payments (e.g. annual or one-time lifetime passes)
+    const { data: payment } = await supabase
+      .from("medat_payments")
+      .select("status, created_at, product_id, price_id")
+      .eq("user_id", userId)
+      .in("status", ["completed", "paid"])
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (!isPro && payment && payment.created_at) {
+      const paymentDate = new Date(payment.created_at).getTime();
+      const oneYearMs = 365 * 24 * 60 * 60 * 1000;
+      if (Date.now() - paymentDate < oneYearMs) {
+        isPro = true;
+        tier = "premium";
+        status = "active";
+        expiresAt = new Date(paymentDate + oneYearMs).toISOString();
+
+        // Self-heal profile
+        await supabase
+          .from("medat_user_profiles")
+          .update({
+            is_pro: true,
+            subscription_tier: "premium",
+            subscription_status: "active",
+            pro_expires_at: expiresAt,
+            updated_at: new Date().toISOString(),
+          })
+          .eq("user_id", userId);
+      }
+    }
+
     // Double check expiration
     if (expiresAt && new Date(expiresAt).getTime() < Date.now()) {
       isPro = false;

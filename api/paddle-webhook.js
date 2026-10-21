@@ -87,10 +87,10 @@ export function verifyPaddleSignature(rawBody, signatureHeader, secret = PADDLE_
     return { valid: false, reason: "signature_mismatch" };
   }
 
-  // Check timestamp drift (5 minutes = 300 seconds)
+  // Check timestamp drift (allowing up to 10 minutes = 600 seconds for network delay and retries)
   const currentTs = Math.floor(Date.now() / 1000);
   const drift = Math.abs(currentTs - Number(ts));
-  if (drift > 300) {
+  if (drift > 600) {
     // Flag timestamp drift, but don't strictly fail if simulated/test unless in live production
     if (PADDLE_ENV === "production") {
       return { valid: false, reason: "timestamp_expired", drift };
@@ -171,16 +171,46 @@ export async function processPaddleWebhookEvent(eventPayload, supabaseClient) {
       resolvedUserId = profile.user_id;
       console.info(`[Paddle Webhook] Resolved user_id ${resolvedUserId} from email lookup.`);
     } else {
-      // Fallback: check auth.users table directly
-      const { data: authUser } = await supabaseClient
-        .from("auth.users")
-        .select("id")
-        .ilike("email", customerEmail)
-        .maybeSingle()
-        .catch(() => ({ data: null }));
+      // Fallback: search auth users via admin API
+      try {
+        const { data: authData } = await supabaseClient.auth.admin.listUsers();
+        const authUser = authData?.users?.find(
+          (u) => u.email?.toLowerCase() === customerEmail.toLowerCase()
+        );
+        if (authUser?.id) {
+          resolvedUserId = authUser.id;
+          console.info(`[Paddle Webhook] Resolved user_id ${resolvedUserId} from admin auth lookup.`);
+        }
+      } catch (authErr) {
+        console.warn("[Paddle Webhook] Admin auth lookup failed:", authErr?.message);
+      }
+    }
+  }
 
-      if (authUser?.id) {
-        resolvedUserId = authUser.id;
+  // Fallback by customer_id if user_id still not resolved
+  const paddleCustId = data.customer_id || data.customer?.id || null;
+  if (!resolvedUserId && paddleCustId) {
+    const { data: existingPay } = await supabaseClient
+      .from("medat_payments")
+      .select("user_id")
+      .eq("paddle_customer_id", paddleCustId)
+      .limit(1)
+      .maybeSingle();
+
+    if (existingPay?.user_id) {
+      resolvedUserId = existingPay.user_id;
+      console.info(`[Paddle Webhook] Resolved user_id ${resolvedUserId} from prior customer_id payment history.`);
+    } else {
+      const { data: existingSub } = await supabaseClient
+        .from("medat_subscriptions")
+        .select("user_id")
+        .eq("paddle_customer_id", paddleCustId)
+        .limit(1)
+        .maybeSingle();
+
+      if (existingSub?.user_id) {
+        resolvedUserId = existingSub.user_id;
+        console.info(`[Paddle Webhook] Resolved user_id ${resolvedUserId} from prior customer_id subscription history.`);
       }
     }
   }
@@ -360,6 +390,37 @@ export async function processPaddleWebhookEvent(eventPayload, supabaseClient) {
 }
 
 /**
+ * Accurately extracts the raw incoming HTTP body byte-for-byte
+ * to guarantee cryptographic HMAC-SHA256 signature verification matches.
+ */
+async function getRawBody(req) {
+  if (typeof req.body === "string") {
+    return req.body;
+  }
+  if (Buffer.isBuffer(req.body)) {
+    return req.body.toString("utf8");
+  }
+  if (req.headers?.get && typeof req.text === "function") {
+    return await req.text();
+  }
+  if (typeof req.body === "object" && req.body !== null) {
+    return JSON.stringify(req.body);
+  }
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on("data", (chunk) => {
+      chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+    });
+    req.on("end", () => {
+      resolve(Buffer.concat(chunks).toString("utf8"));
+    });
+    req.on("error", (err) => {
+      reject(err);
+    });
+  });
+}
+
+/**
  * Universal Serverless Handler (Node.js & Edge compatible)
  */
 export default async function handler(req, res) {
@@ -395,31 +456,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 1. Extract raw body & signature
-    let rawBody = "";
-    let signatureHeader = "";
-
-    if (req.headers?.get) {
-      // Fetch / Web API standard (Edge runtime)
-      rawBody = await req.text();
-      signatureHeader = req.headers.get("paddle-signature") || "";
-    } else {
-      // Node.js HTTP Server standard
-      signatureHeader = req.headers["paddle-signature"] || "";
-      if (typeof req.body === "string") {
-        rawBody = req.body;
-      } else if (Buffer.isBuffer(req.body)) {
-        rawBody = req.body.toString("utf8");
-      } else if (typeof req.body === "object" && req.body !== null) {
-        rawBody = JSON.stringify(req.body);
-      } else {
-        rawBody = await new Promise((resolve) => {
-          let chunks = "";
-          req.on("data", (c) => (chunks += c));
-          req.on("end", () => resolve(chunks));
-        });
-      }
-    }
+    // 1. Extract raw body & signature header
+    const signatureHeader =
+      (req.headers?.get ? req.headers.get("paddle-signature") : req.headers?.["paddle-signature"]) || "";
+    const rawBody = await getRawBody(req);
 
     // 2. Verify Paddle Signature
     const verification = verifyPaddleSignature(rawBody, signatureHeader);
@@ -436,7 +476,7 @@ export default async function handler(req, res) {
     }
 
     // 3. Parse JSON Event Payload
-    const eventPayload = JSON.parse(rawBody);
+    const eventPayload = typeof rawBody === "object" ? rawBody : JSON.parse(rawBody);
 
     // 4. Initialize Supabase Admin Client
     const supabaseClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
@@ -466,3 +506,10 @@ export default async function handler(req, res) {
     });
   }
 }
+
+// Disable Vercel's automatic body parser so that raw HTTP payload bytes are preserved for HMAC signature check
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};

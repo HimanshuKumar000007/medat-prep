@@ -161,6 +161,33 @@ export async function fetchUserProfileFromSupabase(): Promise<UserProfile | null
       }
     }
 
+    // Reconcile with medat_payments if profile is not already marked pro (e.g. annual or one-time pass)
+    if (!profileData.is_pro) {
+      try {
+        const { data: pay } = await supabase
+          .from("medat_payments")
+          .select("status, created_at")
+          .eq("user_id", user.id)
+          .in("status", ["completed", "paid"])
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        if (pay && pay.created_at) {
+          const payDate = new Date(pay.created_at).getTime();
+          const oneYearMs = 365 * 24 * 60 * 60 * 1000;
+          if (Date.now() - payDate < oneYearMs) {
+            profileData.is_pro = true;
+            profileData.subscription_tier = "premium";
+            profileData.subscription_status = "active";
+            profileData.pro_expires_at = new Date(payDate + oneYearMs).toISOString();
+          }
+        }
+      } catch (payErr) {
+        console.warn("[dbSync] Payment reconciliation query warning:", payErr);
+      }
+    }
+
     return sanitizeUserProfile(profileData, user);
   } catch (err) {
     console.warn("Could not fetch user profile from Supabase:", err);
@@ -210,6 +237,33 @@ export async function checkUserEntitlement(userId?: string): Promise<{
         tier = "premium";
         status = sub.status;
         expiresAt = sub.current_period_end;
+      }
+    }
+
+    // Also check completed payments if not active from subscription
+    if (!isPro) {
+      try {
+        const { data: pay } = await supabase
+          .from("medat_payments")
+          .select("status, created_at")
+          .eq("user_id", user.id)
+          .in("status", ["completed", "paid"])
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        if (pay && pay.created_at) {
+          const payDate = new Date(pay.created_at).getTime();
+          const oneYearMs = 365 * 24 * 60 * 60 * 1000;
+          if (Date.now() - payDate < oneYearMs) {
+            isPro = true;
+            tier = "premium";
+            status = "active";
+            expiresAt = new Date(payDate + oneYearMs).toISOString();
+          }
+        }
+      } catch (payErr) {
+        console.warn("[dbSync] checkUserEntitlement payment fallback warning:", payErr);
       }
     }
 
