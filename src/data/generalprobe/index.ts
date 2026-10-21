@@ -52,7 +52,6 @@ export * from "./generalprobe4IeQuestions";
 export * from "./generalprobe4EeQuestions";
 export * from "./generalprobe4ErQuestions";
 export * from "./generalprobe4SeQuestions";
-export * from "./generalprobe5BiologyQuestions";
 export * from "./useMockExamData";
 
 
