@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "../lib/supabase";
-import { clearUserLoggedOut, isUserLoggedIn, toast } from "../lib/core";
+import { clearUserLoggedOut, isUserLoggedIn, markUserLoggedOut, toast } from "../lib/core";
 import { LogoMark, IconCheck, IconArrowRight } from "../lib/icons";
 import {
   UNIVERSITIES,
@@ -60,6 +60,20 @@ export default function PreLoginOnboarding() {
 
   // If user is already logged in, redirect them directly to the dashboard
   useEffect(() => {
+    const search = location.search || "";
+    const hash = window.location.hash || "";
+    const winSearch = typeof window !== "undefined" ? window.location.search : "";
+    const isResetSuccess =
+      search.includes("reset=success") ||
+      hash.includes("reset=success") ||
+      winSearch.includes("reset=success") ||
+      sessionStorage.getItem("medat_reset_success") === "true";
+
+    if (isResetSuccess) {
+      markUserLoggedOut();
+      return;
+    }
+
     if (isLoggedIn || isUserLoggedIn()) {
       navigate("/app", { replace: true });
       return;
@@ -76,7 +90,7 @@ export default function PreLoginOnboarding() {
         }
       });
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate, location]);
 
   const checkIsDirectLogin = () => {
     if (typeof window === "undefined") return false;
@@ -128,19 +142,68 @@ export default function PreLoginOnboarding() {
   const [authError, setAuthError] = useState<string | null>(null);
   const [resetSuccess, setResetSuccess] = useState(false);
   const [resetEmailSentTo, setResetEmailSentTo] = useState("");
+  const [passwordResetCompleted, setPasswordResetCompleted] = useState(false);
 
   useEffect(() => {
     const search = location.search || "";
     const hash = location.hash || "";
-    if (search.includes("mode=update-password") || hash.includes("type=recovery")) {
-      setStep(6);
-      setAuthMode("update-password");
-    } else if (checkIsDirectSignup()) {
-      setStep(6);
-      setAuthMode("signup");
-    } else if (checkIsDirectLogin()) {
+    const winSearch = typeof window !== "undefined" ? window.location.search : "";
+    const winHash = typeof window !== "undefined" ? window.location.hash : "";
+
+    const isResetSuccess =
+      search.includes("reset=success") ||
+      hash.includes("reset=success") ||
+      winSearch.includes("reset=success") ||
+      winHash.includes("reset=success") ||
+      sessionStorage.getItem("medat_reset_success") === "true";
+
+    if (isResetSuccess) {
+      setPasswordResetCompleted(true);
       setStep(6);
       setAuthMode("login");
+      try {
+        sessionStorage.removeItem("medat_reset_success");
+      } catch (_) {}
+    }
+
+    // Extract email to prefill if present in query or sessionStorage
+    let targetEmail = "";
+    const searchParams = new URLSearchParams(search);
+    if (searchParams.get("email")) {
+      targetEmail = searchParams.get("email")!;
+    } else {
+      const winParams = new URLSearchParams(winSearch);
+      if (winParams.get("email")) {
+        targetEmail = winParams.get("email")!;
+      } else {
+        const hashQuery = hash.includes("?") ? hash.split("?")[1] : "";
+        const hashParams = new URLSearchParams(hashQuery);
+        if (hashParams.get("email")) {
+          targetEmail = hashParams.get("email")!;
+        } else {
+          targetEmail = sessionStorage.getItem("medat_prefill_email") || "";
+        }
+      }
+    }
+
+    if (targetEmail) {
+      setEmail(targetEmail.trim());
+      try {
+        sessionStorage.removeItem("medat_prefill_email");
+      } catch (_) {}
+    }
+
+    if (!isResetSuccess) {
+      if (search.includes("mode=update-password") || hash.includes("type=recovery")) {
+        setStep(6);
+        setAuthMode("update-password");
+      } else if (checkIsDirectSignup()) {
+        setStep(6);
+        setAuthMode("signup");
+      } else if (checkIsDirectLogin()) {
+        setStep(6);
+        setAuthMode("login");
+      }
     }
   }, [location]);
 
@@ -1095,6 +1158,20 @@ export default function PreLoginOnboarding() {
                   </form>
                 ) : (
                   <form onSubmit={handleAuthSubmit} className="space-y-4">
+                    {passwordResetCompleted && authMode === "login" && (
+                      <div className="rounded-2xl border border-emerald-500/30 bg-emerald-50/90 p-4 text-center shadow-xs animate-fade-in mb-3">
+                        <div className="flex items-center justify-center gap-2 text-emerald-800 font-bold text-[15px]">
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-white text-xs font-black shadow-xs">
+                            ✓
+                          </span>
+                          Passwort erfolgreich geändert!
+                        </div>
+                        <p className="mt-1 text-xs text-emerald-700 font-medium leading-relaxed">
+                          Bitte melde dich mit deinem neuen Passwort an. Deine E-Mail-Adresse wurde bereits eingetragen.
+                        </p>
+                      </div>
+                    )}
+
                     {authError && (
                       <div className="rounded-xl border border-primary/30 bg-primary-muted/60 p-4 text-center text-[13.5px] font-medium text-primary space-y-2 shadow-xs">
                         <div>{authError}</div>

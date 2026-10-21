@@ -34,22 +34,42 @@ export default async function handler(req, res) {
 
     const cleanEmail = email.trim().toLowerCase();
 
-    // 1. Find user by email in Supabase Auth
+    // 1. Find user by email (Primary: direct profile lookup for instant O(1) resolution)
     let targetUser = null;
-    let page = 1;
-    let hasMore = true;
+    try {
+      const { data: profile } = await supabaseAdmin
+        .from("medat_user_profiles")
+        .select("user_id, email, name")
+        .ilike("email", cleanEmail)
+        .maybeSingle();
 
-    while (hasMore && !targetUser && page <= 5) {
-      const { data, error } = await supabaseAdmin.auth.admin.listUsers({
-        page,
-        perPage: 50,
-      });
+      if (profile?.user_id) {
+        const { data: uData } = await supabaseAdmin.auth.admin.getUserById(profile.user_id);
+        if (uData?.user) {
+          targetUser = uData.user;
+        }
+      }
+    } catch (lookupErr) {
+      console.warn("Profile table lookup note:", lookupErr);
+    }
 
-      if (error || !data?.users) break;
+    // Fallback: Paginated listUsers scan if not in profiles table
+    if (!targetUser) {
+      let page = 1;
+      let hasMore = true;
 
-      targetUser = data.users.find((u) => u.email && u.email.toLowerCase() === cleanEmail);
-      if (data.users.length < 50) hasMore = false;
-      page++;
+      while (hasMore && !targetUser && page <= 10) {
+        const { data, error } = await supabaseAdmin.auth.admin.listUsers({
+          page,
+          perPage: 50,
+        });
+
+        if (error || !data?.users) break;
+
+        targetUser = data.users.find((u) => u.email && u.email.toLowerCase() === cleanEmail);
+        if (data.users.length < 50) hasMore = false;
+        page++;
+      }
     }
 
     // Security best practice: don't disclose whether email exists

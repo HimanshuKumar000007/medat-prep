@@ -10,7 +10,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { dataOrchestrator } from "../orchestrator";
-import { clearUserLoggedOut, toast } from "../lib/core";
+import { markUserLoggedOut, clearUserLoggedOut, toast } from "../lib/core";
 import { LogoMark } from "../lib/icons";
 
 export default function ResetPasswordPage() {
@@ -204,30 +204,42 @@ export default function ResetPasswordPage() {
         }
 
         sessionStorage.removeItem("medat_reset_token");
-
-        // Auto sign-in if email returned
-        if (resData.email) {
+        const resolvedEmail = resData.email || email.trim() || "";
+        if (resolvedEmail) {
+          setEmail(resolvedEmail);
           try {
-            const { data: loginData } = await supabase.auth.signInWithPassword({
-              email: resData.email,
-              password: password.trim(),
-            });
-            if (loginData?.user?.id) {
-              dataOrchestrator.setUserId(loginData.user.id);
-              await dataOrchestrator.hydrateFromSupabase();
-            }
-          } catch (signInErr) {
-            console.warn("Auto sign-in note:", signInErr);
-          }
+            sessionStorage.setItem("medat_prefill_email", resolvedEmail);
+          } catch (_) {}
+        }
+        try {
+          sessionStorage.setItem("medat_reset_success", "true");
+        } catch (_) {}
+
+        // Strip ?token= from window.location.search if present
+        if (typeof window !== "undefined" && window.history?.replaceState) {
+          try {
+            const cleanUrl = `${window.location.origin}${window.location.pathname}${window.location.hash}`;
+            window.history.replaceState(null, "", cleanUrl);
+          } catch (_) {}
         }
 
+        // Clear any existing session so user lands on login page and logs in with new password
+        markUserLoggedOut();
+        try {
+          await supabase.auth.signOut({ scope: "local" });
+        } catch (_) {}
+        try {
+          localStorage.removeItem("medat_current_user_id");
+          localStorage.removeItem("medat_auth_token");
+        } catch (_) {}
+
         setIsSuccess(true);
-        clearUserLoggedOut();
         toast("Passwort erfolgreich aktualisiert! Bitte melde dich an.", "success");
 
+        const redirectUrl = `/onboarding?mode=login&reset=success${resolvedEmail ? `&email=${encodeURIComponent(resolvedEmail)}` : ""}`;
         setTimeout(() => {
-          navigate("/onboarding?mode=login", { replace: true });
-        }, 2200);
+          navigate(redirectUrl, { replace: true });
+        }, 2000);
         return;
       }
 
@@ -282,24 +294,46 @@ export default function ResetPasswordPage() {
         throw new Error("Auth session missing!");
       }
 
-      setIsSuccess(true);
       sessionStorage.removeItem("medat_recovery_pending");
       sessionStorage.removeItem("medat_recovery_access_token");
       sessionStorage.removeItem("medat_recovery_refresh_token");
       sessionStorage.removeItem("medat_recovery_error");
-      clearUserLoggedOut();
 
-      if (userId) {
-        dataOrchestrator.setUserId(userId);
-        await dataOrchestrator.hydrateFromSupabase();
+      const resolvedEmail = email.trim() || "";
+      if (resolvedEmail) {
+        try {
+          sessionStorage.setItem("medat_prefill_email", resolvedEmail);
+        } catch (_) {}
+      }
+      try {
+        sessionStorage.setItem("medat_reset_success", "true");
+      } catch (_) {}
+
+      // Strip query tokens from URL
+      if (typeof window !== "undefined" && window.history?.replaceState) {
+        try {
+          const cleanUrl = `${window.location.origin}${window.location.pathname}${window.location.hash}`;
+          window.history.replaceState(null, "", cleanUrl);
+        } catch (_) {}
       }
 
+      // Clear any existing session so user logs in with new password
+      markUserLoggedOut();
+      try {
+        await supabase.auth.signOut({ scope: "local" });
+      } catch (_) {}
+      try {
+        localStorage.removeItem("medat_current_user_id");
+        localStorage.removeItem("medat_auth_token");
+      } catch (_) {}
+
+      setIsSuccess(true);
       toast("Passwort erfolgreich aktualisiert! Bitte melde dich an.", "success");
 
-      // Smooth auto-redirect to login after 2.2 seconds
+      const redirectUrl = `/onboarding?mode=login&reset=success${resolvedEmail ? `&email=${encodeURIComponent(resolvedEmail)}` : ""}`;
       setTimeout(() => {
-        navigate("/onboarding?mode=login", { replace: true });
-      }, 2200);
+        navigate(redirectUrl, { replace: true });
+      }, 2000);
     } catch (err: unknown) {
       const rawMsg = err instanceof Error ? err.message : String(err);
       let userFriendly = "Fehler beim Aktualisieren des Passworts. Bitte fordere einen neuen Link an.";
@@ -426,7 +460,7 @@ export default function ResetPasswordPage() {
 
                 <div className="pt-2">
                   <Link
-                    to="/onboarding?mode=login"
+                    to={`/onboarding?mode=login&reset=success${email ? `&email=${encodeURIComponent(email)}` : ""}`}
                     replace
                     className="btn btn-primary w-full h-12 text-[15px] font-bold shadow-md hover:shadow-lg transition-all"
                   >

@@ -37,9 +37,19 @@ function Homepage() {
   const { isLoggedIn } = usePractice();
   const loggedIn = isLoggedIn || isUserLoggedIn();
 
+  const isResetSuccess =
+    typeof window !== "undefined" &&
+    (window.location.hash.includes("reset=success") ||
+      window.location.search.includes("reset=success") ||
+      sessionStorage.getItem("medat_reset_success") === "true");
+
   // If user arrives via password recovery link, route to reset-password with query intact
-  const hasToken = typeof window !== "undefined" && (window.location.hash.includes("token=") || window.location.search.includes("token="));
+  const hasToken =
+    !isResetSuccess &&
+    typeof window !== "undefined" &&
+    (window.location.hash.includes("token=") || window.location.search.includes("token="));
   const isRecoveryArrival =
+    !isResetSuccess &&
     typeof window !== "undefined" &&
     (hasToken ||
       window.location.hash.includes("type=recovery") ||
@@ -161,17 +171,23 @@ function AuthRedirectManager() {
     const s = window.location.search || "";
     const p = location.pathname || "";
 
-    const hasToken = h.includes("token=") || s.includes("token=");
+    const isResetSuccess =
+      h.includes("reset=success") ||
+      s.includes("reset=success") ||
+      sessionStorage.getItem("medat_reset_success") === "true";
+
+    const hasToken = !isResetSuccess && (h.includes("token=") || s.includes("token="));
     const isRecovery =
-      hasToken ||
-      h.includes("type=recovery") ||
-      s.includes("type=recovery") ||
-      p.includes("type=recovery") ||
-      p.startsWith("/access_token=") ||
-      p.startsWith("/error=") ||
-      h.includes("error_code=otp_expired") ||
-      h.includes("error=access_denied") ||
-      sessionStorage.getItem("medat_recovery_pending") === "true";
+      !isResetSuccess &&
+      (hasToken ||
+        h.includes("type=recovery") ||
+        s.includes("type=recovery") ||
+        p.includes("type=recovery") ||
+        p.startsWith("/access_token=") ||
+        p.startsWith("/error=") ||
+        h.includes("error_code=otp_expired") ||
+        h.includes("error=access_denied") ||
+        sessionStorage.getItem("medat_recovery_pending") === "true");
 
     if (isRecovery && !p.startsWith("/reset-password") && !p.startsWith("/passwort-zuruecksetzen")) {
       let tokenParam = "";
@@ -200,17 +216,23 @@ function CatchAllRoute() {
   const s = window.location.search || "";
   const p = location.pathname || "";
 
-  const hasToken = h.includes("token=") || s.includes("token=");
+  const isResetSuccess =
+    h.includes("reset=success") ||
+    s.includes("reset=success") ||
+    sessionStorage.getItem("medat_reset_success") === "true";
+
+  const hasToken = !isResetSuccess && (h.includes("token=") || s.includes("token="));
   if (
-    hasToken ||
-    h.includes("type=recovery") ||
-    s.includes("type=recovery") ||
-    p.includes("type=recovery") ||
-    p.startsWith("/access_token=") ||
-    p.startsWith("/error=") ||
-    h.includes("error_code=otp_expired") ||
-    h.includes("error=access_denied") ||
-    sessionStorage.getItem("medat_recovery_pending") === "true"
+    !isResetSuccess &&
+    (hasToken ||
+      h.includes("type=recovery") ||
+      s.includes("type=recovery") ||
+      p.includes("type=recovery") ||
+      p.startsWith("/access_token=") ||
+      p.startsWith("/error=") ||
+      h.includes("error_code=otp_expired") ||
+      h.includes("error=access_denied") ||
+      sessionStorage.getItem("medat_recovery_pending") === "true")
   ) {
     let tokenParam = "";
     if (s.includes("token=")) {

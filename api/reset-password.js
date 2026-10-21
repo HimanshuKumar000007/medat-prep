@@ -38,7 +38,7 @@ export default async function handler(req, res) {
     let page = 1;
     let hasMore = true;
 
-    while (hasMore && !matchedUser && page <= 5) {
+    while (hasMore && !matchedUser && page <= 10) {
       const { data, error } = await supabaseAdmin.auth.admin.listUsers({
         page,
         perPage: 50,
