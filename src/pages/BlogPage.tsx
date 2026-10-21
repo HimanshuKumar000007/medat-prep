@@ -61,6 +61,10 @@ export default function BlogPage() {
       navigate("/medat-vorbereitung");
       return;
     }
+    if (article.slug === "medat-kurs-vergleich" || article.slug === "beste-medat-vorbereitung") {
+      navigate("/medat-kurs-vergleich");
+      return;
+    }
     if (article.slug === "medat-2027-termine-fristen") {
       navigate("/medat-2027-termine-fristen");
       return;

@@ -21,6 +21,7 @@ import DisclaimerPage from "./pages/DisclaimerPage";
 import ImpressumPage from "./pages/ImpressumPage";
 import MedAT2027TerminePage from "./pages/MedAT2027TerminePage";
 import MedATVorbereitungGuidePage from "./pages/MedATVorbereitungGuidePage";
+import MedATKursVergleichPage from "./pages/MedATKursVergleichPage";
 import KFFStrategiePage from "./pages/KFFStrategiePage";
 import QuotenAnalysePage from "./pages/QuotenAnalysePage";
 import BMSMasterplanPage from "./pages/BMSMasterplanPage";
@@ -241,6 +242,11 @@ export default function App() {
             <Route path="/medat-vorbereitung-tipps" element={<MedATVorbereitungGuidePage />} />
             <Route path="/medat-lernen" element={<MedATVorbereitungGuidePage />} />
             <Route path="/vorbereitung" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/medat-kurs-vergleich" element={<MedATKursVergleichPage />} />
+            <Route path="/medat-vorbereitungskurs-vergleich" element={<MedATKursVergleichPage />} />
+            <Route path="/beste-medat-vorbereitung" element={<MedATKursVergleichPage />} />
+            <Route path="/warum-medat-prep" element={<MedATKursVergleichPage />} />
+            <Route path="/kurs-vergleich" element={<MedATKursVergleichPage />} />
             <Route path="/medat-2027-termine-fristen" element={<MedAT2027TerminePage />} />
             <Route path="/medat-2027-termine" element={<MedAT2027TerminePage />} />
             <Route path="/termine-2027" element={<MedAT2027TerminePage />} />

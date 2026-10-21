@@ -101,6 +101,56 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     tags: ["MedAT Vorbereitung", "Lernplan", "BMS", "KFF", "Strategie", "Quoten", "Generalprobe"],
   },
   {
+    id: "art-promo",
+    slug: "medat-kurs-vergleich",
+    index: "01",
+    category: "Strategie",
+    title: "MedAT Vorbereitungskurse im Vergleich 2027: Warum 1.500 € Kurse ausgedient haben",
+    subtitle: "Frontalunterricht vs. smarte Lernsoftware: Der große Härtetest aller Vorbereitungsmethoden — und wie du mit MedAT Prep ab 0 € bestehst.",
+    meta: "Methoden-Check · 10 Min. Lesezeit",
+    readTime: "10 Min.",
+    publishedDate: "10. Februar 2027",
+    author: {
+      name: "Dr. Maximilian Gruber",
+      role: "MedAT-Cheftutor & Absolvent MedUni Wien",
+      avatar: "MG",
+    },
+    summary:
+      "Lohnt sich ein teurer MedAT-Vorbereitungskurs für 1.500 € bis 2.500 €? Der schonungslose Vergleich von Präsenzkursen, Lehrbüchern und MedAT Prep. Inklusive Ersparnisrechner und Qualitätskriterien.",
+    keyTakeaways: [
+      "Ersparnis: Bis zu 2.000 € gespart gegenüber traditionellen Präsenzkursen",
+      "Didaktik: Active Recall und Live-Stoppuhr (47,9 Sek./Frage) schlagen passiven Frontalunterricht",
+      "KFF-Software: Dynamische Simulatoren generieren endlose Zahlenfolgen und Loci-Ausweise",
+      "Generalproben: 4 vollständige 5,5-Std.-Mocks mit echten Perzentilrängen",
+    ],
+    sections: [
+      {
+        heading: "1. Das Geschäft mit der Prüfungsangst",
+        body: [
+          "Traditionelle Vorbereitungskurse verlangen oft 1.500 bis 2.500 Euro für 10 bis 14 Tage Frontalunterricht.",
+          "Passives Zuhören erzeugt die trügerische Illusion von Kompetenz. Am Testtag zählt jedoch nur selbstständiges, schnelles Lösen unter Stress.",
+        ],
+        callout: {
+          type: "warning",
+          title: "Achtung vor passiver Berieselung",
+          text: "Zwei Wochen Frontalvortrag in den Osterferien können monatelanges kognitives Training nicht ersetzen.",
+        },
+      },
+      {
+        heading: "2. Die 6 Kriterien für eine effektive Vorbereitung",
+        body: [
+          "1. Active Recall: Täglich Multiple-Choice-Fragen aktiv lösen.",
+          "2. Zeittaktung: Integrierter Countdown pro Frage.",
+          "3. KFF-Simulatoren: Aufgaben algorithmisch dynamisch generieren.",
+          "4. Fehlerjournal: Nur gezielt wiederholen, was noch falsch ist.",
+          "5. 4 Generalproben unter 1:1 Prüfungsbedingungen.",
+          "6. Volle Flexibilität auf Handy, Tablet und Laptop.",
+        ],
+      },
+    ],
+    tags: ["MedAT Kurs", "Vergleich", "Erfahrungen", "Kosten", "MedAT Prep", "Lernsoftware"],
+  },
+  {
     id: "art-1",
     slug: "medat-2027-termine-fristen",
     index: "01",
