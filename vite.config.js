@@ -125,4 +125,24 @@ export default defineConfig({
       port: 3000,
     },
   },
+  build: {
+    target: "es2020",
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 900,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("src/data/questions")) return "data-questions";
+          if (id.includes("src/data/generalprobe")) return "data-generalprobe";
+          if (id.includes("src/data/fz")) return "data-fz";
+          if (id.includes("node_modules/katex")) return "vendor-katex";
+          if (id.includes("node_modules/recharts")) return "vendor-recharts";
+          if (id.includes("node_modules/@supabase")) return "vendor-supabase";
+          if (id.includes("node_modules/framer-motion")) return "vendor-framer";
+          if (id.includes("node_modules/@dnd-kit")) return "vendor-dnd";
+          if (id.includes("node_modules/lucide-react")) return "vendor-icons";
+        },
+      },
+    },
+  },
 });

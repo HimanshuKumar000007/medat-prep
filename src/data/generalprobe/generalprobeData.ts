@@ -95,6 +95,15 @@ export {
   RAW_GENERALPROBE_4_BIO_QUESTIONS,
 } from "./generalprobe4BiologyQuestions";
 
+import {
+  GENERALPROBE_5_BIO_QUESTIONS,
+  RAW_GENERALPROBE_5_BIO_QUESTIONS,
+} from "./generalprobe5BiologyQuestions";
+export {
+  GENERALPROBE_5_BIO_QUESTIONS,
+  RAW_GENERALPROBE_5_BIO_QUESTIONS,
+} from "./generalprobe5BiologyQuestions";
+
 
 import { GENERALPROBE_1_CHEM_QUESTIONS } from "./generalprobe1ChemistryQuestions";
 export { GENERALPROBE_1_CHEM_QUESTIONS } from "./generalprobe1ChemistryQuestions";
@@ -523,6 +532,8 @@ export function buildBmsSimulationQuestions(simNumber: number = 1): StoredQuesti
     selectedBio = [...GENERALPROBE_3_BIO_QUESTIONS];
   } else if (simNumber === 4) {
     selectedBio = [...GENERALPROBE_4_BIO_QUESTIONS];
+  } else if (simNumber === 5) {
+    selectedBio = [...GENERALPROBE_5_BIO_QUESTIONS];
   } else {
     const bioChapters = [
       "bio-01-zelle",
@@ -987,7 +998,50 @@ export function buildGeneralprobe4Dataset(): GeneralprobeDataset {
 
 export const GENERALPROBE_4_DATASET = buildGeneralprobe4Dataset();
 
+/**
+ * Factory for complete Generalprobe #5
+ */
+export function buildGeneralprobe5Dataset(): GeneralprobeDataset {
+  const bms = buildBmsSimulationQuestions(5);
+  const tv = buildTvSimulationQuestions(5);
+
+  const fz = buildFzSimulationQuestions(5);
+  const gmCards = buildGmSimulationCards(5);
+  const gmRecallQuestions = [...RAW_GENERALPROBE_1_GM_QUESTIONS];
+  const gmStoredQuestions = buildGmSimulationQuestions(5);
+  const zf = buildZfSimulationQuestions(5);
+  const wf = buildWfSimulationQuestions(5);
+  const ie = buildIeSimulationQuestions(5);
+  const er = buildErSimulationQuestions(5);
+  const ee = buildEeSimulationQuestions(5);
+  const se = buildSeSimulationQuestions(5);
+
+  return {
+    id: "generalprobe-5",
+    simNumber: 5,
+    title: "MedAT-H Generalprobe #5",
+    subtitle: "Vollständige MedAT-H-Simulation mit originalgetreuen Aufgabensets",
+    bmsQuestions: bms,
+    tvQuestions: tv,
+    fzQuestions: fz,
+    gmCards,
+    zfQuestions: zf,
+    wfQuestions: wf,
+    gmRecallQuestions,
+    gmStoredQuestions,
+    ieQuestions: ie,
+    erQuestions: er,
+    eeQuestions: ee,
+    seQuestions: se,
+  };
+}
+
+export const GENERALPROBE_5_DATASET = buildGeneralprobe5Dataset();
+
 export function getGeneralprobeDataset(id: string = "generalprobe-1"): GeneralprobeDataset {
+  if (id === "generalprobe-5" || id === "mock-full-medat-h-5") {
+    return GENERALPROBE_5_DATASET;
+  }
   if (id === "generalprobe-4" || id === "mock-full-medat-h-4") {
     return GENERALPROBE_4_DATASET;
   }

@@ -1,0 +1,22 @@
+# MedAT Prep
+
+> Interaktive Vorbereitungsplattform für den österreichischen Medizin-Aufnahmetest (MedAT 2027) für Humanmedizin (MedAT-H) und Zahnmedizin (MedAT-Z) an den Medizinischen Universitäten Wien, Graz, Innsbruck und JKU Linz.
+
+MedAT Prep bietet über 5.000 Multiple-Choice-Fragen nach offiziellem VMC-Stichwortkatalog, interaktive KFF-Simulatoren (Zahlenfolgen, Loci-Methode für Gedächtnis & Merkfähigkeit, Figuren zusammensetzen, Wortflüssigkeit, Implikationen), adaptive Schwachstellen-Analyse (Spaced Repetition) und 4 vollwertige 5,5-stündige Generalproben unter realen Prüfungsbedingungen mit Perzentilrang-Auswertung.
+
+## Leitfäden & Ressourcen
+
+- [MedAT Vorbereitung 2027](https://medatprep.at/medat-vorbereitung): Der ultimative Leitfaden mit 16-Wochen-Masterplan, Fächergewichtung und Pacing-Rechner.
+- [Vorbereitungskurse im Vergleich 2027](https://medatprep.at/medat-kurs-vergleich): Transparenter Methodenvergleich von 1.500 € Kursen vs. Büchern vs. MedAT Prep mit Ersparnisrechner.
+- [BMS-Masterplan](https://medatprep.at/bms-masterplan-vorbereitung): Detaillierte Stoffanalyse für Biologie, Chemie, Physik und Mathematik nach VMC 2027.
+- [KFF-Strategie](https://medatprep.at/kff-strategie-schnellste-punkte): Taktik und Trainingsmethoden für die 5 kognitiven Subtests (40 % Gesamtscore).
+- [MedAT Termine & Fristen 2027](https://medatprep.at/medat-2027-termine-fristen): Internet-Anmeldung (1.–31. März), 110 € Kostenbeitrag und Testtag (2. Juli 2027).
+- [Quoten & Bewerberzahlen](https://medatprep.at/quoten-bewerberzahlen-analyse): Quotenmodell nach § 71b Universitätsgesetz (75 % AT, 20 % EU, 5 % Nicht-EU) und historische Grenzwerte.
+- [Textverständnis & SEK](https://medatprep.at/tv-sek-emotionen-textverstaendnis): Lesetechniken und Soziales Entscheiden nach Kohlberg.
+- [Testtag-Protokoll & Packliste](https://medatprep.at/testtag-protokoll-mentale-staerke): Vorschriften für das transparente Plastiksackerl und Pausenmanagement.
+
+## Rechtliches & Unternehmen
+
+- [Über uns](https://medatprep.at/ueber-uns): Ärztliches Team und Tutoren aus Wien.
+- [Datenschutz](https://medatprep.at/datenschutz): 100 % DSGVO-konforme Datenverarbeitung in Österreich/EU.
+- [Impressum](https://medatprep.at/impressum): Angaben gemäß § 5 ECG und österreichischem Recht.

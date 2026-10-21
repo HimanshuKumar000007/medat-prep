@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { HashRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -9,29 +9,42 @@ import Social from "./components/Social";
 import Pricing from "./components/Pricing";
 import Faq from "./components/Faq";
 import { CountdownCTA, Footer, Toast } from "./components/Closing";
-import Dashboard from "./dashboard/Dashboard";
-import PreLoginOnboarding from "./components/PreLoginOnboarding";
 import PremiumSuccessModal from "./components/PremiumSuccessModal";
-import BlogPage from "./pages/BlogPage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import TermsPage from "./pages/TermsPage";
-import DisclaimerPage from "./pages/DisclaimerPage";
-import ImpressumPage from "./pages/ImpressumPage";
-import MedAT2027TerminePage from "./pages/MedAT2027TerminePage";
-import MedATVorbereitungGuidePage from "./pages/MedATVorbereitungGuidePage";
-import MedATKursVergleichPage from "./pages/MedATKursVergleichPage";
-import KFFStrategiePage from "./pages/KFFStrategiePage";
-import QuotenAnalysePage from "./pages/QuotenAnalysePage";
-import BMSMasterplanPage from "./pages/BMSMasterplanPage";
-import TVSEKPage from "./pages/TVSEKPage";
-import TesttagProtokollPage from "./pages/TesttagProtokollPage";
-import ResetPasswordPage from "./pages/ResetPasswordPage";
 import { PracticeProvider, usePractice } from "./dashboard/practiceContext";
 import { isUserLoggedIn, track } from "./lib/core";
 import { LangBanner, LangProvider } from "./lib/i18n";
 import { supabase } from "./lib/supabase";
+
+// Lazy-loaded routes for optimal initial page-load performance
+const Dashboard = lazy(() => import("./dashboard/Dashboard"));
+const PreLoginOnboarding = lazy(() => import("./components/PreLoginOnboarding"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
+const DisclaimerPage = lazy(() => import("./pages/DisclaimerPage"));
+const ImpressumPage = lazy(() => import("./pages/ImpressumPage"));
+const MedAT2027TerminePage = lazy(() => import("./pages/MedAT2027TerminePage"));
+const MedATVorbereitungGuidePage = lazy(() => import("./pages/MedATVorbereitungGuidePage"));
+const MedATKursVergleichPage = lazy(() => import("./pages/MedATKursVergleichPage"));
+const KFFStrategiePage = lazy(() => import("./pages/KFFStrategiePage"));
+const QuotenAnalysePage = lazy(() => import("./pages/QuotenAnalysePage"));
+const BMSMasterplanPage = lazy(() => import("./pages/BMSMasterplanPage"));
+const TVSEKPage = lazy(() => import("./pages/TVSEKPage"));
+const TesttagProtokollPage = lazy(() => import("./pages/TesttagProtokollPage"));
+const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
+
+function PageFallback() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center bg-paper">
+      <div className="flex flex-col items-center gap-2.5">
+        <div className="h-7 w-7 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+        <span className="text-xs font-semibold text-ink-3">Wird geladen…</span>
+      </div>
+    </div>
+  );
+}
 
 function Homepage() {
   const { isLoggedIn } = usePractice();
@@ -234,72 +247,74 @@ export default function App() {
         <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <ScrollManager />
           <AuthRedirectManager />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/medat-vorbereitung" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-vorbereitung-guide" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-vorbereitung-tipps" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-lernen" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/vorbereitung" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-kurs-vergleich" element={<MedATKursVergleichPage />} />
-            <Route path="/medat-vorbereitungskurs-vergleich" element={<MedATKursVergleichPage />} />
-            <Route path="/beste-medat-vorbereitung" element={<MedATKursVergleichPage />} />
-            <Route path="/warum-medat-prep" element={<MedATKursVergleichPage />} />
-            <Route path="/kurs-vergleich" element={<MedATKursVergleichPage />} />
-            <Route path="/medat-2027-termine-fristen" element={<MedAT2027TerminePage />} />
-            <Route path="/medat-2027-termine" element={<MedAT2027TerminePage />} />
-            <Route path="/termine-2027" element={<MedAT2027TerminePage />} />
-            <Route path="/fristen" element={<MedAT2027TerminePage />} />
-            <Route path="/kff-strategie-schnellste-punkte" element={<KFFStrategiePage />} />
-            <Route path="/kff-strategie" element={<KFFStrategiePage />} />
-            <Route path="/kff-punkte" element={<KFFStrategiePage />} />
-            <Route path="/kff-training" element={<KFFStrategiePage />} />
-            <Route path="/kff" element={<KFFStrategiePage />} />
-            <Route path="/quoten-bewerberzahlen-analyse" element={<QuotenAnalysePage />} />
-            <Route path="/quoten" element={<QuotenAnalysePage />} />
-            <Route path="/bewerberzahlen" element={<QuotenAnalysePage />} />
-            <Route path="/grenzraenge" element={<QuotenAnalysePage />} />
-            <Route path="/bms-masterplan-vorbereitung" element={<BMSMasterplanPage />} />
-            <Route path="/bms-masterplan" element={<BMSMasterplanPage />} />
-            <Route path="/bms" element={<BMSMasterplanPage />} />
-            <Route path="/bms-lernplan" element={<BMSMasterplanPage />} />
-            <Route path="/tv-sek-emotionen-textverstaendnis" element={<TVSEKPage />} />
-            <Route path="/tv-sek" element={<TVSEKPage />} />
-            <Route path="/textverstaendnis" element={<TVSEKPage />} />
-            <Route path="/sek" element={<TVSEKPage />} />
-            <Route path="/testtag-protokoll-mentale-staerke" element={<TesttagProtokollPage />} />
-            <Route path="/testtag-protokoll" element={<TesttagProtokollPage />} />
-            <Route path="/testtag" element={<TesttagProtokollPage />} />
-            <Route path="/packliste" element={<TesttagProtokollPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/ueber-uns" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/kontakt" element={<ContactPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/datenschutz" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/agb" element={<TermsPage />} />
-            <Route path="/widerruf" element={<TermsPage />} />
-            <Route path="/cancellation" element={<TermsPage />} />
-            <Route path="/disclaimer" element={<DisclaimerPage />} />
-            <Route path="/haftungsausschluss" element={<DisclaimerPage />} />
-            <Route path="/impressum" element={<ImpressumPage />} />
-            <Route path="/imprint" element={<ImpressumPage />} />
-            <Route path="/reset-password" element={<ResetPasswordPage />} />
-            <Route path="/passwort-zuruecksetzen" element={<ResetPasswordPage />} />
-            <Route path="/passwort-aendern" element={<ResetPasswordPage />} />
-            <Route path="/update-password" element={<ResetPasswordPage />} />
-            <Route path="/access_token=*" element={<Navigate to="/reset-password" replace />} />
-            <Route path="/error=*" element={<Navigate to="/reset-password" replace />} />
-            <Route path="/login" element={<Navigate to="/onboarding?mode=login" replace />} />
-            <Route path="/register" element={<Navigate to="/onboarding?mode=signup" replace />} />
-            <Route path="/signup" element={<Navigate to="/onboarding?mode=signup" replace />} />
-            <Route path="/onboarding" element={<PreLoginOnboarding />} />
-            <Route path="/dashboard" element={<Navigate to="/app" replace />} />
-            <Route path="/app" element={<Dashboard />} />
-            <Route path="*" element={<CatchAllRoute />} />
-          </Routes>
+          <Suspense fallback={<PageFallback />}>
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/medat-vorbereitung" element={<MedATVorbereitungGuidePage />} />
+              <Route path="/medat-vorbereitung-guide" element={<MedATVorbereitungGuidePage />} />
+              <Route path="/medat-vorbereitung-tipps" element={<MedATVorbereitungGuidePage />} />
+              <Route path="/medat-lernen" element={<MedATVorbereitungGuidePage />} />
+              <Route path="/vorbereitung" element={<MedATVorbereitungGuidePage />} />
+              <Route path="/medat-kurs-vergleich" element={<MedATKursVergleichPage />} />
+              <Route path="/medat-vorbereitungskurs-vergleich" element={<MedATKursVergleichPage />} />
+              <Route path="/beste-medat-vorbereitung" element={<MedATKursVergleichPage />} />
+              <Route path="/warum-medat-prep" element={<MedATKursVergleichPage />} />
+              <Route path="/kurs-vergleich" element={<MedATKursVergleichPage />} />
+              <Route path="/medat-2027-termine-fristen" element={<MedAT2027TerminePage />} />
+              <Route path="/medat-2027-termine" element={<MedAT2027TerminePage />} />
+              <Route path="/termine-2027" element={<MedAT2027TerminePage />} />
+              <Route path="/fristen" element={<MedAT2027TerminePage />} />
+              <Route path="/kff-strategie-schnellste-punkte" element={<KFFStrategiePage />} />
+              <Route path="/kff-strategie" element={<KFFStrategiePage />} />
+              <Route path="/kff-punkte" element={<KFFStrategiePage />} />
+              <Route path="/kff-training" element={<KFFStrategiePage />} />
+              <Route path="/kff" element={<KFFStrategiePage />} />
+              <Route path="/quoten-bewerberzahlen-analyse" element={<QuotenAnalysePage />} />
+              <Route path="/quoten" element={<QuotenAnalysePage />} />
+              <Route path="/bewerberzahlen" element={<QuotenAnalysePage />} />
+              <Route path="/grenzraenge" element={<QuotenAnalysePage />} />
+              <Route path="/bms-masterplan-vorbereitung" element={<BMSMasterplanPage />} />
+              <Route path="/bms-masterplan" element={<BMSMasterplanPage />} />
+              <Route path="/bms" element={<BMSMasterplanPage />} />
+              <Route path="/bms-lernplan" element={<BMSMasterplanPage />} />
+              <Route path="/tv-sek-emotionen-textverstaendnis" element={<TVSEKPage />} />
+              <Route path="/tv-sek" element={<TVSEKPage />} />
+              <Route path="/textverstaendnis" element={<TVSEKPage />} />
+              <Route path="/sek" element={<TVSEKPage />} />
+              <Route path="/testtag-protokoll-mentale-staerke" element={<TesttagProtokollPage />} />
+              <Route path="/testtag-protokoll" element={<TesttagProtokollPage />} />
+              <Route path="/testtag" element={<TesttagProtokollPage />} />
+              <Route path="/packliste" element={<TesttagProtokollPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/ueber-uns" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/kontakt" element={<ContactPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/datenschutz" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/agb" element={<TermsPage />} />
+              <Route path="/widerruf" element={<TermsPage />} />
+              <Route path="/cancellation" element={<TermsPage />} />
+              <Route path="/disclaimer" element={<DisclaimerPage />} />
+              <Route path="/haftungsausschluss" element={<DisclaimerPage />} />
+              <Route path="/impressum" element={<ImpressumPage />} />
+              <Route path="/imprint" element={<ImpressumPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
+              <Route path="/passwort-zuruecksetzen" element={<ResetPasswordPage />} />
+              <Route path="/passwort-aendern" element={<ResetPasswordPage />} />
+              <Route path="/update-password" element={<ResetPasswordPage />} />
+              <Route path="/access_token=*" element={<Navigate to="/reset-password" replace />} />
+              <Route path="/error=*" element={<Navigate to="/reset-password" replace />} />
+              <Route path="/login" element={<Navigate to="/onboarding?mode=login" replace />} />
+              <Route path="/register" element={<Navigate to="/onboarding?mode=signup" replace />} />
+              <Route path="/signup" element={<Navigate to="/onboarding?mode=signup" replace />} />
+              <Route path="/onboarding" element={<PreLoginOnboarding />} />
+              <Route path="/dashboard" element={<Navigate to="/app" replace />} />
+              <Route path="/app" element={<Dashboard />} />
+              <Route path="*" element={<CatchAllRoute />} />
+            </Routes>
+          </Suspense>
           <PremiumSuccessModal />
           <Toast />
           <LangBanner />
