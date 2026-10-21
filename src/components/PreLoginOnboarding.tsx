@@ -1010,8 +1010,9 @@ export default function PreLoginOnboarding() {
                   </p>
                 </div>
 
-                {/* Google OAuth Button (Shown for login & signup) */}
-                {(authMode === "login" || authMode === "signup") && (
+                {/* Google OAuth Button (Hidden until Google OAuth credentials are configured in Supabase) */}
+                {/* To re-enable later, set false to true */}
+                {false && (authMode === "login" || authMode === "signup") && (
                   <>
                     <div className="mt-6">
                       <button
@@ -1157,7 +1158,7 @@ export default function PreLoginOnboarding() {
                     </button>
                   </form>
                 ) : (
-                  <form onSubmit={handleAuthSubmit} className="space-y-4">
+                  <form onSubmit={handleAuthSubmit} className="space-y-4 mt-6">
                     {passwordResetCompleted && authMode === "login" && (
                       <div className="rounded-2xl border border-emerald-500/30 bg-emerald-50/90 p-4 text-center shadow-xs animate-fade-in mb-3">
                         <div className="flex items-center justify-center gap-2 text-emerald-800 font-bold text-[15px]">
