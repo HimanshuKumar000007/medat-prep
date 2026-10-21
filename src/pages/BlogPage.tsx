@@ -57,6 +57,10 @@ export default function BlogPage() {
   }, [selectedCategory, searchQuery]);
 
   const handleOpenArticle = (article: BlogArticle) => {
+    if (article.slug === "medat-vorbereitung" || article.slug === "medat-vorbereitung-guide") {
+      navigate("/medat-vorbereitung");
+      return;
+    }
     if (article.slug === "medat-2027-termine-fristen") {
       navigate("/medat-2027-termine-fristen");
       return;

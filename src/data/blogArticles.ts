@@ -38,6 +38,69 @@ export interface BlogArticle {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    id: "art-flagship",
+    slug: "medat-vorbereitung",
+    index: "00",
+    category: "Strategie",
+    title: "MedAT Vorbereitung 2027: Der ultimative Leitfaden zum Studienplatz",
+    subtitle: "Von Null auf 80%+ ohne 1.500 € Kurs: Fächeranalyse, 16-Wochen-Lernplan, Zeitmanagement und die 5 fatalen Fehler.",
+    meta: "Flagship-Guide 2027 · 12 Min. Lesezeit",
+    readTime: "12 Min.",
+    publishedDate: "1. Februar 2027",
+    author: {
+      name: "Dr. Maximilian Gruber",
+      role: "MedAT-Cheftutor & Absolvent MedUni Wien",
+      avatar: "MG",
+    },
+    summary:
+      "Der definitive Leitfaden für deine MedAT-Vorbereitung: Detaillierte Fächeranalyse (BMS, KFF, TV, SEK), evidenzbasierter 16-Wochen-Lernplan, interaktiver Stundenrechner und die 5 häufigsten Fehler, an denen 85 % scheitern.",
+    keyTakeaways: [
+      "Quoten & Grenzwerte: 78–80 % in der AT-Quote und 82–83 % in der EU-Quote reichen für die Zulassung",
+      "KFF als Hebel: 40 % der Gesamtwertung lassen sich in 8 Wochen um bis zu 20 % steigern",
+      "Active Recall statt passiver Kurse: Täglicher Aufgaben-Drill schlägt 1.500 € Frontalunterricht",
+      "Generalproben-Pflicht: Mindestens 4 vollständige Testsimulationen unter 1:1 Prüfungsstress",
+    ],
+    sections: [
+      {
+        heading: "1. Quoten, Bewerber und Grenzwerte",
+        body: [
+          "Jedes Jahr bewerben sich rund 16.880 Kandidat:innen auf 1.950 Studienplätze in Wien, Innsbruck, Graz und Linz.",
+          "Nach § 71b Universitätsgesetz gilt die 75/20/5-Quote: 75 % der Plätze sind österreichischen Reifeprüfungszeugnissen vorbehalten, 20 % EU-Bürger:innen und 5 % Drittstaaten.",
+          "Niemand braucht 95 % im MedAT: Ein stabiles Ergebnis zwischen 78 % und 82 % reicht historisch für eine sichere Zulassung.",
+        ],
+        callout: {
+          type: "note",
+          title: "Rangplatz schlägt Prozentwert",
+          text: "Wichtig ist dein Perzentilrang im Vergleich zu deinem Kontingent. Miss deine Vorbereitung ab Woche 1 an standardisierten Generalproben.",
+        },
+      },
+      {
+        heading: "2. Die 4 Säulen des MedAT im Überblick",
+        body: [
+          "Der MedAT teilt sich in BMS (40 %), KFF (40 %), Textverständnis (10 %) und SEK (10 %) auf.",
+          "BMS umfasst 94 Fragen in 75 Minuten (nur 47,9 Sekunden pro Frage). Ohne Taschenrechner und Formelsammlung musst du Kopfrechnen und Zehnerpotenzen beherrschen.",
+          "KFF umfasst 5 Aufgabentypen (Zahlenfolgen, Gedächtnis, Figuren, Wortflüssigkeit, Implikationen). Mit der Loci-Methode holst du in Gedächtnis & Merkfähigkeit nahezu 100 % der Punkte.",
+        ],
+      },
+      {
+        heading: "3. Die 5 fatalen Fehler in der Vorbereitung",
+        body: [
+          "1. Der 1.500-Euro-Kurs-Trugschluss: Passiver Frontalunterricht erzeugt nur die Illusion von Kompetenz.",
+          "2. Buntes Markieren von Lehrbüchern statt Active Recall und Testing Effect.",
+          "3. KFF bis kurz vor den Test aufschieben — KFF ist wie Muskeltraining und braucht 12 bis 16 Wochen.",
+          "4. Textverständnis und SEK vernachlässigen — genau diese 20 % entscheiden über die Vergabe der Grenzplätze.",
+          "5. Keine vollständigen Generalproben unter 5,5-stündigem Prüfungsstress durchführen.",
+        ],
+        callout: {
+          type: "warning",
+          title: "Vermeide die Illusion des Verstehens",
+          text: "Das Gehirn verwechselt Wiedererkennen beim Lesen mit echtem Abrufen. Trainiere von Tag 1 an mit originalgetreuen Single-Choice-Aufgaben.",
+        },
+      },
+    ],
+    tags: ["MedAT Vorbereitung", "Lernplan", "BMS", "KFF", "Strategie", "Quoten", "Generalprobe"],
+  },
+  {
     id: "art-1",
     slug: "medat-2027-termine-fristen",
     index: "01",

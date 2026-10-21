@@ -20,6 +20,7 @@ import TermsPage from "./pages/TermsPage";
 import DisclaimerPage from "./pages/DisclaimerPage";
 import ImpressumPage from "./pages/ImpressumPage";
 import MedAT2027TerminePage from "./pages/MedAT2027TerminePage";
+import MedATVorbereitungGuidePage from "./pages/MedATVorbereitungGuidePage";
 import KFFStrategiePage from "./pages/KFFStrategiePage";
 import QuotenAnalysePage from "./pages/QuotenAnalysePage";
 import BMSMasterplanPage from "./pages/BMSMasterplanPage";
@@ -235,6 +236,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/medat-vorbereitung" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/medat-vorbereitung-guide" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/medat-vorbereitung-tipps" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/medat-lernen" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/vorbereitung" element={<MedATVorbereitungGuidePage />} />
             <Route path="/medat-2027-termine-fristen" element={<MedAT2027TerminePage />} />
             <Route path="/medat-2027-termine" element={<MedAT2027TerminePage />} />
             <Route path="/termine-2027" element={<MedAT2027TerminePage />} />
