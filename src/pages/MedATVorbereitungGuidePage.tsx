@@ -1181,6 +1181,23 @@ export default function MedATVorbereitungGuidePage() {
                     </p>
                   </div>
                 </div>
+
+                {/* Community Callout Link */}
+                <div className="rounded-2xl border border-primary/25 bg-primary/5 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 my-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl shrink-0">💬</span>
+                    <div>
+                      <h4 className="text-sm font-bold text-ink">Lerne gemeinsam in der MedAT Telegram-Gruppe 2027</h4>
+                      <p className="text-xs text-ink-3">Tausche dich mit Mitbewerber:innen über Lernstrategien, knifflige Fachfragen und Erfahrungen aus.</p>
+                    </div>
+                  </div>
+                  <Link
+                    to="/medat-telegram-gruppe"
+                    className="btn btn-secondary btn-sm text-xs font-bold px-3.5 py-1.5 shrink-0 border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all self-start sm:self-auto"
+                  >
+                    Zur Telegram-Gruppe →
+                  </Link>
+                </div>
               </section>
 
               {/* ──────────────── SECTION 5: INTERAKTIVER VORBEREITUNGS-RECHNER ──────────────── */}

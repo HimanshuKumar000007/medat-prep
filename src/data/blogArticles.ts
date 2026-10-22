@@ -442,4 +442,38 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     ],
     tags: ["Testtag", "Messe Wien", "Packliste", "Ernährung", "Mentaltraining", "Fokus"],
   },
+  {
+    id: "art-telegram-community",
+    slug: "medat-telegram-gruppe",
+    index: "08",
+    category: "Strategie",
+    title: "MedAT Telegram-Gruppe 2027: Gemeinsam lernen & vernetzen",
+    subtitle: "Kostenlose Community für MedAT-H und MedAT-Z: Austausch mit anderen Kandidat:innen, Lerntipps, Fragen und gegenseitige Motivation.",
+    meta: "Community-Hub 2027 · 4 Min. Lesezeit",
+    readTime: "4 Min.",
+    publishedDate: "22. Oktober 2026",
+    author: {
+      name: "MedAT Prep Community Team",
+      role: "Lerngruppen-Koordination Österreich",
+      avatar: "MP",
+    },
+    summary:
+      "Die offizielle MedATprep Telegram-Gruppe für 2027: Tausche dich mit Bewerber:innen für Humanmedizin und Zahnmedizin in Wien, Graz, Innsbruck und Linz aus. Diskutiere knifflige Fachfragen, teile Lerntipps und bleibe gemeinsam motiviert.",
+    keyTakeaways: [
+      "100 % kostenloser Beitritt über t.me/medavorbereitung",
+      "Offen für MedAT-H (Humanmedizin) und MedAT-Z (Zahnmedizin)",
+      "Austausch zu BMS, KFF, SEK und Vorbereitungsstrategien",
+      "Gegenseitige Unterstützung und Motivation im Vorbereitungsalltag",
+    ],
+    sections: [
+      {
+        heading: "1. Warum eine Lerngruppe den Unterschied macht",
+        body: [
+          "Die Vorbereitung auf den MedAT ist ein monatelanger Marathon. In der MedATprep Telegram-Gruppe findest du Gleichgesinnte, die dieselben Herausforderungen meistern.",
+          "Diskutiere knifflige Aufgabenstellungen, teile nützliche Lerntipps und profitiere von den Erfahrungen anderer Kandidat:innen.",
+        ],
+      },
+    ],
+    tags: ["Telegram", "Community", "MedAT 2027", "Lerngruppe", "MedAT-H", "MedAT-Z", "Austausch"],
+  },
 ];

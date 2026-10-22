@@ -238,6 +238,7 @@ const FOOTER_COLS: FooterColumn[] = [
   {
     title: "Ressourcen",
     links: [
+      { label: "Telegram-Gruppe 2027", href: "medat-telegram-gruppe", badge: "Community" },
       { label: "Lernplan erstellen (Gratis)", href: "uebungsfragen" },
       { label: "Blog & Wissens-Hub", href: "blog" },
       { label: "FAQ & Antworten", href: "faq" },
@@ -422,9 +423,12 @@ export function Footer() {
                       </button>
                     ) : (
                       <a
-                        href={l.href?.startsWith("/") || l.href === "about" || l.href === "blog" || l.href === "contact" || l.href === "kontakt" || l.href === "privacy" || l.href === "datenschutz" || l.href === "terms" || l.href === "agb" || l.href === "widerruf" || l.href === "cancellation" || l.href === "disclaimer" || l.href === "haftungsausschluss" || l.href === "impressum" || l.href === "imprint" ? `#/${l.href?.replace(/^\//, "")}` : `#${l.href}`}
+                        href={l.href?.startsWith("/") || l.href === "about" || l.href === "blog" || l.href === "contact" || l.href === "kontakt" || l.href === "privacy" || l.href === "datenschutz" || l.href === "terms" || l.href === "agb" || l.href === "widerruf" || l.href === "cancellation" || l.href === "disclaimer" || l.href === "haftungsausschluss" || l.href === "impressum" || l.href === "imprint" || l.href === "medat-telegram-gruppe" ? `#/${l.href?.replace(/^\//, "")}` : `#${l.href}`}
                         onClick={(e) => {
-                          if (l.href === "about" || l.href === "/about") {
+                          if (l.href === "medat-telegram-gruppe" || l.href === "/medat-telegram-gruppe") {
+                            e.preventDefault();
+                            window.location.hash = "#/medat-telegram-gruppe";
+                          } else if (l.href === "about" || l.href === "/about") {
                             e.preventDefault();
                             window.location.hash = "#/about";
                           } else if (l.href === "blog" || l.href === "/blog") {

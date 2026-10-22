@@ -28,6 +28,7 @@ import BMSMasterplanPage from "./pages/BMSMasterplanPage";
 import TVSEKPage from "./pages/TVSEKPage";
 import TesttagProtokollPage from "./pages/TesttagProtokollPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import MedATTelegramPage from "./pages/MedATTelegramPage";
 import { PracticeProvider, usePractice } from "./dashboard/practiceContext";
 import { isUserLoggedIn, track } from "./lib/core";
 import { LangBanner, LangProvider } from "./lib/i18n";
@@ -269,6 +270,11 @@ export default function App() {
             <Route path="/beste-medat-vorbereitung" element={<MedATKursVergleichPage />} />
             <Route path="/warum-medat-prep" element={<MedATKursVergleichPage />} />
             <Route path="/kurs-vergleich" element={<MedATKursVergleichPage />} />
+            <Route path="/medat-telegram-gruppe" element={<MedATTelegramPage />} />
+            <Route path="/telegram" element={<MedATTelegramPage />} />
+            <Route path="/telegram-gruppe" element={<MedATTelegramPage />} />
+            <Route path="/medat-telegram" element={<MedATTelegramPage />} />
+            <Route path="/medat-community" element={<MedATTelegramPage />} />
             <Route path="/medat-2027-termine-fristen" element={<MedAT2027TerminePage />} />
             <Route path="/medat-2027-termine" element={<MedAT2027TerminePage />} />
             <Route path="/termine-2027" element={<MedAT2027TerminePage />} />

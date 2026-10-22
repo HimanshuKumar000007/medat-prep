@@ -65,6 +65,10 @@ export default function BlogPage() {
       navigate("/medat-kurs-vergleich");
       return;
     }
+    if (article.slug === "medat-telegram-gruppe" || article.slug === "telegram") {
+      navigate("/medat-telegram-gruppe");
+      return;
+    }
     if (article.slug === "medat-2027-termine-fristen") {
       navigate("/medat-2027-termine-fristen");
       return;
@@ -152,6 +156,29 @@ export default function BlogPage() {
               Evidenzbasierte Lernstrategien, Quotenanalysen und offizielle MedAT-Updates
               für die Medizinischen Universitäten Wien, Innsbruck, Graz und die JKU Linz.
             </p>
+          </div>
+
+          {/* TELEGRAM COMMUNITY CALLOUT */}
+          <div className="mt-8 rounded-2xl border border-primary/25 bg-gradient-to-r from-primary/5 via-paper to-primary/5 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+            <div className="flex items-start sm:items-center gap-3.5">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-white text-lg shadow-xs">
+                💬
+              </span>
+              <div>
+                <p className="text-sm font-bold text-ink">
+                  MedAT Telegram-Gruppe 2027: Gemeinsam lernen & austauschen
+                </p>
+                <p className="text-xs text-ink-3 mt-0.5">
+                  Kostenlose Lerngruppe für MedAT-H & MedAT-Z · Tausche dich über Fragen, Tipps und Vorbereitungsstrategien aus.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/medat-telegram-gruppe"
+              className="btn btn-secondary btn-sm text-xs font-bold px-4 py-2 shrink-0 border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all self-start sm:self-auto"
+            >
+              Telegram-Gruppe ansehen →
+            </Link>
           </div>
 
           {/* SEARCH & CATEGORY FILTER BAR */}

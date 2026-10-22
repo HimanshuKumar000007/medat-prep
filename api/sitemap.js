@@ -17,9 +17,17 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Core Landing & Educational Platform -->
   <url>
     <loc>https://medatprep.at/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Community & Telegram Hub -->
+  <url>
+    <loc>https://medatprep.at/medat-telegram-gruppe</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <!-- Knowledge Hub & Strategy Blog -->
