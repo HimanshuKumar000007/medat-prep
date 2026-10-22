@@ -261,6 +261,10 @@ export default function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/medat-vorbereitung" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/der-medat" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/was-ist-der-medat" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/medat-aufbau" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/medat-struktur" element={<MedATVorbereitungGuidePage />} />
             <Route path="/medat-vorbereitung-guide" element={<MedATVorbereitungGuidePage />} />
             <Route path="/medat-vorbereitung-tipps" element={<MedATVorbereitungGuidePage />} />
             <Route path="/medat-lernen" element={<MedATVorbereitungGuidePage />} />

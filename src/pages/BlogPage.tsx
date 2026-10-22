@@ -57,8 +57,8 @@ export default function BlogPage() {
   }, [selectedCategory, searchQuery]);
 
   const handleOpenArticle = (article: BlogArticle) => {
-    if (article.slug === "medat-vorbereitung" || article.slug === "medat-vorbereitung-guide") {
-      navigate("/medat-vorbereitung");
+    if (article.slug === "medat-vorbereitung" || article.slug === "medat-vorbereitung-guide" || article.slug === "der-medat") {
+      navigate("/der-medat");
       return;
     }
     if (article.slug === "medat-kurs-vergleich" || article.slug === "beste-medat-vorbereitung") {
