@@ -353,7 +353,7 @@ export const NAV_LINKS = [
   { label: "Lernplan", href: "#lernplan" },
   { label: "Übungsfragen", href: "#uebungsfragen" },
   { label: "Probetests", href: "#probetests" },
-  { label: "Blog", href: "#blog" },
-  { label: "Über uns", href: "#/about" },
-  { label: "Kontakt", href: "#/contact" },
+  { label: "Blog", href: "/blog" },
+  { label: "Über uns", href: "/about" },
+  { label: "Kontakt", href: "/contact" },
 ];

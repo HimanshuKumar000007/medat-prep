@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { HashRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Exam, { StatsBand, TopicTicker } from "./components/Exam";
@@ -250,12 +250,34 @@ function CatchAllRoute() {
   return <Navigate to="/" replace />;
 }
 
+function HashUrlCompatManager() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleHash = () => {
+      const h = window.location.hash || "";
+      if (h.startsWith("#/")) {
+        const target = h.slice(1);
+        // Clean hash without refreshing page
+        window.history.replaceState(null, "", target);
+        navigate(target, { replace: true });
+      }
+    };
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, [navigate]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <LangProvider>
       <PracticeProvider>
-        <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <ScrollManager />
+          <HashUrlCompatManager />
           <AuthRedirectManager />
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -335,7 +357,7 @@ export default function App() {
           <PremiumSuccessModal />
           <Toast />
           <LangBanner />
-        </HashRouter>
+        </BrowserRouter>
       </PracticeProvider>
     </LangProvider>
   );

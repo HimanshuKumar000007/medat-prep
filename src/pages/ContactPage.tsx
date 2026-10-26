@@ -173,7 +173,7 @@ export default function ContactPage() {
               Über das Team
             </Link>
             <a
-              href="#/onboarding?mode=register"
+              href="/onboarding?mode=register"
               className="btn btn-primary btn-sm px-3.5 sm:px-4 text-xs sm:text-sm font-bold shadow-sm"
             >
               Kostenlos testen →

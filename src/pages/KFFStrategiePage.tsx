@@ -317,7 +317,7 @@ export default function KFFStrategiePage() {
               <span>Teilen</span>
             </button>
             <a
-              href="#/onboarding?mode=register"
+              href="/onboarding?mode=register"
               className="btn btn-primary btn-sm px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-sm font-bold shadow-sm whitespace-nowrap"
             >
               KFF trainieren (0 €) →
@@ -478,7 +478,7 @@ export default function KFFStrategiePage() {
 
                   <div className="mt-6 pt-5 border-t border-line space-y-3">
                     <a
-                      href="#/onboarding?mode=register"
+                      href="/onboarding?mode=register"
                       className="block rounded-xl bg-primary px-4 py-2.5 text-center text-xs font-bold text-white shadow-sm hover:bg-primary-hover transition-colors"
                     >
                       KFF-Trainer starten (0 €) →
@@ -1262,7 +1262,7 @@ export default function KFFStrategiePage() {
                       </p>
                     </div>
                     <a
-                      href="#/onboarding?mode=register"
+                      href="/onboarding?mode=register"
                       className="btn btn-primary px-5 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-bold shadow-md whitespace-nowrap shrink-0 w-full sm:w-auto text-center"
                     >
                       Jetzt kostenlos trainieren →

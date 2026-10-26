@@ -213,7 +213,7 @@ export default function AboutPage() {
               Kontakt & Support
             </Link>
             <a
-              href="#/onboarding?mode=register"
+              href="/onboarding?mode=register"
               className="btn btn-primary btn-sm px-3.5 sm:px-4 text-xs sm:text-sm font-bold shadow-sm"
             >
               Kostenlos testen →
@@ -808,7 +808,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
               <a
-                href="#/onboarding?mode=register"
+                href="/onboarding?mode=register"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-paper px-6 py-3.5 text-sm font-extrabold text-primary shadow-lg hover:bg-slate-50 transition-colors"
               >
                 Kostenlosen Einstufungstest starten →

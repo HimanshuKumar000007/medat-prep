@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { Reveal, nextMedAT, scrollToId, toast, track, useCountdown } from "../lib/core";
 import { IconCalendar, IconCheck, IconSend, IconShield, LogoMark } from "../lib/icons";
 import LegalTrustModal, { type LegalTab } from "./LegalTrustModal";
@@ -73,6 +74,7 @@ function TimeBox({ value, label, tick }: { value: number; label: string; tick?: 
 
 /* ---------------- Final CTA ---------------- */
 export function CountdownCTA() {
+  const navigate = useNavigate();
   const next = nextMedAT();
   const t = useCountdown(next.date);
   const [email, setEmail] = useState("");
@@ -89,7 +91,7 @@ export function CountdownCTA() {
     setError("");
     track("signup_submit", { location: "countdown_section" });
     toast("Willkommen an Bord! Du wirst weitergeleitet...", "success");
-    window.location.hash = "#/onboarding";
+    navigate("/onboarding");
   };
 
   return (
@@ -197,7 +199,7 @@ export function CountdownCTA() {
                   className="btn btn-primary btn-sm mt-5"
                   onClick={() => {
                     track("cta_dashboard", { location: "countdown_success" });
-                    window.location.hash = "#/app";
+                    navigate("/app");
                   }}
                 >
                   Direkt ins Dashboard →
@@ -260,6 +262,7 @@ const FOOTER_COLS: FooterColumn[] = [
 ];
 
 export function Footer() {
+  const navigate = useNavigate();
   const year = new Date().getFullYear();
   const [activeLegalTab, setActiveLegalTab] = useState<LegalTab | null>(null);
 
@@ -386,14 +389,22 @@ export function Footer() {
 
           <div className="mt-4 sm:mt-5 flex flex-wrap items-center gap-2">
             <a
-              href="#/about"
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/about");
+              }}
               className="inline-flex items-center gap-1.5 rounded-lg border border-night-2 bg-night-2/60 px-3 py-1.5 text-[12px] font-semibold text-slate-300 transition-colors hover:border-slate-600 hover:text-paper"
             >
               <span>Über das Wiener Team</span>
               <span className="text-slate-500">→</span>
             </a>
             <a
-              href="#/contact"
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/contact");
+              }}
               className="inline-flex items-center gap-1.5 rounded-lg border border-night-2 bg-night-2/60 px-3 py-1.5 text-[12px] font-semibold text-slate-300 transition-colors hover:border-slate-600 hover:text-paper"
             >
               <span>Support & Hilfe</span>
@@ -423,32 +434,19 @@ export function Footer() {
                       </button>
                     ) : (
                       <a
-                        href={l.href?.startsWith("/") || l.href === "about" || l.href === "blog" || l.href === "contact" || l.href === "kontakt" || l.href === "privacy" || l.href === "datenschutz" || l.href === "terms" || l.href === "agb" || l.href === "widerruf" || l.href === "cancellation" || l.href === "disclaimer" || l.href === "haftungsausschluss" || l.href === "impressum" || l.href === "imprint" || l.href === "medat-telegram-gruppe" ? `#/${l.href?.replace(/^\//, "")}` : `#${l.href}`}
+                        href={
+                          l.href?.startsWith("/")
+                            ? l.href
+                            : ["about", "blog", "contact", "kontakt", "privacy", "datenschutz", "terms", "agb", "widerruf", "cancellation", "disclaimer", "haftungsausschluss", "impressum", "imprint", "medat-telegram-gruppe"].includes(l.href)
+                            ? `/${l.href}`
+                            : `#${l.href}`
+                        }
                         onClick={(e) => {
-                          if (l.href === "medat-telegram-gruppe" || l.href === "/medat-telegram-gruppe") {
+                          const routeNames = ["about", "blog", "contact", "kontakt", "privacy", "datenschutz", "terms", "agb", "widerruf", "cancellation", "disclaimer", "haftungsausschluss", "impressum", "imprint", "medat-telegram-gruppe"];
+                          if (l.href?.startsWith("/") || routeNames.includes(l.href)) {
                             e.preventDefault();
-                            window.location.hash = "#/medat-telegram-gruppe";
-                          } else if (l.href === "about" || l.href === "/about") {
-                            e.preventDefault();
-                            window.location.hash = "#/about";
-                          } else if (l.href === "blog" || l.href === "/blog") {
-                            e.preventDefault();
-                            window.location.hash = "#/blog";
-                          } else if (l.href === "contact" || l.href === "/contact" || l.href === "kontakt" || l.href === "/kontakt") {
-                            e.preventDefault();
-                            window.location.hash = "#/contact";
-                          } else if (l.href === "privacy" || l.href === "/privacy" || l.href === "datenschutz" || l.href === "/datenschutz") {
-                            e.preventDefault();
-                            window.location.hash = "#/privacy";
-                          } else if (l.href === "terms" || l.href === "/terms" || l.href === "agb" || l.href === "/agb" || l.href === "widerruf" || l.href === "/widerruf" || l.href === "cancellation" || l.href === "/cancellation") {
-                            e.preventDefault();
-                            window.location.hash = "#/terms";
-                          } else if (l.href === "disclaimer" || l.href === "/disclaimer" || l.href === "haftungsausschluss" || l.href === "/haftungsausschluss") {
-                            e.preventDefault();
-                            window.location.hash = "#/disclaimer";
-                          } else if (l.href === "impressum" || l.href === "/impressum" || l.href === "imprint" || l.href === "/imprint") {
-                            e.preventDefault();
-                            window.location.hash = "#/impressum";
+                            const path = l.href.startsWith("/") ? l.href : `/${l.href}`;
+                            navigate(path);
                           } else if (l.href) {
                             e.preventDefault();
                             scrollToId(l.href);
@@ -482,28 +480,44 @@ export function Footer() {
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <a
-              href="#/terms"
+              href="/terms"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/terms");
+              }}
               className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
             >
               AGB & Widerruf
             </a>
             <span className="text-slate-700 hidden sm:inline">·</span>
             <a
-              href="#/privacy"
+              href="/privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/privacy");
+              }}
               className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
             >
               Datenschutz (DSGVO)
             </a>
             <span className="text-slate-700 hidden sm:inline">·</span>
             <a
-              href="#/disclaimer"
+              href="/disclaimer"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/disclaimer");
+              }}
               className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
             >
               Haftungsausschluss (MedUni)
             </a>
             <span className="text-slate-700 hidden sm:inline">·</span>
             <a
-              href="#/impressum"
+              href="/impressum"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/impressum");
+              }}
               className="text-slate-400 hover:text-paper underline-offset-2 hover:underline text-left"
             >
               Impressum (§ 5 ECG)

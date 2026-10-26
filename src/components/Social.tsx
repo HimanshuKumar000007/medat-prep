@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ARTICLES, TESTIMONIALS } from "../lib/data";
 import { Reveal, toast, track } from "../lib/core";
 import { IconArrowRight, IconQuote } from "../lib/icons";
 
 export default function Social() {
+  const navigate = useNavigate();
   const [openArticle, setOpenArticle] = useState<number | null>(0);
 
   return (
@@ -71,8 +73,12 @@ export default function Social() {
                 </h2>
               </div>
               <a
-                href="#/blog"
-                onClick={() => track("blog_all_click", { location: "blog_header" })}
+                href="/blog"
+                onClick={(e) => {
+                  e.preventDefault();
+                  track("blog_all_click", { location: "blog_header" });
+                  navigate("/blog");
+                }}
                 className="link-tertiary whitespace-nowrap text-xs xs:text-sm inline-flex items-center gap-1.5 font-bold text-primary hover:text-primary transition-colors py-1 touch-manipulation"
               >
                 <span>Alle Artikel ansehen</span>
@@ -135,8 +141,12 @@ export default function Social() {
           <Reveal delay={150}>
             <div className="mt-6 sm:mt-8">
               <a
-                href="#/blog"
-                onClick={() => track("blog_footer_cta_click", { location: "social_footer" })}
+                href="/blog"
+                onClick={(e) => {
+                  e.preventDefault();
+                  track("blog_footer_cta_click", { location: "social_footer" });
+                  navigate("/blog");
+                }}
                 className="group inline-flex flex-wrap items-center gap-1.5 xs:gap-2 text-[12.5px] xs:text-[13.5px] font-medium text-ink-3 hover:text-primary transition-colors cursor-pointer touch-manipulation"
               >
                 <IconArrowRight className="h-3.5 w-3.5 xs:h-4 xs:w-4 text-primary transition-transform group-hover:translate-x-1 shrink-0" />

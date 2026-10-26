@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { nextMedAT, track, useParallax } from "../lib/core";
 import { IconArrowRight, IconCheck, IconFlame, IconSpark, IconStar } from "../lib/icons";
 
@@ -44,6 +45,7 @@ const AVATARS = [
 import { useT } from "../lib/i18n";
 
 export default function Hero() {
+  const navigate = useNavigate();
   const t = useT();
   const next = nextMedAT();
   const parBadge1 = useParallax<HTMLDivElement>(0.5);
@@ -127,7 +129,7 @@ export default function Hero() {
               className="btn btn-primary group w-full sm:w-auto min-h-[48px] justify-center touch-manipulation"
               onClick={() => {
                 track("hero_cta_click", { location: "hero", variant: "primary" });
-                window.location.hash = "#/onboarding";
+                navigate("/onboarding");
               }}
             >
               {t("Jetzt kostenlos üben")}
@@ -137,7 +139,7 @@ export default function Hero() {
               className="btn btn-secondary w-full sm:w-auto min-h-[48px] justify-center touch-manipulation"
               onClick={() => {
                 track("hero_login_click", { location: "hero" });
-                window.location.hash = "#/onboarding?mode=login";
+                navigate("/onboarding?mode=login");
               }}
             >
               {t("Anmelden")}

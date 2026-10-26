@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import { NAV_LINKS } from "../lib/data";
 import { scrollToId, track } from "../lib/core";
 import { useI18n } from "../lib/i18n";
 import { LogoMark } from "../lib/icons";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useI18n();
@@ -59,8 +61,12 @@ export default function Navbar() {
 
   const go = (href: string) => {
     setMenuOpen(false);
+    if (href.startsWith("/")) {
+      navigate(href);
+      return;
+    }
     if (href.startsWith("#/")) {
-      window.location.hash = href.replace("#", "");
+      navigate(href.slice(1));
       return;
     }
     scrollToId(href.replace("#", ""));
@@ -115,11 +121,11 @@ export default function Navbar() {
           {/* Right cluster */}
           <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
             <a
-              href="#/login"
+              href="/onboarding?mode=login"
               onClick={(e) => {
                 e.preventDefault();
                 track("nav_login_click", { location: "navbar" });
-                window.location.hash = "#/onboarding?mode=login";
+                navigate("/onboarding?mode=login");
               }}
               className="link-tertiary hidden text-sm md:block"
             >
@@ -130,7 +136,7 @@ export default function Navbar() {
               className="btn btn-primary btn-sm px-2.5 py-1.5 xs:px-3 sm:px-5 text-xs sm:text-sm font-semibold whitespace-nowrap min-h-[36px] sm:min-h-[40px] touch-manipulation"
               onClick={() => {
                 track("nav_signup_click", { location: "navbar" });
-                window.location.hash = "#/onboarding";
+                navigate("/onboarding");
               }}
             >
               <span className="hidden xs:inline">{t("Kostenlos starten")}</span>
@@ -268,12 +274,12 @@ export default function Navbar() {
                   {t("Account")}
                 </p>
                 <a
-                  href="#/login"
+                  href="/onboarding?mode=login"
                   onClick={(e) => {
                     e.preventDefault();
                     track("nav_login_click", { location: "mobile_navbar" });
                     setMenuOpen(false);
-                    window.location.hash = "#/onboarding?mode=login";
+                    navigate("/onboarding?mode=login");
                   }}
                   className="flex items-center justify-between rounded-xl px-3.5 py-3 text-[15px] font-semibold text-ink-2 transition-colors hover:bg-paper-2 hover:text-primary active:bg-paper-3 cursor-pointer"
                 >
@@ -289,7 +295,7 @@ export default function Navbar() {
                   onClick={() => {
                     setMenuOpen(false);
                     track("nav_signup_click", { location: "mobile_navbar" });
-                    window.location.hash = "#/onboarding";
+                    navigate("/onboarding");
                   }}
                 >
                   {t("Kostenlos starten")}

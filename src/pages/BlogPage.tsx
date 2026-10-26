@@ -129,12 +129,12 @@ export default function BlogPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <a
-              href="#/onboarding?mode=register"
+            <Link
+              to="/onboarding?mode=register"
               className="btn btn-primary btn-sm px-3.5 sm:px-4 text-xs sm:text-sm font-bold shadow-sm"
             >
               Kostenlos registrieren →
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -379,12 +379,12 @@ export default function BlogPage() {
                 Potenzialanalyse und persönlicher Lernplanempfehlung.
               </p>
             </div>
-            <a
-              href="#/onboarding?mode=register"
+            <Link
+              to="/onboarding?mode=register"
               className="btn btn-primary px-6 py-3.5 text-sm font-bold shadow-md whitespace-nowrap shrink-0"
             >
               Einstufungstest starten (0 €) →
-            </a>
+            </Link>
           </div>
         </div>
       </main>
@@ -627,12 +627,12 @@ export default function BlogPage() {
                   Starte jetzt mit 200 kostenlosen MedAT-Aufgaben im Basis-Zugang.
                 </p>
               </div>
-              <a
-                href="#/onboarding?mode=register"
+              <Link
+                to="/onboarding?mode=register"
                 className="btn btn-primary px-5 py-2.5 text-xs sm:text-sm font-bold whitespace-nowrap"
               >
                 Kostenlos loslegen →
-              </a>
+              </Link>
             </div>
 
             {/* Back button */}

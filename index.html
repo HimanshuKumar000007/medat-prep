@@ -273,11 +273,10 @@
             }
           }
 
-          // 3. Direct path to HashRouter redirect (e.g. /terms -> /#/terms)
-          var p = window.location.pathname;
-          if (p && p !== "/" && p !== "/index.html" && !p.startsWith("/api/") && (!h || h === "#" || h === "#/")) {
-            window.location.replace("/#" + p + (s ? s : ""));
-            return;
+          // 3. Backward compatibility: Upgrade legacy hash URLs (e.g. /#/terms -> /terms)
+          if (h && h.startsWith("#/")) {
+            var targetPath = h.slice(1);
+            window.history.replaceState(null, "", targetPath);
           }
         } catch (e) {
           console.error("Auth redirect interceptor error:", e);

@@ -712,7 +712,7 @@ export default function QuotenAnalysePage() {
               <span>Teilen</span>
             </button>
             <a
-              href="#/onboarding?mode=register"
+              href="/onboarding?mode=register"
               className="btn btn-primary btn-sm px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-sm font-bold shadow-sm whitespace-nowrap"
             >
               Kostenlos testen →
@@ -939,7 +939,7 @@ export default function QuotenAnalysePage() {
                     Mach den 8-Minuten MedAT-Check und erfahre deinen exakten Perzentilrang.
                   </p>
                   <a
-                    href="#/onboarding?mode=register"
+                    href="/onboarding?mode=register"
                     className="mt-3 block text-center rounded-xl bg-primary px-3 py-1.5 text-[11px] font-bold text-paper shadow-2xs hover:bg-primary-dark transition-colors"
                   >
                     Diagnostiktest starten (0 €)
@@ -1748,7 +1748,7 @@ export default function QuotenAnalysePage() {
                   </p>
                 </div>
                 <a
-                  href="#/onboarding?mode=register"
+                  href="/onboarding?mode=register"
                   className="btn btn-primary px-6 py-3 text-xs sm:text-sm font-bold shadow-md whitespace-nowrap shrink-0"
                 >
                   Einstufungstest starten (0 €) →
