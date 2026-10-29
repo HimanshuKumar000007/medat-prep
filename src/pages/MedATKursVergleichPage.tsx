@@ -11,7 +11,7 @@
  *     1. 1.461 € Ersparnis (39 € / Jahr statt 1.500 €+ Kursgebühren)
  *     2. 5.000+ Übungsfragen (Größte kuratierte Fragensammlung nach VMC 2027)
  *     3. 4 Generalproben (Vollsimulationen mit Perzentilrang unter Prüfungsstress)
- *     4. 4,9 / 5 Sterne (Bewertet von über 800 Kandidat:innen in Österreich)
+ *     4. 4 Module abgedeckt (BMS, KFF, Textverständnis, SEK)
  * - Quick Action Utility Toolbar:
  *     - Methoden-Vergleichstabelle (.txt) exportieren
  *     - Ersparnis berechnen
@@ -165,46 +165,6 @@ const PRODUCT_USPS: ProductUsp[] = [
   },
 ];
 
-/* ── Testimonials Data ────────────────────────────────────────── */
-interface Testimonial {
-  name: string;
-  uni: string;
-  rank: string;
-  avatar: string;
-  quote: string;
-  highlight: string;
-}
-
-const TESTIMONIALS: Testimonial[] = [
-  {
-    name: "Lea M.",
-    uni: "MedUni Wien (Humanmedizin)",
-    rank: "Rang 84 (Österreich-Quote)",
-    avatar: "LM",
-    quote:
-      "Ich hatte im Jänner schon fast einen 1.800-Euro-Intensivkurs gebucht, weil alle meinten, man schafft es sonst nicht. Eine Freundin hat mir dann MedAT Prep empfohlen. Der interaktive KFF-Trainer und die 4 Generalproben waren hundertmal effektiver als stundenlang in einem stickigen Seminarraum zu sitzen. Für 39 € war das die beste Investition meines Lebens!",
-    highlight: "Von 64 % auf 82,3 % in 14 Wochen",
-  },
-  {
-    name: "David S.",
-    uni: "MedUni Graz (Humanmedizin)",
-    rank: "Rang 29 (EU-Quote)",
-    avatar: "DS",
-    quote:
-      "Als deutscher Bewerber in der EU-Quote wusste ich, dass ich über 82 % brauche. Das Differenzierungsmerkmal waren Physik und Mathe. Die Rechenweg-Erklärungen in MedAT Prep haben mir beigebracht, ohne Taschenrechner in unter 50 Sekunden auf das Ergebnis zu kommen. Im Testtag hatte ich in Physik 17 von 18 Punkten!",
-    highlight: "17/18 in Physik ohne Taschenrechner",
-  },
-  {
-    name: "Elena K.",
-    uni: "JKU Linz (Humanmedizin)",
-    rank: "Rang 42 (Zweitversuch)",
-    avatar: "EK",
-    quote:
-      "Im ersten Jahr habe ich nur mit dicken Büchern gelernt und bin mit 71 % knapp gescheitert. Erst mit dem Fehler-Hub von MedAT Prep habe ich verstanden, wo meine wahren Wissenslücken lagen. Statt Seiten bunt anzustreichen, habe ich jeden Tag 40 Fragen aktiv gelöst. Im zweiten Anlauf hat es sofort mit 81,4 % geklappt.",
-    highlight: "+10,4 % Steigerung im Zweitversuch",
-  },
-];
-
 export default function MedATKursVergleichPage() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("das-geschaeft");
@@ -247,7 +207,7 @@ export default function MedATKursVergleichPage() {
         "vergleichstabelle",
         "ersparnis-rechner",
         "unsere-vorteile",
-        "erfahrungsberichte",
+        "was-wir-bieten",
         "faq",
       ];
       const scrollPos = window.scrollY + 200;
@@ -442,7 +402,7 @@ export default function MedATKursVergleichPage() {
                 <IconCalendar className="h-2.5 w-2.5 shrink-0" /> Aktualisiert für MedAT 2027
               </span>
               <span className="rounded-md bg-primary-subtle border border-primary/20 px-2 py-0.5 text-[8.5px] xs:text-[9.5px] font-bold text-primary">
-                ★ 4,9/5 von über 800 Kandidat:innen
+                BMS · KFF · TV · SEK
               </span>
             </div>
 
@@ -504,13 +464,13 @@ export default function MedATKursVergleichPage() {
               </div>
 
               <div className="rounded-xl border border-line bg-paper p-3 sm:p-4 shadow-sm">
-                <div className="flex items-center gap-1.5 text-amber-600 text-xs font-bold">
-                  <IconStar className="h-4 w-4" />
-                  <span>Zufriedenheit</span>
+                <div className="flex items-center gap-1.5 text-emerald-600 text-xs font-bold">
+                  <IconCheck className="h-4 w-4" />
+                  <span>Struktur</span>
                 </div>
-                <p className="mt-1.5 display text-xl sm:text-2xl font-black text-ink">4,9 / 5</p>
+                <p className="mt-1.5 display text-xl sm:text-2xl font-black text-ink">4 Module</p>
                 <p className="mt-0.5 text-[11px] text-ink-3 leading-tight">
-                  Von über 800 MedAT-Kandidat:innen bewertet
+                  BMS, KFF, Textverständnis & SEK abgedeckt
                 </p>
               </div>
             </div>
@@ -595,12 +555,12 @@ export default function MedATKursVergleichPage() {
                   5. Die 5 Vorteile von MedAT Prep
                 </a>
                 <a
-                  href="#erfahrungsberichte"
+                  href="#was-wir-bieten"
                   className={`block rounded-lg px-2.5 py-1.5 transition-colors ${
-                    activeSection === "erfahrungsberichte" ? "bg-primary-subtle font-bold text-primary" : "hover:text-ink"
+                    activeSection === "was-wir-bieten" ? "bg-primary-subtle font-bold text-primary" : "hover:text-ink"
                   }`}
                 >
-                  6. Echte Erfahrungsberichte
+                  6. Was die Plattform bietet
                 </a>
                 <a
                   href="#faq"
@@ -643,7 +603,7 @@ export default function MedATKursVergleichPage() {
                   <a href="#vergleichstabelle" onClick={() => setMobileTocOpen(false)} className="block py-1">3. Der Head-to-Head-Test</a>
                   <a href="#ersparnis-rechner" onClick={() => setMobileTocOpen(false)} className="block py-1">4. Ersparnis-Rechner</a>
                   <a href="#unsere-vorteile" onClick={() => setMobileTocOpen(false)} className="block py-1">5. MedAT Prep Vorteile</a>
-                  <a href="#erfahrungsberichte" onClick={() => setMobileTocOpen(false)} className="block py-1">6. Erfahrungsberichte</a>
+                  <a href="#was-wir-bieten" onClick={() => setMobileTocOpen(false)} className="block py-1">6. Was die Plattform bietet</a>
                   <a href="#faq" onClick={() => setMobileTocOpen(false)} className="block py-1">7. FAQ</a>
                 </nav>
               )}
@@ -1015,46 +975,76 @@ export default function MedATKursVergleichPage() {
                 </div>
               </section>
 
-              {/* ──────────────── SECTION 6: ERFAHRUNGSBERICHTE ──────────────── */}
-              <section id="erfahrungsberichte" className="scroll-mt-24 space-y-4">
-                <span className="eyebrow text-primary">Social Proof</span>
+              {/* ──────────────── SECTION 6: WAS DIE PLATTFORM BIETET ──────────────── */}
+              <section id="was-wir-bieten" className="scroll-mt-24 space-y-4">
+                <span className="eyebrow text-primary">Plattform-Überblick</span>
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-ink tracking-tight">
-                  6. Echte Erfahrungsberichte: Wie sie ihren Platz holten
+                  6. Was MedAT Prep dir bietet: Struktur, Orientierung und Community
                 </h2>
 
                 <p>
-                  Über 800 Bewerber:innen haben sich bereits mit MedAT Prep auf ihren Aufnahmetest vorbereitet.
-                  Hier sind drei exemplarische Werdegänge von den MedUnis Wien, Graz und Linz:
+                  Keine erfundenen Werbeversprechen oder künstliche Erfolgsquoten — sondern transparente, didaktisch fundierte Vorbereitung für deinen MedAT 2027:
                 </p>
 
                 <div className="grid gap-4 sm:grid-cols-3 my-5">
-                  {TESTIMONIALS.map((t, idx) => (
-                    <div key={idx} className="rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-sm flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white font-bold text-xs">
-                            {t.avatar}
-                          </div>
-                          <div>
-                            <h4 className="text-xs font-bold text-ink">{t.name}</h4>
-                            <p className="text-[10px] text-ink-3">{t.uni}</p>
-                          </div>
-                        </div>
-
-                        <span className="rounded bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[10px] font-bold text-emerald-800 block mb-2 w-fit">
-                          {t.rank}
-                        </span>
-
-                        <p className="text-xs text-ink-2 italic leading-relaxed">
-                          "{t.quote}"
-                        </p>
-                      </div>
-
-                      <div className="mt-4 border-t border-line/60 pt-2 text-[11px] font-bold text-primary">
-                        ✓ {t.highlight}
-                      </div>
+                  <div className="rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                      <span className="rounded bg-rose-50 border border-rose-200 px-2 py-0.5 text-[10px] font-bold text-rose-800 block mb-2 w-fit">
+                        Fachwissen BMS
+                      </span>
+                      <h4 className="text-sm font-bold text-ink">BMS-Fragen mit Erklärungen</h4>
+                      <p className="mt-2 text-xs text-ink-2 leading-relaxed">
+                        Übe Biologie, Chemie, Physik und Mathematik auf Matura-Niveau. Jede Aufgabe enthält detaillierte Lösungswege und Rechenschritte.
+                      </p>
                     </div>
-                  ))}
+                    <div className="mt-4 border-t border-line/60 pt-2 text-[11px] font-bold text-primary">
+                      ✓ 40 % deines MedAT-Gesamtscores
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                      <span className="rounded bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[10px] font-bold text-emerald-800 block mb-2 w-fit">
+                        Kostenlose Orientierung
+                      </span>
+                      <h4 className="text-sm font-bold text-ink">24-Fragen-Einstufungstest</h4>
+                      <p className="mt-2 text-xs text-ink-2 leading-relaxed">
+                        Finde in unter 10 Minuten heraus, wo deine Stärken und Wissenslücken über alle vier Module (BMS, KFF, TV, SEK) liegen.
+                      </p>
+                    </div>
+                    <div className="mt-4 border-t border-line/60 pt-2 text-[11px] font-bold text-emerald-700">
+                      ✓ 100 % unverbindlich & kostenlos
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                      <span className="rounded bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-bold text-blue-800 block mb-2 w-fit">
+                        Austausch & Lerngruppen
+                      </span>
+                      <h4 className="text-sm font-bold text-ink">MedAT 2027 Telegram-Gruppe</h4>
+                      <p className="mt-2 text-xs text-ink-2 leading-relaxed">
+                        Vernetze dich kostenlos mit anderen Vorbereitenden für Wien, Innsbruck, Graz und Linz. Tauscht Lerntipps, Fragen und Motivation aus.
+                      </p>
+                    </div>
+                    <div className="mt-4 border-t border-line/60 pt-2 text-[11px] font-bold text-blue-700">
+                      ✓ Direkter Community-Austausch
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2 text-center sm:text-left">
+                  <a
+                    href="#einstufungstest"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.dispatchEvent(new CustomEvent("mprep:open-einstufungstest"));
+                    }}
+                    className="btn btn-primary px-6 py-3 text-sm font-bold inline-flex items-center gap-2"
+                  >
+                    Kostenlosen Einstufungstest starten
+                    <IconArrowRight className="h-4 w-4" />
+                  </a>
                 </div>
               </section>
 

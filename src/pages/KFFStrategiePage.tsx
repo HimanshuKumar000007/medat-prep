@@ -79,7 +79,7 @@ const KFF_FAQS: KffFaqItem[] = [
   },
   {
     q: "Wann findet der KFF-Block am Testtag statt und wie halte ich die Konzentration?",
-    a: "KFF ist der Nachmittagsblock am 2. Juli 2027 nach der 60-minütigen Mittagspause (ca. 14:00 bis 16:45 Uhr). Die größte Gefahr ist das 'Schnitzelkoma': Wer in der Pause fettig isst, fällt um 14:15 Uhr beim Gedächtnisabruf in ein tiefes Glukose-Loch. Nimm komplexe Kohlenhydrate (Hafer, Nüsse, Bananen) und reichlich stilles Wasser zu dir.",
+    a: "KFF ist der Nachmittagsblock am voraussichtlich 9. Juli 2027 nach der 60-minütigen Mittagspause (ca. 14:00 bis 16:45 Uhr). Die größte Gefahr ist das 'Schnitzelkoma': Wer in der Pause fettig isst, fällt um 14:15 Uhr beim Gedächtnisabruf in ein tiefes Glukose-Loch. Nimm komplexe Kohlenhydrate (Hafer, Nüsse, Bananen) und reichlich stilles Wasser zu dir.",
     category: "Testtag",
   },
   {

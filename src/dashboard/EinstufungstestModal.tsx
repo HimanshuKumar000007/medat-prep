@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { toast } from "../lib/core";
+import { useNavigate } from "react-router-dom";
+import { isUserLoggedIn, toast } from "../lib/core";
 import { IconArrowRight, IconCheck, IconClose, IconClock } from "../lib/icons";
 import { DIconSparkles, DIconTrendUp } from "./icons";
 import type { PracticeSeed, Screen } from "./Shell";
@@ -389,7 +390,7 @@ const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
 interface EinstufungstestModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onNav: (s: Screen, seed?: PracticeSeed) => void;
+  onNav?: (s: Screen, seed?: PracticeSeed) => void;
   onResultSaved?: (result: DiagnosticResult) => void;
 }
 
@@ -399,6 +400,8 @@ export default function EinstufungstestModal({
   onNav,
   onResultSaved,
 }: EinstufungstestModalProps) {
+  const navigate = useNavigate();
+  const loggedIn = isUserLoggedIn();
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [secondsLeft, setSecondsLeft] = useState(600); // 10 minutes = 600 seconds
@@ -721,6 +724,33 @@ export default function EinstufungstestModal({
                 </div>
               </div>
 
+              {/* Account Gate after result preview (only for visitors without account) */}
+              {!loggedIn && (
+                <div className="rounded-2xl border-2 border-primary/25 bg-gradient-to-br from-primary-subtle/50 to-amber-50/40 p-5 text-center space-y-2.5">
+                  <span className="inline-block rounded-full bg-primary px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-paper">
+                    Ergebnis speichern
+                  </span>
+                  <h5 className="text-base font-bold text-ink">
+                    Sichere deine Auswertung & schalte deinen Lernplan frei
+                  </h5>
+                  <p className="text-xs text-ink-2 max-w-md mx-auto leading-relaxed">
+                    Erstelle jetzt deinen kostenlosen MedAT-Account. Dein Testergebnis wird automatisch übernommen und bildet das Fundament deiner persönlichen Lernempfehlungen.
+                  </p>
+                  <div className="pt-1.5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onClose();
+                        navigate("/onboarding?mode=register");
+                      }}
+                      className="btn btn-primary px-5 py-2.5 text-xs font-bold shadow-md hover:scale-[1.01] transition-all"
+                    >
+                      Kostenlosen Account anlegen & Lernplan freischalten →
+                    </button>
+                  </div>
+                </div>
+              )}
+
               {/* Toggle Review */}
               {showReview && (
                 <div className="space-y-3 pt-2">
@@ -806,16 +836,33 @@ export default function EinstufungstestModal({
                 <button type="button" onClick={restartTest} className="btn btn-secondary btn-sm">
                   Test wiederholen
                 </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onClose();
-                    onNav("plan");
-                  }}
-                  className="btn btn-primary btn-sm flex items-center gap-1.5"
-                >
-                  Zum Lernplan <IconArrowRight className="h-4 w-4" />
-                </button>
+                {loggedIn ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onClose();
+                      if (onNav) {
+                        onNav("plan");
+                      } else {
+                        navigate("/app");
+                      }
+                    }}
+                    className="btn btn-primary btn-sm flex items-center gap-1.5"
+                  >
+                    Zum Lernplan <IconArrowRight className="h-4 w-4" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onClose();
+                      navigate("/onboarding?mode=register");
+                    }}
+                    className="btn btn-primary btn-sm flex items-center gap-1.5"
+                  >
+                    Ergebnis speichern & registrieren <IconArrowRight className="h-4 w-4" />
+                  </button>
+                )}
               </div>
             </>
           )}

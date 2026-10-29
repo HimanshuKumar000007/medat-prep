@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { nextMedAT, track, useParallax } from "../lib/core";
-import { IconArrowRight, IconCheck, IconFlame, IconSpark, IconStar } from "../lib/icons";
+import { IconArrowRight, IconCheck, IconFlame, IconSpark } from "../lib/icons";
 
 function ProgressRing() {
   const [pct, setPct] = useState(0);
@@ -34,13 +34,7 @@ function ProgressRing() {
   );
 }
 
-const AVATARS = [
-  { init: "MK", bg: "#0F172A", fg: "#fff" },
-  { init: "SL", bg: "#DC2626", fg: "#fff" },
-  { init: "TB", bg: "#3B82F6", fg: "#fff" },
-  { init: "JH", bg: "#8B5CF6", fg: "#fff" },
-  { init: "AR", bg: "#10B981", fg: "#fff" },
-];
+
 
 import { useT } from "../lib/i18n";
 
@@ -146,28 +140,26 @@ export default function Hero() {
             </button>
           </div>
 
-          {/* Social proof */}
+          {/* Honest value proposition */}
           <div
-            className="hero-enter mt-7 sm:mt-9 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2.5 sm:gap-y-3"
+            className="hero-enter mt-5 sm:mt-7 flex flex-wrap items-center gap-2.5 sm:gap-3 text-ink-3"
             style={{ animationDelay: "500ms" }}
           >
-            <div className="flex" aria-hidden="true">
-              {AVATARS.map((a, i) => (
-                <span
-                  key={a.init}
-                  className="flex h-7 w-7 xs:h-8 xs:w-8 items-center justify-center rounded-full border-2 border-paper text-[9px] xs:text-[10px] font-bold"
-                  style={{ backgroundColor: a.bg, color: a.fg, marginLeft: i === 0 ? 0 : -8, zIndex: AVATARS.length - i }}
-                >
-                  {a.init}
-                </span>
-              ))}
-            </div>
-            <div className="flex items-center gap-1 text-warning" aria-hidden="true">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <IconStar key={i} className="h-3.5 w-3.5 xs:h-4 xs:w-4" />
-              ))}
-            </div>
-            <p className="text-[12.5px] xs:text-sm font-medium text-ink-3">4,9/5 von über 800 MedAT-Kandidat:innen</p>
+            <button
+              type="button"
+              onClick={() => {
+                track("einstufungstest_open", { location: "hero_badge" });
+                window.dispatchEvent(new CustomEvent("mprep:open-einstufungstest"));
+              }}
+              className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-800 border border-emerald-200 hover:bg-emerald-100 transition-colors cursor-pointer"
+            >
+              <IconCheck className="h-3.5 w-3.5 text-emerald-600" />
+              Kostenloser Einstufungstest
+            </button>
+            <span className="text-line-2 hidden sm:inline" aria-hidden="true">·</span>
+            <span className="text-xs font-medium text-ink-3">
+              BMS-Aufgaben mit Erklärungen & aktive Community
+            </span>
           </div>
 
           {/* Trust micro-bar */}

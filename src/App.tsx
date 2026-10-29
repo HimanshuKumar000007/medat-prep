@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -10,6 +10,8 @@ import Pricing from "./components/Pricing";
 import Faq from "./components/Faq";
 import { CountdownCTA, Footer, Toast } from "./components/Closing";
 import Dashboard from "./dashboard/Dashboard";
+import EinstufungstestModal from "./dashboard/EinstufungstestModal";
+import { RouteSeoManager } from "./lib/seo";
 import PreLoginOnboarding from "./components/PreLoginOnboarding";
 import PremiumSuccessModal from "./components/PremiumSuccessModal";
 import BlogPage from "./pages/BlogPage";
@@ -271,6 +273,41 @@ function HashUrlCompatManager() {
   return null;
 }
 
+function GlobalEinstufungstestManager() {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener("mprep:open-einstufungstest", handleOpen);
+    return () => window.removeEventListener("mprep:open-einstufungstest", handleOpen);
+  }, []);
+
+  useEffect(() => {
+    if (location.pathname === "/einstufungstest") {
+      setIsOpen(true);
+    }
+  }, [location.pathname]);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    if (location.pathname === "/einstufungstest") {
+      navigate("/", { replace: true });
+    }
+  };
+
+  return (
+    <EinstufungstestModal
+      isOpen={isOpen}
+      onClose={handleClose}
+      onNav={(screen) => {
+        if (screen === "plan") navigate("/app");
+      }}
+    />
+  );
+}
+
 export default function App() {
   return (
     <LangProvider>
@@ -279,8 +316,11 @@ export default function App() {
           <ScrollManager />
           <HashUrlCompatManager />
           <AuthRedirectManager />
+          <RouteSeoManager />
+          <GlobalEinstufungstestManager />
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/einstufungstest" element={<Homepage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/medat-vorbereitung" element={<MedATVorbereitungGuidePage />} />
             <Route path="/der-medat" element={<MedATVorbereitungGuidePage />} />

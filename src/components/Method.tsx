@@ -186,7 +186,7 @@ export default function Method() {
                   bevor es zählt.
                 </h2>
                 <p className="mt-3.5 sm:mt-5 max-w-md text-[13.5px] sm:text-[15px] leading-relaxed text-slate-400">
-                  Am 2. Juli 2027 darfst du nicht zum ersten Mal unter Zeitdruck sitzen. Unsere Simulationen bilden den
+                  Am voraussichtlich 9. Juli 2027 darfst du nicht zum ersten Mal unter Zeitdruck sitzen. Unsere Simulationen bilden den
                   MedAT 1:1 ab — inklusive Pausenlogik und Auswertung nach Originalschlüssel.
                 </p>
                 <ul className="mt-4 sm:mt-7 space-y-2 sm:space-y-3">

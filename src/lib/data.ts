@@ -139,41 +139,6 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
 ];
 
-export interface Testimonial {
-  quote: string;
-  name: string;
-  detail: string;
-  metric: string;
-  rotate: string;
-}
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "Ich habe drei Vorbereitungskurse verglichen — und mich dann für den KI-Lernplan entschieden. Er hat mir gezeigt, dass ich KFF komplett vernachlässigt habe. Nach acht Wochen: +11 Prozentpunkte.",
-    name: "Lena K.",
-    detail: "MedUni Wien · Humanmedizin, 1. Semester",
-    metric: "74,8 % beim MedAT",
-    rotate: "md:-rotate-2",
-  },
-  {
-    quote:
-      "Die Probetests unter Echtbedingungen waren der Gamechanger. Am Testtag selbst hat sich alles wie eine Wiederholung angefühlt — sogar die Pause um 11 Uhr.",
-    name: "Jakob R.",
-    detail: "MedUni Innsbruck · Humanmedizin",
-    metric: "Top-12 % im Ranking",
-    rotate: "md:rotate-1 md:translate-y-6",
-  },
-  {
-    quote:
-      "Für MedAT-Z gibt es kaum Material. Die Drahtbiegen-Checklisten und Formen-spiegeln-Druckvorlagen waren Gold wert. Und SEK-Bonus für alle: Das Emotionen-Training wirkt wirklich.",
-    name: "Selin A.",
-    detail: "JKU Linz · Zahnmedizin",
-    metric: "Platz 34 von 412",
-    rotate: "md:-rotate-1",
-  },
-];
-
 export interface Article {
   index: string;
   category: string;
@@ -189,7 +154,7 @@ export const ARTICLES: Article[] = [
     title: "MedAT 2027: Alle Fristen, Gebühren und Termine im Überblick",
     meta: "Aktualisiert Jänner 2027 · 6 Min. Lesezeit",
     summary:
-      "Internet-Anmeldung von 1. bis 31. März 2027, Testtag am Freitag, 2. Juli 2027, Teilnahmegebühr 110 €. Wichtig: Die Anmeldung ist nur mit gültigem Lichtbildausweis und rechtzeitiger Zahlung vollständig — erfahrungsgemäß brechen 4–6 % der Anmeldungen an Formalfehlern.",
+      "Internet-Anmeldung voraussichtlich von 1. bis 31. März 2027, Testtag voraussichtlich am Freitag, 9. Juli 2027, Teilnahmegebühr 110 €. Wichtig: Die Anmeldung ist nur mit gültigem Lichtbildausweis und rechtzeitiger Zahlung vollständig — erfahrungsgemäß brechen 4–6 % der Anmeldungen an Formalfehlern.",
   },
   {
     index: "02",
@@ -224,7 +189,7 @@ export const FAQS: Faq[] = [
   {
     id: "q2",
     q: "Wann findet der nächste MedAT statt?",
-    a: "Der MedAT 2027 findet am Freitag, 2. Juli 2027 statt, österreichweit am selben Tag von ca. 8 bis 17 Uhr. Die Internet-Anmeldung läuft voraussichtlich vom 1. bis 31. März 2027 über medizinstudieren.at, die Teilnahmegebühr beträgt 110 Euro. Unser Countdown oben zählt live runter.",
+    a: "Der MedAT 2027 findet voraussichtlich am Freitag, 9. Juli 2027 statt, österreichweit am selben Tag von ca. 8 bis 17 Uhr. Die Internet-Anmeldung läuft voraussichtlich vom 1. bis 31. März 2027 über medizinstudieren.at, die Teilnahmegebühr beträgt 110 Euro. Unser Countdown oben zählt live runter.",
   },
   {
     id: "q3",
@@ -239,7 +204,7 @@ export const FAQS: Faq[] = [
   {
     id: "q5",
     q: "Was kostet MedAT Prep?",
-    a: "Der Basis-Zugang ist dauerhaft kostenlos: 200 Übungsfragen, 1 vollständiger Probetest, individueller KI-Lernplan und Community-Forum. Premium kostet 39 € pro Jahr (umgerechnet nur ca. 3,25 € pro Monat) und schaltet alle 5.000+ Fragen, den 24/7 MedAT KI-Tutor, alle 4 Probetests, den adaptiven KI-Lernplan und den Schwachstellen-Drill frei. Intensiv (349 € einmalig) ergänzt 1:1-Betreuung bis zum Testtag.",
+    a: "Der Basis-Zugang ist dauerhaft kostenlos: 200 Übungsfragen, 1 vollständiger Probetest, individueller Lernplan und Community-Forum. Premium kostet 39 € pro Jahr (39 €/Jahr) und schaltet alle 5.000+ Fragen, didaktische Erklärungen, alle 4 Probetests und den Schwachstellen-Drill frei.",
   },
   {
     id: "q6",
@@ -301,7 +266,7 @@ export const PRICING: PricingTier[] = [
       "Gezieltes Schwachstellen-Training (Fehler-Hub)",
       "Historische Grenzwerte & Punkte-Vergleich",
       "Für MedAT-H und MedAT-Z",
-      "Volle 12 Monate Zugriff (nur 3,25 € / Monat)",
+      "Volle 12 Monate Zugriff (39 € / Jahr)",
     ],
     cta: "Premium wählen",
     featured: true,
@@ -337,7 +302,7 @@ export const STATS: Stat[] = [
   { value: 16880, suffix: "", label: "Anmeldungen MedAT 2026", aria: "16.880 Anmeldungen beim MedAT 2026" },
   { value: 1950, suffix: "", label: "Studienplätze gesamt", aria: "1.950 Studienplätze in Human- und Zahnmedizin" },
   { value: 5000, suffix: "+", label: "Fragen nach Stichwortkatalog", aria: "Über 5.000 Übungsfragen nach offiziellem Stichwortkatalog" },
-  { value: 4.9, suffix: "/5", label: "aus 800+ Bewertungen", aria: "4,9 von 5 Sternen aus über 800 Bewertungen", decimals: 1 },
+  { value: 4, suffix: "", label: "Testteile (BMS, KFF, TV, SEK)", aria: "Vier offizielle Testteile: BMS, KFF, TV und SEK" },
 ];
 
 export const DROPDOWN_ITEMS = [

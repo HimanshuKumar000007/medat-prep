@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ARTICLES, TESTIMONIALS } from "../lib/data";
+import { ARTICLES } from "../lib/data";
 import { Reveal, toast, track } from "../lib/core";
-import { IconArrowRight, IconQuote } from "../lib/icons";
+import { IconArrowRight } from "../lib/icons";
 
 export default function Social() {
   const navigate = useNavigate();
@@ -11,55 +11,97 @@ export default function Social() {
   return (
     <section className="bg-paper-2 py-16 sm:py-20 lg:py-28">
       <div className="wrap">
-        {/* ---------- Testimonials ---------- */}
+        {/* ---------- What the platform offers (honest features) ---------- */}
         <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <Reveal>
-            <span className="eyebrow">Erfahrungen</span>
+            <span className="eyebrow">Plattform-Überblick</span>
             <h2 className="display mt-4 max-w-xl text-[clamp(1.75rem,3vw+0.5rem,2.5rem)] text-ink">
-              Sie haben es geschafft. <span className="text-primary">Mit System.</span>
+              Gezielte Vorbereitung. <span className="text-primary">Ohne leere Versprechen.</span>
             </h2>
           </Reveal>
           <Reveal delay={120}>
-            <div className="flex items-center gap-3">
-              <div className="flex text-warning" aria-hidden="true">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor">
-                    <path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4l-5.9 3.2 1.3-6.5-4.9-4.6 6.6-.8z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="num text-xs sm:text-sm font-bold text-ink">4,9/5 · 812 Bewertungen</p>
-            </div>
+            <button
+              onClick={() => {
+                track("einstufungstest_open", { location: "social_header" });
+                window.dispatchEvent(new CustomEvent("mprep:open-einstufungstest"));
+              }}
+              className="btn btn-primary btn-sm inline-flex items-center gap-1.5"
+            >
+              <span>Kostenlosen Einstufungstest starten</span>
+              <IconArrowRight className="h-4 w-4" />
+            </button>
           </Reveal>
         </div>
 
         <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-7 md:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 120}>
-              <figure
-                className={`card-lift h-full rounded-2xl border border-line bg-paper p-4 xs:p-5 sm:p-7 shadow-sm hover:rotate-0 hover:-translate-y-2 md:hover:rotate-0 md:hover:-translate-y-2 ${t.rotate}`}
-              >
-                <IconQuote className="h-5 w-5 sm:h-7 sm:w-7 text-primary/25" />
-                <blockquote className="mt-3 sm:mt-4 text-[13.5px] xs:text-[14px] sm:text-[15px] leading-relaxed text-ink-2">{t.quote}</blockquote>
-                <figcaption className="mt-4 sm:mt-7 flex items-center gap-3 sm:gap-3.5 border-t border-line pt-3.5 sm:pt-5">
-                  <span
-                    className="flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full text-[11px] sm:text-[13px] font-bold text-paper"
-                    style={{ background: ["#0F172A", "#DC2626", "#8B5CF6"][i] }}
-                    aria-hidden="true"
-                  >
-                    {t.name.split(" ").map((p) => p[0]).join("")}
-                  </span>
-                  <div className="min-w-0">
-                    <cite className="block text-[13px] xs:text-[13.5px] sm:text-[14px] font-bold not-italic text-ink">{t.name}</cite>
-                    <span className="block truncate text-[11px] xs:text-[11.5px] sm:text-[12px] text-ink-3">{t.detail}</span>
-                  </div>
-                </figcaption>
-                <p className="num mt-3 sm:mt-4 inline-block rounded-md bg-primary-subtle px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10.5px] sm:text-[12px] font-extrabold text-primary">
-                  {t.metric}
+          <Reveal delay={0}>
+            <div className="card-lift h-full rounded-2xl border border-line bg-paper p-5 sm:p-7 shadow-sm flex flex-col justify-between">
+              <div>
+                <span className="rounded-md bg-rose-50 border border-rose-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-rose-700">
+                  Fachwissen
+                </span>
+                <h3 className="mt-3 text-lg font-bold text-ink">BMS-Übungsfragen mit Erklärungen</h3>
+                <p className="mt-2.5 text-[13.5px] sm:text-[14px] leading-relaxed text-ink-2">
+                  Systematisches Training für Biologie, Chemie, Physik und Mathematik auf Matura-Niveau. Jede Aufgabe enthält detaillierte Lösungswege und Rechenschritte.
                 </p>
-              </figure>
-            </Reveal>
-          ))}
+              </div>
+              <div className="mt-6 border-t border-line pt-3.5 flex items-center justify-between text-xs text-ink-3">
+                <span className="font-semibold text-primary">✓ 40 % Gesamtwichtung</span>
+                <span>Bio · Chem · Phys · Math</span>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="card-lift h-full rounded-2xl border border-line bg-paper p-5 sm:p-7 shadow-sm flex flex-col justify-between">
+              <div>
+                <span className="rounded-md bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
+                  Standortbestimmung
+                </span>
+                <h3 className="mt-3 text-lg font-bold text-ink">Kostenloser 24-Fragen-Einstufungstest</h3>
+                <p className="mt-2.5 text-[13.5px] sm:text-[14px] leading-relaxed text-ink-2">
+                  Finde in 8–10 Minuten heraus, wo du im Stoff stehst. Du erhältst eine sofortige Auswertung über BMS, KFF, Textverständnis und SEK.
+                </p>
+              </div>
+              <div className="mt-6 border-t border-line pt-3.5">
+                <button
+                  onClick={() => {
+                    track("einstufungstest_open", { location: "social_card" });
+                    window.dispatchEvent(new CustomEvent("mprep:open-einstufungstest"));
+                  }}
+                  className="btn btn-primary btn-sm w-full justify-center"
+                >
+                  Jetzt kostenlos testen →
+                </button>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={240}>
+            <div className="card-lift h-full rounded-2xl border border-line bg-paper p-5 sm:p-7 shadow-sm flex flex-col justify-between">
+              <div>
+                <span className="rounded-md bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-blue-700">
+                  Community
+                </span>
+                <h3 className="mt-3 text-lg font-bold text-ink">MedAT 2027 Telegram-Gruppe</h3>
+                <p className="mt-2.5 text-[13.5px] sm:text-[14px] leading-relaxed text-ink-2">
+                  Tausche dich mit Mitbewerber:innen für Wien, Innsbruck, Graz und Linz aus. Finde Lernpartner:innen, kläre Fragen zu Fristen und bleibe motiviert.
+                </p>
+              </div>
+              <div className="mt-6 border-t border-line pt-3.5">
+                <a
+                  href="/medat-telegram-gruppe"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/medat-telegram-gruppe");
+                  }}
+                  className="btn btn-secondary btn-sm w-full justify-center"
+                >
+                  Zur Telegram-Gruppe →
+                </a>
+              </div>
+            </div>
+          </Reveal>
         </div>
 
         {/* ---------- Blog / Insights ---------- */}
