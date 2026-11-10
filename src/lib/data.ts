@@ -272,22 +272,6 @@ export const PRICING: PricingTier[] = [
     featured: true,
     badge: "Am beliebtesten",
   },
-  {
-    id: "intensiv",
-    name: "Intensiv",
-    tagline: "1:1-Betreuung bis zum Testtag.",
-    monthly: 349,
-    once: 349,
-    unit: "once",
-    features: [
-      "Alles aus Premium",
-      "6 × 1:1-Session mit MedAT-Coach",
-      "Persönliche Lernplan-Reviews",
-      "Mündliche Testtag-Simulation",
-      "Prioritäts-Support (< 4 h Antwort)",
-    ],
-    cta: "Intensiv anfragen",
-  },
 ];
 
 export interface Stat {
