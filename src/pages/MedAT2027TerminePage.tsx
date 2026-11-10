@@ -675,7 +675,7 @@ export default function MedAT2027TerminePage() {
                   <IconClock className="h-3 w-3 shrink-0" />
                   <span className="truncate">Testtag</span>
                 </div>
-                <p className="num mt-1 text-[13.5px] xs:text-[15px] sm:text-[17px] font-bold text-ink leading-tight">2. Juli 2027</p>
+                <p className="num mt-1 text-[13.5px] xs:text-[15px] sm:text-[17px] font-bold text-ink leading-tight">Voraussichtlich 9. Juli 2027</p>
                 <p className="text-[9px] xs:text-[9.5px] sm:text-[10.5px] text-ink-3 leading-tight mt-0.5 truncate">Einlass ab 07:30 Uhr</p>
               </div>
 
@@ -843,7 +843,7 @@ export default function MedAT2027TerminePage() {
                     <div className="flex items-start gap-2.5 rounded-xl bg-paper p-3 sm:p-3.5 border border-line/70">
                       <IconCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
                       <div>
-                        <strong className="text-ink">Testtag 2. Juli 2027:</strong>
+                        <strong className="text-ink">Testtag (voraussichtlich Freitag, 9. Juli 2027):</strong>
                         <p className="text-[11.5px] sm:text-[12.5px] text-ink-3 mt-0.5 leading-snug">
                           Pünktlich am ersten Freitag im Juli. Einlass ab 07:30 Uhr, Teststart um 08:30 Uhr.
                         </p>
@@ -852,13 +852,19 @@ export default function MedAT2027TerminePage() {
                     <div className="flex items-start gap-2.5 rounded-xl bg-paper p-3 sm:p-3.5 border border-line/70">
                       <IconCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
                       <div>
-                        <strong className="text-ink">4 Standorte zur Wahl:</strong>
+                        <strong className="text-ink">Standorte (Wien, Innsbruck, Graz für H+Z, Linz nur H):</strong>
                         <p className="text-[11.5px] sm:text-[12.5px] text-ink-3 mt-0.5 leading-snug">
-                          Wien, Graz, Innsbruck oder Linz. Nach der Registrierung ist der Ort nicht mehr änderbar.
+                          MedAT-H & MedAT-Z finden in Wien, Innsbruck und Graz statt. Die JKU Linz führt ausschließlich den MedAT-H (Humanmedizin) durch.
                         </p>
                       </div>
                     </div>
                   </div>
+                  <p className="mt-3 text-xs text-ink-3 italic text-center border-t border-line/60 pt-3">
+                    Wichtiger Hinweis: Verbindlich für Fristen, Termine, Gebühren und Durchführung sind ausschließlich die offiziellen Veröffentlichungen auf{" "}
+                    <a href="https://www.medizinstudieren.at" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">
+                      medizinstudieren.at
+                    </a>.
+                  </p>
                 </div>
 
                 {/* ════════════════════════════════════════════════════
@@ -958,7 +964,7 @@ export default function MedAT2027TerminePage() {
                         icon: "✉️",
                       },
                       {
-                        badge: "Freitag, 2. Juli 2027 · 07:30 Uhr",
+                        badge: "Freitag, 9. Juli 2027 (voraussichtlich) · 07:30 Uhr",
                         title: "Der MedAT 2027 Testtag",
                         desc: "Bundesweit zeitgleiche Durchführung an allen vier Standorten. Einlass ab 07:30 Uhr, Prüfungsbeginn 08:30 Uhr, Ende ca. 16:45 Uhr.",
                         action: "Reisepass, Einladung & Verpflegung mitnehmen",
@@ -1632,7 +1638,7 @@ export default function MedAT2027TerminePage() {
                       <p className="text-[12.5px] sm:text-sm text-ink-2 leading-relaxed">
                         Teste in 8–10 Minuten deinen Wissensstand in BMS, KFF und SEK mit 24 authentischen
                         Originalfragen. Du erhältst eine sofortige Perzentil-Auswertung und deinen
-                        maßgeschneiderten Lernplan bis zum 2. Juli 2027.
+                        maßgeschneiderten Lernplan bis zum voraussichtlich 9. Juli 2027.
                       </p>
                     </div>
                     <a

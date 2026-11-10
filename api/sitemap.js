@@ -5,9 +5,6 @@
  * and fast response for Google Search Console and web crawlers.
  */
 
-import fs from "fs";
-import path from "path";
-
 const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
@@ -17,15 +14,45 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Core Landing & Educational Platform -->
   <url>
     <loc>https://medatprep.at/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Free Diagnostic Test (Einstufungstest) -->
+  <url>
+    <loc>https://medatprep.at/einstufungstest</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+
+  <!-- High-Intent SEO Guides & Articles (MedAT 2027) -->
+  <url>
+    <loc>https://medatprep.at/der-medat</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://medatprep.at/medat-vorbereitung</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://medatprep.at/medat-kurs-vergleich</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <!-- Community & Telegram Hub -->
   <url>
     <loc>https://medatprep.at/medat-telegram-gruppe</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
@@ -33,7 +60,7 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Knowledge Hub & Strategy Blog -->
   <url>
     <loc>https://medatprep.at/blog</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -41,42 +68,42 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- High-Intent SEO Articles (MedAT 2027) -->
   <url>
     <loc>https://medatprep.at/medat-2027-termine-fristen</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/kff-strategie-schnellste-punkte</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/quoten-bewerberzahlen-analyse</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/bms-masterplan-vorbereitung</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/tv-sek-emotionen-textverstaendnis</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/testtag-protokoll-mentale-staerke</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -84,42 +111,42 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
   <!-- Trust, Compliance & Legal Pages (§ 5 ECG, DSGVO) -->
   <url>
     <loc>https://medatprep.at/ueber-uns</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/kontakt</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/datenschutz</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/agb</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/impressum</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://medatprep.at/haftungsausschluss</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>

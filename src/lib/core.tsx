@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { trackEvent } from "./mixpanel";
 
-/* ---------------- Analytics (event taxonomy stub) ---------------- */
+/* ---------------- Analytics (event taxonomy & Mixpanel dispatcher) ---------------- */
 export function track(event: string, props: Record<string, unknown> = {}) {
   const w = window as unknown as { dataLayer?: unknown[] };
   (w.dataLayer ||= []).push({ event, ...props, ts: Date.now() });
+  try {
+    trackEvent(event, props);
+  } catch {}
   console.debug("[medat-prep]", event, props);
 }
 
@@ -162,7 +166,7 @@ export interface NextMedAT {
   registrationLabel: string;
 }
 
-const KNOWN_TEST_DAYS: Record<number, number> = { 2026: 3, 2027: 2 }; // confirmed: 3.7.2026 / 2.7.2027
+const KNOWN_TEST_DAYS: Record<number, number> = { 2026: 3, 2027: 9 }; // voraussichtlich: 9. Juli 2027
 
 function firstFridayOfJuly(year: number): Date {
   const d = new Date(year, 6, 1, 8, 0, 0);
@@ -177,27 +181,28 @@ export function nextMedAT(): NextMedAT {
       ? new Date(y, 6, KNOWN_TEST_DAYS[y], 8, 0, 0)
       : firstFridayOfJuly(y);
     if (date.getTime() > now.getTime()) {
+      const rawWeekday = date.toLocaleDateString("de-AT", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
       return {
         date,
         year: y,
-        label: date.toLocaleDateString("de-AT", {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        }),
-        shortLabel: date.toLocaleDateString("de-AT", { day: "numeric", month: "long", year: "numeric" }),
-        registrationLabel: `Internet-Anmeldung: 1.–31. März ${y}`,
+        label: `Voraussichtlich ${rawWeekday}`,
+        shortLabel: `Voraussichtlich ${date.toLocaleDateString("de-AT", { day: "numeric", month: "long", year: "numeric" })}`,
+        registrationLabel: `Internet-Anmeldung: voraussichtlich 1.–31. März ${y}`,
       };
     }
   }
-  const d = firstFridayOfJuly(now.getFullYear() + 6);
+  const d = new Date(now.getFullYear() + 1, 6, 9, 8, 0, 0);
   return {
     date: d,
-    year: d.getFullYear(),
-    label: d.toLocaleDateString("de-AT", { day: "numeric", month: "long", year: "numeric" }),
-    shortLabel: d.toLocaleDateString("de-AT", { day: "numeric", month: "long", year: "numeric" }),
-    registrationLabel: "",
+    year: now.getFullYear() + 1,
+    label: `Voraussichtlich Freitag, 9. Juli ${now.getFullYear() + 1}`,
+    shortLabel: `Voraussichtlich 9. Juli ${now.getFullYear() + 1}`,
+    registrationLabel: `Internet-Anmeldung: voraussichtlich 1.–31. März ${now.getFullYear() + 1}`,
   };
 }
 

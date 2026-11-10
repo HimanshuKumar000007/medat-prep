@@ -343,7 +343,7 @@ Datum: ______________
                 gesetzlichen österreichischen Umsatzsteuer (derzeit 20 % USt.).
               </p>
 
-              <div className="grid gap-3 sm:grid-cols-3 pt-2 text-xs sm:text-sm">
+              <div className="grid gap-3 sm:grid-cols-2 max-w-2xl pt-2 text-xs sm:text-sm">
                 <div className="rounded-xl border border-line bg-paper-warm/40 p-4 space-y-1">
                   <p className="font-bold text-ink text-base">Basis-Zugang</p>
                   <p className="text-xl font-extrabold text-emerald-600 display-num">0 €</p>
@@ -354,12 +354,6 @@ Datum: ______________
                   <p className="font-bold text-ink text-base">MedAT Premium</p>
                   <p className="text-xl font-extrabold text-primary display-num">39 €</p>
                   <p className="text-ink-3">Voller Zugriff auf 5.000+ Fragen, BMS, KFF, Textverständnis, Probetests & didaktische Lernhilfe für die gesamte MedAT-Saison.</p>
-                </div>
-
-                <div className="rounded-xl border border-line bg-paper-warm/40 p-4 space-y-1">
-                  <p className="font-bold text-ink text-base">Intensiv-Paket</p>
-                  <p className="text-xl font-extrabold text-ink display-num">349 €</p>
-                  <p className="text-ink-3">Inklusive 6 persönlicher Coaching-Sessions mit MedAT-Top-Platzierer:innen und Notfall-Support vor dem Test.</p>
                 </div>
               </div>
 

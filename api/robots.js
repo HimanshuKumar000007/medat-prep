@@ -6,6 +6,8 @@
 
 const ROBOTS_TXT = `User-agent: *
 Allow: /
+Disallow: /app
+Disallow: /reset-password
 
 # Sitemaps
 Sitemap: https://medatprep.at/sitemap.xml

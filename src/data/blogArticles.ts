@@ -166,11 +166,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       avatar: "MG",
     },
     summary:
-      "Die Internet-Anmeldung zum MedAT 2027 läuft von 1. bis 31. März 2027. Der Testtag findet am Freitag, 2. Juli 2027 an allen vier Standorten zeitgleich statt. Erfahre hier alle Fristen, Zahlungsdetails und die häufigsten Formfehler.",
+      "Die Internet-Anmeldung zum MedAT 2027 läuft voraussichtlich von 1. bis 31. März 2027. Der Testtag findet voraussichtlich am Freitag, 9. Juli 2027 an allen vier Standorten zeitgleich statt. Erfahre hier alle Fristen, Zahlungsdetails und die häufigsten Formfehler.",
     keyTakeaways: [
-      "Anmeldefenster: 1. März bis 31. März 2027 (Ausschlussfrist, keine Nachfrist)",
+      "Anmeldefenster: Voraussichtlich 1. März bis 31. März 2027 (Ausschlussfrist, keine Nachfrist)",
       "Kostenbeitrag: 110,00 € muss vor dem Stichtag mit korrekter Zahlungsreferenz eingehen",
-      "Testtag: Freitag, 2. Juli 2027 (Einlass ab 07:30 Uhr, Teststart pünktlich um 08:30 Uhr)",
+      "Testtag: Voraussichtlich Freitag, 9. Juli 2027 (Einlass ab 07:30 Uhr, Teststart pünktlich um 08:30 Uhr)",
       "Standorte: Wien (Messe Wien), Graz (Messe Graz), Innsbruck (Messe Innsbruck), Linz (JKU Campus)",
     ],
     sections: [
@@ -194,7 +194,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         ],
       },
       {
-        heading: "3. Der Testtag: 2. Juli 2027",
+        heading: "3. Der Testtag: Voraussichtlich 9. Juli 2027",
         body: [
           "Der MedAT wird bundesweit zeitgleich am ersten Freitag im Juli durchgeführt. Der Ablauf ist minuziös getaktet:",
           "• 07:30 – 08:15 Uhr: Einlass & Identitätskontrolle (Gültiger Reisepass oder Personalausweis zwingend erforderlich)",

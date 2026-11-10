@@ -298,13 +298,13 @@ export default function AboutPage() {
 
               <div className="rounded-2xl border border-line bg-paper p-4 sm:p-6 shadow-sm">
                 <p className="text-[28px] sm:text-[36px] font-extrabold tracking-tight text-ink">
-                  4,9 <span className="text-[20px] font-medium text-amber-500">★</span>
+                  4 Module
                 </p>
                 <p className="mt-1 text-[12.5px] sm:text-[13.5px] font-semibold text-ink">
-                  Bewertungen
+                  Testteile abgedeckt
                 </p>
                 <p className="text-[11px] sm:text-[12px] text-ink-3">
-                  aus 1.840+ echten Feedbacks
+                  BMS, KFF, Textverständnis & SEK
                 </p>
               </div>
 

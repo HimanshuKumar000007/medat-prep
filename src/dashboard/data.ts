@@ -685,7 +685,7 @@ export const POSTS: Post[] = [
     time: "vor 1 Tag",
     title: "Anmeldung MedAT 2027: Fristen im Überblick",
     preview:
-      "Internet-Anmeldung: 1.–31. März 2027 · Testtag: 2. Juli 2027 · Gebühr: 110 €. Alle Details und Links zu den vier Unis findet ihr in diesem Beitrag.",
+      "Internet-Anmeldung: voraussichtlich 1.–31. März 2027 · Testtag: voraussichtlich 9. Juli 2027 · Gebühr: 110 €. Alle Details und Links zu den vier Unis findet ihr in diesem Beitrag.",
     tags: ["Offiziell", "Fristen"],
     votes: 96,
     answers: 8,

@@ -240,7 +240,7 @@ export default function Exam() {
                   </li>
                 </ul>
                 <p className="num mt-4 sm:mt-6 border-t border-night-2 pt-3.5 sm:pt-5 text-[11.5px] xs:text-[12px] sm:text-[13px] text-slate-400">
-                  Teilnahmegebühr <span className="font-extrabold text-paper">110 €</span> · ein Termin, österreichweit
+                  Teilnahmegebühr <span className="font-extrabold text-paper">110 €</span> · Standorte: Wien, Innsbruck & Graz (MedAT-H & Z), Linz (nur MedAT-H). Verbindlich ist ausschließlich <a href="https://www.medizinstudieren.at" target="_blank" rel="noopener noreferrer" className="text-paper underline">medizinstudieren.at</a>.
                 </p>
               </div>
             </Reveal>
@@ -274,13 +274,13 @@ export default function Exam() {
 
             <Reveal delay={260}>
               <button
-                className="btn btn-primary w-full min-h-[48px] justify-center touch-manipulation"
+                className="btn btn-primary w-full min-h-[48px] justify-center touch-manipulation cursor-pointer"
                 onClick={() => {
                   track("cta_einstufung", { location: "exam_section" });
-                  scrollToId("uebungsfragen");
+                  window.dispatchEvent(new CustomEvent("mprep:open-einstufungstest"));
                 }}
               >
-                Einstufungstest starten
+                Kostenlosen Einstufungstest starten
                 <IconArrowRight className="h-4 w-4" />
               </button>
             </Reveal>

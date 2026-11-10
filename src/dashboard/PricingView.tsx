@@ -24,11 +24,6 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
       return;
     }
 
-    if (tier.id === "intensiv") {
-      toast("Anfrage für Intensiv-Coaching erhalten — wir melden uns in Kürze per E-Mail.");
-      return;
-    }
-
     // Premium tier with Paddle (Annual 39 €)
     const priceId =
       PADDLE_CONFIG.monthlyPriceId ||
@@ -89,7 +84,7 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
       </div>
 
       {/* Pricing Cards Grid */}
-      <div className="grid gap-6 lg:grid-cols-3 items-stretch">
+      <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto items-stretch">
         {PRICING.map((tier) => {
           const isUserPro = Boolean(userProfile.isPro);
           const isCurrentActive =
@@ -100,9 +95,7 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
           const unitLabel =
             tier.unit === "free"
               ? "für immer"
-              : tier.id === "premium"
-              ? "/ Jahr"
-              : "einmalig";
+              : "/ Jahr";
 
           const isFeatured = tier.featured;
 

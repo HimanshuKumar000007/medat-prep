@@ -48,7 +48,7 @@ export default function Pricing() {
       }
     }
 
-    toast(`Super Wahl — dein ${tier === "premium" ? "Premium" : "Intensiv"}-Zugang wartet unten auf dich.`);
+    toast("Super Wahl — dein Premium-Zugang wartet unten auf dich.");
     window.location.hash = "#/onboarding";
   };
 
@@ -73,11 +73,11 @@ export default function Pricing() {
           </Reveal>
         </div>
 
-        <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 lg:grid-cols-3 lg:items-stretch">
+        <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 md:grid-cols-2 max-w-4xl mx-auto items-stretch">
           {PRICING.map((tier, i) => {
             const price = tier.id === "premium" ? 39 : tier.once;
             const unitLabel =
-              tier.unit === "free" ? "für immer" : tier.id === "premium" ? "/ Jahr" : "einmalig";
+              tier.unit === "free" ? "für immer" : "/ Jahr";
             return (
               <Reveal key={tier.id} delay={i * 110} className="h-full">
                 <article
