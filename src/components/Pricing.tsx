@@ -48,7 +48,7 @@ export default function Pricing() {
       }
     }
 
-    toast("Super Wahl — dein Premium-Zugang wartet auf dich.");
+    toast("Super Wahl — dein Premium-Zugang wartet unten auf dich.");
     window.location.hash = "#/onboarding";
   };
 
@@ -77,7 +77,7 @@ export default function Pricing() {
           {PRICING.map((tier, i) => {
             const price = tier.id === "premium" ? 39 : tier.once;
             const unitLabel =
-              tier.unit === "free" ? "für immer" : tier.id === "premium" ? "/ Jahr" : "einmalig";
+              tier.unit === "free" ? "für immer" : "/ Jahr";
             return (
               <Reveal key={tier.id} delay={i * 110} className="h-full">
                 <article

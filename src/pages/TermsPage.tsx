@@ -343,7 +343,7 @@ Datum: ______________
                 gesetzlichen österreichischen Umsatzsteuer (derzeit 20 % USt.).
               </p>
 
-              <div className="grid gap-3 sm:grid-cols-2 max-w-2xl mx-auto pt-2 text-xs sm:text-sm">
+              <div className="grid gap-3 sm:grid-cols-2 max-w-2xl pt-2 text-xs sm:text-sm">
                 <div className="rounded-xl border border-line bg-paper-warm/40 p-4 space-y-1">
                   <p className="font-bold text-ink text-base">Basis-Zugang</p>
                   <p className="text-xl font-extrabold text-emerald-600 display-num">0 €</p>

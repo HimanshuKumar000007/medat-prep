@@ -95,9 +95,7 @@ export default function PricingView({ onNav }: { onNav?: (s: Screen) => void }) 
           const unitLabel =
             tier.unit === "free"
               ? "für immer"
-              : tier.id === "premium"
-              ? "/ Jahr"
-              : "einmalig";
+              : "/ Jahr";
 
           const isFeatured = tier.featured;
 
