@@ -174,12 +174,55 @@ export const ROUTE_SEO_MAP: Record<string, RouteMeta> = {
     keywords: "Impressum MedAT Prep, Offenlegung Paragraph 5 ECG, Wien",
     ogType: "website",
   },
+  "/haftungsausschluss": {
+    title: "Haftungsausschluss & Unabhängigkeit — MedAT Prep",
+    description: "Transparenzhinweis zur Unabhängigkeit von MedAT Prep von den Medizinischen Universitäten Wien, Graz, Innsbruck und der JKU Linz.",
+    canonical: "https://medatprep.at/haftungsausschluss",
+    keywords: "Haftungsausschluss MedAT Prep, Unabhängigkeit MedUni Wien, Graz, Innsbruck, Linz",
+    ogType: "website",
+  },
   "/disclaimer": {
     title: "Haftungsausschluss & Unabhängigkeit — MedAT Prep",
     description: "Transparenzhinweis zur Unabhängigkeit von MedAT Prep von den Medizinischen Universitäten Wien, Graz, Innsbruck und der JKU Linz.",
     canonical: "https://medatprep.at/disclaimer",
     keywords: "Haftungsausschluss MedAT Prep, Unabhängigkeit MedUni Wien, Graz, Innsbruck, Linz",
     ogType: "website",
+  },
+  // High-Intent SEO Aliases (Canonicalized to primary routes)
+  "/medat-vorbereitung-guide": {
+    title: "MedAT Vorbereitung 2027: Leitfaden für MedAT-H & MedAT-Z | Wien, Graz, Innsbruck, Linz",
+    description: "Umfassender Guide für deine MedAT 2027 Vorbereitung: BMS üben, KFF-Taktik, Quoten, Zeitplan und didaktische Strategien für MedUni Wien, Graz, Innsbruck und Linz.",
+    canonical: "https://medatprep.at/medat-vorbereitung",
+    keywords: "MedAT Vorbereitung, MedAT 2027, MedAT-H Vorbereitung, MedAT-Z Vorbereitung, BMS üben, Medizinstudium Österreich, Wien, Graz, Innsbruck, Linz",
+    ogType: "article",
+  },
+  "/medat-vorbereitung-tipps": {
+    title: "MedAT Vorbereitung 2027: Leitfaden für MedAT-H & MedAT-Z | Wien, Graz, Innsbruck, Linz",
+    description: "Umfassender Guide für deine MedAT 2027 Vorbereitung: BMS üben, KFF-Taktik, Quoten, Zeitplan und didaktische Strategien für MedUni Wien, Graz, Innsbruck und Linz.",
+    canonical: "https://medatprep.at/medat-vorbereitung",
+    keywords: "MedAT Vorbereitung, MedAT 2027, MedAT-H Vorbereitung, MedAT-Z Vorbereitung, BMS üben, Medizinstudium Österreich, Wien, Graz, Innsbruck, Linz",
+    ogType: "article",
+  },
+  "/beste-medat-vorbereitung": {
+    title: "MedAT Vorbereitungskurse im Vergleich 2027: MedAT Prep vs. 1.500 € Kurse",
+    description: "Warum 1.500 € Kurse ausgedient haben: Großer Vergleich aller Vorbereitungsmethoden für MedAT 2027 (MedAT-H & MedAT-Z) in Wien, Graz, Innsbruck und Linz.",
+    canonical: "https://medatprep.at/medat-kurs-vergleich",
+    keywords: "MedAT Vorbereitungskurs, MedAT Kurs Vergleich, Beste MedAT Vorbereitung, MedAT Kosten, MedAT 2027, Wien, Graz, Innsbruck, Linz",
+    ogType: "article",
+  },
+  "/medat-vorbereitungskurs-vergleich": {
+    title: "MedAT Vorbereitungskurse im Vergleich 2027: MedAT Prep vs. 1.500 € Kurse",
+    description: "Warum 1.500 € Kurse ausgedient haben: Großer Vergleich aller Vorbereitungsmethoden für MedAT 2027 (MedAT-H & MedAT-Z) in Wien, Graz, Innsbruck und Linz.",
+    canonical: "https://medatprep.at/medat-kurs-vergleich",
+    keywords: "MedAT Vorbereitungskurs, MedAT Kurs Vergleich, Beste MedAT Vorbereitung, MedAT Kosten, MedAT 2027, Wien, Graz, Innsbruck, Linz",
+    ogType: "article",
+  },
+  "/medat-2027-termine": {
+    title: "MedAT 2027 Termine, Fristen & Gebühren — Offizieller Leitfaden | MedAT Prep",
+    description: "Alle Termine für den MedAT 2027: Anmeldung 1.–31. März 2027, 110 € Kostenbeitrag, Testtag voraussichtlich 9. Juli 2027 an MedUni Wien, Innsbruck, Graz (H+Z) und Linz (H).",
+    canonical: "https://medatprep.at/medat-2027-termine-fristen",
+    keywords: "MedAT 2027 Termine, MedAT Fristen, MedAT 2027 Testtag, MedAT Gebühr 110 Euro, MedUni Wien, Graz, Innsbruck, Linz, medizinstudieren.at",
+    ogType: "article",
   },
 };
 

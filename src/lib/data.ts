@@ -230,47 +230,52 @@ export interface PricingTier {
   cta: string;
   featured?: boolean;
   badge?: string;
+  anchorPrice?: string;
+  subtext?: string;
 }
 
 export const PRICING: PricingTier[] = [
   {
     id: "free",
     name: "Basis",
-    tagline: "Starte heute — ohne Kreditkarte.",
+    tagline: "Sofort starten — 100 % gratis, ohne Kreditkarte.",
     monthly: 0,
     once: 0,
     yearly: 0,
     unit: "free",
+    subtext: "Dauerhaft kostenlos · Keine Zahlungsdaten nötig",
     features: [
-      "200 kostenlose Fragen (4 volle BMS-Kapitel)",
-      "1 vollständiger Probetest (Generalprobe #1)",
-      "Persönlicher Lernplan & Vorbereitungs-Setup",
-      "Community-Forum & Lerngruppen",
+      "200 originale Testfragen (4 volle BMS-Themengebiete)",
+      "1 vollständiger Probetest (Generalprobe #1 mit Zeiterfassung)",
+      "Persönlicher Einstiegs-Lernplan & Setup",
+      "Community-Forum & Lerngruppen für Wien, Graz, Innsbruck & Linz",
+      "Vollwertige PWA-App für Smartphone, Tablet & Laptop",
     ],
-    cta: "Kostenlos starten",
+    cta: "Kostenlos starten (0 €)",
   },
   {
     id: "premium",
     name: "Premium",
-    tagline: "Voller Zugang für das gesamte Vorbereitungsjahr.",
+    tagline: "Die #1 Komplettlösung für deinen MedAT-Studienplatz.",
     monthly: 39,
     once: 39,
     yearly: 39,
     unit: "year",
+    anchorPrice: "Statt 1.500 € Kurs",
+    badge: "🔥 MEISTGEWÄHLT · 97 % ERSPARNIS",
+    subtext: "Nur 3,25 € / Monat · Volle 12 Monate Zugriff bis zur Prüfung",
     features: [
-      "Alle 5.000+ Fragen (BMS, KFF, TV & SEK)",
-      "Didaktische Lernhilfe: 24/7 Erklärungen & Rechenwege",
-      "Adaptiver Lernplan, wöchentlich aktualisiert",
-      "4 Probetests unter Echtbedingungen",
-      "SEK- & KFF-Intensivtraining",
-      "Gezieltes Schwachstellen-Training (Fehler-Hub)",
-      "Historische Grenzwerte & Punkte-Vergleich",
-      "Für MedAT-H und MedAT-Z",
-      "Volle 12 Monate Zugriff (39 € / Jahr)",
+      "Alle 5.000+ Fragen (BMS, KFF, TV & SEK) — 100 % VMC-konform",
+      "Schritt-für-Schritt-Lösungswege & Rechenmethoden zu jeder Frage",
+      "4 vollständige Generalproben unter realem Testtag-Zeitdruck",
+      "Intelligenter Fehler-Hub: Schließt gezielt deine Wissenslücken",
+      "Alle interaktiven KFF-Generatoren (Zahlenfolgen, Figuren, Gedächtnis)",
+      "SEK-Intensivmodule (Emotionen regulieren & erkennen)",
+      "Echtzeit-Punkteprognose & Grenzwerte für Wien, Graz, Innsbruck & Linz",
+      "Volle 12 Monate uneingeschränkter Zugriff (MedAT-H & MedAT-Z)",
     ],
-    cta: "Premium wählen",
+    cta: "Jetzt Premium freischalten (39 €)",
     featured: true,
-    badge: "Am beliebtesten",
   },
 ];
 
