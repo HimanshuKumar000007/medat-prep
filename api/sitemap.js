@@ -29,16 +29,9 @@ const SITEMAP_XML = `<?xml version="1.0" encoding="UTF-8"?>
 
   <!-- High-Intent SEO Guides & Articles (MedAT 2027) -->
   <url>
-    <loc>https://medatprep.at/der-medat</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
     <loc>https://medatprep.at/medat-vorbereitung</loc>
-    <lastmod>2026-10-29</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
