@@ -1,6 +1,60 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/der-medat", "destination": "/medat-vorbereitung", "permanent": true },
+    { "source": "/was-ist-der-medat", "destination": "/medat-vorbereitung", "permanent": true },
+    { "source": "/medat-aufbau", "destination": "/medat-vorbereitung", "permanent": true },
+    { "source": "/medat-struktur", "destination": "/medat-vorbereitung", "permanent": true },
+    { "source": "/medat-vorbereitung-guide", "destination": "/medat-vorbereitung", "permanent": true },
+    { "source": "/medat-vorbereitung-tipps", "destination": "/medat-vorbereitung", "permanent": true },
+    { "source": "/medat-lernen", "destination": "/medat-vorbereitung", "permanent": true },
+    { "source": "/vorbereitung", "destination": "/medat-vorbereitung", "permanent": true },
+
+    { "source": "/medat-vorbereitungskurs-vergleich", "destination": "/medat-kurs-vergleich", "permanent": true },
+    { "source": "/beste-medat-vorbereitung", "destination": "/medat-kurs-vergleich", "permanent": true },
+    { "source": "/warum-medat-prep", "destination": "/medat-kurs-vergleich", "permanent": true },
+    { "source": "/kurs-vergleich", "destination": "/medat-kurs-vergleich", "permanent": true },
+
+    { "source": "/medat-2027-termine", "destination": "/medat-2027-termine-fristen", "permanent": true },
+    { "source": "/termine-2027", "destination": "/medat-2027-termine-fristen", "permanent": true },
+    { "source": "/fristen", "destination": "/medat-2027-termine-fristen", "permanent": true },
+
+    { "source": "/kff-strategie", "destination": "/kff-strategie-schnellste-punkte", "permanent": true },
+    { "source": "/kff-punkte", "destination": "/kff-strategie-schnellste-punkte", "permanent": true },
+    { "source": "/kff-training", "destination": "/kff-strategie-schnellste-punkte", "permanent": true },
+    { "source": "/kff", "destination": "/kff-strategie-schnellste-punkte", "permanent": true },
+
+    { "source": "/quoten", "destination": "/quoten-bewerberzahlen-analyse", "permanent": true },
+    { "source": "/bewerberzahlen", "destination": "/quoten-bewerberzahlen-analyse", "permanent": true },
+    { "source": "/grenzraenge", "destination": "/quoten-bewerberzahlen-analyse", "permanent": true },
+
+    { "source": "/bms-masterplan", "destination": "/bms-masterplan-vorbereitung", "permanent": true },
+    { "source": "/bms", "destination": "/bms-masterplan-vorbereitung", "permanent": true },
+    { "source": "/bms-lernplan", "destination": "/bms-masterplan-vorbereitung", "permanent": true },
+
+    { "source": "/tv-sek", "destination": "/tv-sek-emotionen-textverstaendnis", "permanent": true },
+    { "source": "/textverstaendnis", "destination": "/tv-sek-emotionen-textverstaendnis", "permanent": true },
+    { "source": "/sek", "destination": "/tv-sek-emotionen-textverstaendnis", "permanent": true },
+
+    { "source": "/testtag-protokoll", "destination": "/testtag-protokoll-mentale-staerke", "permanent": true },
+    { "source": "/testtag", "destination": "/testtag-protokoll-mentale-staerke", "permanent": true },
+    { "source": "/packliste", "destination": "/testtag-protokoll-mentale-staerke", "permanent": true },
+
+    { "source": "/telegram", "destination": "/medat-telegram-gruppe", "permanent": true },
+    { "source": "/telegram-gruppe", "destination": "/medat-telegram-gruppe", "permanent": true },
+    { "source": "/medat-telegram", "destination": "/medat-telegram-gruppe", "permanent": true },
+    { "source": "/medat-community", "destination": "/medat-telegram-gruppe", "permanent": true },
+
+    { "source": "/about", "destination": "/ueber-uns", "permanent": true },
+    { "source": "/contact", "destination": "/kontakt", "permanent": true },
+    { "source": "/privacy", "destination": "/datenschutz", "permanent": true },
+    { "source": "/terms", "destination": "/agb", "permanent": true },
+    { "source": "/widerruf", "destination": "/agb", "permanent": true },
+    { "source": "/cancellation", "destination": "/agb", "permanent": true },
+    { "source": "/disclaimer", "destination": "/haftungsausschluss", "permanent": true },
+    { "source": "/imprint", "destination": "/impressum", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",

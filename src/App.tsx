@@ -322,64 +322,83 @@ export default function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/einstufungstest" element={<Homepage />} />
             <Route path="/blog" element={<BlogPage />} />
+            {/* MedAT Vorbereitung Pillar & Aliases */}
             <Route path="/medat-vorbereitung" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/der-medat" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/was-ist-der-medat" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-aufbau" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-struktur" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-vorbereitung-guide" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-vorbereitung-tipps" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/medat-lernen" element={<MedATVorbereitungGuidePage />} />
-            <Route path="/vorbereitung" element={<MedATVorbereitungGuidePage />} />
+            <Route path="/der-medat" element={<Navigate to="/medat-vorbereitung" replace />} />
+            <Route path="/was-ist-der-medat" element={<Navigate to="/medat-vorbereitung" replace />} />
+            <Route path="/medat-aufbau" element={<Navigate to="/medat-vorbereitung" replace />} />
+            <Route path="/medat-struktur" element={<Navigate to="/medat-vorbereitung" replace />} />
+            <Route path="/medat-vorbereitung-guide" element={<Navigate to="/medat-vorbereitung" replace />} />
+            <Route path="/medat-vorbereitung-tipps" element={<Navigate to="/medat-vorbereitung" replace />} />
+            <Route path="/medat-lernen" element={<Navigate to="/medat-vorbereitung" replace />} />
+            <Route path="/vorbereitung" element={<Navigate to="/medat-vorbereitung" replace />} />
+
+            {/* Kurs Vergleich & Aliases */}
             <Route path="/medat-kurs-vergleich" element={<MedATKursVergleichPage />} />
-            <Route path="/medat-vorbereitungskurs-vergleich" element={<MedATKursVergleichPage />} />
-            <Route path="/beste-medat-vorbereitung" element={<MedATKursVergleichPage />} />
-            <Route path="/warum-medat-prep" element={<MedATKursVergleichPage />} />
-            <Route path="/kurs-vergleich" element={<MedATKursVergleichPage />} />
+            <Route path="/medat-vorbereitungskurs-vergleich" element={<Navigate to="/medat-kurs-vergleich" replace />} />
+            <Route path="/beste-medat-vorbereitung" element={<Navigate to="/medat-kurs-vergleich" replace />} />
+            <Route path="/warum-medat-prep" element={<Navigate to="/medat-kurs-vergleich" replace />} />
+            <Route path="/kurs-vergleich" element={<Navigate to="/medat-kurs-vergleich" replace />} />
+
+            {/* Telegram Community */}
             <Route path="/medat-telegram-gruppe" element={<MedATTelegramPage />} />
-            <Route path="/telegram" element={<MedATTelegramPage />} />
-            <Route path="/telegram-gruppe" element={<MedATTelegramPage />} />
-            <Route path="/medat-telegram" element={<MedATTelegramPage />} />
-            <Route path="/medat-community" element={<MedATTelegramPage />} />
+            <Route path="/telegram" element={<Navigate to="/medat-telegram-gruppe" replace />} />
+            <Route path="/telegram-gruppe" element={<Navigate to="/medat-telegram-gruppe" replace />} />
+            <Route path="/medat-telegram" element={<Navigate to="/medat-telegram-gruppe" replace />} />
+            <Route path="/medat-community" element={<Navigate to="/medat-telegram-gruppe" replace />} />
+
+            {/* Termine & Fristen */}
             <Route path="/medat-2027-termine-fristen" element={<MedAT2027TerminePage />} />
-            <Route path="/medat-2027-termine" element={<MedAT2027TerminePage />} />
-            <Route path="/termine-2027" element={<MedAT2027TerminePage />} />
-            <Route path="/fristen" element={<MedAT2027TerminePage />} />
+            <Route path="/medat-2027-termine" element={<Navigate to="/medat-2027-termine-fristen" replace />} />
+            <Route path="/termine-2027" element={<Navigate to="/medat-2027-termine-fristen" replace />} />
+            <Route path="/fristen" element={<Navigate to="/medat-2027-termine-fristen" replace />} />
+
+            {/* KFF Strategie */}
             <Route path="/kff-strategie-schnellste-punkte" element={<KFFStrategiePage />} />
-            <Route path="/kff-strategie" element={<KFFStrategiePage />} />
-            <Route path="/kff-punkte" element={<KFFStrategiePage />} />
-            <Route path="/kff-training" element={<KFFStrategiePage />} />
-            <Route path="/kff" element={<KFFStrategiePage />} />
+            <Route path="/kff-strategie" element={<Navigate to="/kff-strategie-schnellste-punkte" replace />} />
+            <Route path="/kff-punkte" element={<Navigate to="/kff-strategie-schnellste-punkte" replace />} />
+            <Route path="/kff-training" element={<Navigate to="/kff-strategie-schnellste-punkte" replace />} />
+            <Route path="/kff" element={<Navigate to="/kff-strategie-schnellste-punkte" replace />} />
+
+            {/* Quoten & Bewerberzahlen */}
             <Route path="/quoten-bewerberzahlen-analyse" element={<QuotenAnalysePage />} />
-            <Route path="/quoten" element={<QuotenAnalysePage />} />
-            <Route path="/bewerberzahlen" element={<QuotenAnalysePage />} />
-            <Route path="/grenzraenge" element={<QuotenAnalysePage />} />
+            <Route path="/quoten" element={<Navigate to="/quoten-bewerberzahlen-analyse" replace />} />
+            <Route path="/bewerberzahlen" element={<Navigate to="/quoten-bewerberzahlen-analyse" replace />} />
+            <Route path="/grenzraenge" element={<Navigate to="/quoten-bewerberzahlen-analyse" replace />} />
+
+            {/* BMS Masterplan */}
             <Route path="/bms-masterplan-vorbereitung" element={<BMSMasterplanPage />} />
-            <Route path="/bms-masterplan" element={<BMSMasterplanPage />} />
-            <Route path="/bms" element={<BMSMasterplanPage />} />
-            <Route path="/bms-lernplan" element={<BMSMasterplanPage />} />
+            <Route path="/bms-masterplan" element={<Navigate to="/bms-masterplan-vorbereitung" replace />} />
+            <Route path="/bms" element={<Navigate to="/bms-masterplan-vorbereitung" replace />} />
+            <Route path="/bms-lernplan" element={<Navigate to="/bms-masterplan-vorbereitung" replace />} />
+
+            {/* TV & SEK */}
             <Route path="/tv-sek-emotionen-textverstaendnis" element={<TVSEKPage />} />
-            <Route path="/tv-sek" element={<TVSEKPage />} />
-            <Route path="/textverstaendnis" element={<TVSEKPage />} />
-            <Route path="/sek" element={<TVSEKPage />} />
+            <Route path="/tv-sek" element={<Navigate to="/tv-sek-emotionen-textverstaendnis" replace />} />
+            <Route path="/textverstaendnis" element={<Navigate to="/tv-sek-emotionen-textverstaendnis" replace />} />
+            <Route path="/sek" element={<Navigate to="/tv-sek-emotionen-textverstaendnis" replace />} />
+
+            {/* Testtag Protokoll */}
             <Route path="/testtag-protokoll-mentale-staerke" element={<TesttagProtokollPage />} />
-            <Route path="/testtag-protokoll" element={<TesttagProtokollPage />} />
-            <Route path="/testtag" element={<TesttagProtokollPage />} />
-            <Route path="/packliste" element={<TesttagProtokollPage />} />
-            <Route path="/about" element={<AboutPage />} />
+            <Route path="/testtag-protokoll" element={<Navigate to="/testtag-protokoll-mentale-staerke" replace />} />
+            <Route path="/testtag" element={<Navigate to="/testtag-protokoll-mentale-staerke" replace />} />
+            <Route path="/packliste" element={<Navigate to="/testtag-protokoll-mentale-staerke" replace />} />
+
+            {/* Company & Legal Pages */}
             <Route path="/ueber-uns" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<Navigate to="/ueber-uns" replace />} />
             <Route path="/kontakt" element={<ContactPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/contact" element={<Navigate to="/kontakt" replace />} />
             <Route path="/datenschutz" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<Navigate to="/datenschutz" replace />} />
             <Route path="/agb" element={<TermsPage />} />
-            <Route path="/widerruf" element={<TermsPage />} />
-            <Route path="/cancellation" element={<TermsPage />} />
-            <Route path="/disclaimer" element={<DisclaimerPage />} />
+            <Route path="/terms" element={<Navigate to="/agb" replace />} />
+            <Route path="/widerruf" element={<Navigate to="/agb" replace />} />
+            <Route path="/cancellation" element={<Navigate to="/agb" replace />} />
             <Route path="/haftungsausschluss" element={<DisclaimerPage />} />
+            <Route path="/disclaimer" element={<Navigate to="/haftungsausschluss" replace />} />
             <Route path="/impressum" element={<ImpressumPage />} />
-            <Route path="/imprint" element={<ImpressumPage />} />
+            <Route path="/imprint" element={<Navigate to="/impressum" replace />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/passwort-zuruecksetzen" element={<ResetPasswordPage />} />
             <Route path="/passwort-aendern" element={<ResetPasswordPage />} />

@@ -1,0 +1,29 @@
+{
+  "projectId": "medatprep-at",
+  "name": "MedAT Prep",
+  "domain": "https://medatprep.at",
+  "targetMarket": "Austria (de-AT) & DACH (de-DE)",
+  "language": "de-AT",
+  "businessOverview": "MedAT Prep ist Österreichs interaktive Online-Vorbereitungsplattform für den MedAT 2027 (MedAT-H für Humanmedizin und MedAT-Z für Zahnmedizin an den Medizinischen Universitäten Wien, Graz, Innsbruck und der JKU Linz). Die Plattform bietet einen kostenlosen 24-Fragen-Einstufungstest mit Sofortauswertung, 5.000+ Fragen nach dem offiziellen VMC-Stichwortkatalog (BMS: Bio, Chemie, Physik, Mathe), adaptive KFF-Drilltools (Zahlenfolgen, Figuren, Gedächtnispalast) und realistische Prüfungssimulationen mit österreichweiter Perzentilauswertung.",
+  "currentGoal": "Erhöhung der organischen Sichtbarkeit auf Position #1–#3 für MedAT-Keywords in Österreich und Maximierung der Neuanmeldungen für den kostenlosen Einstufungstest.",
+  "positioning": "Smarte, wissenschaftliche und bezahlbare Alternative zu traditionellen 1.500 € Präsenzkursen und statischen Lehrbüchern. Jederzeit auf Handy, Tablet und Laptop verfügbar.",
+  "competitors": [
+    { "domain": "medbreaker.de", "name": "Medbreaker", "notes": "Führend bei gedruckten Lehrbüchern und MedAT-Apps." },
+    { "domain": "medgurus.de", "name": "MedGurus", "notes": "Fokus auf Bücher und Kurse im DACH-Raum (TMS/MedAT)." },
+    { "domain": "studentenkurse.at", "name": "IFS Studentenkurse", "notes": "Teure Präsenzkurse in Wien, Graz und Innsbruck (1.500 €–2.500 €)." },
+    { "domain": "studymed.at", "name": "Studymed", "notes": "Ältere E-Learning-Plattform mit Fragenkatalog." },
+    { "domain": "get-to-med.com", "name": "Get-to-med", "notes": "Online-Testtrainer und Skripte." }
+  ],
+  "keyPages": [
+    { "url": "https://medatprep.at/", "role": "money", "topic": "Homepage & Konversion" },
+    { "url": "https://medatprep.at/einstufungstest", "role": "money", "topic": "Kostenloser 24-Fragen-Einstufungstest" },
+    { "url": "https://medatprep.at/medat-kurs-vergleich", "role": "hub", "topic": "MedAT Kurs Vergleich 2027" },
+    { "url": "https://medatprep.at/medat-vorbereitung", "role": "hub", "topic": "Leitfaden MedAT Vorbereitung 2027" },
+    { "url": "https://medatprep.at/bms-masterplan-vorbereitung", "role": "spoke", "topic": "BMS üben: Bio, Chemie, Physik, Mathe" },
+    { "url": "https://medatprep.at/kff-strategie-schnellste-punkte", "role": "spoke", "topic": "KFF Training & Strategien" },
+    { "url": "https://medatprep.at/medat-2027-termine-fristen", "role": "spoke", "topic": "MedAT 2027 Termine & Fristen" },
+    { "url": "https://medatprep.at/quoten-bewerberzahlen-analyse", "role": "spoke", "topic": "Quoten & Grenzränge" },
+    { "url": "https://medatprep.at/tv-sek-emotionen-textverstaendnis", "role": "spoke", "topic": "Textverständnis & SEK" },
+    { "url": "https://medatprep.at/testtag-protokoll-mentale-staerke", "role": "spoke", "topic": "Testtag Protokoll & Packliste" }
+  ]
+}

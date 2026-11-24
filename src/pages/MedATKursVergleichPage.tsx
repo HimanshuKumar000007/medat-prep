@@ -1034,17 +1034,16 @@ export default function MedATKursVergleichPage() {
                 </div>
 
                 <div className="pt-2 text-center sm:text-left">
-                  <a
-                    href="#einstufungstest"
-                    onClick={(e) => {
-                      e.preventDefault();
+                  <Link
+                    to="/einstufungstest"
+                    onClick={() => {
                       window.dispatchEvent(new CustomEvent("mprep:open-einstufungstest"));
                     }}
-                    className="btn btn-primary px-6 py-3 text-sm font-bold inline-flex items-center gap-2"
+                    className="btn btn-primary px-6 py-3 text-sm font-bold inline-flex items-center gap-2 hover:scale-[1.02] transition-transform"
                   >
-                    Kostenlosen Einstufungstest starten
+                    Kostenlosen Einstufungstest starten (0 €)
                     <IconArrowRight className="h-4 w-4" />
-                  </a>
+                  </Link>
                 </div>
               </section>
 

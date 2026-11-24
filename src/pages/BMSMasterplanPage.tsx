@@ -776,6 +776,27 @@ export default function BMSMasterplanPage() {
                     </div>
                   </div>
                 </div>
+
+                {/* In-Content Contextual SEO/Conversion Callout */}
+                <div className="my-6 rounded-2xl border border-primary/20 bg-gradient-to-r from-red-50/70 via-paper to-amber-50/40 p-4 sm:p-5 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="space-y-1">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-[10.5px] font-bold text-primary">
+                      🎯 Standortsbestimmung
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-ink">
+                      Wo stehst du aktuell im BMS?
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-ink-2 max-w-xl leading-relaxed">
+                      Ermittle dein Vorwissen in Biologie, Chemie, Physik und Mathe mit dem kostenlosen 24-Fragen-Einstufungstest und erhalte eine sofortige Schwachstellen-Analyse.
+                    </p>
+                  </div>
+                  <Link
+                    to="/einstufungstest"
+                    className="btn btn-primary px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-bold shadow-sm whitespace-nowrap shrink-0 hover:scale-[1.02] transition-transform"
+                  >
+                    Einstufungstest starten (0 €) →
+                  </Link>
+                </div>
               </section>
 
               {/* ── SECTION 2: DIE 4 FÄCHER IM DETAIL ── */}
