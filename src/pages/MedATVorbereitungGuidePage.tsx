@@ -61,6 +61,26 @@ interface FaqItem {
 
 const VORBEREITUNG_FAQS: FaqItem[] = [
   {
+    q: "Wie läuft der MedAT ab und welche Untertests hat er?",
+    a: "Der MedAT ist ein ganztägiger schriftlicher Aufnahmetest (ca. 07:30 bis 16:30 Uhr mit 60 Min. Mittagspause). Beim MedAT-H (Humanmedizin) gibt es vier große Testblöcke: 1. BMS (Basiskenntnistest, 40 %): 94 Fragen in 75 Min. (Biologie 40, Chemie 24, Physik 18, Mathematik 12). 2. KFF (Kognitive Fähigkeiten, 40 %): 5 Untertests mit strengem Takt (Figuren zusammensetzen 15 Min., Zahlenfolgen 15 Min., Wortflüssigkeit 20 Min., Gedächtnis & Merkfähigkeit 25+15 Min., Implikationen erkennen 10 Min.). 3. Textverständnis (10 %): 12 Fragen zu 4 Fachtexten in 35 Min. 4. SEK (10 %): Emotionen regulieren (ER), Emotionen erkennen (EE) und Soziales Entscheiden (SE) in ca. 30 Min. Beim MedAT-Z (Zahnmedizin) entfallen TV und Teile der SEK; stattdessen prüfen Manuelle Fertigkeiten (30 %) das Drahtbiegen und Formen spiegeln.",
+    category: "Allgemein",
+  },
+  {
+    q: "Wie bereite ich mich auf den MedAT in Österreich vor?",
+    a: "Eine erfolgreiche MedAT-Vorbereitung in Österreich basiert auf 4 Schritten über 4 bis 6 Monate (ca. 350–500 Lernstunden): 1. Wissensstand testen mit dem kostenlosen MedAT Prep Einstufungstest. 2. BMS-Themenkatalog (VMC) strukturiert mit Active Recall und Multiple-Choice-Fragen lernen. 3. KFF täglich 45 Minuten trainieren (Zahlenfolgen-Muster, Loci-Methode für Allergieausweise, FZ-Transformationen) — KFF hat die höchste Trainingselastizität. 4. Mindestens 4 vollständige Generalproben unter realem Zeitdruck und ohne Taschenrechner durchführen.",
+    category: "Strategie & Zeit",
+  },
+  {
+    q: "Wie kann ich mich in Österreich aufs MedAT Humanmedizin vorbereiten?",
+    a: "Für den MedAT-H (Humanmedizin) konzentrierst du dich auf BMS (40 %), KFF (40 %), Textverständnis (10 %) und SEK (10 %). Du benötigst keine manuellen Fertigkeiten wie Drahtbiegen. Da BMS und KFF zusammen 80 % der Gesamtwertung ausmachen, entscheiden sie über deinen Studienplatz. Nutze statt teurer 1.500-Euro-Frontalkurse eine digitale Lernsoftware wie MedAT Prep: Über 5.000 Fragen nach VMC-Stichwortkatalog, didaktische Rechenwege und 4 Generalproben für nur 39 € im ganzen Vorbereitungsjahr.",
+    category: "Strategie & Zeit",
+  },
+  {
+    q: "Wie kann ich mich in Wien aufs MedAT Humanmedizin vorbereiten?",
+    a: "Der MedAT der MedUni Wien findet in der Messe Wien (Halle A und B) mit rund 8.000 Bewerber:innen auf ca. 760 Plätze für Humanmedizin statt. Drei Tipps für Wien: 1. Der Grenzscore liegt in Wien bei ca. 78–81 % (Österreich-Quote) bzw. 82–85 % (EU-Quote). 2. Übe Testsimulationen zeitweise ohne Noise-Cancelling-Kopfhörer, um dich an die enorme Akustik der Messehalle zu gewöhnen. 3. Vernetze dich in unserer kostenlosen MedAT Wien Telegram-Gruppe mit Mitbewerber:innen und lerne gemeinsam in Wiener Universitätsbibliotheken.",
+    category: "Testtag & Quoten",
+  },
+  {
     q: "Wie lange sollte man sich realistisch auf den MedAT vorbereiten?",
     a: "Die ideale Vorbereitungszeit liegt zwischen 16 und 24 Wochen (ca. 4 bis 6 Monate) bei einem wöchentlichen Lernpensum von 18 bis 28 Stunden. Insgesamt benötigen erfolgreiche Kandidat:innen im Schnitt 350 bis 500 reine Arbeitsstunden. Wer erst 6 bis 8 Wochen vor dem Testtag im Mai startet, gerät unter massiven Stoffdruck im BMS und kann die notwendige kognitive Reaktionsgeschwindigkeit im KFF-Teil kaum noch antrainieren.",
     category: "Strategie & Zeit",
